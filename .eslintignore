@@ -1,0 +1,15 @@
+node_modules/
+dist/
+build/
+.next/
+*.js
+*.d.ts
+coverage/
+.git/
+.taskmaster/
+.cursor/
+.clinerules/
+.vscode/
+.github/
+*.md
+*.json 

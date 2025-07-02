@@ -1,0 +1,47 @@
+{
+  "name": "jabbr-trading-bot-platform",
+  "version": "1.0.0",
+  "description": "A fully modular, TypeScript-first trading bot platform with WebSocket-first architecture",
+  "private": true,
+  "workspaces": [
+    "packages/backend",
+    "packages/frontend", 
+    "packages/shared"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "npm run dev --workspace=packages/backend",
+    "dev:frontend": "npm run dev --workspace=packages/frontend",
+    "build": "npm run build --workspaces",
+    "build:backend": "npm run build --workspace=packages/backend",
+    "build:frontend": "npm run build --workspace=packages/frontend",
+    "build:shared": "npm run build --workspace=packages/shared",
+    "test": "npm run test --workspaces",
+    "test:backend": "npm run test --workspace=packages/backend",
+    "test:frontend": "npm run test --workspace=packages/frontend",
+    "test:shared": "npm run test --workspace=packages/shared",
+    "lint": "npm run lint --workspaces",
+    "clean": "npm run clean --workspaces",
+    "install:all": "npm install"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "typescript": "^5.3.3",
+    "ts-node": "^10.9.2"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "keywords": [
+    "trading-bot",
+    "cryptocurrency",
+    "websocket",
+    "typescript",
+    "monorepo",
+    "real-time",
+    "bybit"
+  ],
+  "author": "Jabbr Trading Platform",
+  "license": "MIT"
+}
