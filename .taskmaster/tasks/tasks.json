@@ -263,7 +263,7 @@
         "id": 15,
         "title": "Bot Creation & Configuration",
         "description": "Implement a system for creating and configuring trading bots.",
-        "status": "pending",
+        "status": "done",
         "dependencies": [
           14
         ],
@@ -276,7 +276,7 @@
         "id": 16,
         "title": "Bot Lifecycle Management",
         "description": "Implement bot lifecycle management (start, stop, pause).",
-        "status": "pending",
+        "status": "done",
         "dependencies": [
           15
         ],
@@ -289,7 +289,7 @@
         "id": 17,
         "title": "Strategy Framework",
         "description": "Implement a strategy framework with a pluggable architecture.",
-        "status": "pending",
+        "status": "done",
         "dependencies": [
           14
         ],
@@ -478,7 +478,7 @@
     ],
     "metadata": {
       "created": "2025-07-01T23:57:59.426Z",
-      "updated": "2025-07-02T04:36:35.609Z",
+      "updated": "2025-07-02T12:11:39.362Z",
       "description": "Tasks for master context"
     }
   }

@@ -100,7 +100,8 @@ export class ModularTargetReacherStrategy implements IStrategy {
       customState: { modular: true },
     };
   }
-  setState(): void {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  setState(_state: Partial<StrategyState>): void {
     // No-op for pure signal strategy
   }
 }
@@ -192,7 +193,8 @@ export class TargetReacherStrategy {
       customState: {},
     };
   }
-  setState(): void {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  setState(_state: Partial<StrategyState>): void {
     // No-op for pure signal strategy
   }
 }

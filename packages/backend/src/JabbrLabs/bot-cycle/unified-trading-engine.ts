@@ -117,14 +117,13 @@ export class EnhancedTradingEngine implements JabbrLabsTradingEngine {
     return (baseConfidence + marketStrength) / 2;
   }
   
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   private checkPositionSize(_position: any): { passed: boolean; reason?: string } {
     const maxPositionSize = 10000; // Example limit
     const size = Math.abs(_position?.size ?? 0);
-    
     if (size > maxPositionSize) {
       return { passed: false, reason: `Position size ${size} exceeds limit ${maxPositionSize}` };
     }
-    
     return { passed: true };
   }
   
@@ -154,7 +153,6 @@ export class EnhancedTradingEngine implements JabbrLabsTradingEngine {
   
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   private applyOrderOptimizations(_order: any): any {
-    // intentionally unused
     return null;
   }
 }
