@@ -1,0 +1,97 @@
+{
+  "name": "tests-organization",
+  "description": "Rules to ensure all tests are placed in the tests directory with proper organization",
+  "enabled": true,
+  "rules": [
+    {
+      "id": "test-file-location",
+      "name": "Test File Location",
+      "description": "All test files should be located in the tests directory with proper organization",
+      "severity": "error",
+      "pattern": "**/*.{test,spec}.{ts,tsx,js,jsx}",
+      "checks": [
+        {
+          "type": "filePath",
+          "match": "^tests/",
+          "message": "Test files must be located in the tests directory",
+          "enforce": true
+        }
+      ]
+    },
+    {
+      "id": "test-organization-structure",
+      "name": "Test Organization Structure",
+      "description": "Tests must follow the established organization structure (unit, integration, e2e)",
+      "severity": "error",
+      "pattern": "tests/**/*.{test,spec}.{ts,tsx,js,jsx}",
+      "checks": [
+        {
+          "type": "filePath",
+          "match": "^tests/(unit|integration|e2e)/",
+          "message": "Tests must be organized in unit, integration, or e2e directories",
+          "enforce": true
+        }
+      ]
+    },
+    {
+      "id": "package-specific-tests",
+      "name": "Package-specific Tests",
+      "description": "Unit and integration tests must be organized by package (backend, frontend, shared)",
+      "severity": "error",
+      "pattern": "tests/(unit|integration)/**/*.{test,spec}.{ts,tsx,js,jsx}",
+      "checks": [
+        {
+          "type": "filePath",
+          "match": "^tests/(unit|integration)/(backend|frontend|shared)/",
+          "message": "Unit and integration tests must be organized by package (backend, frontend, shared)",
+          "enforce": true
+        }
+      ]
+    },
+    {
+      "id": "imports-relative-path",
+      "name": "Relative Import Paths",
+      "description": "Test files should use proper relative paths to source files",
+      "severity": "warning",
+      "pattern": "tests/**/*.{test,spec}.{ts,tsx,js,jsx}",
+      "checks": [
+        {
+          "type": "fileContent",
+          "match": "import\\s+.*?from\\s+['\"]\\.\\.\\/((?!\\.\\.).*?)['\"]",
+          "message": "Use relative paths with proper depth to import source files",
+          "enforce": true
+        }
+      ]
+    },
+    {
+      "id": "test-filename-convention",
+      "name": "Test Filename Convention",
+      "description": "Test files should follow naming convention: component-name.test.ts or feature.spec.ts",
+      "severity": "warning",
+      "pattern": "tests/**/*",
+      "checks": [
+        {
+          "type": "fileName",
+          "match": "^[a-z0-9-]+\\.(test|spec)\\.(ts|tsx|js|jsx)$",
+          "message": "Test filenames should follow kebab-case.test.ts or kebab-case.spec.ts pattern",
+          "enforce": true
+        }
+      ]
+    },
+    {
+      "id": "fixture-organization",
+      "name": "Test Fixture Organization",
+      "description": "Test fixtures should be stored in the fixtures directory",
+      "severity": "warning",
+      "pattern": "**/*.fixture.{ts,tsx,js,jsx}",
+      "checks": [
+        {
+          "type": "filePath",
+          "match": "^tests/fixtures/",
+          "message": "Test fixtures should be stored in the tests/fixtures directory",
+          "enforce": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,14 +1,4 @@
-import * as ccxt from 'ccxt';
-import { 
-  BaseExchange, 
-  MarketType, 
-  OrderRequest, 
-  OrderResponse, 
-  MarketData, 
-  PositionInfo, 
-  AccountBalance, 
-  ExchangeCapabilities 
-} from './base-exchange';
+import { MarketType } from '@jabbr/shared';
 import type {
   Exchange,
   TradeSide,
@@ -16,18 +6,126 @@ import type {
   TradeStatus,
   ExchangeApiKey
 } from '@jabbr/shared';
+import * as ccxt from 'ccxt';
+
 import { timeSyncService } from '../services/time-sync.service';
+
+import { 
+  BaseExchange 
+} from './base-exchange';
+import type { 
+  OrderRequest, 
+  OrderResponse, 
+  MarketData, 
+  PositionInfo, 
+  AccountBalance, 
+  ExchangeCapabilities 
+} from './base-exchange';
 
 /**
  * Bybit Exchange Implementation
  * Supports both Spot and Futures trading with comprehensive order management
  */
 export class BybitExchange extends BaseExchange {
+
+  /**
+   * Validate an order against risk configuration without placing the order
+   */
+  async validateOrderRisk(
+    orderRequest: OrderRequest,
+    riskConfig: {
+      maxPositionSize: number;
+      maxLeverage: number;
+      maxDailyLoss: number;
+      maxDrawdown: number;
+      maxConcurrentTrades: number;
+      emergencyStop: boolean;
+      riskScore: number;
+      accountBalance?: number;
+    }
+  ): Promise<{
+    isValid: boolean;
+    violations: string[];
+    warnings: string[];
+  }> {
+    const violations: string[] = [];
+    const warnings: string[] = [];
+    try {
+      // Emergency Stop
+      if (riskConfig.emergencyStop) {
+        violations.push('Emergency stop is active - all trading is halted');
+        return { isValid: false, violations, warnings };
+      }
+
+      // Leverage Validation
+      const requestedLeverage = orderRequest.leverage || 1;
+      if (requestedLeverage > riskConfig.maxLeverage) {
+        violations.push(`Leverage ${requestedLeverage}x exceeds maximum allowed ${riskConfig.maxLeverage}x`);
+      }
+
+      // Position Size Validation
+      const currentPositions = await this.getPositions(orderRequest.symbol);
+      const existingPosition = currentPositions.find(pos => pos.symbol === orderRequest.symbol);
+      let newPositionSize = orderRequest.amount;
+      if (existingPosition && !orderRequest.reduceOnly) {
+        if ((existingPosition.side === 'buy' && orderRequest.side === 'buy') ||
+            (existingPosition.side === 'sell' && orderRequest.side === 'sell')) {
+          newPositionSize = existingPosition.size + orderRequest.amount;
+        }
+      }
+      if (newPositionSize > riskConfig.maxPositionSize) {
+        violations.push(`Position size ${newPositionSize} exceeds maximum allowed ${riskConfig.maxPositionSize}`);
+      }
+
+      // Concurrent Trades Validation
+      const allPositions = await this.getPositions();
+      const openPositionsCount = allPositions.filter(pos => pos.size > 0).length;
+      if (!existingPosition && !orderRequest.reduceOnly && openPositionsCount >= riskConfig.maxConcurrentTrades) {
+        violations.push(`Already at maximum concurrent trades limit (${riskConfig.maxConcurrentTrades})`);
+      }
+
+      // Daily Loss Check
+      if (riskConfig.accountBalance) {
+        const totalUnrealizedPnl = allPositions.reduce((sum, pos) => sum + pos.unrealizedPnl, 0);
+        const currentDailyLossPercentage = Math.abs(totalUnrealizedPnl / riskConfig.accountBalance) * 100;
+        if (currentDailyLossPercentage >= riskConfig.maxDailyLoss) {
+          violations.push(`Daily loss limit reached: ${currentDailyLossPercentage.toFixed(2)}% >= ${riskConfig.maxDailyLoss}%`);
+        } else if (currentDailyLossPercentage >= riskConfig.maxDailyLoss * 0.8) {
+          warnings.push(`Approaching daily loss limit: ${currentDailyLossPercentage.toFixed(2)}% of ${riskConfig.maxDailyLoss}%`);
+        }
+      }
+
+      // Drawdown Check
+      if (riskConfig.accountBalance) {
+        const totalUnrealizedPnl = allPositions.reduce((sum, pos) => sum + pos.unrealizedPnl, 0);
+        const currentDrawdownPercentage = totalUnrealizedPnl < 0 ? Math.abs(totalUnrealizedPnl / riskConfig.accountBalance) * 100 : 0;
+        if (currentDrawdownPercentage >= riskConfig.maxDrawdown) {
+          violations.push(`Drawdown limit reached: ${currentDrawdownPercentage.toFixed(2)}% >= ${riskConfig.maxDrawdown}%`);
+        } else if (currentDrawdownPercentage >= riskConfig.maxDrawdown * 0.8) {
+          warnings.push(`Approaching drawdown limit: ${currentDrawdownPercentage.toFixed(2)}% of ${riskConfig.maxDrawdown}%`);
+        }
+      }
+
+      // Risk Score Validation
+      if (riskConfig.riskScore >= 8) {
+        if (requestedLeverage > 5) {
+          warnings.push(`High risk score (${riskConfig.riskScore}) - consider reducing leverage from ${requestedLeverage}x`);
+        }
+        if (newPositionSize > riskConfig.maxPositionSize * 0.5) {
+          warnings.push(`High risk score (${riskConfig.riskScore}) - consider reducing position size`);
+        }
+      }
+
+      return { isValid: violations.length === 0, violations, warnings };
+    } catch (error) {
+      return { isValid: false, violations: [error instanceof Error ? error.message : String(error)], warnings };
+    }
+  }
   private client: ccxt.bybit;
   private wsConnections: Map<string, any> = new Map();
   private subscriptions: Set<string> = new Set();
 
-  constructor(apiKey: ExchangeApiKey, isTestnet: boolean = true) {
+  constructor(apiKey: ExchangeApiKey, isTestnet = true) {
     super(apiKey, isTestnet);
     
     // Initialize CCXT Bybit client
@@ -86,18 +184,23 @@ export class BybitExchange extends BaseExchange {
       // First, get server time and sync
       console.log('⏰ Synchronizing time with Bybit...');
       try {
-        // Get Bybit server time
-        const serverTime = await this.client.fetchTime();
-        const bybitServerTime = new Date(serverTime || Date.now());
-        
-        // Sync with our time service
-        await timeSyncService.syncWithExchange('bybit', bybitServerTime);
-        const totalDrift = timeSyncService.getTotalDrift();
-        console.log(`✅ Time synchronized (drift: ${totalDrift}ms)`);
-        
-        // Apply time difference to CCXT client (negative to correct)
-        this.client.options.timeDifference = -totalDrift;
-        console.log(`🔧 Applied time correction: ${-totalDrift}ms to CCXT client`);
+        // Check if fetchTime method is available
+        if (typeof this.client.fetchTime === 'function') {
+          // Get Bybit server time
+          const serverTime = await this.client.fetchTime();
+          const bybitServerTime = new Date(serverTime || Date.now());
+          
+          // Sync with our time service
+          await timeSyncService.syncWithExchange('bybit', bybitServerTime);
+          const totalDrift = timeSyncService.getTotalDrift();
+          console.log(`✅ Time synchronized (drift: ${totalDrift}ms)`);
+          
+          // Apply time difference to CCXT client (negative to correct)
+          this.client.options.timeDifference = -totalDrift;
+          console.log(`🔧 Applied time correction: ${-totalDrift}ms to CCXT client`);
+        } else {
+          console.log('⚠️ fetchTime method not available, using system time');
+        }
       } catch (timeError) {
         console.warn('⚠️ Time sync failed, proceeding with system time:', timeError);
       }
@@ -230,7 +333,7 @@ export class BybitExchange extends BaseExchange {
   /**
    * Get order book for a symbol
    */
-  async getOrderBook(symbol: string, marketType: MarketType, depth: number = 50): Promise<{
+  async getOrderBook(symbol: string, marketType: MarketType, depth = 50): Promise<{
     bids: [number, number][];
     asks: [number, number][];
     timestamp: Date;
@@ -246,8 +349,8 @@ export class BybitExchange extends BaseExchange {
       const orderBook = await this.client.fetchOrderBook(formattedSymbol, depth);
       
       return {
-        bids: orderBook.bids.map((bid: any) => [bid[0], bid[1]] as [number, number]),
-        asks: orderBook.asks.map((ask: any) => [ask[0], ask[1]] as [number, number]),
+        bids: orderBook.bids.map((bid: any) => [bid.at(0), bid.at(1)] as [number, number]),
+        asks: orderBook.asks.map((ask: any) => [ask.at(0), ask.at(1)] as [number, number]),
         timestamp: new Date(orderBook.timestamp || Date.now())
       };
 
@@ -260,7 +363,7 @@ export class BybitExchange extends BaseExchange {
   /**
    * Get recent trades for a symbol
    */
-  async getRecentTrades(symbol: string, _marketType: MarketType, limit: number = 50): Promise<{
+  async getRecentTrades(symbol: string, _marketType: MarketType, limit = 50): Promise<{
     id: string;
     price: number;
     amount: number;
@@ -326,12 +429,12 @@ export class BybitExchange extends BaseExchange {
       );
       
       return ohlcv.map((candle: any) => ({
-        timestamp: new Date(candle[0]),
-        open: candle[1],
-        high: candle[2],
-        low: candle[3],
-        close: candle[4],
-        volume: candle[5]
+        timestamp: new Date(candle.at(0)),
+        open: candle.at(1),
+        high: candle.at(2),
+        low: candle.at(3),
+        close: candle.at(4),
+        volume: candle.at(5)
       }));
 
     } catch (error) {
@@ -361,10 +464,10 @@ export class BybitExchange extends BaseExchange {
     if (marketType === MarketType.SPOT) {
       // Spot: BTCUSDT
       return symbol.toUpperCase();
-    } else {
+    } 
       // Futures: BTCUSDT (perpetual contracts)
       return symbol.toUpperCase();
-    }
+    
   }
 
   /**
@@ -597,7 +700,7 @@ export class BybitExchange extends BaseExchange {
         status: this.mapOrderStatus(order.status || 'pending'),
         fee: order.fee?.cost || 0,
         timestamp: new Date(order.timestamp || Date.now()),
-        marketType: marketType
+        marketType
       };
 
     } catch (error) {
@@ -889,14 +992,14 @@ export class BybitExchange extends BaseExchange {
           maker: fees.maker || 0.0001,
           taker: fees.taker || 0.0006
         };
-      } else {
+      } 
         // Return default fees for Bybit
         console.log(`📊 Using default Bybit trading fees`);
         return {
           maker: 0.0001, // 0.01%
           taker: 0.0006  // 0.06%
         };
-      }
+      
 
     } catch (error) {
       console.error(`❌ Failed to get trading fees:`, error);
@@ -1301,7 +1404,7 @@ export class BybitExchange extends BaseExchange {
         type: options?.type === 'stop_limit' ? 'stop-limit' : 'stop',
         amount: currentPosition.size,
         price: options?.type === 'stop_limit' ? options.limitPrice : undefined,
-        stopPrice: stopPrice,
+        stopPrice,
         marketType: MarketType.FUTURES,
         reduceOnly: true, // Always reduce-only for SL
         clientOrderId: options?.clientOrderId || `SL_${symbol}_${Date.now()}`
@@ -1545,7 +1648,7 @@ export class BybitExchange extends BaseExchange {
         concurrentTradesCheck: false,
         emergencyStopCheck: false,
         riskScoreCheck: false,
-        warnings: warnings
+        warnings
       };
 
       // Check 1: Emergency Stop

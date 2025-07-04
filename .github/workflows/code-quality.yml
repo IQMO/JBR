@@ -1,0 +1,181 @@
+name: Code Quality Analysis
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    # Run daily at 2 AM UTC
+    - cron: '0 2 * * *'
+
+jobs:
+  code-quality:
+    name: Code Quality Analysis
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Setup Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: |
+        npm ci
+        npm run install:all
+
+    - name: Run TypeScript compilation check
+      run: npm run build
+
+    - name: Run ESLint analysis
+      run: |
+        npm run lint:root || echo "ESLint issues found - see annotations"
+      continue-on-error: true
+
+    - name: Run Prettier format check
+      run: npm run format:check
+
+    - name: Run security analysis
+      run: |
+        npm run security:check || echo "Security issues found - see annotations"
+      continue-on-error: true
+
+    - name: Run code duplication analysis
+      run: npm run duplication:check
+
+    - name: Run comprehensive quality analysis
+      run: npx tsx scripts/quality/analyze.ts
+
+    - name: Run unit tests with coverage
+      run: npm run test:coverage
+
+    - name: Upload ESLint results
+      uses: github/super-linter/slim@v4
+      if: always()
+      env:
+        DEFAULT_BRANCH: main
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        VALIDATE_TYPESCRIPT_ES: true
+        VALIDATE_JAVASCRIPT_ES: true
+
+    - name: Upload code coverage to Codecov
+      uses: codecov/codecov-action@v3
+      if: matrix.node-version == '20.x'
+      with:
+        files: ./coverage/lcov.info
+        flags: unittests
+        name: codecov-umbrella
+
+    - name: Archive quality reports
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: quality-reports-${{ matrix.node-version }}
+        path: |
+          reports/quality/
+          coverage/
+        retention-days: 30
+
+    - name: Comment PR with quality results
+      if: github.event_name == 'pull_request'
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const fs = require('fs');
+          const path = require('path');
+          
+          try {
+            const reportPath = 'reports/quality/quality-analysis-' + new Date().toISOString().split('T')[0] + '.json';
+            if (fs.existsSync(reportPath)) {
+              const report = JSON.parse(fs.readFileSync(reportPath, 'utf8'));
+              
+              const comment = `
+              ## 🔍 Code Quality Analysis Results
+              
+              **Analysis completed for Task 41.1**
+              
+              ### 📊 Tools Configured
+              ${report.summary.toolsConfigured.map(tool => `- ✅ ${tool}`).join('\n')}
+              
+              ### 🔧 Rule Categories
+              ${Object.entries(report.summary.rulesConfigured).map(([category, description]) => `- **${category}**: ${description}`).join('\n')}
+              
+              ### 📋 Next Steps
+              ${report.nextSteps.map(step => `- [ ] ${step}`).join('\n')}
+              
+              **Reports available in artifacts for detailed review.**
+              `;
+              
+              github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: comment
+              });
+            }
+          } catch (error) {
+            console.log('Could not post quality report comment:', error.message);
+          }
+
+  production-readiness:
+    name: Production Readiness Check
+    runs-on: ubuntu-latest
+    needs: code-quality
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: |
+        npm ci
+        npm run install:all
+
+    - name: Build for production
+      run: npm run build
+
+    - name: Run production-ready quality checks
+      run: |
+        # Fail on any ESLint errors for production
+        npm run lint:root
+        
+        # Ensure formatting is consistent
+        npm run format:check
+        
+        # Run security checks (fail on security issues)
+        npm run security:check
+
+    - name: Create production readiness report
+      run: |
+        echo "## Production Readiness Status" > production-report.md
+        echo "- ✅ TypeScript compilation: PASSED" >> production-report.md
+        echo "- ✅ ESLint validation: PASSED" >> production-report.md
+        echo "- ✅ Code formatting: CONSISTENT" >> production-report.md
+        echo "- ✅ Security checks: PASSED" >> production-report.md
+        echo "- ✅ Test coverage: AVAILABLE" >> production-report.md
+        echo "" >> production-report.md
+        echo "**Ready for production deployment** ✅" >> production-report.md
+
+    - name: Upload production report
+      uses: actions/upload-artifact@v4
+      with:
+        name: production-readiness-report
+        path: production-report.md

@@ -1,7 +1,8 @@
 import { EventEmitter } from 'events';
+
+import type { TimeSyncMessage } from '@jabbr/shared';
 import ntp from 'ntp-client';
 import { z } from 'zod';
-import type { TimeSyncMessage } from '@jabbr/shared';
 
 /**
  * Time synchronization configuration schema
@@ -154,8 +155,7 @@ export class TimeSyncService extends EventEmitter {
    */
   now(): Date {
     const localTime = new Date();
-    const adjustedTime = new Date(localTime.getTime() + this.ntpOffset);
-    return adjustedTime;
+    return new Date(localTime.getTime() + this.ntpOffset);
   }
 
   /**
@@ -334,7 +334,7 @@ export class TimeSyncService extends EventEmitter {
   createTimeSyncMessage(): TimeSyncMessage {
     const syncedTime = this.now();
     const exchangeKeys = Array.from(this.exchangeTimeInfo.keys());
-    const firstExchange = exchangeKeys[0];
+    const firstExchange = exchangeKeys.at(0);
 
     return {
       serverTime: syncedTime,
@@ -359,7 +359,7 @@ export class TimeSyncService extends EventEmitter {
    */
   getStats(): TimeSyncStats {
     const exchangeOffsetValues = Array.from(this.exchangeOffsets.values());
-    const firstExchangeOffset = exchangeOffsetValues[0];
+    const firstExchangeOffset = exchangeOffsetValues.at(0);
     
     return {
       lastNtpSync: this.lastNtpSync,
@@ -439,7 +439,7 @@ export class TimeSyncService extends EventEmitter {
   /**
    * Validate timestamp is within acceptable range
    */
-  validateTimestamp(timestamp: number, maxAgeMs: number = 60000): boolean {
+  validateTimestamp(timestamp: number, maxAgeMs = 60000): boolean {
     const now = this.timestamp();
     const age = Math.abs(now - timestamp);
     return age <= maxAgeMs;

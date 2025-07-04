@@ -30,6 +30,23 @@ export type {
   BotPerformance
 } from './types';
 
+// Test utility types
+export type {
+  Candle,
+  CandleGenerationOptions
+} from './test-utils/data-generators';
+export type { 
+  StrategyContext,
+  TradingContext
+} from './test-utils/context-generators';
+
+// Status utility types
+export type {
+  BotStatus as SharedBotStatus,
+  RiskLevel,
+  ConnectionStatusState
+} from './utils/status-utils';
+
 // Trading entity types
 export type {
   Trade,
@@ -37,8 +54,17 @@ export type {
   TradeType,
   TradeStatus,
   Position,
-  Signal
+  Signal,
+  StrategyPerformanceMetrics,
+  PositionSummary,
+  SignalSummary,
+  RiskMetrics,
+  StrategyUpdateMessage,
+  StrategySummary
 } from './types';
+
+// Market type enum
+export { MarketType } from './types';
 
 // Strategy and exchange types
 export type {
@@ -210,16 +236,16 @@ export const utils = {
     return uuidRegex.test(str);
   },
 
-  formatCurrency: (amount: number, currency: string = 'USD'): string => {
+  formatCurrency: (amount: number, currency = 'USD'): string => {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
-      currency: currency,
+      currency,
       minimumFractionDigits: 2,
       maximumFractionDigits: 8
     }).format(amount);
   },
 
-  formatPercentage: (value: number, decimals: number = 2): string => {
+  formatPercentage: (value: number, decimals = 2): string => {
     return `${value.toFixed(decimals)}%`;
   },
 
@@ -229,10 +255,52 @@ export const utils = {
   },
 
   calculateWinRate: (winningTrades: number, totalTrades: number): number => {
-    if (totalTrades === 0) return 0;
+    if (totalTrades === 0) {return 0;}
     return (winningTrades / totalTrades) * 100;
   }
 };
+
+// ============================================================================
+// UTILITY FUNCTION EXPORTS  
+// ============================================================================
+
+// Test data generation utilities
+export {
+  generateBullishCandles,
+  generateBearishCandles,
+  generateCrossoverCandles,
+  generateMixedTrendCandles,
+  generateSyntheticCandles,
+  generateTestData,
+  generateSampleData,
+  generateCandlesWithTrends,
+  timeframeToMs
+} from './test-utils/data-generators';
+
+// Test context utilities
+export {
+  createMockContext,
+  createMockContextWithPosition,
+  createBacktestContext,
+  createTradingContext,
+  loadHistoricalData
+} from './test-utils/context-generators';
+
+// Status and color utilities
+export {
+  getBotStatusColor,
+  getBotStatusIcon,
+  getConnectionStatusColor,
+  getConnectionStatusText,
+  getRiskColor,
+  getRiskLevel,
+  getRunningStatusColor,
+  canPerformBotAction,
+  formatCurrency,
+  formatPercentage,
+  formatUptime,
+  getStatusBadgeClasses
+} from './utils/status-utils';
 
 // ============================================================================
 // CONSTANTS
@@ -247,7 +315,11 @@ export const CONSTANTS = {
     POSITIONS: 'positions',
     SIGNALS: 'signals',
     TIME_SYNC: 'time-sync',
-    SYSTEM_HEALTH: 'system-health'
+    SYSTEM_HEALTH: 'system-health',
+    STRATEGY_PERFORMANCE: 'strategy-performance',
+    STRATEGY_SIGNALS: 'strategy-signals',
+    RISK_ALERTS: 'risk-alerts',
+    ALERTS: 'alerts'
   },
 
   // Default values

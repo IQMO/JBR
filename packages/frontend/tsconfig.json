@@ -14,6 +14,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "composite": true,
     "plugins": [
       {
         "name": "next"
@@ -29,6 +30,9 @@
       "@jabbr/shared/*": ["../shared/src/*"]
     }
   },
+  "references": [
+    { "path": "../shared" }
+  ],
   "include": [
     "next-env.d.ts",
     "**/*.ts",

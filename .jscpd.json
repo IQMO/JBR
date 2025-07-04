@@ -1,0 +1,40 @@
+{
+  "threshold": 20,
+  "minLines": 5,
+  "minTokens": 50,
+  "pattern": [
+    "packages/**/*.ts",
+    "packages/**/*.tsx",
+    "!packages/**/node_modules/**",
+    "!packages/**/dist/**",
+    "!packages/**/build/**",
+    "!packages/**/*.test.ts",
+    "!packages/**/*.spec.ts",
+    "!packages/**/tests/**"
+  ],
+  "ignore": [
+    "node_modules/**",
+    "dist/**",
+    "build/**",
+    "coverage/**",
+    "*.d.ts",
+    ".next/**",
+    "out/**"
+  ],
+  "gitignore": true,
+  "output": "reports/code-duplication-report.json",
+  "format": [
+    "json",
+    "html"
+  ],
+  "blame": false,
+  "cache": true,
+  "absolute": true,
+  "noEmptyLines": true,
+  "skipComments": true,
+  "languages": [
+    "typescript",
+    "javascript"
+  ],
+  "executionId": "jabbr-duplication-check"
+}

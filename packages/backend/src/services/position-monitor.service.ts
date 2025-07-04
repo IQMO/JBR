@@ -1,5 +1,6 @@
-import { BybitExchange } from '../exchanges/bybit-exchange';
 import { EventEmitter } from 'events';
+
+import type { BybitExchange } from '../exchanges/bybit-exchange';
 
 interface TP_SL_Config {
   symbol: string;
@@ -21,7 +22,7 @@ export class PositionMonitorService extends EventEmitter {
   }
 
   start() {
-    if (this.interval) return;
+    if (this.interval) {return;}
     this.interval = setInterval(() => this.checkPositions(), this.CHECK_INTERVAL);
     console.log('🛡️ PositionMonitorService started');
   }

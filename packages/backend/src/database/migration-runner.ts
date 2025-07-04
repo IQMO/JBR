@@ -1,5 +1,6 @@
 import fs from 'fs/promises';
 import path from 'path';
+
 import { database } from './database.config';
 
 /**
@@ -55,12 +56,11 @@ export class MigrationRunner {
    */
   async getExecutedMigrations(): Promise<Migration[]> {
     try {
-      const migrations = await database.query<Migration>(`
+      return await database.query<Migration>(`
         SELECT id, name, filename, executed_at, checksum 
         FROM migrations 
         ORDER BY id ASC
       `);
-      return migrations;
     } catch (error) {
       // If table doesn't exist, return empty array
       if (error instanceof Error && error.message.includes('relation "migrations" does not exist')) {
@@ -198,8 +198,8 @@ export class MigrationRunner {
       const fileNames = migrationFiles.map(f => f.name);
       
       for (let i = 0; i < executedNames.length; i++) {
-        const executedName = executedNames[i];
-        const expectedName = fileNames[i];
+        const executedName = executedNames.at(i);
+        const expectedName = fileNames.at(i);
         
         if (executedName !== expectedName) {
           issues.push(`Migration order mismatch at position ${i}: expected ${expectedName}, found ${executedName}`);

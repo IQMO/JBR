@@ -1,13 +1,14 @@
-import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
-import { z } from 'zod';
-import {
+import type {
   LoginRequest,
-  RegisterRequest,
+  RegisterRequest} from '@jabbr/shared';
+import {
   LoginRequestSchema,
   RegisterRequestSchema,
   CONSTANTS
 } from '@jabbr/shared';
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
+import { z } from 'zod';
 
 // Environment variables validation
 const AuthConfigSchema = z.object({
@@ -228,7 +229,7 @@ export class AuthService {
   /**
    * Check if token is expired based on timestamp
    */
-  isTokenExpired(timestamp: Date, expirationHours: number = 24): boolean {
+  isTokenExpired(timestamp: Date, expirationHours = 24): boolean {
     const now = new Date();
     const expirationTime = new Date(timestamp.getTime() + (expirationHours * 60 * 60 * 1000));
     return now > expirationTime;

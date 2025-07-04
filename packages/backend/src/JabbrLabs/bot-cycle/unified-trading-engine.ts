@@ -35,7 +35,11 @@ export class EnhancedTradingEngine implements JabbrLabsTradingEngine {
     // });
     
     // Apply advanced signal filtering and enhancement
-    const enhancedSignals = signals.map(signal => ({
+    // logger.info('✅ [JabbrLabs] Advanced signal processing complete', LogCategory.SIGNAL, { 
+    //   enhanced: enhancedSignals.length 
+    // });
+    
+    return signals.map(signal => ({
       ...signal,
       // Add JabbrLabs signal enhancements
       jabbrLabsScore: this.calculateJabbrLabsScore(signal),
@@ -43,12 +47,6 @@ export class EnhancedTradingEngine implements JabbrLabsTradingEngine {
       processed: true,
       processedAt: Date.now()
     }));
-    
-    // logger.info('✅ [JabbrLabs] Advanced signal processing complete', LogCategory.SIGNAL, { 
-    //   enhanced: enhancedSignals.length 
-    // });
-    
-    return enhancedSignals;
   }
   
   /**
@@ -146,8 +144,8 @@ export class EnhancedTradingEngine implements JabbrLabsTradingEngine {
   
   private determineOptimalRoute(_order: any): string {
     // Determine best execution route
-    if (_order?.type === 'market') return 'fast-execution';
-    if (_order?.type === 'limit') return 'optimal-fill';
+    if (_order?.type === 'market') {return 'fast-execution';}
+    if (_order?.type === 'limit') {return 'optimal-fill';}
     return 'standard';
   }
   

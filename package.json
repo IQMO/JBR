@@ -5,7 +5,7 @@
   "private": true,
   "workspaces": [
     "packages/backend",
-    "packages/frontend", 
+    "packages/frontend",
     "packages/shared"
   ],
   "scripts": {
@@ -16,18 +16,67 @@
     "build:backend": "npm run build --workspace=packages/backend",
     "build:frontend": "npm run build --workspace=packages/frontend",
     "build:shared": "npm run build --workspace=packages/shared",
-    "test": "npm run test --workspaces",
+    "test": "jest",
+    "test:unit": "jest --selectProjects \"*Unit Tests\"",
+    "test:integration": "jest --selectProjects \"*Integration Tests\"",
+    "test:e2e": "jest --selectProjects \"*E2E Tests\"",
     "test:backend": "npm run test --workspace=packages/backend",
     "test:frontend": "npm run test --workspace=packages/frontend",
     "test:shared": "npm run test --workspace=packages/shared",
+    "test:coverage": "jest --coverage",
     "lint": "npm run lint --workspaces",
+    "lint:root": "eslint . --ext .ts,.tsx,.js,.jsx --max-warnings 0",
+    "lint:fix": "eslint . --ext .ts,.tsx,.js,.jsx --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "quality:check": "npm run lint:root && npm run format:check",
+    "quality:fix": "npm run lint:fix && npm run format",
+    "duplication:check": "jscpd --config .jscpd.json",
+    "duplication:analyze": "npx tsx scripts/quality/duplication-analyzer.ts",
+    "production:check": "npx tsx scripts/quality/production-violations-analyzer.ts",
+    "security:check": "eslint . --ext .ts,.tsx,.js,.jsx --no-eslintrc --config .eslintrc.security.js",
+    "analyze:all": "npm run quality:check && npm run duplication:check && npm run test:coverage",
     "clean": "npm run clean --workspaces",
-    "install:all": "npm install"
+    "install:all": "npm install",
+    "prepare": "husky"
   },
   "devDependencies": {
+    "@babel/plugin-syntax-jsx": "^7.27.1",
+    "@babel/plugin-transform-react-jsx": "^7.27.1",
+    "@babel/preset-react": "^7.27.1",
+    "@types/jest": "^29.5.8",
+    "@types/node": "^20.19.4",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "babel-jest": "^30.0.4",
     "concurrently": "^8.2.2",
-    "typescript": "^5.3.3",
-    "ts-node": "^10.9.2"
+    "dotenv": "^16.6.1",
+    "dotenv-cli": "^7.3.0",
+    "eslint": "^8.55.0",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-prettier": "^5.5.1",
+    "eslint-plugin-security": "^1.7.1",
+    "eslint-plugin-sonarjs": "^0.19.0",
+    "glob": "^11.0.3",
+    "husky": "^9.1.7",
+    "jest": "^29.7.0",
+    "jest-junit": "^16.0.0",
+    "jscpd": "^4.0.5",
+    "lint-staged": "^16.1.2",
+    "prettier": "^3.2.5",
+    "rimraf": "^5.0.5",
+    "ts-jest": "^29.1.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md}": [
+      "prettier --write"
+    ]
   },
   "engines": {
     "node": ">=18.0.0",
@@ -43,5 +92,15 @@
     "bybit"
   ],
   "author": "Jabbr Trading Platform",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@hookform/resolvers": "^5.1.1",
+    "@mui/material": "^7.2.0",
+    "@types/multer": "^2.0.0",
+    "multer": "^2.0.1",
+    "react-hook-form": "^7.59.0",
+    "zod": "^3.25.67"
+  }
 }

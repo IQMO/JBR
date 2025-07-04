@@ -14,9 +14,24 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 import server from './server';
+import { initializeDatabase } from './services/database.service';
+import logger from './services/logging.service';
+import redis from './services/redis.service';
 
 // Start the integrated server
-server.start().catch((error) => {
-  console.error('❌ Failed to start Jabbr Trading Bot Server:', error);
-  process.exit(1);
-}); 
+initializeDatabase()
+  .then(() => {
+    redis.on('connect', () => {
+      logger.info('✅ Redis connected successfully');
+    });
+    server.start().catch((error) => {
+      logger.error('❌ Failed to start Jabbr Trading Bot Server:', error);
+      process.exit(1);
+    });
+  })
+  .catch((error) => {
+    logger.error('❌ Failed to initialize database:', error);
+    process.exit(1);
+  });
+
+logger.info('Jabbr Trading Bot Server started successfully.'); 

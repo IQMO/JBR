@@ -5,7 +5,7 @@
 export function camelToSnake(obj: Record<string, unknown>): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   for (const key in obj) {
-    if (!Object.prototype.hasOwnProperty.call(obj, key)) continue;
+    if (!Object.prototype.hasOwnProperty.call(obj, key)) {continue;}
     const snake = key.replace(/[A-Z]/g, letter => `_${letter.toLowerCase()}`);
     out[snake] = obj[key];
   }
@@ -13,10 +13,10 @@ export function camelToSnake(obj: Record<string, unknown>): Record<string, unkno
 }
 
 export function snakeToCamel(obj: Record<string, unknown>): Record<string, unknown> {
-  if (!obj || typeof obj !== 'object') return obj;
+  if (!obj || typeof obj !== 'object') {return obj;}
   const result: Record<string, unknown> = {};
   for (const key in obj) {
-    if (!Object.prototype.hasOwnProperty.call(obj, key)) continue;
+    if (!Object.prototype.hasOwnProperty.call(obj, key)) {continue;}
     const camelKey = key.replace(/_([a-z])/g, (_, letter) => letter.toUpperCase());
     const value = obj[key];
     result[camelKey] = (value && typeof value === 'object' && !Array.isArray(value))

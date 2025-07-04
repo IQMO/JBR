@@ -1,6 +1,8 @@
-import { User, UserPreferences } from '@jabbr/shared';
+import type { User, UserPreferences } from '@jabbr/shared';
+
 import { database } from '../database/database.config';
-import { IUserRepository } from './user.repository';
+
+import type { IUserRepository } from './user.repository';
 
 // Extended User interface for internal use (includes additional fields not in shared types)
 interface InternalUser extends User {
@@ -41,7 +43,7 @@ export class DatabaseUserRepository implements IUserRepository {
       WHERE id = $1
     `, [id]);
 
-    if (!result) return null;
+    if (!result) {return null;}
 
     return this.mapDatabaseRowToUser(result);
   }
@@ -69,7 +71,7 @@ export class DatabaseUserRepository implements IUserRepository {
       WHERE email = $1
     `, [email.toLowerCase()]);
 
-    if (!result) return null;
+    if (!result) {return null;}
 
     return this.mapDatabaseRowToUser(result);
   }
@@ -222,7 +224,7 @@ export class DatabaseUserRepository implements IUserRepository {
         updated_at as "updatedAt"
     `, values);
 
-    if (!result) return null;
+    if (!result) {return null;}
 
     return this.mapDatabaseRowToUser(result);
   }
@@ -321,7 +323,7 @@ export class DatabaseUserRepository implements IUserRepository {
         updated_at as "updatedAt"
     `, [token]);
 
-    if (!result) return null;
+    if (!result) {return null;}
 
     return this.mapDatabaseRowToUser(result);
   }
@@ -372,7 +374,7 @@ export class DatabaseUserRepository implements IUserRepository {
         updated_at as "updatedAt"
     `, [newPasswordHash, token]);
 
-    if (!result) return null;
+    if (!result) {return null;}
 
     return this.mapDatabaseRowToUser(result);
   }

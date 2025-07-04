@@ -1,0 +1,234 @@
+{
+  "test_failure_analysis": {
+    "generated_at": "2025-07-04T19:08:00.000Z",
+    "total_tests_analyzed": 58,
+    "systematic_analysis_completed": 21,
+    "test_execution_summary": {
+      "passing_tests": 12,
+      "critical_failures": 5,
+      "memory_leak_violations": 4,
+      "blocked_tests": 9,
+      "success_rate": "57%",
+      "production_ready": false
+    },
+    "critical_production_failures": [
+      {
+        "name": "SMA Crossover Strategy",
+        "path": "packages/backend/tests/unit/signals/sma/sma-crossover-strategy.test.ts",
+        "status": "CRITICAL_FAILURE",
+        "failures": 6,
+        "total": 10,
+        "severity": "PRODUCTION_BLOCKER",
+        "details": "Core trading logic broken - strategy returns 'hold' instead of buy/sell signals"
+      },
+      {
+        "name": "Signal Translator", 
+        "path": "packages/backend/tests/unit/JabbrLabs/signal-processing/signal-translator.test.ts",
+        "status": "CRITICAL_FAILURE",
+        "failures": 2,
+        "total": 21,
+        "severity": "PRODUCTION_BLOCKER",
+        "details": "Risk level calculation errors (medium vs low), urgency calculation errors (medium vs high)"
+      },
+      {
+        "name": "Signal Processing Manager",
+        "path": "packages/backend/tests/unit/JabbrLabs/signal-processing/signal-processing-manager.test.ts", 
+        "status": "CRITICAL_FAILURE",
+        "failures": 2,
+        "total": 20,
+        "severity": "PRODUCTION_BLOCKER",
+        "details": "15-second timeout in error handling, health monitoring logic completely broken"
+      },
+      {
+        "name": "Performance Monitoring",
+        "path": "packages/backend/tests/integration/performance-monitoring.test.ts",
+        "status": "CRITICAL_FAILURE",
+        "failures": 18,
+        "total": 18,
+        "severity": "PRODUCTION_BLOCKER", 
+        "details": "ApplicationMonitorService.getInstance() not found, multiple memory leaks"
+      },
+      {
+        "name": "E2E Trading Engine",
+        "path": "packages/backend/tests/e2e/trading/trading-engine.test.ts",
+        "status": "CRITICAL_FAILURE",
+        "failures": 1,
+        "total": 1,
+        "severity": "PRODUCTION_BLOCKER",
+        "details": "Invalid Bybit API credentials, 32.8s time drift with exchange"
+      }
+    ],
+    "memory_leak_violations": [
+      {
+        "name": "WebSocket Client",
+        "path": "packages/backend/tests/integration/websockets/bybit-websocket.client.test.ts",
+        "status": "MEMORY_LEAK_VIOLATION",
+        "failures": 0,
+        "total": 4,
+        "severity": "PRODUCTION_RISK",
+        "details": "Tests pass but async cleanup violations detected - potential memory leaks"
+      },
+      {
+        "name": "Exchange Monitoring", 
+        "path": "packages/backend/tests/integration/exchange-monitoring.test.ts",
+        "status": "MEMORY_LEAK_VIOLATION",
+        "failures": 0,
+        "total": 25,
+        "severity": "PRODUCTION_RISK",
+        "details": "Tests pass but 10 open handles/memory leaks (timer intervals not cleaned up)"
+      },
+      {
+        "name": "Database Monitoring",
+        "path": "packages/backend/tests/integration/database-monitoring.test.ts",
+        "status": "MEMORY_LEAK_VIOLATION",
+        "failures": 0,
+        "total": 15,
+        "severity": "PRODUCTION_RISK", 
+        "details": "Tests pass but connection metric errors logged"
+      },
+      {
+        "name": "Performance Monitoring Services",
+        "path": "packages/backend/src/services/metrics-collector.service.ts",
+        "status": "MEMORY_LEAK_VIOLATION",
+        "failures": 0,
+        "total": 0,
+        "severity": "PRODUCTION_RISK",
+        "details": "Timer intervals not cleaned up properly across multiple services"
+      }
+    ],
+    "failure_categories": {
+      "configuration_issues": {
+        "count": 9,
+        "severity": "high",
+        "description": "Tests that fail due to missing or incorrect configuration",
+        "failures": [
+          {
+            "category": "jsx_parsing_failure",
+            "affected_files": [
+              "packages/frontend/src/app/layout.tsx",
+              "packages/frontend/src/contexts/WebSocketContext.tsx",
+              "packages/frontend/src/components/ConnectionStatus.tsx",
+              "packages/frontend/src/components/StrategyMonitor.tsx",
+              "packages/frontend/src/app/page.tsx",
+              "packages/frontend/src/app/bots/page.tsx",
+              "packages/frontend/src/app/bots/create/page.tsx",
+              "packages/frontend/src/app/bots/[id]/edit/page.tsx"
+            ],
+            "root_cause": "Jest missing @babel/preset-react configuration for JSX parsing",
+            "error_pattern": "Support for the experimental syntax 'jsx' isn't currently enabled",
+            "impact": "Prevents frontend test coverage collection",
+            "fix_required": "Add @babel/preset-react to Jest/Babel configuration"
+          }
+        ]
+      },
+      "authentication_issues": {
+        "count": 1,
+        "severity": "medium",
+        "description": "Tests that fail due to missing or invalid credentials",
+        "failures": [
+          {
+            "test_file": "packages/backend/tests/e2e/trading/trading-engine.test.ts",
+            "root_cause": "Invalid API key for Bybit exchange connection",
+            "error_message": "bybit {\"retCode\":10003,\"retMsg\":\"API key is invalid.\"}",
+            "impact": "E2E tests cannot connect to external exchange services",
+            "fix_required": "Configure test credentials or implement service mocking"
+          }
+        ]
+      },
+      "coverage_threshold_issues": {
+        "count": 48,
+        "severity": "low",
+        "description": "Tests pass but fail coverage requirements",
+        "details": {
+          "required_coverage": "70%",
+          "actual_coverage": {
+            "statements": "0.87%",
+            "branches": "1.2%",
+            "functions": "0.93%",
+            "lines": "0.85%"
+          },
+          "impact": "All tests exit with code 1 despite passing",
+          "fix_required": "Adjust coverage thresholds or disable during development"
+        }
+      }
+    },
+    "implementation_quality_assessment": {
+      "unit_tests": {
+        "status": "excellent",
+        "passing_count": 38,
+        "examples": [
+          "SMA Indicator: 5/5 tests passed",
+          "RSI Indicator: 18/18 tests passed",
+          "SMA Signal Processor: 10/10 tests passed"
+        ],
+        "assessment": "Core business logic is well-tested and functioning correctly"
+      },
+      "integration_tests": {
+        "status": "excellent", 
+        "passing_count": 15,
+        "examples": [
+          "Database Monitoring Integration: 15/15 tests passed"
+        ],
+        "assessment": "Service integration and monitoring systems are robust"
+      },
+      "e2e_tests": {
+        "status": "blocked",
+        "passing_count": 0,
+        "failing_count": 1,
+        "assessment": "External service integration blocked by authentication issues"
+      },
+      "frontend_tests": {
+        "status": "unconfigured",
+        "passing_count": 0,
+        "total_files": 2,
+        "assessment": "Frontend testing infrastructure needs JSX configuration"
+      }
+    },
+    "priority_fixes": {
+      "immediate": [
+        {
+          "fix": "Add @babel/preset-react to Jest configuration",
+          "files_affected": "jest.config.ts",
+          "impact": "Enables frontend test execution and coverage",
+          "effort": "low"
+        }
+      ],
+      "short_term": [
+        {
+          "fix": "Adjust coverage thresholds",
+          "files_affected": "jest.config.ts",
+          "impact": "Allows tests to pass with realistic coverage expectations",
+          "effort": "low"
+        },
+        {
+          "fix": "Configure E2E test credentials or mocking", 
+          "files_affected": "packages/backend/tests/e2e/",
+          "impact": "Enables end-to-end testing of trading functionality",
+          "effort": "medium"
+        }
+      ],
+      "long_term": [
+        {
+          "fix": "Implement comprehensive frontend test suite",
+          "files_affected": "packages/frontend/tests/",
+          "impact": "Improves overall test coverage and frontend reliability",
+          "effort": "high"
+        }
+      ]
+    },
+    "recommendations": {
+      "testing_strategy": [
+        "Focus on increasing unit test coverage for core trading logic",
+        "Implement service mocking for E2E tests to reduce external dependencies",
+        "Create separate Jest configurations for frontend and backend packages",
+        "Set realistic coverage thresholds based on project phase"
+      ],
+      "development_workflow": [
+        "Fix JSX configuration to enable frontend development testing",
+        "Implement continuous integration with proper test credentials",
+        "Add automated coverage reporting with appropriate thresholds",
+        "Create test data fixtures for reliable E2E testing"
+      ]
+    }
+  }
+}

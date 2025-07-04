@@ -1,7 +1,9 @@
-import { Request, Response } from 'express';
-import { AuthService } from './auth.service';
-import { userRepository } from '../users/user.repository';
 import { CONSTANTS } from '@jabbr/shared';
+import type { Request, Response } from 'express';
+
+import { userRepository } from '../users/user.repository';
+
+import { AuthService } from './auth.service';
 
 export class AuthController {
   private authService: AuthService;

@@ -1,7 +1,10 @@
 import { EventEmitter } from 'events';
-import JabbrWebSocketServer from './websocket-server';
+
+import type { MarketDataMessage} from '@jabbr/shared';
+import { CONSTANTS } from '@jabbr/shared';
+
 import BybitWebSocketClient from './bybit-websocket.client';
-import { MarketDataMessage, CONSTANTS } from '@jabbr/shared';
+import type JabbrWebSocketServer from './websocket-server';
 
 /**
  * Subscription tracking
@@ -66,7 +69,7 @@ export class WebSocketBridge extends EventEmitter {
   /**
    * Shutdown the bridge
    */
-  async shutdown(): Promise<void> {
+  shutdown(): void {
     console.log('🌉 Shutting down WebSocket bridge...');
 
     // Disconnect from exchanges
@@ -101,19 +104,19 @@ export class WebSocketBridge extends EventEmitter {
       this.handleMarketData('bybit', data);
     });
 
-    this.bybitClient.on('ticker', (data: any) => {
+    this.bybitClient.on('ticker', (data: unknown) => {
       this.handleTickerData('bybit', data);
     });
 
-    this.bybitClient.on('trade', (data: any) => {
+    this.bybitClient.on('trade', (data: unknown) => {
       this.handleTradeData('bybit', data);
     });
 
-    this.bybitClient.on('orderbook', (data: any) => {
+    this.bybitClient.on('orderbook', (data: unknown) => {
       this.handleOrderbookData('bybit', data);
     });
 
-    this.bybitClient.on('kline', (data: any) => {
+    this.bybitClient.on('kline', (data: unknown) => {
       this.handleKlineData('bybit', data);
     });
 
@@ -128,9 +131,11 @@ export class WebSocketBridge extends EventEmitter {
       this.broadcastSystemHealth();
     });
 
+    // Ensure all errors are handled and broadcasted
     this.bybitClient.on('error', (error: Error) => {
       console.error('❌ Bybit client error in bridge:', error);
       this.broadcastError('bybit', error.message);
+      this.broadcastSystemHealth(); // Broadcast health on error
     });
 
     console.log('📡 Bybit client handlers configured');
@@ -165,14 +170,14 @@ export class WebSocketBridge extends EventEmitter {
   /**
    * Handle ticker data from exchanges
    */
-  private handleTickerData(exchange: string, data: any): void {
+  private handleTickerData(exchange: string, data: unknown): void {
     this.wsServer.broadcast(CONSTANTS.WS_CHANNELS.MARKET_DATA, {
       type: 'data',
       data: {
         type: 'ticker',
         exchange,
-        symbol: data.symbol,
-        data: data.data,
+        symbol: (data as { symbol?: string })?.symbol,
+        data: (data as { data?: unknown })?.data,
         timestamp: new Date().toISOString()
       }
     });
@@ -181,13 +186,13 @@ export class WebSocketBridge extends EventEmitter {
   /**
    * Handle trade data from exchanges
    */
-  private handleTradeData(exchange: string, data: any): void {
+  private handleTradeData(exchange: string, data: unknown): void {
     this.wsServer.broadcast(CONSTANTS.WS_CHANNELS.TRADES, {
       type: 'data',
       data: {
         type: 'trade',
         exchange,
-        ...data,
+        ...(typeof data === 'object' && data !== null ? data : {}),
         timestamp: new Date().toISOString()
       }
     });
@@ -196,13 +201,13 @@ export class WebSocketBridge extends EventEmitter {
   /**
    * Handle orderbook data from exchanges
    */
-  private handleOrderbookData(exchange: string, data: any): void {
+  private handleOrderbookData(exchange: string, data: unknown): void {
     this.wsServer.broadcast(CONSTANTS.WS_CHANNELS.MARKET_DATA, {
       type: 'data',
       data: {
         type: 'orderbook',
         exchange,
-        ...data,
+        ...(typeof data === 'object' && data !== null ? data : {}),
         timestamp: new Date().toISOString()
       }
     });
@@ -211,13 +216,13 @@ export class WebSocketBridge extends EventEmitter {
   /**
    * Handle kline/candlestick data from exchanges
    */
-  private handleKlineData(exchange: string, data: any): void {
+  private handleKlineData(exchange: string, data: unknown): void {
     this.wsServer.broadcast(CONSTANTS.WS_CHANNELS.MARKET_DATA, {
       type: 'data',
       data: {
         type: 'kline',
         exchange,
-        ...data,
+        ...(typeof data === 'object' && data !== null ? data : {}),
         timestamp: new Date().toISOString()
       }
     });
@@ -226,7 +231,7 @@ export class WebSocketBridge extends EventEmitter {
   /**
    * Subscribe to market data for a symbol
    */
-  async subscribeToMarketData(symbol: string, exchange: string = 'bybit'): Promise<void> {
+  async subscribeToMarketData(symbol: string, exchange = 'bybit'): Promise<void> {
     const subscriptionKey = `market-data.${exchange}.${symbol}`;
     
     if (this.subscriptions.has(subscriptionKey)) {
@@ -262,7 +267,7 @@ export class WebSocketBridge extends EventEmitter {
   /**
    * Unsubscribe from market data for a symbol
    */
-  async unsubscribeFromMarketData(symbol: string, exchange: string = 'bybit'): Promise<void> {
+  async unsubscribeFromMarketData(symbol: string, exchange = 'bybit'): Promise<void> {
     const subscriptionKey = `market-data.${exchange}.${symbol}`;
     
     if (!this.subscriptions.has(subscriptionKey)) {
@@ -293,7 +298,7 @@ export class WebSocketBridge extends EventEmitter {
   /**
    * Subscribe to kline data for a symbol
    */
-  async subscribeToKlineData(symbol: string, interval: string = '1m', exchange: string = 'bybit'): Promise<void> {
+  async subscribeToKlineData(symbol: string, interval = '1m', exchange = 'bybit'): Promise<void> {
     try {
       if (exchange === 'bybit') {
         await this.bybitClient.subscribeToKline(symbol, interval);
@@ -348,7 +353,7 @@ export class WebSocketBridge extends EventEmitter {
    */
   getStats(): {
     initialized: boolean;
-    exchanges: Record<string, any>;
+    exchanges: Record<string, unknown>;
     subscriptions: number;
     activeSubscriptions: string[];
   } {
@@ -370,7 +375,7 @@ export class WebSocketBridge extends EventEmitter {
    * Handle client subscription requests
    * This method can be called by the WebSocket server when clients subscribe
    */
-  async handleClientSubscription(channel: string, symbol?: string, exchange: string = 'bybit'): Promise<void> {
+  async handleClientSubscription(channel: string, symbol?: string, exchange = 'bybit'): Promise<void> {
     if (channel === CONSTANTS.WS_CHANNELS.MARKET_DATA && symbol) {
       await this.subscribeToMarketData(symbol, exchange);
     }
@@ -380,7 +385,7 @@ export class WebSocketBridge extends EventEmitter {
   /**
    * Handle client unsubscription requests
    */
-  async handleClientUnsubscription(channel: string, symbol?: string, exchange: string = 'bybit'): Promise<void> {
+  async handleClientUnsubscription(channel: string, symbol?: string, exchange = 'bybit'): Promise<void> {
     if (channel === CONSTANTS.WS_CHANNELS.MARKET_DATA && symbol) {
       await this.unsubscribeFromMarketData(symbol, exchange);
     }

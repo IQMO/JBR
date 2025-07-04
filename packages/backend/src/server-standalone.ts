@@ -11,10 +11,14 @@ dotenv.config();
 import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
+
 import { createServer } from 'http';
+
 import { WebSocketServer } from 'ws';
+
 import { BybitExchange } from './exchanges/bybit-exchange';
-import { MarketType } from './exchanges/base-exchange';
+
+import { MarketType } from '@jabbr/shared';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -61,8 +65,10 @@ app.get('/api/test-trading', async (req, res) => {
     // Connect and get market data
     await exchange.connect();
     const marketData = await exchange.getMarketData('BTCUSDT', MarketType.FUTURES);
-    const balance = await exchange.getBalance(MarketType.FUTURES);
-    const openOrders = await exchange.getOpenOrders('BTCUSDT', MarketType.FUTURES);
+    const allBalances = await exchange.getBalance();
+    const balance = allBalances.filter(b => b.marketType === MarketType.FUTURES);
+    const allOpenOrders = await exchange.getOpenOrders();
+    const openOrders = allOpenOrders.filter(o => o.symbol === 'BTCUSDT' && o.marketType === MarketType.FUTURES);
     
     await exchange.disconnect();
     
@@ -154,7 +160,7 @@ wss.on('connection', (ws) => {
       // Echo back for now
       ws.send(JSON.stringify({
         type: 'echo',
-        data: data,
+        data,
         timestamp: new Date().toISOString()
       }));
     } catch (error) {

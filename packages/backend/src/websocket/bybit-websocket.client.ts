@@ -1,14 +1,16 @@
-import WebSocket from 'ws';
 import { EventEmitter } from 'events';
-import { MarketDataMessage, Exchange } from '@jabbr/shared';
+
+import type { MarketDataMessage, Exchange } from '@jabbr/shared';
+import WebSocket from 'ws';
 
 /**
  * Bybit WebSocket message types
  */
+type BybitWebSocketMessageData = Record<string, unknown> | unknown[] | undefined;
 interface BybitWebSocketMessage {
   topic?: string;
   type?: string;
-  data?: any;
+  data?: BybitWebSocketMessageData;
   ts?: number;
   success?: boolean;
   ret_msg?: string;
@@ -47,7 +49,7 @@ export class BybitWebSocketClient extends EventEmitter {
 
   private isTestnet: boolean;
 
-  constructor(isTestnet: boolean = true) {
+  constructor(isTestnet = true) {
     super();
     this.isTestnet = isTestnet;
   }
@@ -103,7 +105,7 @@ export class BybitWebSocketClient extends EventEmitter {
       this.startHeartbeat();
 
       // Re-subscribe to previous subscriptions
-      await this.resubscribeAll();
+      this.resubscribeAll();
 
       this.emit('connected');
 
@@ -135,10 +137,13 @@ export class BybitWebSocketClient extends EventEmitter {
       this.reconnectTimeout = null;
     }
 
+    // Remove all subscriptions
+    this.subscriptions.clear();
+
     // Close WebSocket connection
     if (this.ws) {
       this.ws.removeAllListeners();
-      if (this.ws.readyState === WebSocket.OPEN) {
+      if (this.ws.readyState === WebSocket.OPEN || this.ws.readyState === WebSocket.CONNECTING) {
         this.ws.close(1000, 'Client disconnecting');
       }
       this.ws = null;
@@ -154,7 +159,7 @@ export class BybitWebSocketClient extends EventEmitter {
   /**
    * Subscribe to market data
    */
-  async subscribe(topic: string, symbol?: string): Promise<void> {
+  subscribe(topic: string, symbol?: string): void {
     const subscriptionKey = this.getSubscriptionKey(topic, symbol);
     const subscription: SubscriptionConfig = { topic, symbol };
 
@@ -184,7 +189,7 @@ export class BybitWebSocketClient extends EventEmitter {
   /**
    * Unsubscribe from market data
    */
-  async unsubscribe(topic: string, symbol?: string): Promise<void> {
+  unsubscribe(topic: string, symbol?: string): void {
     const subscriptionKey = this.getSubscriptionKey(topic, symbol);
     
     // Remove from stored subscriptions
@@ -213,29 +218,29 @@ export class BybitWebSocketClient extends EventEmitter {
   /**
    * Subscribe to ticker data for a symbol
    */
-  async subscribeToTicker(symbol: string): Promise<void> {
-    await this.subscribe('tickers', symbol);
+  subscribeToTicker(symbol: string): void {
+    this.subscribe('tickers', symbol);
   }
 
   /**
    * Subscribe to orderbook data for a symbol
    */
-  async subscribeToOrderbook(symbol: string, depth: number = 50): Promise<void> {
-    await this.subscribe(`orderbook.${depth}`, symbol);
+  subscribeToOrderbook(symbol: string, depth = 50): void {
+    this.subscribe(`orderbook.${depth}`, symbol);
   }
 
   /**
    * Subscribe to trade data for a symbol
    */
-  async subscribeToTrades(symbol: string): Promise<void> {
-    await this.subscribe('publicTrade', symbol);
+  subscribeToTrades(symbol: string): void {
+    this.subscribe('publicTrade', symbol);
   }
 
   /**
    * Subscribe to kline/candlestick data
    */
-  async subscribeToKline(symbol: string, interval: string = '1m'): Promise<void> {
-    await this.subscribe(`kline.${interval}`, symbol);
+  subscribeToKline(symbol: string, interval = '1m'): void {
+    this.subscribe(`kline.${interval}`, symbol);
   }
 
   /**
@@ -263,12 +268,16 @@ export class BybitWebSocketClient extends EventEmitter {
    * Setup WebSocket event handlers
    */
   private setupEventHandlers(): void {
-    if (!this.ws) return;
+    if (!this.ws) {return;}
 
     this.ws.on('open', this.handleOpen.bind(this));
     this.ws.on('message', this.handleMessage.bind(this));
     this.ws.on('close', this.handleClose.bind(this));
-    this.ws.on('error', this.handleError.bind(this));
+    this.ws.on('error', (error) => {
+      this.handleError(error);
+      // Emit error for bridge to handle
+      this.emit('error', error);
+    });
     this.ws.on('ping', this.handlePing.bind(this));
     this.ws.on('pong', this.handlePong.bind(this));
   }
@@ -318,73 +327,98 @@ export class BybitWebSocketClient extends EventEmitter {
   }
 
   /**
-   * Handle market data updates
+   * Handle market data update
    */
   private handleMarketData(message: BybitWebSocketMessage): void {
     try {
       const topic = message.topic!;
       const data = message.data;
       const timestamp = message.ts ? new Date(message.ts) : new Date();
-
-      // Parse topic to get type and symbol
       const [topicType, symbol] = this.parseTopic(topic);
 
       if (topicType === 'tickers' && data) {
-        // Handle ticker data
-        const tickerData = Array.isArray(data) ? data[0] : data;
-        const marketData: MarketDataMessage = {
-          symbol: tickerData.symbol || symbol,
-          price: parseFloat(tickerData.lastPrice || tickerData.price || '0'),
-          volume: parseFloat(tickerData.volume24h || tickerData.volume || '0'),
-          timestamp,
-          exchange: 'bybit' as Exchange
-        };
-
-        this.emit('marketData', marketData);
-        this.emit('ticker', { symbol: marketData.symbol, data: tickerData, timestamp });
-
+        this.handleTickerData(data, symbol, timestamp);
       } else if (topicType === 'publicTrade' && data) {
-        // Handle trade data
-        const trades = Array.isArray(data) ? data : [data];
-        for (const trade of trades) {
-          this.emit('trade', {
-            symbol: trade.s || symbol,
-            price: parseFloat(trade.p || '0'),
-            quantity: parseFloat(trade.v || '0'),
-            side: trade.S || 'unknown',
-            timestamp: new Date(trade.T || timestamp),
-            tradeId: trade.i
-          });
-        }
-
+        this.handleTradeData(data, symbol, timestamp);
       } else if (topicType.startsWith('orderbook') && data) {
-        // Handle orderbook data
-        this.emit('orderbook', {
-          symbol: data.s || symbol,
-          bids: data.b || [],
-          asks: data.a || [],
-          timestamp: new Date(data.u || timestamp)
-        });
-
+        this.handleOrderbookData(data, symbol, timestamp);
       } else if (topicType.startsWith('kline') && data) {
-        // Handle kline/candlestick data
-        const klines = Array.isArray(data) ? data : [data];
-        for (const kline of klines) {
-          this.emit('kline', {
-            symbol: kline.symbol || symbol,
-            interval: topicType.split('.')[1],
-            open: parseFloat(kline.open || '0'),
-            high: parseFloat(kline.high || '0'),
-            low: parseFloat(kline.low || '0'),
-            close: parseFloat(kline.close || '0'),
-            volume: parseFloat(kline.volume || '0'),
-            timestamp: new Date(kline.start || timestamp)
-          });
-        }
+        this.handleKlineData(data, topicType, symbol, timestamp);
       }
-
     } catch (error) {
       console.error('❌ Failed to process market data:', error);
+    }
+  }
+
+  /**
+   * Handle ticker data
+   */
+  private handleTickerData(data: unknown, symbol: string, timestamp: Date): void {
+    const tickerData = Array.isArray(data) ? data[0] : data;
+    if (tickerData && typeof tickerData === 'object') {
+      const marketData: MarketDataMessage = {
+        symbol: (tickerData as Record<string, unknown>).symbol as string || symbol,
+        price: parseFloat((tickerData as Record<string, unknown>).lastPrice as string || (tickerData as Record<string, unknown>).price as string || '0'),
+        volume: parseFloat((tickerData as Record<string, unknown>).volume24h as string || (tickerData as Record<string, unknown>).volume as string || '0'),
+        timestamp,
+        exchange: 'bybit' as Exchange
+      };
+      this.emit('marketData', marketData);
+      this.emit('ticker', { symbol: marketData.symbol, data: tickerData, timestamp });
+    }
+  }
+
+  /**
+   * Handle trade data
+   */
+  private handleTradeData(data: unknown, symbol: string, timestamp: Date): void {
+    const trades = Array.isArray(data) ? data : [data];
+    for (const trade of trades) {
+      if (trade && typeof trade === 'object') {
+        this.emit('trade', {
+          symbol: (trade as Record<string, unknown>).s as string || symbol,
+          price: parseFloat((trade as Record<string, unknown>).p as string || '0'),
+          quantity: parseFloat((trade as Record<string, unknown>).v as string || '0'),
+          side: (trade as Record<string, unknown>).S as string || 'unknown',
+          timestamp: new Date((trade as Record<string, unknown>).T as string || timestamp),
+          tradeId: (trade as Record<string, unknown>).i
+        });
+      }
+    }
+  }
+
+  /**
+   * Handle orderbook data
+   */
+  private handleOrderbookData(data: unknown, symbol: string, timestamp: Date): void {
+    if (typeof data === 'object' && data !== null) {
+      this.emit('orderbook', {
+        symbol: (data as Record<string, unknown>).s as string || symbol,
+        bids: (data as Record<string, unknown>).b || [],
+        asks: (data as Record<string, unknown>).a || [],
+        timestamp: new Date((data as Record<string, unknown>).u as string || timestamp)
+      });
+    }
+  }
+
+  /**
+   * Handle kline/candlestick data
+   */
+  private handleKlineData(data: unknown, topicType: string, symbol: string, timestamp: Date): void {
+    const klines = Array.isArray(data) ? data : [data];
+    for (const kline of klines) {
+      if (kline && typeof kline === 'object') {
+        this.emit('kline', {
+          symbol: (kline as Record<string, unknown>).symbol as string || symbol,
+          interval: topicType.split('.')[1],
+          open: parseFloat((kline as Record<string, unknown>).open as string || '0'),
+          high: parseFloat((kline as Record<string, unknown>).high as string || '0'),
+          low: parseFloat((kline as Record<string, unknown>).low as string || '0'),
+          close: parseFloat((kline as Record<string, unknown>).close as string || '0'),
+          volume: parseFloat((kline as Record<string, unknown>).volume as string || '0'),
+          timestamp: new Date((kline as Record<string, unknown>).start as string || timestamp)
+        });
+      }
     }
   }
 
@@ -399,6 +433,15 @@ export class BybitWebSocketClient extends EventEmitter {
       clearInterval(this.heartbeatInterval);
       this.heartbeatInterval = null;
     }
+
+    // Clear reconnect timeout
+    if (this.reconnectTimeout) {
+      clearTimeout(this.reconnectTimeout);
+      this.reconnectTimeout = null;
+    }
+
+    // Clear subscriptions
+    this.subscriptions.clear();
 
     this.emit('disconnected', { code, reason: reason.toString() });
 
@@ -474,16 +517,15 @@ export class BybitWebSocketClient extends EventEmitter {
   /**
    * Re-subscribe to all stored subscriptions
    */
-  private async resubscribeAll(): Promise<void> {
-    if (this.subscriptions.size === 0) return;
+  private resubscribeAll(): void {
+    if (this.subscriptions.size === 0) {return;}
 
     console.log(`📺 Re-subscribing to ${this.subscriptions.size} Bybit subscriptions`);
 
     for (const [key, subscription] of this.subscriptions) {
       try {
-        await this.subscribe(subscription.topic, subscription.symbol);
-        // Small delay between subscriptions
-        await new Promise(resolve => setTimeout(resolve, 100));
+        this.subscribe(subscription.topic, subscription.symbol);
+        // No await or delay needed for sync
       } catch (error) {
         console.error(`❌ Failed to re-subscribe to ${key}:`, error);
       }
@@ -510,4 +552,4 @@ export class BybitWebSocketClient extends EventEmitter {
 }
 
 // Export for use in other modules
-export default BybitWebSocketClient; 
+export default BybitWebSocketClient;

@@ -1,4 +1,6 @@
 import { EventEmitter } from 'events';
+
+import { MarketType } from '@jabbr/shared';
 import type {
   Exchange,
   TradeSide,
@@ -6,15 +8,6 @@ import type {
   TradeStatus,
   ExchangeApiKey
 } from '@jabbr/shared';
-
-/**
- * Market type enumeration
- */
-export enum MarketType {
-  SPOT = 'spot',
-  FUTURES = 'futures',
-  OPTIONS = 'options'
-}
 
 /**
  * Order request interface
@@ -125,10 +118,10 @@ export interface ExchangeCapabilities {
 export abstract class BaseExchange extends EventEmitter {
   protected apiKey: ExchangeApiKey;
   protected isTestnet: boolean;
-  protected isConnected: boolean = false;
+  protected isConnected = false;
   protected rateLimitCounter: Map<string, number> = new Map();
   
-  constructor(apiKey: ExchangeApiKey, isTestnet: boolean = true) {
+  constructor(apiKey: ExchangeApiKey, isTestnet = true) {
     super();
     this.apiKey = apiKey;
     this.isTestnet = isTestnet;
@@ -321,7 +314,7 @@ export abstract class BaseExchange extends EventEmitter {
     // Clean up old entries
     for (const [k] of this.rateLimitCounter.entries()) {
       const keyParts = k.split('_');
-      const timestampStr = keyParts[1];
+      const timestampStr = keyParts.at(1);
       if (timestampStr && parseInt(timestampStr) < windowStart) {
         this.rateLimitCounter.delete(k);
       }

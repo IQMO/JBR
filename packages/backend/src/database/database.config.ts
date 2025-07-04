@@ -1,4 +1,5 @@
-import { Pool, PoolClient, PoolConfig } from 'pg';
+import type { PoolClient, PoolConfig } from 'pg';
+import { Pool } from 'pg';
 import { z } from 'zod';
 
 /**
@@ -36,7 +37,7 @@ type DatabaseConfig = z.infer<typeof DatabaseConfigSchema>;
 export class DatabaseManager {
   private pool: Pool | null = null;
   private config: DatabaseConfig;
-  private isConnected: boolean = false;
+  private isConnected = false;
 
   constructor() {
     // Validate and parse environment configuration
@@ -131,7 +132,7 @@ export class DatabaseManager {
    */
   async queryOne<T = any>(text: string, params?: any[]): Promise<T | null> {
     const results = await this.query<T>(text, params);
-    return results.length > 0 ? results[0]! : null;
+    return results.length > 0 ? results.at(0)! : null;
   }
 
   /**

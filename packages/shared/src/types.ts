@@ -144,6 +144,15 @@ export type TradeSide = 'buy' | 'sell';
 export type TradeType = 'market' | 'limit' | 'stop' | 'stop-limit';
 export type TradeStatus = 'pending' | 'open' | 'filled' | 'partial' | 'cancelled' | 'rejected' | 'closed';
 
+/**
+ * Market type enumeration
+ */
+export enum MarketType {
+  SPOT = 'spot',
+  FUTURES = 'futures',
+  OPTIONS = 'options'
+}
+
 export interface Position {
   id: string;
   botId: string;
@@ -179,6 +188,83 @@ export interface Signal {
   timestamp: Date;
   indicators: Record<string, number>;
   metadata: Record<string, any>;
+}
+
+// ============================================================================
+// STRATEGY MONITORING TYPES
+// ============================================================================
+
+export interface StrategyPerformanceMetrics {
+  botId: string;
+  strategyName: string;
+  strategyVersion: string;
+  isRunning: boolean;
+  uptime: number; // milliseconds
+  totalTrades: number;
+  winningTrades: number;
+  losingTrades: number;
+  totalPnL: number;
+  dailyPnL: number;
+  winRate: number; // percentage
+  sharpeRatio?: number;
+  maxDrawdown: number;
+  currentDrawdown: number;
+  averageTradeTime: number; // milliseconds
+  lastSignalTime?: Date;
+  lastTradeTime?: Date;
+  currentPositions: PositionSummary[];
+  recentSignals: SignalSummary[];
+  riskMetrics: RiskMetrics;
+  timestamp: Date;
+}
+
+export interface PositionSummary {
+  symbol: string;
+  side: 'long' | 'short';
+  size: number;
+  entryPrice: number;
+  currentPrice: number;
+  unrealizedPnL: number;
+  leverage: number;
+  timestamp: Date;
+}
+
+export interface SignalSummary {
+  id: string;
+  symbol: string;
+  side: 'buy' | 'sell';
+  strength: number; // 0-1
+  confidence: number; // 0-1
+  price: number;
+  timestamp: Date;
+  executed: boolean;
+  result?: 'win' | 'loss' | 'pending';
+}
+
+export interface RiskMetrics {
+  currentDrawdown: number; // percentage
+  maxDailyLoss: number; // percentage
+  riskScore: number; // 1-10
+  leverageUtilization: number; // percentage
+  exposurePercentage: number; // percentage of portfolio
+  stopLossDistance: number; // percentage
+}
+
+export interface StrategyUpdateMessage {
+  type: 'performance' | 'signal' | 'trade' | 'position' | 'risk_alert' | 'state_change';
+  botId: string;
+  strategyName: string;
+  data: any;
+  timestamp: Date;
+}
+
+export interface StrategySummary {
+  totalStrategies: number;
+  runningStrategies: number;
+  totalPnL: number;
+  dailyPnL: number;
+  totalTrades: number;
+  averageWinRate: number;
 }
 
 // ============================================================================
@@ -229,7 +315,14 @@ export type WebSocketMessageType =
   | 'trade-update'
   | 'position-update'
   | 'signal'
-  | 'time-sync';
+  | 'time-sync'
+  | 'alert'
+  | 'alert_acknowledged'
+  | 'alert_resolved'
+  | 'alert_escalated'
+  | 'database_metrics'
+  | 'slow_query'
+  | 'exchange_health_update';
 
 export interface WebSocketSubscription {
   channel: string;
@@ -314,6 +407,7 @@ export interface CreateBotRequest {
 export interface UpdateBotRequest {
   name?: string;
   description?: string;
+  strategy?: string;
   configuration?: Partial<BotConfiguration>;
   riskManagement?: Partial<RiskManagement>;
 }

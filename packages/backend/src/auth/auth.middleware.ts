@@ -1,6 +1,7 @@
-import { Request, Response, NextFunction } from 'express';
-import { AuthService } from './auth.service';
 import { CONSTANTS } from '@jabbr/shared';
+import type { Request, Response, NextFunction } from 'express';
+
+import { AuthService } from './auth.service';
 
 // Extend Express Request type to include user information
 declare global {
@@ -107,7 +108,7 @@ export class AuthMiddleware {
    * Middleware to check if user owns a resource
    * Must be used after requireAuth middleware
    */
-  requireOwnership = (resourceUserIdField: string = 'userId') => {
+  requireOwnership = (resourceUserIdField = 'userId') => {
     return (req: Request, res: Response, next: NextFunction): void => {
       if (!req.user) {
         res.status(401).json({
@@ -123,9 +124,21 @@ export class AuthMiddleware {
 
       // Check if the resource belongs to the authenticated user
       // This can be used with req.params, req.body, or req.query
-      const resourceUserId = req.params[resourceUserIdField] || 
-                           req.body[resourceUserIdField] || 
-                           req.query[resourceUserIdField];
+      // Validate the field name to prevent object injection
+      if (typeof resourceUserIdField !== 'string' || !resourceUserIdField) {
+        res.status(500).json({
+          success: false,
+          error: {
+            code: CONSTANTS.ERROR_CODES.AUTHORIZATION_ERROR,
+            message: 'Invalid resource field configuration'
+          }
+        });
+        return;
+      }
+
+      const resourceUserId = (req.params && Object.prototype.hasOwnProperty.call(req.params, resourceUserIdField) ? req.params[resourceUserIdField] : null) || 
+                           (req.body && Object.prototype.hasOwnProperty.call(req.body, resourceUserIdField) ? req.body[resourceUserIdField] : null) || 
+                           (req.query && Object.prototype.hasOwnProperty.call(req.query, resourceUserIdField) ? req.query[resourceUserIdField] : null);
 
       if (!resourceUserId) {
         res.status(400).json({
@@ -159,7 +172,7 @@ export class AuthMiddleware {
    * Rate limiting middleware for authentication endpoints
    * Simple in-memory rate limiter (in production, use Redis)
    */
-  createRateLimiter = (maxAttempts: number = 5, windowMs: number = 15 * 60 * 1000) => {
+  createRateLimiter = (maxAttempts = 5, windowMs: number = 15 * 60 * 1000) => {
     const attempts = new Map<string, { count: number; resetTime: number }>();
 
     return (req: Request, res: Response, next: NextFunction): void => {

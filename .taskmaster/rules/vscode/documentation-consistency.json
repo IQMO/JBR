@@ -1,0 +1,69 @@
+{
+  "name": "documentation-consistency",
+  "description": "Ensures all documentation remains consistent and up to date",
+  "enabled": true,
+  "rules": [
+    {
+      "id": "doc-sync-project-stats",
+      "name": "Project Statistics Consistency",
+      "description": "All documents must report the same project statistics: 37 total tasks, 20 completed (54%)",
+      "pattern": "/(56%|22 of 39|22\\/39)/g",
+      "scope": [
+        "**/*.md",
+        "**/*.txt"
+      ],
+      "level": "warning"
+    },
+    {
+      "id": "doc-current-dates",
+      "name": "Documentation Date Consistency",
+      "description": "All Last Updated dates should be kept current",
+      "pattern": "/Last Updated: (?!July 3, 2025)/g",
+      "scope": [
+        "**/*.md",
+        "**/*.txt"
+      ],
+      "level": "warning"
+    },
+    {
+      "id": "test-command-consistency",
+      "name": "Test Command References",
+      "description": "Test command references should match package.json scripts",
+      "pattern": "/(cd packages\\/[^\\s]+\\nnpm test)|(cd packages\\/[^\\s]+\\nnpm run test)/g",
+      "scope": [
+        "**/*.md"
+      ],
+      "level": "warning"
+    },
+    {
+      "id": "doc-cross-references",
+      "name": "Documentation Cross-References",
+      "description": "Documentation cross-references must be valid and point to existing files",
+      "pattern": "/\\[.*\\]\\((?!http)([^)]+)\\)/g",
+      "postCheck": "function(match, path) { require('fs').existsSync(path) }",
+      "scope": [
+        "**/*.md"
+      ],
+      "level": "warning"
+    },
+    {
+      "id": "test-organization-compliance",
+      "name": "Test Organization Documentation",
+      "description": "Test files and documentation must comply with TEST_ORGANIZATION_GUIDE.md standards",
+      "pattern": "/(describe|it)\\(/g",
+      "scope": [
+        "**/*.test.ts",
+        "**/*.spec.ts"
+      ],
+      "level": "warning"
+    }
+  ],
+  "exclude": [
+    "node_modules/**",
+    "dist/**",
+    "**/coverage/**"
+  ],
+  "autoFix": false,
+  "requires": [],
+  "version": "1.0.0"
+}

@@ -32,7 +32,13 @@ export function calculateAveragePrice(
   candles: Candle[],
   priceType: 'low' | 'close' | 'high' | 'open' = 'low'
 ): number {
-  if (!candles.length) throw new Error('No candle data provided')
-  const sum = candles.reduce((acc, candle) => acc + (candle[priceType] ?? 0), 0)
+  if (!candles.length) {throw new Error('No candle data provided')}
+  const sum = candles.reduce((acc, candle) => {
+    const validPriceTypes = ['low', 'close', 'high', 'open'] as const;
+    if (!validPriceTypes.includes(priceType)) {
+      throw new Error(`Invalid price type: ${priceType}`);
+    }
+    return acc + (candle[priceType] ?? 0);
+  }, 0);
   return sum / candles.length
 }

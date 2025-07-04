@@ -1,4 +1,4 @@
-import { User, UserPreferences } from '@jabbr/shared';
+import type { User, UserPreferences } from '@jabbr/shared';
 
 // Extended User interface for internal use (includes additional fields not in shared types)
 interface InternalUser extends User {
@@ -40,7 +40,7 @@ export class InMemoryUserRepository implements IUserRepository {
    */
   async findByEmail(_email: string): Promise<InternalUser | null> {
     const userId = this.emailIndex.get(_email.toLowerCase());
-    if (!userId) return null;
+    if (!userId) {return null;}
     return this.findById(userId);
   }
 
@@ -93,7 +93,7 @@ export class InMemoryUserRepository implements IUserRepository {
    */
   async update(_id: string, _userData: Partial<InternalUser>): Promise<InternalUser | null> {
     const existingUser = this.users.get(_id);
-    if (!existingUser) return null;
+    if (!existingUser) {return null;}
 
     // If email is being updated, update the email index
     if (_userData.email && _userData.email !== existingUser.email) {
@@ -117,7 +117,7 @@ export class InMemoryUserRepository implements IUserRepository {
    */
   async delete(_id: string): Promise<boolean> {
     const user = this.users.get(_id);
-    if (!user) return false;
+    if (!user) {return false;}
 
     this.users.delete(_id);
     this.emailIndex.delete(user.email);
@@ -141,7 +141,7 @@ export class InMemoryUserRepository implements IUserRepository {
    */
   async updatePassword(_id: string, _hashedPassword: string): Promise<boolean> {
     const user = this.users.get(_id);
-    if (!user) return false;
+    if (!user) {return false;}
 
     user.passwordHash = _hashedPassword;
     user.updatedAt = new Date();

@@ -33,7 +33,7 @@ export function exponentialSmoothing(current: number, previous: number, alpha: n
 // --- TESTING HOOK: Deterministic mode for tests ---
 let _aetherTestDeterministic = false;
 let _aetherTestRandomValue = 0.0;
-export function __setAetherDeterministicMode(enabled: boolean, randomValue: number = 0.0) {
+export function __setAetherDeterministicMode(enabled: boolean, randomValue = 0.0) {
   _aetherTestDeterministic = enabled;
   _aetherTestRandomValue = randomValue;
 }

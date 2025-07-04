@@ -1,0 +1,401 @@
+{
+  "metadata": {
+    "projectName": "JBR Trading Platform",
+    "lastUpdated": "2025-07-03T22:28:39.400Z",
+    "refreshInterval": 30
+  },
+  "summary": {
+    "overallProgress": 0,
+    "tasksCompleted": 0,
+    "tasksRemaining": 0,
+    "estimatedCompletion": "2025-07-03",
+    "velocity": 0
+  },
+  "charts": {
+    "statusDistribution": {
+      "completed": 0,
+      "inProgress": 0,
+      "pending": 0,
+      "blocked": 0,
+      "deferred": 0,
+      "cancelled": 0
+    },
+    "priorityBreakdown": {
+      "high": 0,
+      "medium": 0,
+      "low": 0
+    },
+    "complexityDistribution": {},
+    "burndown": [
+      {
+        "date": "2025-06-04",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-06-05",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-06-06",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-06-07",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-06-08",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-06-09",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-06-10",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-06-11",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-06-12",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-06-13",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-06-14",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-06-15",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-06-16",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-06-17",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-06-18",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-06-19",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-06-20",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-06-21",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-06-22",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-06-23",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-06-24",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-06-25",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-06-26",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-06-27",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-06-28",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-06-29",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-06-30",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-07-01",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-07-02",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-07-03",
+        "remaining": 0,
+        "completed": 0
+      }
+    ],
+    "velocity": [
+      {
+        "week": "Week 1",
+        "completed": 0,
+        "date": "2025-05-15"
+      },
+      {
+        "week": "Week 2",
+        "completed": 0,
+        "date": "2025-05-22"
+      },
+      {
+        "week": "Week 3",
+        "completed": 0,
+        "date": "2025-05-29"
+      },
+      {
+        "week": "Week 4",
+        "completed": 0,
+        "date": "2025-06-05"
+      },
+      {
+        "week": "Week 5",
+        "completed": 0,
+        "date": "2025-06-12"
+      },
+      {
+        "week": "Week 6",
+        "completed": 0,
+        "date": "2025-06-19"
+      },
+      {
+        "week": "Week 7",
+        "completed": 0,
+        "date": "2025-06-26"
+      },
+      {
+        "week": "Week 8",
+        "completed": 0,
+        "date": "2025-07-03"
+      }
+    ]
+  },
+  "alerts": {
+    "blockedTasks": [],
+    "overdueTasks": [],
+    "highRiskTasks": [],
+    "dependencyIssues": []
+  },
+  "recommendations": [
+    "Consider reviewing task complexity or resource allocation to improve velocity",
+    "Focus on completing foundational tasks to build momentum"
+  ],
+  "taskMetrics": [],
+  "projectMetrics": {
+    "totalTasks": 0,
+    "completedTasks": 0,
+    "inProgressTasks": 0,
+    "pendingTasks": 0,
+    "blockedTasks": 0,
+    "deferredTasks": 0,
+    "cancelledTasks": 0,
+    "overallProgress": 0,
+    "estimatedCompletion": "2025-07-03",
+    "velocityPerWeek": 0,
+    "burndownData": [
+      {
+        "date": "2025-06-04",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-06-05",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-06-06",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-06-07",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-06-08",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-06-09",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-06-10",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-06-11",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-06-12",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-06-13",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-06-14",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-06-15",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-06-16",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-06-17",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-06-18",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-06-19",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-06-20",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-06-21",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-06-22",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-06-23",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-06-24",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-06-25",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-06-26",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-06-27",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-06-28",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-06-29",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-06-30",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-07-01",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-07-02",
+        "remaining": 0,
+        "completed": 0
+      },
+      {
+        "date": "2025-07-03",
+        "remaining": 0,
+        "completed": 0
+      }
+    ],
+    "criticalPath": [],
+    "riskFactors": []
+  }
+}

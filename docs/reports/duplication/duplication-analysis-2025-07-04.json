@@ -1,0 +1,222 @@
+{
+  "timestamp": "2025-07-04T02:49:58.048Z",
+  "project": "JBR Trading Platform",
+  "task": "Task 41.2 - Automated Duplicated Code Detection",
+  "analysis": {
+    "exactFileDuplicates": {
+      "count": 21,
+      "instances": [
+        {
+          "type": "exact_duplicate",
+          "files": [
+            "E:\\M.U. Kamal\\Programing\\0TS\\Jabbr\\JBR\\packages\\backend\\src\\index.ts",
+            "E:\\M.U. Kamal\\Programing\\0TS\\Jabbr\\JBR\\packages\\backend\\src\\JabbrLabs\\bot-cycle\\bot-cycle-stable.ts"
+          ],
+          "hash": "d41d8cd98f00b204e9800998ecf8427e",
+          "size": 1281
+        },
+        {
+          "type": "exact_duplicate",
+          "files": [
+            "E:\\M.U. Kamal\\Programing\\0TS\\Jabbr\\JBR\\packages\\backend\\src\\index.ts",
+            "E:\\M.U. Kamal\\Programing\\0TS\\Jabbr\\JBR\\packages\\backend\\src\\JabbrLabs\\bot-cycle\\exchange-client.ts"
+          ],
+          "hash": "d41d8cd98f00b204e9800998ecf8427e",
+          "size": 1268
+        },
+        {
+          "type": "exact_duplicate",
+          "files": [
+            "E:\\M.U. Kamal\\Programing\\0TS\\Jabbr\\JBR\\packages\\backend\\src\\index.ts",
+            "E:\\M.U. Kamal\\Programing\\0TS\\Jabbr\\JBR\\packages\\backend\\src\\JabbrLabs\\bot-cycle\\stable-bot-cycle.ts"
+          ],
+          "hash": "d41d8cd98f00b204e9800998ecf8427e",
+          "size": 187
+        },
+        {
+          "type": "exact_duplicate",
+          "files": [
+            "E:\\M.U. Kamal\\Programing\\0TS\\Jabbr\\JBR\\packages\\backend\\src\\index.ts",
+            "E:\\M.U. Kamal\\Programing\\0TS\\Jabbr\\JBR\\packages\\backend\\src\\JabbrLabs\\bot-cycle\\unified-trading-engine.ts"
+          ],
+          "hash": "d41d8cd98f00b204e9800998ecf8427e",
+          "size": 5633
+        },
+        {
+          "type": "exact_duplicate",
+          "files": [
+            "E:\\M.U. Kamal\\Programing\\0TS\\Jabbr\\JBR\\packages\\backend\\src\\index.ts",
+            "E:\\M.U. Kamal\\Programing\\0TS\\Jabbr\\JBR\\packages\\backend\\src\\JabbrLabs\\indicators\\average-price.ts"
+          ],
+          "hash": "d41d8cd98f00b204e9800998ecf8427e",
+          "size": 1180
+        },
+        {
+          "type": "exact_duplicate",
+          "files": [
+            "E:\\M.U. Kamal\\Programing\\0TS\\Jabbr\\JBR\\packages\\backend\\src\\index.ts",
+            "E:\\M.U. Kamal\\Programing\\0TS\\Jabbr\\JBR\\packages\\backend\\src\\JabbrLabs\\indicators\\index.ts"
+          ],
+          "hash": "d41d8cd98f00b204e9800998ecf8427e",
+          "size": 8443
+        },
+        {
+          "type": "exact_duplicate",
+          "files": [
+            "E:\\M.U. Kamal\\Programing\\0TS\\Jabbr\\JBR\\packages\\backend\\src\\index.ts",
+            "E:\\M.U. Kamal\\Programing\\0TS\\Jabbr\\JBR\\packages\\backend\\src\\JabbrLabs\\target-reacher\\config-validator.ts"
+          ],
+          "hash": "d41d8cd98f00b204e9800998ecf8427e",
+          "size": 5398
+        },
+        {
+          "type": "exact_duplicate",
+          "files": [
+            "E:\\M.U. Kamal\\Programing\\0TS\\Jabbr\\JBR\\packages\\backend\\src\\index.ts",
+            "E:\\M.U. Kamal\\Programing\\0TS\\Jabbr\\JBR\\packages\\backend\\src\\JabbrLabs\\target-reacher\\interfaces.ts"
+          ],
+          "hash": "d41d8cd98f00b204e9800998ecf8427e",
+          "size": 5212
+        },
+        {
+          "type": "exact_duplicate",
+          "files": [
+            "E:\\M.U. Kamal\\Programing\\0TS\\Jabbr\\JBR\\packages\\backend\\src\\index.ts",
+            "E:\\M.U. Kamal\\Programing\\0TS\\Jabbr\\JBR\\packages\\backend\\src\\JabbrLabs\\target-reacher\\modular-target-reacher.ts"
+          ],
+          "hash": "d41d8cd98f00b204e9800998ecf8427e",
+          "size": 4195
+        },
+        {
+          "type": "exact_duplicate",
+          "files": [
+            "E:\\M.U. Kamal\\Programing\\0TS\\Jabbr\\JBR\\packages\\backend\\src\\index.ts",
+            "E:\\M.U. Kamal\\Programing\\0TS\\Jabbr\\JBR\\packages\\backend\\src\\JabbrLabs\\target-reacher\\parameter-mapping.ts"
+          ],
+          "hash": "d41d8cd98f00b204e9800998ecf8427e",
+          "size": 1097
+        },
+        {
+          "type": "exact_duplicate",
+          "files": [
+            "E:\\M.U. Kamal\\Programing\\0TS\\Jabbr\\JBR\\packages\\backend\\src\\index.ts",
+            "E:\\M.U. Kamal\\Programing\\0TS\\Jabbr\\JBR\\packages\\backend\\src\\JabbrLabs\\target-reacher\\parameters.ts"
+          ],
+          "hash": "d41d8cd98f00b204e9800998ecf8427e",
+          "size": 1746
+        },
+        {
+          "type": "exact_duplicate",
+          "files": [
+            "E:\\M.U. Kamal\\Programing\\0TS\\Jabbr\\JBR\\packages\\backend\\src\\index.ts",
+            "E:\\M.U. Kamal\\Programing\\0TS\\Jabbr\\JBR\\packages\\backend\\src\\JabbrLabs\\unified-signals.ts"
+          ],
+          "hash": "d41d8cd98f00b204e9800998ecf8427e",
+          "size": 12637
+        },
+        {
+          "type": "exact_duplicate",
+          "files": [
+            "E:\\M.U. Kamal\\Programing\\0TS\\Jabbr\\JBR\\packages\\backend\\src\\index.ts",
+            "E:\\M.U. Kamal\\Programing\\0TS\\Jabbr\\JBR\\packages\\backend\\src\\JabbrLabs\\unified-strategies.ts"
+          ],
+          "hash": "d41d8cd98f00b204e9800998ecf8427e",
+          "size": 4840
+        },
+        {
+          "type": "exact_duplicate",
+          "files": [
+            "E:\\M.U. Kamal\\Programing\\0TS\\Jabbr\\JBR\\packages\\backend\\src\\index.ts",
+            "E:\\M.U. Kamal\\Programing\\0TS\\Jabbr\\JBR\\packages\\backend\\src\\services\\data-service.ts"
+          ],
+          "hash": "d41d8cd98f00b204e9800998ecf8427e",
+          "size": 5134
+        },
+        {
+          "type": "exact_duplicate",
+          "files": [
+            "E:\\M.U. Kamal\\Programing\\0TS\\Jabbr\\JBR\\packages\\backend\\src\\index.ts",
+            "E:\\M.U. Kamal\\Programing\\0TS\\Jabbr\\JBR\\packages\\backend\\tests\\setup.js"
+          ],
+          "hash": "d41d8cd98f00b204e9800998ecf8427e",
+          "size": 2416
+        },
+        {
+          "type": "exact_duplicate",
+          "files": [
+            "E:\\M.U. Kamal\\Programing\\0TS\\Jabbr\\JBR\\packages\\backend\\src\\index.ts",
+            "E:\\M.U. Kamal\\Programing\\0TS\\Jabbr\\JBR\\packages\\backend\\tests\\utils\\test-helpers.ts"
+          ],
+          "hash": "d41d8cd98f00b204e9800998ecf8427e",
+          "size": 754
+        },
+        {
+          "type": "exact_duplicate",
+          "files": [
+            "E:\\M.U. Kamal\\Programing\\0TS\\Jabbr\\JBR\\packages\\backend\\src\\index.ts",
+            "E:\\M.U. Kamal\\Programing\\0TS\\Jabbr\\JBR\\packages\\frontend\\next-env.d.ts"
+          ],
+          "hash": "d41d8cd98f00b204e9800998ecf8427e",
+          "size": 233
+        },
+        {
+          "type": "exact_duplicate",
+          "files": [
+            "E:\\M.U. Kamal\\Programing\\0TS\\Jabbr\\JBR\\packages\\backend\\src\\index.ts",
+            "E:\\M.U. Kamal\\Programing\\0TS\\Jabbr\\JBR\\packages\\frontend\\tests\\setup.js"
+          ],
+          "hash": "d41d8cd98f00b204e9800998ecf8427e",
+          "size": 1252
+        },
+        {
+          "type": "exact_duplicate",
+          "files": [
+            "E:\\M.U. Kamal\\Programing\\0TS\\Jabbr\\JBR\\packages\\backend\\src\\index.ts",
+            "E:\\M.U. Kamal\\Programing\\0TS\\Jabbr\\JBR\\packages\\shared\\src\\index.ts"
+          ],
+          "hash": "d41d8cd98f00b204e9800998ecf8427e",
+          "size": 9886
+        },
+        {
+          "type": "exact_duplicate",
+          "files": [
+            "E:\\M.U. Kamal\\Programing\\0TS\\Jabbr\\JBR\\packages\\backend\\src\\index.ts",
+            "E:\\M.U. Kamal\\Programing\\0TS\\Jabbr\\JBR\\packages\\shared\\src\\types.ts"
+          ],
+          "hash": "d41d8cd98f00b204e9800998ecf8427e",
+          "size": 13229
+        },
+        {
+          "type": "exact_duplicate",
+          "files": [
+            "E:\\M.U. Kamal\\Programing\\0TS\\Jabbr\\JBR\\packages\\backend\\src\\index.ts",
+            "E:\\M.U. Kamal\\Programing\\0TS\\Jabbr\\JBR\\packages\\shared\\tests\\setup.js"
+          ],
+          "hash": "d41d8cd98f00b204e9800998ecf8427e",
+          "size": 528
+        }
+      ]
+    },
+    "codeBlockDuplicates": {
+      "count": 0,
+      "instances": []
+    },
+    "jscpd": {
+      "hasIssues": true
+    }
+  },
+  "summary": {
+    "totalIssues": 21,
+    "severity": "high",
+    "recommendations": [
+      "Remove exact file duplicates - these are likely copy-paste errors",
+      "Consolidate duplicate files into shared modules"
+    ]
+  },
+  "toolsUsed": [
+    "Custom file hash comparison",
+    "Regex-based code block extraction",
+    "JSCPD static analysis tool",
+    "Pattern matching algorithms"
+  ]
+}

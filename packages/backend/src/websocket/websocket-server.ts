@@ -1,14 +1,18 @@
-import { Server as HTTPServer } from 'http';
-import { WebSocketServer, WebSocket } from 'ws';
-import { IncomingMessage } from 'http';
+import type { Server as HTTPServer } from 'http';
+import type { IncomingMessage } from 'http';
 import { parse as parseUrl } from 'url';
-import { AuthService } from '../auth/auth.service';
-import { database } from '../database/database.config';
-import { 
+
+import type { 
   WebSocketMessage, 
-  WebSocketResponse, 
+  WebSocketResponse} from '@jabbr/shared';
+import { 
   CONSTANTS 
 } from '@jabbr/shared';
+import { WebSocketServer, WebSocket } from 'ws';
+
+import { AuthService } from '../auth/auth.service';
+import { database } from '../database/database.config';
+import BotStatusService from '../services/bot-status.service';
 
 /**
  * WebSocket Connection with user context
@@ -30,6 +34,7 @@ interface AuthenticatedConnection {
 export class JabbrWebSocketServer {
   private wss: WebSocketServer;
   private authService: AuthService;
+  private botStatusService: BotStatusService;
   private connections: Map<string, AuthenticatedConnection> = new Map();
   private channels: Map<string, Set<string>> = new Map(); // channel -> sessionIds
   private heartbeatInterval: NodeJS.Timeout | null = null;
@@ -50,11 +55,17 @@ export class JabbrWebSocketServer {
       verifyClient: this.verifyClient.bind(this)
     });
 
+    this.botStatusService = new BotStatusService(this);
+
     this.setupEventHandlers();
     this.startHeartbeat();
     this.startCleanup();
 
     console.log('🔌 WebSocket server initialized on /ws');
+  }
+
+  public getBotStatusService(): BotStatusService {
+    return this.botStatusService;
   }
 
   /**
@@ -166,7 +177,7 @@ export class JabbrWebSocketServer {
   private handleMessage(sessionId: string, data: any): void {
     try {
       const connection = this.connections.get(sessionId);
-      if (!connection) return;
+      if (!connection) {return;}
 
       // Convert data to string if it's a Buffer
       const messageString = data instanceof Buffer ? data.toString() : data.toString();
@@ -204,7 +215,7 @@ export class JabbrWebSocketServer {
    */
   private handleSubscription(sessionId: string, message: WebSocketMessage): void {
     const connection = this.connections.get(sessionId);
-    if (!connection) return;
+    if (!connection) {return;}
 
     const channel = message.channel;
     if (!channel || !this.isValidChannel(channel)) {
@@ -240,10 +251,10 @@ export class JabbrWebSocketServer {
    */
   private handleUnsubscription(sessionId: string, message: WebSocketMessage): void {
     const connection = this.connections.get(sessionId);
-    if (!connection) return;
+    if (!connection) {return;}
 
     const channel = message.channel;
-    if (!channel) return;
+    if (!channel) {return;}
 
     // Remove from connection's subscribed channels
     connection.subscribedChannels.delete(channel);
@@ -318,7 +329,7 @@ export class JabbrWebSocketServer {
    */
   private handleDisconnection(sessionId: string): void {
     const connection = this.connections.get(sessionId);
-    if (!connection) return;
+    if (!connection) {return;}
 
     // Remove from all channels
     for (const channel of connection.subscribedChannels) {
@@ -394,7 +405,7 @@ export class JabbrWebSocketServer {
    */
   public broadcast(channel: string, message: Omit<WebSocketResponse, 'channel'>): void {
     const sessionIds = this.channels.get(channel);
-    if (!sessionIds || sessionIds.size === 0) return;
+    if (!sessionIds || sessionIds.size === 0) {return;}
 
     const fullMessage: WebSocketResponse = {
       ...message,
@@ -517,7 +528,9 @@ export class JabbrWebSocketServer {
 
     // Count connections by channel
     for (const [channel, sessions] of this.channels) {
-      connectionsByChannel[channel] = sessions.size;
+      if (typeof channel === 'string') {
+        connectionsByChannel[channel] = sessions.size;
+      }
     }
 
     // Count connections by user

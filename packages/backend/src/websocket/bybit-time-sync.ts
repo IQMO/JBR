@@ -1,4 +1,5 @@
 import { EventEmitter } from 'events';
+
 import { timeSyncService } from '../services/time-sync.service';
 
 /**
@@ -33,7 +34,7 @@ export class BybitTimeSync extends EventEmitter {
 
   private isTestnet: boolean;
 
-  constructor(isTestnet: boolean = true) {
+  constructor(isTestnet = true) {
     super();
     this.isTestnet = isTestnet;
   }
@@ -222,8 +223,8 @@ export class BybitTimeSync extends EventEmitter {
    * Check if time sync is healthy
    */
   isHealthy(): boolean {
-    if (!this.isRunning) return false;
-    if (!this.lastSync) return false;
+    if (!this.isRunning) {return false;}
+    if (!this.lastSync) {return false;}
     
     const now = Date.now();
     const timeSinceSync = now - this.lastSync.getTime();
@@ -249,7 +250,7 @@ export class BybitTimeSync extends EventEmitter {
   /**
    * Validate if a timestamp is recent enough for trading
    */
-  validateTradingTimestamp(timestamp: number, maxAgeMs: number = 30000): boolean {
+  validateTradingTimestamp(timestamp: number, maxAgeMs = 30000): boolean {
     const bybitTime = this.getBybitTradingTimestamp();
     const age = Math.abs(bybitTime - timestamp);
     return age <= maxAgeMs;

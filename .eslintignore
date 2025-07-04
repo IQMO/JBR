@@ -2,8 +2,6 @@ node_modules/
 dist/
 build/
 .next/
-*.js
-*.d.ts
 coverage/
 .git/
 .taskmaster/
@@ -11,5 +9,18 @@ coverage/
 .clinerules/
 .vscode/
 .github/
+*.d.ts
+# Config files at root are OK
+!.eslintrc.js
+!jest.config.js
+!prettier.config.js
+# Ignore docs and reports
 *.md
-*.json 
+reports/
+docs/
+# Ignore test results
+test-results/
+# Ignore specific generated files
+tsconfig.tsbuildinfo
+combined.log
+error.log

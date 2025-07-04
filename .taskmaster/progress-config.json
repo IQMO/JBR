@@ -1,0 +1,34 @@
+{
+  "projectName": "JBR Trading Platform",
+  "refreshInterval": 30,
+  "alertThresholds": {
+    "blockedTasksWarning": 3,
+    "velocityWarning": 2,
+    "overdueTasksCritical": 5
+  },
+  "integrations": {
+    "slack": {
+      "webhookUrl": "",
+      "channels": [
+        "#project-updates"
+      ]
+    },
+    "github": {
+      "owner": "IQMO",
+      "repo": "JBR",
+      "token": ""
+    }
+  },
+  "dashboard": {
+    "autoRefresh": true,
+    "showAlerts": true,
+    "showRecommendations": true
+  },
+  "metrics": {
+    "collectGit": true,
+    "collectBuild": true,
+    "collectTests": true,
+    "collectPerformance": false,
+    "retentionDays": 90
+  }
+}

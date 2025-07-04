@@ -10,8 +10,8 @@ import type {
   ConfigValidationResult,
   IStrategy
 } from './interfaces'
-import { TargetReacherStrategy } from './target-reacher'
 import { camelToSnake } from './parameter-mapping';
+import { TargetReacherStrategy } from './target-reacher'
 
 // [Canonical Target Reacher Strategy Factory. All logic unified here.]
 export const targetReacherFactory = {

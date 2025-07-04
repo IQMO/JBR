@@ -40,7 +40,14 @@ export function calculateMACD(prices: number[], fastPeriod = 12, slowPeriod = 26
   const startIndex = slowPeriod - 1
 
   for (let i = startIndex; i < prices.length; i++) {
-    macdLine.push(fastEMA[i - (slowPeriod - fastPeriod)] - slowEMA[i - startIndex + slowPeriod - 1])
+    const fastIdx = i - (slowPeriod - fastPeriod);
+    const slowIdx = i - startIndex + slowPeriod - 1;
+    const fast = fastEMA.at(fastIdx);
+    const slow = slowEMA.at(slowIdx);
+    if (fast === undefined || slow === undefined) {
+      throw new Error(`Missing EMA value at index (fast: ${fastIdx}, slow: ${slowIdx}) for MACD calculation`);
+    }
+    macdLine.push(fast - slow);
   }
 
   // Calculate signal line (EMA of MACD line)
@@ -49,17 +56,20 @@ export function calculateMACD(prices: number[], fastPeriod = 12, slowPeriod = 26
   // Calculate histogram (MACD line - signal line)
   const histogram: number[] = []
   for (let i = signalPeriod - 1; i < macdLine.length; i++) {
-    histogram.push(macdLine[i] - signalLine[i - signalPeriod + 1])
+    const macdVal = macdLine.at(i);
+    const signalVal = signalLine.at(i - signalPeriod + 1);
+    if (macdVal === undefined || signalVal === undefined) {
+      throw new Error(`Missing MACD or signal value at index ${i} for histogram calculation`);
+    }
+    histogram.push(macdVal - signalVal);
   }
 
   // Align all arrays to the same length
-  const result = {
+  return {
     macd: macdLine.slice(signalPeriod - 1),
     signal: signalLine,
-    histogram: histogram,
+    histogram,
   }
-
-  return result
 }
 
 /**
@@ -73,15 +83,22 @@ export function getMACDSignals(macdResult: MACDResult): number[] {
   const signals: number[] = []
 
   for (let i = 1; i < macd.length; i++) {
-    if (macd[i] > signal[i] && macd[i - 1] <= signal[i - 1]) {
+    const m = macd.at(i);
+    const mPrev = macd.at(i - 1);
+    const s = signal.at(i);
+    const sPrev = signal.at(i - 1);
+    if (m === undefined || mPrev === undefined || s === undefined || sPrev === undefined) {
+      throw new Error(`Missing MACD or signal value at index ${i} for crossover signal calculation`);
+    }
+    if (m > s && mPrev <= sPrev) {
       // Bullish crossover (MACD crosses above signal line)
-      signals.push(1)
-    } else if (macd[i] < signal[i] && macd[i - 1] >= signal[i - 1]) {
+      signals.push(1);
+    } else if (m < s && mPrev >= sPrev) {
       // Bearish crossover (MACD crosses below signal line)
-      signals.push(-1)
+      signals.push(-1);
     } else {
       // No crossover
-      signals.push(0)
+      signals.push(0);
     }
   }
 

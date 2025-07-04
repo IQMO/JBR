@@ -11,5 +11,30 @@
  * - Ready for external monitoring integration (see TODOs below).
  */
 
-// Canonical re-export: JabbrLabs StableBotCycle now delegates to canonical implementation in lib/execution/bot-cycle-stable.ts
-export { StableBotCycle, stableBotCycle } from '../../execution/bot-cycle-stable';
+// Temporary fix: Import from existing trading engine until canonical implementation is created
+import { EnhancedTradingEngine } from './unified-trading-engine';
+
+/**
+ * Stable Bot Cycle Implementation
+ * FIXME: This needs proper implementation - currently wrapping EnhancedTradingEngine
+ */
+export class StableBotCycle {
+  private engine: EnhancedTradingEngine;
+  
+  constructor() {
+    this.engine = new EnhancedTradingEngine();
+  }
+  
+  async start(): Promise<void> {
+    console.log('StableBotCycle started - using EnhancedTradingEngine wrapper');
+  }
+  
+  async stop(): Promise<void> {
+    console.log('StableBotCycle stopped');
+  }
+}
+
+// Factory function
+export function stableBotCycle(): StableBotCycle {
+  return new StableBotCycle();
+}

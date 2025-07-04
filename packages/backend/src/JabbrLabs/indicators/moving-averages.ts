@@ -49,8 +49,13 @@ export function calculateEMA(prices: number[], period: number): number[] {
 
   // Calculate remaining EMA values
   for (let i = period; i < prices.length; i++) {
-    const ema = (prices[i] - emaValues[emaValues.length - 1]) * multiplier + emaValues[emaValues.length - 1]
-    emaValues.push(ema)
+    const price = prices.at(i);
+    const prevEma = emaValues.at(-1);
+    if (price === undefined || prevEma === undefined) {
+      throw new Error(`Missing data at index ${i} for EMA calculation`);
+    }
+    const ema = (price - prevEma) * multiplier + prevEma;
+    emaValues.push(ema);
   }
 
   return emaValues
@@ -71,15 +76,22 @@ export function getMASignals(fastMA: number[], slowMA: number[]): number[] {
   const signals: number[] = []
 
   for (let i = 1; i < fastMA.length; i++) {
-    if (fastMA[i] > slowMA[i] && fastMA[i - 1] <= slowMA[i - 1]) {
+    const f = fastMA.at(i);
+    const fPrev = fastMA.at(i - 1);
+    const s = slowMA.at(i);
+    const sPrev = slowMA.at(i - 1);
+    if (f === undefined || fPrev === undefined || s === undefined || sPrev === undefined) {
+      throw new Error(`Missing moving average value at index ${i} for crossover signal calculation`);
+    }
+    if (f > s && fPrev <= sPrev) {
       // Bullish crossover (fast MA crosses above slow MA)
-      signals.push(1)
-    } else if (fastMA[i] < slowMA[i] && fastMA[i - 1] >= slowMA[i - 1]) {
+      signals.push(1);
+    } else if (f < s && fPrev >= sPrev) {
       // Bearish crossover (fast MA crosses below slow MA)
-      signals.push(-1)
+      signals.push(-1);
     } else {
       // No crossover
-      signals.push(0)
+      signals.push(0);
     }
   }
 

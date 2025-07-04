@@ -1,0 +1,96 @@
+{
+  "config": {
+    "fastPeriod": 9,
+    "slowPeriod": 21,
+    "minChangePercent": 0.5,
+    "confidenceThreshold": 0.4,
+    "priceSource": "close",
+    "signalMode": "crossover",
+    "useEMA": false
+  },
+  "summary": {
+    "signalCount": 4,
+    "tradeCount": 8,
+    "pnl": 18.677097659753358
+  },
+  "signals": [
+    {
+      "timestamp": 1751593043282,
+      "price": 109.98195056513495,
+      "signal": "buy",
+      "confidence": 0.7739686916674849,
+      "reason": "Bullish crossover: Fast MA (108.78) crossed above Slow MA (108.61)"
+    },
+    {
+      "timestamp": 1751602943282,
+      "price": 107.70726439899327,
+      "signal": "sell",
+      "confidence": 0.41447513122279855,
+      "reason": "Bearish crossover: Fast MA (108.82) crossed below Slow MA (108.90)"
+    },
+    {
+      "timestamp": 1751647043282,
+      "price": 94.91794079900838,
+      "signal": "buy",
+      "confidence": 0.5197625755457842,
+      "reason": "Bullish crossover: Fast MA (92.96) crossed above Slow MA (92.86)"
+    },
+    {
+      "timestamp": 1751674943282,
+      "price": 100.9027183557575,
+      "signal": "sell",
+      "confidence": 1,
+      "reason": "Bearish crossover: Fast MA (103.00) crossed below Slow MA (103.37)"
+    }
+  ],
+  "trades": [
+    {
+      "type": "Open Long",
+      "timestamp": 1751593043282,
+      "price": 109.98195056513495,
+      "reason": "Bullish crossover: Fast MA (108.78) crossed above Slow MA (108.61)"
+    },
+    {
+      "type": "Close Long",
+      "timestamp": 1751602943282,
+      "price": 107.70726439899327,
+      "profit": -2.2746861661416773
+    },
+    {
+      "type": "Open Short",
+      "timestamp": 1751602943282,
+      "price": 107.70726439899327,
+      "reason": "Bearish crossover: Fast MA (108.82) crossed below Slow MA (108.90)"
+    },
+    {
+      "type": "Close Short",
+      "timestamp": 1751647043282,
+      "price": 94.91794079900838,
+      "profit": 12.789323599984897
+    },
+    {
+      "type": "Open Long",
+      "timestamp": 1751647043282,
+      "price": 94.91794079900838,
+      "reason": "Bullish crossover: Fast MA (92.96) crossed above Slow MA (92.86)"
+    },
+    {
+      "type": "Close Long",
+      "timestamp": 1751674943282,
+      "price": 100.9027183557575,
+      "profit": 5.984777556749123
+    },
+    {
+      "type": "Open Short",
+      "timestamp": 1751674943282,
+      "price": 100.9027183557575,
+      "reason": "Bearish crossover: Fast MA (103.00) crossed below Slow MA (103.37)"
+    },
+    {
+      "type": "Close Short (End)",
+      "timestamp": 1751678543282,
+      "price": 98.72503568659648,
+      "profit": 2.1776826691610154
+    }
+  ]
+}

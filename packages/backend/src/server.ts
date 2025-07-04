@@ -1,20 +1,32 @@
-import express from 'express';
 import http from 'http';
-import cors from 'cors';
-import helmet from 'helmet';
-import compression from 'compression';
-import morgan from 'morgan';
-import dotenv from 'dotenv';
+
 
 // Import our modules
-import { initializeDatabase, shutdownDatabase } from './database/database.config';
-import { runMigrations } from './database/migration-runner';
-import JabbrWebSocketServer from './websocket/websocket-server';
-import WebSocketBridge from './websocket/websocket-bridge';
 import { timeSyncService } from './services/time-sync.service';
 import { bybitTimeSync } from './websocket/bybit-time-sync';
 import { CONSTANTS } from '@jabbr/shared';
+import compression from 'compression';
+import cors from 'cors';
+import dotenv from 'dotenv';
+import express from 'express';
+import helmet from 'helmet';
+import morgan from 'morgan';
+
 import authRoutes from './auth/auth.routes';
+import botRoutes from './bots/bots.routes';
+import { initializeDatabase, shutdownDatabase } from './database/database.config';
+import { runMigrations } from './database/migration-runner';
+import { appMonitoringMiddleware } from './middleware/app-monitoring.middleware';
+import healthRoutes from './routes/health.routes';
+import performanceRoutes from './routes/performance.routes';
+import type BotStatusService from './services/bot-status.service';
+import DatabaseMonitorService from './services/database-monitor.service';
+import ExchangeMonitorService from './services/exchange-monitor.service';
+import MetricsCollectorService from './services/metrics-collector.service';
+import RiskManagementService from './services/risk-management.service';
+import StrategyMonitorService from './services/strategy-monitor.service';
+import WebSocketBridge from './websocket/websocket-bridge';
+import JabbrWebSocketServer from './websocket/websocket-server';
 
 // Load environment variables
 dotenv.config();
@@ -28,6 +40,12 @@ class JabbrServer {
   private httpServer: http.Server;
   private wsServer: JabbrWebSocketServer | null = null;
   private wsBridge: WebSocketBridge | null = null;
+  private metricsCollectorService: MetricsCollectorService | null = null;
+  private botStatusService: BotStatusService | null = null;
+  private strategyMonitorService: StrategyMonitorService | null = null;
+  private riskManagementService: RiskManagementService | null = null;
+  private databaseMonitorService: DatabaseMonitorService | null = null;
+  private exchangeMonitorService: ExchangeMonitorService | null = null;
   private isShuttingDown = false;
 
   // Configuration
@@ -66,6 +84,9 @@ class JabbrServer {
     this.app.use(compression());
     this.app.use(morgan('combined'));
 
+    // Performance monitoring middleware
+    this.app.use(appMonitoringMiddleware.trackRequests());
+
     // Body parsing
     this.app.use(express.json({ limit: '10mb' }));
     this.app.use(express.urlencoded({ extended: true }));
@@ -77,28 +98,11 @@ class JabbrServer {
    * Setup API routes
    */
   private setupRoutes(): void {
-    // Health check endpoint
-    this.app.get('/health', (req, res) => {
-      res.json({
-        status: 'healthy',
-        timestamp: new Date().toISOString(),
-        uptime: process.uptime(),
-        services: {
-          database: 'connected', // TODO: Add actual health check
-          websocket: this.wsServer ? 'running' : 'stopped',
-          bridge: this.wsBridge ? 'initialized' : 'stopped',
-          timeSync: {
-            ntp: timeSyncService.isHealthy() ? 'healthy' : 'unhealthy',
-            bybit: bybitTimeSync.isHealthy() ? 'healthy' : 'unhealthy'
-          }
-        },
-        time: {
-          local: new Date().toISOString(),
-          synchronized: timeSyncService.toISOString(),
-          drift: timeSyncService.getTotalDrift()
-        }
-      });
-    });
+    // Comprehensive health monitoring routes
+    this.app.use('/health', healthRoutes);
+
+    // Performance monitoring routes
+    this.app.use('/performance', performanceRoutes);
 
     // Time synchronization endpoints
     this.app.get('/time/stats', (req, res) => {
@@ -152,6 +156,9 @@ class JabbrServer {
     // Authentication routes
     this.app.use('/auth', authRoutes);
 
+    // Bot management routes
+    this.app.use('/api/bots', botRoutes);
+
     // API version endpoint
     this.app.get('/api/version', (req, res) => {
       res.json({
@@ -179,8 +186,11 @@ class JabbrServer {
    * Setup error handling middleware
    */
   private setupErrorHandling(): void {
-    // Global error handler
-    this.app.use((error: any, req: express.Request, res: express.Response) => {
+    // Global error handler with performance monitoring
+    this.app.use((error: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
+      // Track error in monitoring
+      appMonitoringMiddleware.trackErrors()(error, req, res, () => {});
+      
       console.error('❌ Unhandled error:', error);
 
       res.status(error.status || 500).json({
@@ -240,6 +250,7 @@ class JabbrServer {
       // 4. Initialize WebSocket server
       console.log('🔌 Initializing WebSocket server...');
       this.wsServer = new JabbrWebSocketServer(this.httpServer);
+      this.botStatusService = this.wsServer.getBotStatusService();
 
       // 5. Initialize WebSocket bridge
       console.log('🌉 Initializing WebSocket bridge...');
@@ -253,6 +264,50 @@ class JabbrServer {
       // 7. Setup time sync broadcasting
       console.log('📡 Setting up time sync broadcasting...');
       this.setupTimeSyncBroadcasting();
+
+      // 8. Setup bot status monitoring
+      console.log('🤖 Setting up bot status monitoring...');
+      this.setupBotStatusMonitoring();
+
+      // 9. Initialize strategy monitor service
+      console.log('📊 Initializing strategy monitor service...');
+      this.strategyMonitorService = new StrategyMonitorService(this.wsServer);
+
+      // 10. Initialize risk management service
+      console.log('🛡️ Initializing risk management service...');
+      this.riskManagementService = new RiskManagementService();
+
+      // 11. Initialize performance monitoring
+      console.log('📈 Initializing performance monitoring...');
+      appMonitoringMiddleware.initialize();
+
+      // 12. Initialize database monitoring
+      console.log('🗄️ Initializing database monitoring...');
+      this.databaseMonitorService = new DatabaseMonitorService({}, this.wsServer || undefined);
+      this.databaseMonitorService.start();
+
+      // 13. Initialize exchange monitoring
+      console.log('🔗 Initializing exchange monitoring...');
+      this.exchangeMonitorService = new ExchangeMonitorService({}, this.wsServer || undefined);
+      
+      // Start monitoring for common exchanges (can be configured per bot later)
+      const commonExchanges = ['bybit', 'binance', 'okx', 'coinbase', 'kraken'];
+      for (const exchange of commonExchanges) {
+        this.exchangeMonitorService.startMonitoring(exchange);
+      }
+
+      // 14. Initialize centralized metrics collection
+      console.log('📊 Initializing centralized metrics collection...');
+      this.metricsCollectorService = new MetricsCollectorService({
+        retentionPeriod: 24 * 60 * 60 * 1000, // 24 hours
+        maxMetricsPerSeries: 10000,
+        aggregationInterval: 60 * 1000, // 1 minute
+        enablePersistence: true,
+        persistenceInterval: 60 * 60 * 1000 // 1 hour
+      });
+
+      // Start the metrics collector
+      this.metricsCollectorService.start();
 
       console.log('✅ All services initialized successfully');
 
@@ -297,7 +352,7 @@ class JabbrServer {
    * Setup time synchronization broadcasting
    */
   private setupTimeSyncBroadcasting(): void {
-    if (!this.wsServer) return;
+    if (!this.wsServer) {return;}
 
     // Broadcast time sync messages every 30 seconds
     setInterval(() => {
@@ -311,6 +366,26 @@ class JabbrServer {
     }, 30000);
 
     console.log('📡 Time sync broadcasting configured (30s interval)');
+  }
+
+  /**
+   * Setup bot status monitoring
+   */
+  private setupBotStatusMonitoring(): void {
+    if (!this.botStatusService) {return;}
+
+    // Broadcast bot status messages every 10 seconds
+    setInterval(() => {
+      if (this.botStatusService) {
+        this.botStatusService.broadcastBotStatus('bot-1', {
+          state: 'running',
+          pnl: Math.random() * 100 - 50,
+          openPositions: Math.floor(Math.random() * 5),
+        });
+      }
+    }, 10000);
+
+    console.log('🤖 Bot status monitoring configured (10s interval)');
   }
 
   /**
@@ -347,12 +422,40 @@ class JabbrServer {
         await this.wsServer.shutdown();
       }
 
-      // 4. Shutdown time synchronization services
+      // 4. Shutdown strategy monitor service
+      if (this.strategyMonitorService) {
+        console.log('📊 Shutting down strategy monitor service...');
+        this.strategyMonitorService.shutdown();
+      }
+
+      // 5. Shutdown time synchronization services
       console.log('🕐 Shutting down time synchronization...');
       await timeSyncService.stop();
       bybitTimeSync.stop();
 
-      // 5. Close database connections
+      // 6. Shutdown performance monitoring
+      console.log('📈 Shutting down performance monitoring...');
+      appMonitoringMiddleware.shutdown();
+
+      // 7. Shutdown database monitoring
+      if (this.databaseMonitorService) {
+        console.log('🗄️ Shutting down database monitoring...');
+        this.databaseMonitorService.shutdown();
+      }
+
+      // 8. Shutdown exchange monitoring
+      if (this.exchangeMonitorService) {
+        console.log('🔗 Shutting down exchange monitoring...');
+        this.exchangeMonitorService.shutdown();
+      }
+
+      // 9. Shutdown metrics collection
+      if (this.metricsCollectorService) {
+        console.log('📊 Shutting down metrics collection...');
+        this.metricsCollectorService.stop();
+      }
+
+      // 10. Close database connections
       console.log('📊 Closing database connections...');
       await shutdownDatabase();
 
@@ -363,6 +466,13 @@ class JabbrServer {
       console.error('❌ Error during shutdown:', error);
       process.exit(1);
     }
+  }
+
+  /**
+   * Get strategy monitor service
+   */
+  public getStrategyMonitorService(): StrategyMonitorService | null {
+    return this.strategyMonitorService;
   }
 
   /**
@@ -391,4 +501,4 @@ if (require.main === module) {
   });
 }
 
-export default server; 
+export default server;   

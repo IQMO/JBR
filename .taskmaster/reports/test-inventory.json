@@ -1,0 +1,114 @@
+{
+  "testInventory": {
+    "generatedAt": "2025-07-04T18:42:00.000Z",
+    "totalFiles": 58,
+    "summary": {
+      "rootLevel": 2,
+      "backend": 44,
+      "frontend": 2,
+      "shared": 2,
+      "byCategory": {
+        "unit": 16,
+        "integration": 12,
+        "e2e": 4,
+        "utility": 8,
+        "setup": 6,
+        "manual": 12
+      }
+    },
+    "files": {
+      "rootLevel": {
+        "setup": [
+          "tests/global-setup.ts",
+          "tests/global-teardown.ts"
+        ]
+      },
+      "backend": {
+        "unit": [
+          "packages/backend/tests/unit/bot-runtime-enhanced.test.ts",
+          "packages/backend/tests/unit/indicators/sma-indicator.test.ts",
+          "packages/backend/tests/unit/indicators/rsi-indicator.test.ts", 
+          "packages/backend/tests/unit/indicators/ema-indicator.test.ts",
+          "packages/backend/tests/unit/indicators/atr-indicator.test.ts",
+          "packages/backend/tests/unit/signals/sma/sma-signal-processor.test.ts",
+          "packages/backend/tests/unit/signals/sma/sma-crossover-strategy.test.ts",
+          "packages/backend/tests/unit/signals/sma/improved-sma-signal-processor.test.ts",
+          "packages/backend/tests/unit/JabbrLabs/signal-processing/signal-translator.test.ts",
+          "packages/backend/tests/unit/JabbrLabs/signal-processing/signal-processing-manager.test.ts"
+        ],
+        "integration": [
+          "packages/backend/tests/integration/strategy-execution-integration.test.ts",
+          "packages/backend/tests/integration/performance-monitoring.test.ts",
+          "packages/backend/tests/integration/metrics-collection.test.ts",
+          "packages/backend/tests/integration/exchange-monitoring.test.ts",
+          "packages/backend/tests/integration/database-monitoring.test.ts",
+          "packages/backend/tests/integration/strategies/strategy-factory.test.ts"
+        ],
+        "e2e": [
+          "packages/backend/tests/e2e/trading/trading-engine.test.ts",
+          "packages/backend/tests/e2e/trading/engine/standalone-engine.test.ts"
+        ],
+        "setup": [
+          "packages/backend/tests/setup.ts",
+          "packages/backend/tests/utils/test-helpers.ts",
+          "packages/backend/tests/fixtures/candles.ts"
+        ],
+        "manual": [
+          "packages/backend/tests/test-mainnet-safe.ts",
+          "packages/backend/tests/test-mainnet-small.ts",
+          "packages/backend/tests/test-market-data.ts",
+          "packages/backend/tests/test-sma-backtest.ts",
+          "packages/backend/tests/test-sma-signals.ts",
+          "packages/backend/tests/test-strategy-framework.ts",
+          "packages/backend/tests/test-live-order.ts",
+          "packages/backend/tests/test-futures-position-modify.ts",
+          "packages/backend/tests/test-futures-beast.ts",
+          "packages/backend/tests/test-engine-standalone.ts",
+          "packages/backend/tests/run-sma-test.ts",
+          "packages/backend/tests/verify-order.ts"
+        ],
+        "utility": [
+          "packages/backend/src/websocket/bybit-websocket.client.test.ts",
+          "packages/backend/tests/integration/trading/test-trading-engine.ts",
+          "packages/backend/tests/test-mainnet-safe.d.ts"
+        ]
+      },
+      "frontend": {
+        "setup": [
+          "packages/frontend/tests/setup.ts"
+        ],
+        "utility": [
+          "packages/frontend/tests/test-db-connection.ts"
+        ]
+      },
+      "shared": {
+        "unit": [
+          "packages/shared/tests/unit/validation.test.ts"
+        ],
+        "setup": [
+          "packages/shared/tests/setup.ts"
+        ]
+      }
+    },
+    "analysisNotes": {
+      "duplicates": [
+        "Multiple files appear duplicated in the search results - need to verify unique paths",
+        "Some integration tests appear twice in different search results"
+      ],
+      "missingAreas": [
+        "Frontend component tests are completely missing",
+        "Shared utility function tests are minimal",
+        "API endpoint tests are not clearly identified",
+        "Database model tests are missing",
+        "Authentication/JWT tests are missing",
+        "WebSocket integration tests are limited"
+      ],
+      "testingGaps": [
+        "No frontend React component testing found",
+        "Limited shared package testing",
+        "Missing API route testing",
+        "No authentication flow testing identified"
+      ]
+    }
+  }
+}

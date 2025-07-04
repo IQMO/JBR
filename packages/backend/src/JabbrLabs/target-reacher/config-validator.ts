@@ -14,7 +14,7 @@ export class ConfigValidator {
     this.warnings = [];
   }
 
-  addError(field: string, message: string, code: string = 'VALIDATION_ERROR'): void {
+  addError(field: string, message: string, code = 'VALIDATION_ERROR'): void {
     this.errors.push({ field, message, code });
   }
 
@@ -39,7 +39,7 @@ export class ConfigValidator {
   } = {}): boolean {
     const name = options.fieldName ?? field;
     const value = obj[field];
-    if (value === undefined) return true;
+    if (value === undefined) {return true;}
     if (typeof value !== 'number' || isNaN(value)) {
       this.addError(field, `${name} must be a number`, 'INVALID_TYPE');
       return false;
@@ -68,7 +68,7 @@ export class ConfigValidator {
   } = {}): boolean {
     const name = options.fieldName ?? field;
     const value = obj[field];
-    if (value === undefined) return true;
+    if (value === undefined) {return true;}
     if (typeof value !== 'string') {
       this.addError(field, `${name} must be a string`, 'INVALID_TYPE');
       return false;
@@ -95,7 +95,7 @@ export class ConfigValidator {
   object(obj: Record<string, unknown>, field: string, validator: (value: unknown) => boolean, fieldName?: string): boolean {
     const name = fieldName ?? field;
     const value = obj[field];
-    if (value === undefined) return true;
+    if (value === undefined) {return true;}
     if (typeof value !== 'object' || value === null || Array.isArray(value)) {
       this.addError(field, `${name} must be an object`, 'INVALID_TYPE');
       return false;
@@ -111,7 +111,7 @@ export class ConfigValidator {
   } = {}): boolean {
     const name = options.fieldName ?? field;
     const value = obj[field];
-    if (value === undefined) return true;
+    if (value === undefined) {return true;}
     if (!Array.isArray(value)) {
       this.addError(field, `${name} must be an array`, 'INVALID_TYPE');
       return false;
@@ -126,7 +126,7 @@ export class ConfigValidator {
     }
     if (options.itemValidator) {
       for (let i = 0; i < value.length; i++) {
-        if (!options.itemValidator(value[i], i)) {
+        if (!options.itemValidator(value.at(i), i)) {
           return false;
         }
       }

@@ -1,0 +1,925 @@
+{
+  "timestamp": "2025-07-03T22:27:51.050Z",
+  "summary": {
+    "totalTasks": 153,
+    "validTasks": 99,
+    "invalidTasks": 54,
+    "warnings": 1,
+    "errors": 63,
+    "autoFixed": 0
+  },
+  "issues": [
+    {
+      "taskId": "1.1",
+      "taskTitle": "Monorepo Setup → Initialize Monorepo Workspace",
+      "ruleId": "completion-requirements",
+      "ruleName": "Completion Requirements Check",
+      "severity": "error",
+      "message": "Completed task 1 has no test strategy defined",
+      "suggestions": [
+        "Define test strategy",
+        "Add verification steps",
+        "Document quality assurance process"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "1.2",
+      "taskTitle": "Monorepo Setup → Create Package Directories",
+      "ruleId": "dependency-completion",
+      "ruleName": "Dependency Completion Check",
+      "severity": "error",
+      "message": "Task 2 is marked as done but has incomplete dependencies: 1",
+      "suggestions": [
+        "Complete dependency tasks first",
+        "Remove invalid dependencies",
+        "Change task status to in-progress or pending"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "1.2",
+      "taskTitle": "Monorepo Setup → Create Package Directories",
+      "ruleId": "completion-requirements",
+      "ruleName": "Completion Requirements Check",
+      "severity": "error",
+      "message": "Completed task 2 has no test strategy defined",
+      "suggestions": [
+        "Define test strategy",
+        "Add verification steps",
+        "Document quality assurance process"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "1.3",
+      "taskTitle": "Monorepo Setup → Configure TypeScript in Packages",
+      "ruleId": "dependency-completion",
+      "ruleName": "Dependency Completion Check",
+      "severity": "error",
+      "message": "Task 3 is marked as done but has incomplete dependencies: 2",
+      "suggestions": [
+        "Complete dependency tasks first",
+        "Remove invalid dependencies",
+        "Change task status to in-progress or pending"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "1.3",
+      "taskTitle": "Monorepo Setup → Configure TypeScript in Packages",
+      "ruleId": "completion-requirements",
+      "ruleName": "Completion Requirements Check",
+      "severity": "error",
+      "message": "Completed task 3 has no test strategy defined",
+      "suggestions": [
+        "Define test strategy",
+        "Add verification steps",
+        "Document quality assurance process"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "1.4",
+      "taskTitle": "Monorepo Setup → Add Build and Test Scripts",
+      "ruleId": "dependency-completion",
+      "ruleName": "Dependency Completion Check",
+      "severity": "error",
+      "message": "Task 4 is marked as done but has incomplete dependencies: 3",
+      "suggestions": [
+        "Complete dependency tasks first",
+        "Remove invalid dependencies",
+        "Change task status to in-progress or pending"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "1.4",
+      "taskTitle": "Monorepo Setup → Add Build and Test Scripts",
+      "ruleId": "completion-requirements",
+      "ruleName": "Completion Requirements Check",
+      "severity": "error",
+      "message": "Completed task 4 has no test strategy defined",
+      "suggestions": [
+        "Define test strategy",
+        "Add verification steps",
+        "Document quality assurance process"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "2",
+      "taskTitle": "Shared Types & Validation",
+      "ruleId": "dependency-completion",
+      "ruleName": "Dependency Completion Check",
+      "severity": "error",
+      "message": "Task 2 is marked as done but has incomplete dependencies: 1",
+      "suggestions": [
+        "Complete dependency tasks first",
+        "Remove invalid dependencies",
+        "Change task status to in-progress or pending"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "2.1",
+      "taskTitle": "Shared Types & Validation → Define Data Types",
+      "ruleId": "completion-requirements",
+      "ruleName": "Completion Requirements Check",
+      "severity": "error",
+      "message": "Completed task 1 has no test strategy defined",
+      "suggestions": [
+        "Define test strategy",
+        "Add verification steps",
+        "Document quality assurance process"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "2.2",
+      "taskTitle": "Shared Types & Validation → Create Zod Schemas",
+      "ruleId": "dependency-completion",
+      "ruleName": "Dependency Completion Check",
+      "severity": "error",
+      "message": "Task 2 is marked as done but has incomplete dependencies: 1",
+      "suggestions": [
+        "Complete dependency tasks first",
+        "Remove invalid dependencies",
+        "Change task status to in-progress or pending"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "2.2",
+      "taskTitle": "Shared Types & Validation → Create Zod Schemas",
+      "ruleId": "completion-requirements",
+      "ruleName": "Completion Requirements Check",
+      "severity": "error",
+      "message": "Completed task 2 has no test strategy defined",
+      "suggestions": [
+        "Define test strategy",
+        "Add verification steps",
+        "Document quality assurance process"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "2.3",
+      "taskTitle": "Shared Types & Validation → Export Types and Schemas",
+      "ruleId": "dependency-completion",
+      "ruleName": "Dependency Completion Check",
+      "severity": "error",
+      "message": "Task 3 is marked as done but has incomplete dependencies: 2",
+      "suggestions": [
+        "Complete dependency tasks first",
+        "Remove invalid dependencies",
+        "Change task status to in-progress or pending"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "2.3",
+      "taskTitle": "Shared Types & Validation → Export Types and Schemas",
+      "ruleId": "completion-requirements",
+      "ruleName": "Completion Requirements Check",
+      "severity": "error",
+      "message": "Completed task 3 has no test strategy defined",
+      "suggestions": [
+        "Define test strategy",
+        "Add verification steps",
+        "Document quality assurance process"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "3",
+      "taskTitle": "Authentication System",
+      "ruleId": "dependency-completion",
+      "ruleName": "Dependency Completion Check",
+      "severity": "error",
+      "message": "Task 3 is marked as done but has incomplete dependencies: 1",
+      "suggestions": [
+        "Complete dependency tasks first",
+        "Remove invalid dependencies",
+        "Change task status to in-progress or pending"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "4",
+      "taskTitle": "WebSocket Server Setup",
+      "ruleId": "dependency-completion",
+      "ruleName": "Dependency Completion Check",
+      "severity": "error",
+      "message": "Task 4 is marked as done but has incomplete dependencies: 1",
+      "suggestions": [
+        "Complete dependency tasks first",
+        "Remove invalid dependencies",
+        "Change task status to in-progress or pending"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "5",
+      "taskTitle": "WebSocket Client Setup",
+      "ruleId": "dependency-completion",
+      "ruleName": "Dependency Completion Check",
+      "severity": "error",
+      "message": "Task 5 is marked as done but has incomplete dependencies: 4, 2",
+      "suggestions": [
+        "Complete dependency tasks first",
+        "Remove invalid dependencies",
+        "Change task status to in-progress or pending"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "6",
+      "taskTitle": "Time Synchronization",
+      "ruleId": "dependency-completion",
+      "ruleName": "Dependency Completion Check",
+      "severity": "error",
+      "message": "Task 6 is marked as done but has incomplete dependencies: 4, 5",
+      "suggestions": [
+        "Complete dependency tasks first",
+        "Remove invalid dependencies",
+        "Change task status to in-progress or pending"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "7",
+      "taskTitle": "Basic Logging",
+      "ruleId": "dependency-completion",
+      "ruleName": "Dependency Completion Check",
+      "severity": "error",
+      "message": "Task 7 is marked as done but has incomplete dependencies: 1",
+      "suggestions": [
+        "Complete dependency tasks first",
+        "Remove invalid dependencies",
+        "Change task status to in-progress or pending"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "8",
+      "taskTitle": "PostgreSQL Setup",
+      "ruleId": "dependency-completion",
+      "ruleName": "Dependency Completion Check",
+      "severity": "error",
+      "message": "Task 8 is marked as done but has incomplete dependencies: 3",
+      "suggestions": [
+        "Complete dependency tasks first",
+        "Remove invalid dependencies",
+        "Change task status to in-progress or pending"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "11",
+      "taskTitle": "Order Execution",
+      "ruleId": "dependency-completion",
+      "ruleName": "Dependency Completion Check",
+      "severity": "error",
+      "message": "Task 11 is marked as done but has incomplete dependencies: 10",
+      "suggestions": [
+        "Complete dependency tasks first",
+        "Remove invalid dependencies",
+        "Change task status to in-progress or pending"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "12",
+      "taskTitle": "Position Tracking",
+      "ruleId": "dependency-completion",
+      "ruleName": "Dependency Completion Check",
+      "severity": "error",
+      "message": "Task 12 is marked as done but has incomplete dependencies: 11",
+      "suggestions": [
+        "Complete dependency tasks first",
+        "Remove invalid dependencies",
+        "Change task status to in-progress or pending"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "13",
+      "taskTitle": "Risk Management Framework",
+      "ruleId": "dependency-completion",
+      "ruleName": "Dependency Completion Check",
+      "severity": "error",
+      "message": "Task 13 is marked as done but has incomplete dependencies: 12",
+      "suggestions": [
+        "Complete dependency tasks first",
+        "Remove invalid dependencies",
+        "Change task status to in-progress or pending"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "14",
+      "taskTitle": "Trading Engine Core",
+      "ruleId": "dependency-completion",
+      "ruleName": "Dependency Completion Check",
+      "severity": "error",
+      "message": "Task 14 is marked as done but has incomplete dependencies: 10, 11, 12, 13",
+      "suggestions": [
+        "Complete dependency tasks first",
+        "Remove invalid dependencies",
+        "Change task status to in-progress or pending"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "15",
+      "taskTitle": "Bot Creation & Configuration",
+      "ruleId": "dependency-completion",
+      "ruleName": "Dependency Completion Check",
+      "severity": "error",
+      "message": "Task 15 is marked as done but has incomplete dependencies: 14",
+      "suggestions": [
+        "Complete dependency tasks first",
+        "Remove invalid dependencies",
+        "Change task status to in-progress or pending"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "15.1",
+      "taskTitle": "Bot Creation & Configuration → Design and Implement Bot Creation UI",
+      "ruleId": "completion-requirements",
+      "ruleName": "Completion Requirements Check",
+      "severity": "error",
+      "message": "Completed task 1 has no test strategy defined",
+      "suggestions": [
+        "Define test strategy",
+        "Add verification steps",
+        "Document quality assurance process"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "15.2",
+      "taskTitle": "Bot Creation & Configuration → Implement Bot Configuration Logic",
+      "ruleId": "dependency-completion",
+      "ruleName": "Dependency Completion Check",
+      "severity": "error",
+      "message": "Task 2 is marked as done but has incomplete dependencies: 1",
+      "suggestions": [
+        "Complete dependency tasks first",
+        "Remove invalid dependencies",
+        "Change task status to in-progress or pending"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "15.2",
+      "taskTitle": "Bot Creation & Configuration → Implement Bot Configuration Logic",
+      "ruleId": "completion-requirements",
+      "ruleName": "Completion Requirements Check",
+      "severity": "error",
+      "message": "Completed task 2 has no test strategy defined",
+      "suggestions": [
+        "Define test strategy",
+        "Add verification steps",
+        "Document quality assurance process"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "15.3",
+      "taskTitle": "Bot Creation & Configuration → Database Storage for Bot Configurations",
+      "ruleId": "dependency-completion",
+      "ruleName": "Dependency Completion Check",
+      "severity": "error",
+      "message": "Task 3 is marked as done but has incomplete dependencies: 2",
+      "suggestions": [
+        "Complete dependency tasks first",
+        "Remove invalid dependencies",
+        "Change task status to in-progress or pending"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "15.3",
+      "taskTitle": "Bot Creation & Configuration → Database Storage for Bot Configurations",
+      "ruleId": "completion-requirements",
+      "ruleName": "Completion Requirements Check",
+      "severity": "error",
+      "message": "Completed task 3 has no test strategy defined",
+      "suggestions": [
+        "Define test strategy",
+        "Add verification steps",
+        "Document quality assurance process"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "15.4",
+      "taskTitle": "Bot Creation & Configuration → Develop Bot Management UI",
+      "ruleId": "dependency-completion",
+      "ruleName": "Dependency Completion Check",
+      "severity": "error",
+      "message": "Task 4 is marked as done but has incomplete dependencies: 3",
+      "suggestions": [
+        "Complete dependency tasks first",
+        "Remove invalid dependencies",
+        "Change task status to in-progress or pending"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "15.4",
+      "taskTitle": "Bot Creation & Configuration → Develop Bot Management UI",
+      "ruleId": "completion-requirements",
+      "ruleName": "Completion Requirements Check",
+      "severity": "error",
+      "message": "Completed task 4 has no test strategy defined",
+      "suggestions": [
+        "Define test strategy",
+        "Add verification steps",
+        "Document quality assurance process"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "15.8",
+      "taskTitle": "Bot Creation & Configuration → Implement Bot CRUD Operations in Backend",
+      "ruleId": "dependency-completion",
+      "ruleName": "Dependency Completion Check",
+      "severity": "error",
+      "message": "Task 8 is marked as done but has incomplete dependencies: 3",
+      "suggestions": [
+        "Complete dependency tasks first",
+        "Remove invalid dependencies",
+        "Change task status to in-progress or pending"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "15.9",
+      "taskTitle": "Bot Creation & Configuration → Implement Frontend UI for Bot Creation and Configuration",
+      "ruleId": "dependency-completion",
+      "ruleName": "Dependency Completion Check",
+      "severity": "error",
+      "message": "Task 9 is marked as done but has incomplete dependencies: 8",
+      "suggestions": [
+        "Complete dependency tasks first",
+        "Remove invalid dependencies",
+        "Change task status to in-progress or pending"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "16",
+      "taskTitle": "Bot Lifecycle Management",
+      "ruleId": "dependency-completion",
+      "ruleName": "Dependency Completion Check",
+      "severity": "error",
+      "message": "Task 16 is marked as done but has incomplete dependencies: 15",
+      "suggestions": [
+        "Complete dependency tasks first",
+        "Remove invalid dependencies",
+        "Change task status to in-progress or pending"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "17",
+      "taskTitle": "Strategy Framework",
+      "ruleId": "dependency-completion",
+      "ruleName": "Dependency Completion Check",
+      "severity": "error",
+      "message": "Task 17 is marked as done but has incomplete dependencies: 14",
+      "suggestions": [
+        "Complete dependency tasks first",
+        "Remove invalid dependencies",
+        "Change task status to in-progress or pending"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "17.5",
+      "taskTitle": "Strategy Framework → Finalize Strategy Framework Implementation",
+      "ruleId": "dependency-completion",
+      "ruleName": "Dependency Completion Check",
+      "severity": "error",
+      "message": "Task 5 is marked as done but has incomplete dependencies: 1, 2, 3, 4",
+      "suggestions": [
+        "Complete dependency tasks first",
+        "Remove invalid dependencies",
+        "Change task status to in-progress or pending"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "17.1",
+      "taskTitle": "Strategy Framework → Define Trading Strategy Interface",
+      "ruleId": "completion-requirements",
+      "ruleName": "Completion Requirements Check",
+      "severity": "error",
+      "message": "Completed task 1 has no test strategy defined",
+      "suggestions": [
+        "Define test strategy",
+        "Add verification steps",
+        "Document quality assurance process"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "17.2",
+      "taskTitle": "Strategy Framework → Implement Custom Strategy Plugin Mechanism",
+      "ruleId": "dependency-completion",
+      "ruleName": "Dependency Completion Check",
+      "severity": "error",
+      "message": "Task 2 is marked as done but has incomplete dependencies: 1",
+      "suggestions": [
+        "Complete dependency tasks first",
+        "Remove invalid dependencies",
+        "Change task status to in-progress or pending"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "17.2",
+      "taskTitle": "Strategy Framework → Implement Custom Strategy Plugin Mechanism",
+      "ruleId": "completion-requirements",
+      "ruleName": "Completion Requirements Check",
+      "severity": "error",
+      "message": "Completed task 2 has no test strategy defined",
+      "suggestions": [
+        "Define test strategy",
+        "Add verification steps",
+        "Document quality assurance process"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "17.3",
+      "taskTitle": "Strategy Framework → Implement Basic Signal Processing (SMA)",
+      "ruleId": "dependency-completion",
+      "ruleName": "Dependency Completion Check",
+      "severity": "error",
+      "message": "Task 3 is marked as done but has incomplete dependencies: 1",
+      "suggestions": [
+        "Complete dependency tasks first",
+        "Remove invalid dependencies",
+        "Change task status to in-progress or pending"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "17.3",
+      "taskTitle": "Strategy Framework → Implement Basic Signal Processing (SMA)",
+      "ruleId": "completion-requirements",
+      "ruleName": "Completion Requirements Check",
+      "severity": "error",
+      "message": "Completed task 3 has no test strategy defined",
+      "suggestions": [
+        "Define test strategy",
+        "Add verification steps",
+        "Document quality assurance process"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "17.4",
+      "taskTitle": "Strategy Framework → Test the Strategy Framework",
+      "ruleId": "dependency-completion",
+      "ruleName": "Dependency Completion Check",
+      "severity": "error",
+      "message": "Task 4 is marked as done but has incomplete dependencies: 2, 3",
+      "suggestions": [
+        "Complete dependency tasks first",
+        "Remove invalid dependencies",
+        "Change task status to in-progress or pending"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "17.4",
+      "taskTitle": "Strategy Framework → Test the Strategy Framework",
+      "ruleId": "completion-requirements",
+      "ruleName": "Completion Requirements Check",
+      "severity": "error",
+      "message": "Completed task 4 has no test strategy defined",
+      "suggestions": [
+        "Define test strategy",
+        "Add verification steps",
+        "Document quality assurance process"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "18",
+      "taskTitle": "Bot Status Monitoring - Frontend Integration",
+      "ruleId": "dependency-completion",
+      "ruleName": "Dependency Completion Check",
+      "severity": "error",
+      "message": "Task 18 is marked as done but has incomplete dependencies: 16, 17, 41",
+      "suggestions": [
+        "Complete dependency tasks first",
+        "Remove invalid dependencies",
+        "Change task status to in-progress or pending"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "20",
+      "taskTitle": "Frontend Setup",
+      "ruleId": "dependency-completion",
+      "ruleName": "Dependency Completion Check",
+      "severity": "error",
+      "message": "Task 20 is marked as done but has incomplete dependencies: 5, 18",
+      "suggestions": [
+        "Complete dependency tasks first",
+        "Remove invalid dependencies",
+        "Change task status to in-progress or pending"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "21",
+      "taskTitle": "Real-time Dashboard",
+      "ruleId": "dependency-completion",
+      "ruleName": "Dependency Completion Check",
+      "severity": "error",
+      "message": "Task 21 is marked as done but has incomplete dependencies: 5",
+      "suggestions": [
+        "Complete dependency tasks first",
+        "Remove invalid dependencies",
+        "Change task status to in-progress or pending"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "22",
+      "taskTitle": "Bot Management Interface - Frontend Implementation",
+      "ruleId": "dependency-completion",
+      "ruleName": "Dependency Completion Check",
+      "severity": "error",
+      "message": "Task 22 is marked as done but has incomplete dependencies: 15",
+      "suggestions": [
+        "Complete dependency tasks first",
+        "Remove invalid dependencies",
+        "Change task status to in-progress or pending"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "26",
+      "taskTitle": "Implement Advanced Order Management & TP/SL Automation",
+      "ruleId": "dependency-completion",
+      "ruleName": "Dependency Completion Check",
+      "severity": "error",
+      "message": "Task 26 is marked as done but has incomplete dependencies: 13, 14, 12",
+      "suggestions": [
+        "Complete dependency tasks first",
+        "Remove invalid dependencies",
+        "Change task status to in-progress or pending"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "26.4",
+      "taskTitle": "Implement Advanced Order Management & TP/SL Automation → Implement Position Monitoring and TP/SL Update Logic",
+      "ruleId": "dependency-completion",
+      "ruleName": "Dependency Completion Check",
+      "severity": "error",
+      "message": "Task 4 is marked as done but has incomplete dependencies: 2",
+      "suggestions": [
+        "Complete dependency tasks first",
+        "Remove invalid dependencies",
+        "Change task status to in-progress or pending"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "26.5",
+      "taskTitle": "Implement Advanced Order Management & TP/SL Automation → Implement Order Lifecycle Management",
+      "ruleId": "dependency-completion",
+      "ruleName": "Dependency Completion Check",
+      "severity": "error",
+      "message": "Task 5 is marked as done but has incomplete dependencies: 1, 2, 3",
+      "suggestions": [
+        "Complete dependency tasks first",
+        "Remove invalid dependencies",
+        "Change task status to in-progress or pending"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "27",
+      "taskTitle": "Validate Production Environment Configuration",
+      "ruleId": "dependency-completion",
+      "ruleName": "Dependency Completion Check",
+      "severity": "error",
+      "message": "Task 27 is marked as done but has incomplete dependencies: 5",
+      "suggestions": [
+        "Complete dependency tasks first",
+        "Remove invalid dependencies",
+        "Change task status to in-progress or pending"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "28",
+      "taskTitle": "Create Bot Management Dashboard UI",
+      "ruleId": "dependency-completion",
+      "ruleName": "Dependency Completion Check",
+      "severity": "error",
+      "message": "Task 28 is marked as done but has incomplete dependencies: 3, 5, 15, 16, 20, 21",
+      "suggestions": [
+        "Complete dependency tasks first",
+        "Remove invalid dependencies",
+        "Change task status to in-progress or pending"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "29",
+      "taskTitle": "Integrate Aether Signal Generator with Bot Trading System",
+      "ruleId": "dependency-completion",
+      "ruleName": "Dependency Completion Check",
+      "severity": "error",
+      "message": "Task 29 is marked as done but has incomplete dependencies: 15, 17, 12",
+      "suggestions": [
+        "Complete dependency tasks first",
+        "Remove invalid dependencies",
+        "Change task status to in-progress or pending"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "30",
+      "taskTitle": "Integrate Target Reacher Strategy with Bot Trading System",
+      "ruleId": "dependency-completion",
+      "ruleName": "Dependency Completion Check",
+      "severity": "error",
+      "message": "Task 30 is marked as done but has incomplete dependencies: 15, 17, 12",
+      "suggestions": [
+        "Complete dependency tasks first",
+        "Remove invalid dependencies",
+        "Change task status to in-progress or pending"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "33",
+      "taskTitle": "Create Unified Indicators Library Documentation and Standardization",
+      "ruleId": "dependency-completion",
+      "ruleName": "Dependency Completion Check",
+      "severity": "error",
+      "message": "Task 33 is marked as done but has incomplete dependencies: 2, 10, 14",
+      "suggestions": [
+        "Complete dependency tasks first",
+        "Remove invalid dependencies",
+        "Change task status to in-progress or pending"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "36",
+      "taskTitle": "Implement Production-Ready Bot Lifecycle Management System",
+      "ruleId": "dependency-completion",
+      "ruleName": "Dependency Completion Check",
+      "severity": "error",
+      "message": "Task 36 is marked as done but has incomplete dependencies: 3, 10, 14, 15, 28, 46",
+      "suggestions": [
+        "Complete dependency tasks first",
+        "Remove invalid dependencies",
+        "Change task status to in-progress or pending"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "36.9",
+      "taskTitle": "Implement Production-Ready Bot Lifecycle Management System → Move Monitoring Components to Task #46",
+      "ruleId": "dependency-completion",
+      "ruleName": "Dependency Completion Check",
+      "severity": "error",
+      "message": "Task 9 is marked as done but has incomplete dependencies: 5",
+      "suggestions": [
+        "Complete dependency tasks first",
+        "Remove invalid dependencies",
+        "Change task status to in-progress or pending"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "38",
+      "taskTitle": "Comprehensive System Health Check and Production Readiness Audit",
+      "ruleId": "priority-consistency",
+      "ruleName": "Priority Consistency Check",
+      "severity": "info",
+      "message": "Critical priority task 38 has no dependent tasks",
+      "suggestions": [
+        "Review priority classification",
+        "Identify dependent tasks",
+        "Document critical path importance"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "39",
+      "taskTitle": "Fix Critical TypeScript Build Errors",
+      "ruleId": "dependency-completion",
+      "ruleName": "Dependency Completion Check",
+      "severity": "error",
+      "message": "Task 39 is marked as done but has incomplete dependencies: 35, 38",
+      "suggestions": [
+        "Complete dependency tasks first",
+        "Remove invalid dependencies",
+        "Change task status to in-progress or pending"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "40",
+      "taskTitle": "Standardize and Organize Test Files",
+      "ruleId": "dependency-completion",
+      "ruleName": "Dependency Completion Check",
+      "severity": "error",
+      "message": "Task 40 is marked as done but has incomplete dependencies: 17",
+      "suggestions": [
+        "Complete dependency tasks first",
+        "Remove invalid dependencies",
+        "Change task status to in-progress or pending"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "41",
+      "taskTitle": "Comprehensive Code Quality Audit",
+      "ruleId": "parent-child-sync",
+      "ruleName": "Parent-Child Status Synchronization",
+      "severity": "warning",
+      "message": "Task 41 has all subtasks pending but parent status is in-progress",
+      "suggestions": [
+        "Update parent status to pending"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "42",
+      "taskTitle": "Standardize and Organize Testing Structure",
+      "ruleId": "dependency-completion",
+      "ruleName": "Dependency Completion Check",
+      "severity": "error",
+      "message": "Task 42 is marked as done but has incomplete dependencies: 2, 35, 39, 40",
+      "suggestions": [
+        "Complete dependency tasks first",
+        "Remove invalid dependencies",
+        "Change task status to in-progress or pending"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "43",
+      "taskTitle": "Unify and Correct Environment Configuration",
+      "ruleId": "dependency-completion",
+      "ruleName": "Dependency Completion Check",
+      "severity": "error",
+      "message": "Task 43 is marked as done but has incomplete dependencies: 39, 27, 4, 3",
+      "suggestions": [
+        "Complete dependency tasks first",
+        "Remove invalid dependencies",
+        "Change task status to in-progress or pending"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "44",
+      "taskTitle": "Clean Up Legacy Files and Update Documentation",
+      "ruleId": "dependency-completion",
+      "ruleName": "Dependency Completion Check",
+      "severity": "error",
+      "message": "Task 44 is marked as done but has incomplete dependencies: 43, 42, 41",
+      "suggestions": [
+        "Complete dependency tasks first",
+        "Remove invalid dependencies",
+        "Change task status to in-progress or pending"
+      ],
+      "autoFixed": false
+    },
+    {
+      "taskId": "45",
+      "taskTitle": "Optimize Task Management and Documentation System",
+      "ruleId": "dependency-completion",
+      "ruleName": "Dependency Completion Check",
+      "severity": "error",
+      "message": "Task 45 is marked as done but has incomplete dependencies: 38, 41, 34, 36, 33, 37",
+      "suggestions": [
+        "Complete dependency tasks first",
+        "Remove invalid dependencies",
+        "Change task status to in-progress or pending"
+      ],
+      "autoFixed": false
+    }
+  ],
+  "recommendations": [
+    "Address 63 critical errors immediately",
+    "High error rate detected - consider team training on task management"
+  ]
+}

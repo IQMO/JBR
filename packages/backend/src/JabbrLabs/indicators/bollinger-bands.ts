@@ -42,22 +42,27 @@ export function calculateBollingerBands(prices: number[], period = 20, multiplie
 
   // Calculate Bollinger Bands for each point
   for (let i = period - 1; i < prices.length; i++) {
-    const windowPrices = prices.slice(i - period + 1, i + 1)
-    const stdDev = calculateStandardDeviation(windowPrices)
-
-    const upperBand = result.middle[i - period + 1] + multiplier * stdDev
-    const lowerBand = result.middle[i - period + 1] - multiplier * stdDev
-
-    result.upper.push(upperBand)
-    result.lower.push(lowerBand)
-
+    const windowPrices = prices.slice(i - period + 1, i + 1);
+    const stdDev = calculateStandardDeviation(windowPrices);
+    const middleIdx = i - period + 1;
+    const middle = result.middle.at(middleIdx);
+    if (middle === undefined) {
+      throw new Error(`Missing middle band value at index ${middleIdx}`);
+    }
+    const upperBand = middle + multiplier * stdDev;
+    const lowerBand = middle - multiplier * stdDev;
+    result.upper.push(upperBand);
+    result.lower.push(lowerBand);
     // Calculate bandwidth: (upper - lower) / middle
-    const bandwidth = (upperBand - lowerBand) / result.middle[i - period + 1]
-    result.bandwidth.push(bandwidth)
-
+    const bandwidth = (upperBand - lowerBand) / middle;
+    result.bandwidth.push(bandwidth);
     // Calculate %B: (price - lower) / (upper - lower)
-    const percentB = (prices[i] - lowerBand) / (upperBand - lowerBand)
-    result.percentB.push(percentB)
+    const price = prices.at(i);
+    if (price === undefined) {
+      throw new Error(`Missing price at index ${i}`);
+    }
+    const percentB = (price - lowerBand) / (upperBand - lowerBand);
+    result.percentB.push(percentB);
   }
 
   return result
@@ -78,15 +83,27 @@ export function getBollingerBandsSignals(prices: number[], bollingerBands: Bolli
   const alignedPrices = prices.slice(prices.length - upper.length)
 
   for (let i = 1; i < alignedPrices.length; i++) {
-    if (alignedPrices[i] < lower[i] && alignedPrices[i - 1] >= lower[i - 1]) {
+    const price = alignedPrices.at(i);
+    const pricePrev = alignedPrices.at(i - 1);
+    const l = lower.at(i);
+    const lPrev = lower.at(i - 1);
+    const u = upper.at(i);
+    const uPrev = upper.at(i - 1);
+    if (
+      price !== undefined && l !== undefined && pricePrev !== undefined && lPrev !== undefined &&
+      price < l && pricePrev >= lPrev
+    ) {
       // Price crosses below lower band - potential buy signal
-      signals.push(1)
-    } else if (alignedPrices[i] > upper[i] && alignedPrices[i - 1] <= upper[i - 1]) {
+      signals.push(1);
+    } else if (
+      price !== undefined && u !== undefined && pricePrev !== undefined && uPrev !== undefined &&
+      price > u && pricePrev <= uPrev
+    ) {
       // Price crosses above upper band - potential sell signal
-      signals.push(-1)
+      signals.push(-1);
     } else {
       // No signal
-      signals.push(0)
+      signals.push(0);
     }
   }
 

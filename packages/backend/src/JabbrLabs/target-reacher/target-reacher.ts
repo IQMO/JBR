@@ -4,6 +4,8 @@
  * Redesigned Target Reacher strategy using the new modular system
  */
 
+import type { ConfigValidator } from './config-validator';
+import { validateConfig } from './config-validator'
 import type { 
   IStrategy, 
   StrategyConfig, 
@@ -13,7 +15,6 @@ import type {
   ConfigValidationResult,
   Candle
 } from './interfaces'
-import { validateConfig, ConfigValidator } from './config-validator'
 
 export class ModularTargetReacherStrategy implements IStrategy {
   readonly name = 'target-reacher'

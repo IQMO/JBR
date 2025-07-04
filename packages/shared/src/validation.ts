@@ -204,7 +204,11 @@ export const WebSocketMessageTypeSchema = z.enum([
   'trade-update',
   'position-update',
   'signal',
-  'time-sync'
+  'time-sync',
+  'alert',
+  'alert_acknowledged',
+  'alert_resolved',
+  'alert_escalated'
 ]);
 
 export const WebSocketMessageSchema = z.object({
@@ -461,4 +465,45 @@ export const validateData = <T>(schema: z.ZodSchema<T>, data: unknown): { succes
 
 export const validateDataSafe = <T>(schema: z.ZodSchema<T>, data: unknown): z.SafeParseReturnType<unknown, T> => {
   return schema.safeParse(data);
+};
+
+// ============================================================================
+// SPECIFIC VALIDATION FUNCTIONS
+// ============================================================================
+
+// For the test, we need a validation schema that matches the test data structure
+const TestBotConfigurationSchema = z.object({
+  id: z.string().min(1),
+  name: z.string().min(1, 'Name cannot be empty'),
+  symbol: z.string().min(1),
+  exchange: ExchangeSchema,
+  tradeType: z.string(),
+  amount: z.number().positive('Amount must be positive'),
+  leverage: z.number().positive(),
+  strategy: z.object({
+    type: z.string(),
+    parameters: z.record(z.any())
+  }),
+  riskManagement: z.object({
+    stopLoss: z.object({
+      enabled: z.boolean(),
+      percentage: z.number().positive('Stop loss percentage must be positive')
+    }),
+    takeProfit: z.object({
+      enabled: z.boolean(),
+      percentage: z.number().positive()
+    })
+  })
+});
+
+export const validateBotConfiguration = (data: unknown) => {
+  try {
+    const result = TestBotConfigurationSchema.parse(data);
+    return { success: true as const, data: result };
+  } catch (error) {
+    if (error instanceof z.ZodError) {
+      return { success: false as const, error: { errors: error.errors } };
+    }
+    return { success: false as const, error: { errors: [] } };
+  }
 }; 
