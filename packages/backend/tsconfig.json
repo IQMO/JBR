@@ -31,16 +31,7 @@
     "resolveJsonModule": true,
     "typeRoots": ["../../node_modules/@types", "./src/types"]
   },
-  "references": [
-    { "path": "../shared" }
-  ],
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "**/*.test.ts",
-    "**/*.spec.ts"
-  ]
-} 
+  "references": [{ "path": "../shared" }],
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist", "**/*.test.ts", "**/*.spec.ts"]
+}

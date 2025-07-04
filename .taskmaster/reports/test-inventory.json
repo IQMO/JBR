@@ -18,16 +18,13 @@
     },
     "files": {
       "rootLevel": {
-        "setup": [
-          "tests/global-setup.ts",
-          "tests/global-teardown.ts"
-        ]
+        "setup": ["tests/global-setup.ts", "tests/global-teardown.ts"]
       },
       "backend": {
         "unit": [
           "packages/backend/tests/unit/bot-runtime-enhanced.test.ts",
           "packages/backend/tests/unit/indicators/sma-indicator.test.ts",
-          "packages/backend/tests/unit/indicators/rsi-indicator.test.ts", 
+          "packages/backend/tests/unit/indicators/rsi-indicator.test.ts",
           "packages/backend/tests/unit/indicators/ema-indicator.test.ts",
           "packages/backend/tests/unit/indicators/atr-indicator.test.ts",
           "packages/backend/tests/unit/signals/sma/sma-signal-processor.test.ts",
@@ -74,20 +71,12 @@
         ]
       },
       "frontend": {
-        "setup": [
-          "packages/frontend/tests/setup.ts"
-        ],
-        "utility": [
-          "packages/frontend/tests/test-db-connection.ts"
-        ]
+        "setup": ["packages/frontend/tests/setup.ts"],
+        "utility": ["packages/frontend/tests/test-db-connection.ts"]
       },
       "shared": {
-        "unit": [
-          "packages/shared/tests/unit/validation.test.ts"
-        ],
-        "setup": [
-          "packages/shared/tests/setup.ts"
-        ]
+        "unit": ["packages/shared/tests/unit/validation.test.ts"],
+        "setup": ["packages/shared/tests/setup.ts"]
       }
     },
     "analysisNotes": {

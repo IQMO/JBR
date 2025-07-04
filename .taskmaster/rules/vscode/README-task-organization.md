@@ -1,10 +1,14 @@
 # Task Organization Rule
 
-This rule ensures that task tracking and reporting follows consistent standards across the entire project.
+This rule ensures that task tracking and reporting follows consistent standards
+across the entire project.
 
 ## Purpose
 
-As the project evolves, task tracking can become inconsistent with varying statuses, priorities, and reporting. This rule provides automated checks to maintain task organization standards and ensure accurate project status reporting.
+As the project evolves, task tracking can become inconsistent with varying
+statuses, priorities, and reporting. This rule provides automated checks to
+maintain task organization standards and ensure accurate project status
+reporting.
 
 ## What This Rule Enforces
 
@@ -63,5 +67,6 @@ When inconsistencies are found:
 ## Related Resources
 
 - `docs/TASK_STATUS_REPORT.md`: Comprehensive task tracking and status
-- `docs/DOCUMENTATION_MAINTENANCE.md`: Guide for maintaining documentation consistency
+- `docs/DOCUMENTATION_MAINTENANCE.md`: Guide for maintaining documentation
+  consistency
 - `.taskmaster/tasks/tasks.json`: Master task data

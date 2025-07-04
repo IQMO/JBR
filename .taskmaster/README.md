@@ -2,30 +2,38 @@
 
 ## Overview
 
-The Enhanced Progress Tracking System provides comprehensive project management capabilities with granular metrics, interactive dashboards, and seamless integration with external tools.
+The Enhanced Progress Tracking System provides comprehensive project management
+capabilities with granular metrics, interactive dashboards, and seamless
+integration with external tools.
 
 ## Features
 
 ### 📊 Comprehensive Metrics Collection
+
 - **Task Metrics**: Progress, completion rates, time tracking, dependencies
-- **Project Metrics**: Overall health, velocity, burndown charts, critical path analysis
+- **Project Metrics**: Overall health, velocity, burndown charts, critical path
+  analysis
 - **Git Metrics**: Commit activity, contributor statistics, branch management
 - **Build Metrics**: Build success rates, test coverage, performance metrics
 - **Performance Metrics**: System resource usage, error rates, response times
 
 ### 🎯 Interactive Dashboards
-- **Real-time HTML Dashboards**: Beautiful, responsive dashboards with Chart.js visualizations
+
+- **Real-time HTML Dashboards**: Beautiful, responsive dashboards with Chart.js
+  visualizations
 - **JSON APIs**: RESTful data access for custom integrations
 - **Auto-refresh**: Configurable refresh intervals for live monitoring
 - **Alert System**: Automated notifications for critical issues
 
 ### 🔄 Continuous Monitoring
+
 - **Watch Mode**: Automated data collection and dashboard updates
 - **Time Tracking**: Start/stop time tracking for individual tasks
 - **Trend Analysis**: Historical data analysis and velocity tracking
 - **Risk Assessment**: Automated identification of project risks
 
 ### 🔗 External Integrations
+
 - **Slack**: Automated status updates and alerts
 - **GitHub**: Issue creation for blocked tasks, PR integration
 - **Jira**: Project synchronization and status updates
@@ -42,6 +50,7 @@ npm run build
 ## Quick Start
 
 ### Initialize Progress Tracking
+
 ```bash
 # Initialize configuration
 npm run dev config --init
@@ -54,6 +63,7 @@ npm run dev metrics --collect
 ```
 
 ### Basic Usage
+
 ```bash
 # Show project status
 npm run dev status
@@ -74,6 +84,7 @@ npm run dev time --end 45.4
 ## Commands Reference
 
 ### Dashboard Commands
+
 ```bash
 # Generate HTML dashboard
 npm run dev dashboard
@@ -89,6 +100,7 @@ npm run dev dashboard --json-only
 ```
 
 ### Metrics Commands
+
 ```bash
 # Collect current snapshot
 npm run dev metrics --collect
@@ -105,6 +117,7 @@ npm run dev metrics --export github
 ```
 
 ### Time Tracking Commands
+
 ```bash
 # Start tracking
 npm run dev time --start <taskId> --description "Task description" --category development
@@ -117,6 +130,7 @@ npm run dev time --report
 ```
 
 ### Watch Mode Commands
+
 ```bash
 # Basic monitoring
 npm run dev watch
@@ -129,6 +143,7 @@ npm run dev watch --dashboard --metrics --notifications
 ```
 
 ### Configuration Commands
+
 ```bash
 # Initialize config
 npm run dev config --init
@@ -182,24 +197,28 @@ The system uses `.taskmaster/progress-config.json` for configuration:
 ## Dashboard Features
 
 ### Summary Cards
+
 - Overall progress percentage
 - Tasks completed vs remaining
 - Weekly velocity
 - Estimated completion date
 
 ### Interactive Charts
+
 - **Status Distribution**: Doughnut chart showing task status breakdown
 - **Priority Breakdown**: Bar chart of task priorities
 - **Burndown Chart**: Line chart showing progress over time
 - **Velocity Trend**: Line chart showing weekly completion rates
 
 ### Alerts & Notifications
+
 - Blocked tasks requiring attention
 - Overdue tasks past deadline
 - Dependency issues and conflicts
 - High-risk areas needing focus
 
 ### Recommendations Engine
+
 - Automated suggestions based on project metrics
 - Performance optimization recommendations
 - Resource allocation suggestions
@@ -208,11 +227,18 @@ The system uses `.taskmaster/progress-config.json` for configuration:
 ## Metrics Collection
 
 ### Task Metrics
+
 ```typescript
 interface TaskMetrics {
   id: string;
   title: string;
-  status: 'pending' | 'in-progress' | 'done' | 'blocked' | 'deferred' | 'cancelled';
+  status:
+    | 'pending'
+    | 'in-progress'
+    | 'done'
+    | 'blocked'
+    | 'deferred'
+    | 'cancelled';
   priority: 'high' | 'medium' | 'low';
   complexity: number; // 1-10 scale
   estimatedHours: number;
@@ -225,6 +251,7 @@ interface TaskMetrics {
 ```
 
 ### Project Metrics
+
 ```typescript
 interface ProjectMetrics {
   totalTasks: number;
@@ -232,7 +259,7 @@ interface ProjectMetrics {
   overallProgress: number;
   velocityPerWeek: number;
   estimatedCompletion: string;
-  burndownData: Array<{date: string; remaining: number; completed: number}>;
+  burndownData: Array<{ date: string; remaining: number; completed: number }>;
   criticalPath: string[];
   riskFactors: RiskFactor[];
 }
@@ -241,6 +268,7 @@ interface ProjectMetrics {
 ## Time Tracking
 
 ### Features
+
 - Start/stop tracking for individual tasks
 - Category-based time classification
 - Automatic duration calculation
@@ -248,6 +276,7 @@ interface ProjectMetrics {
 - Integration with task metrics
 
 ### Usage
+
 ```bash
 # Start tracking development work
 npm run dev time --start 45.4 --description "Implementing dashboard" --category development
@@ -262,19 +291,23 @@ npm run dev time --end 45.4
 ## External Integrations
 
 ### Slack Integration
+
 Configure webhook URL to receive:
+
 - Daily progress summaries
 - Alert notifications for blocked tasks
 - Weekly velocity reports
 - Milestone achievements
 
 ### GitHub Integration
+
 - Automatic issue creation for blocked tasks
 - PR status integration
 - Commit activity tracking
 - Repository metrics collection
 
 ### Jira Integration
+
 - Work item synchronization
 - Status updates
 - Sprint planning integration
@@ -300,6 +333,7 @@ Configure webhook URL to receive:
 ## API Usage
 
 ### Programmatic Access
+
 ```typescript
 import { ProgressTrackingSystem } from './.taskmaster/src';
 
@@ -320,8 +354,13 @@ const githubData = await tracker.exportData('github');
 ```
 
 ### Individual Components
+
 ```typescript
-import { ProgressTracker, DashboardGenerator, MetricsCollector } from './.taskmaster/src';
+import {
+  ProgressTracker,
+  DashboardGenerator,
+  MetricsCollector,
+} from './.taskmaster/src';
 
 // Use individual components
 const progressTracker = new ProgressTracker('/path/to/project');
@@ -349,6 +388,7 @@ const metrics = new MetricsCollector('/path/to/project');
    - Ensure proper JSON format
 
 ### Debug Mode
+
 ```bash
 # Enable verbose logging
 DEBUG=progress-tracker npm run dev dashboard
@@ -362,7 +402,8 @@ npm run dev status --detailed
 - **Large Projects**: Use selective metrics collection
 - **Frequent Updates**: Adjust refresh intervals based on project size
 - **Storage**: Historical data is automatically pruned after 90 days
-- **Memory**: Dashboard auto-refresh can be disabled for resource-constrained environments
+- **Memory**: Dashboard auto-refresh can be disabled for resource-constrained
+  environments
 
 ## Contributing
 

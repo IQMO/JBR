@@ -24,9 +24,7 @@
             "id": 2,
             "title": "Create Package Directories",
             "description": "Create the individual package directories within the monorepo (e.g., packages/package-a, packages/package-b). Each directory will contain a separate package.",
-            "dependencies": [
-              1
-            ],
+            "dependencies": [1],
             "details": "Create directories under the designated packages directory (e.g., 'packages'). Add a package.json file to each package directory.",
             "status": "done",
             "testStrategy": ""
@@ -35,9 +33,7 @@
             "id": 3,
             "title": "Configure TypeScript in Packages",
             "description": "Set up TypeScript for each package. This includes installing TypeScript, creating tsconfig.json files, and configuring compiler options.",
-            "dependencies": [
-              2
-            ],
+            "dependencies": [2],
             "details": "Install TypeScript as a dev dependency in each package. Create a tsconfig.json file in each package, extending from a base config if desired. Configure compiler options as needed.",
             "status": "done",
             "testStrategy": ""
@@ -46,9 +42,7 @@
             "id": 4,
             "title": "Add Build and Test Scripts",
             "description": "Add build and test scripts to each package's package.json. These scripts will be used to build and test the code in each package.",
-            "dependencies": [
-              3
-            ],
+            "dependencies": [3],
             "details": "Add 'build' and 'test' scripts to the package.json of each package. The 'build' script should compile the TypeScript code. The 'test' script should run the tests using a testing framework like Jest or Mocha.",
             "status": "done",
             "testStrategy": ""
@@ -60,9 +54,7 @@
         "title": "Shared Types & Validation",
         "description": "Set up shared TypeScript types and Zod validation schemas in the 'shared' package.",
         "status": "done",
-        "dependencies": [
-          1
-        ],
+        "dependencies": [1],
         "priority": "high",
         "details": "Define common data types (User, Bot, Trade, Signal, Position) in 'shared/src/types.ts'. Create Zod schemas for validating user inputs and API responses in 'shared/src/validation.ts'. Export these types and schemas for use in both frontend and backend. Install Zod using `pnpm add zod` in the shared directory. Ensure all types and schemas are compatible with the completed trading engine infrastructure.",
         "testStrategy": "Write unit tests to validate the Zod schemas. Ensure that the defined types are correctly used in both frontend and backend and are compatible with the trading engine. Pay special attention to types related to order execution, position tracking, and risk management.",
@@ -80,9 +72,7 @@
             "id": 2,
             "title": "Create Zod Schemas",
             "description": "Create Zod schemas for validating the shared data types.",
-            "dependencies": [
-              1
-            ],
+            "dependencies": [1],
             "details": "Using the defined TypeScript types, create corresponding Zod schemas to enforce data validation rules. This includes defining required fields, data types, and any custom validation logic. Ensure schemas align with the trading engine's data structures for order execution, position tracking, and risk management.",
             "status": "done",
             "testStrategy": ""
@@ -91,9 +81,7 @@
             "id": 3,
             "title": "Export Types and Schemas",
             "description": "Export the defined TypeScript types and Zod schemas for use in both the frontend and backend applications.",
-            "dependencies": [
-              2
-            ],
+            "dependencies": [2],
             "details": "Configure the build process to export the TypeScript types and Zod schemas in a format that can be easily imported and used by both the frontend and backend. This may involve creating a separate shared library or module. Ensure the exported types and schemas are compatible with the trading engine's modules.",
             "status": "done",
             "testStrategy": ""
@@ -105,9 +93,7 @@
         "title": "Authentication System",
         "description": "Implement a basic authentication system using JWT.",
         "status": "done",
-        "dependencies": [
-          1
-        ],
+        "dependencies": [1],
         "priority": "high",
         "details": "Create authentication endpoints (/auth/login, /auth/register) in the backend. Use bcrypt for password hashing and jsonwebtoken for token generation. Store user credentials in PostgreSQL. Implement middleware to protect routes that require authentication. Use `pnpm add bcrypt jsonwebtoken @types/jsonwebtoken`. Ensure the authentication system integrates seamlessly with the trading engine and bot management components.",
         "testStrategy": "Test user registration, login, and authentication middleware. Ensure tokens are correctly generated and validated. Verify that authenticated users can access trading engine functionalities and manage their bots.",
@@ -118,9 +104,7 @@
         "title": "WebSocket Server Setup",
         "description": "Set up a WebSocket server using Node.js with 'ws' or 'socket.io'.",
         "status": "done",
-        "dependencies": [
-          1
-        ],
+        "dependencies": [1],
         "priority": "high",
         "details": "Choose either 'ws' or 'socket.io' based on project needs. Implement WebSocket endpoints for market data, trading, bot status, and time sync. Handle connection management, message parsing, and error handling. Use `pnpm add ws` or `pnpm add socket.io`. Ensure the WebSocket server is robust and can handle the real-time data streams from the trading engine.",
         "testStrategy": "Test WebSocket connection establishment, message sending, and error handling. Ensure the server can handle multiple concurrent connections. Verify that the server can stream market data, trading updates, and bot status information efficiently.",
@@ -131,10 +115,7 @@
         "title": "WebSocket Client Setup",
         "description": "Implement a WebSocket client in the frontend with TypeScript integration.",
         "status": "done",
-        "dependencies": [
-          4,
-          2
-        ],
+        "dependencies": [4, 2],
         "priority": "high",
         "details": "Create a WebSocket client using the browser's WebSocket API or a library like 'socket.io-client'. Implement functions for connecting to the server, sending messages, and handling incoming data. Use TypeScript to ensure type safety. Use `pnpm add socket.io-client` if using socket.io. Ensure the client can handle the data streams from the trading engine and display them in real-time.\n<info added on 2025-07-02T17:34:25.341Z>\nCODEBASE ANALYSIS UPDATE: This task was incorrectly marked as \"done\". The frontend currently only has basic placeholder pages with no WebSocket client implementation. The WebSocket server exists and is fully functional, but the frontend WebSocket client integration is missing. Status corrected to \"pending\".\n</info added on 2025-07-02T17:34:25.341Z>\n<info added on 2025-07-02T17:41:20.050Z>\n## Research Findings: WebSocket Client Implementation in React with TypeScript\n\nBased on research, the following best practices should be considered when implementing the WebSocket client:\n\n*   **Connection Management:** Use a dedicated React hook (`useWebSocket`) for connection logic, implement automatic reconnection with exponential backoff, and utilize heartbeats (ping/pong) for detecting dropped connections. Leverage token-based authentication using the existing JWT.\n*   **Error Handling:** Implement centralized error handling within the `useWebSocket` hook, provide informative user feedback, and handle specific WebSocket error codes. Ensure backend logging of WebSocket events.\n*   **Data Serialization/Deserialization:** Use JSON for data transfer, validate incoming data using Zod schemas, and consider binary data formats for extremely high-frequency data.\n*   **State Management:** Employ React Context or Redux for managing WebSocket connection status, received data, and error states. Use immutable data structures and optimize component re-renders.\n*   **Security Considerations:** Use WSS for secure communication, sanitize ...",
         "testStrategy": "Test WebSocket connection establishment, message sending, and data handling. Ensure the client can receive and process data from the server. Verify that the client can display market data, trading updates, and bot status information accurately.",
@@ -145,10 +126,7 @@
         "title": "Time Synchronization",
         "description": "Implement time synchronization module with NTP integration.",
         "status": "done",
-        "dependencies": [
-          4,
-          5
-        ],
+        "dependencies": [4, 5],
         "priority": "high",
         "details": "Use an NTP client library (e.g., 'ntp-client') to fetch time from NTP servers. Implement a WebSocket channel (/ws/time-sync) to send time updates to the client. Calculate and compensate for time drift. Use `pnpm add ntp-client`. Ensure accurate time synchronization for the trading engine's order execution and risk management components.",
         "testStrategy": "Test time synchronization accuracy. Ensure the client receives time updates and compensates for drift. Verify that the trading engine's order execution and risk management components are using the synchronized time.",
@@ -159,9 +137,7 @@
         "title": "Basic Logging",
         "description": "Set up basic logging infrastructure using Winston.",
         "status": "done",
-        "dependencies": [
-          1
-        ],
+        "dependencies": [1],
         "priority": "medium",
         "details": "Configure Winston to log messages to files and console. Implement different log levels (info, warn, error). Include timestamps and relevant metadata in log messages. Use `pnpm add winston`. Ensure comprehensive logging for the trading engine's operations, including order execution, position tracking, and risk management.",
         "testStrategy": "Test logging functionality by generating log messages and verifying their content and format. Verify that the trading engine's operations are being logged correctly, including order execution, position tracking, and risk management events.",
@@ -172,9 +148,7 @@
         "title": "PostgreSQL Setup",
         "description": "Set up PostgreSQL database for persistent data storage.",
         "status": "done",
-        "dependencies": [
-          3
-        ],
+        "dependencies": [3],
         "priority": "medium",
         "details": "Install PostgreSQL and create a database for the application. Use a Node.js PostgreSQL client library (e.g., 'pg') to connect to the database. Define database schemas for User, Bot, Trade, Signal, and Position. Use `pnpm add pg`. Ensure the database schemas are compatible with the trading engine's data structures.",
         "testStrategy": "Test database connection and schema creation. Ensure data can be read and written to the database. Verify that the database schemas can store the trading engine's data, including order execution details, position information, and risk management parameters.",
@@ -185,9 +159,7 @@
         "title": "Redis Setup",
         "description": "Set up Redis for caching.",
         "status": "deferred",
-        "dependencies": [
-          8
-        ],
+        "dependencies": [8],
         "priority": "medium",
         "details": "Install Redis and use a Node.js Redis client library (e.g., 'ioredis') to connect to the Redis server. Implement caching for frequently accessed data. Use `pnpm add ioredis`. Ensure Redis is used to cache frequently accessed data from the trading engine, such as position information and risk management parameters.\n<info added on 2025-07-02T17:34:32.839Z>\nCODEBASE ANALYSIS UPDATE: Redis setup is NOT actually complete. The redis.service.ts file contains only 7 lines and is essentially a stub. No actual Redis connection, configuration, or usage implemented. Status corrected to \"pending\".\n</info added on 2025-07-02T17:34:32.839Z>",
         "testStrategy": "Test Redis connection and caching functionality. Ensure data is correctly cached and retrieved from Redis. Verify that the trading engine is using Redis to cache frequently accessed data, such as position information and risk management parameters.",
@@ -209,9 +181,7 @@
         "title": "Order Execution",
         "description": "Implement order execution system for market and limit orders.",
         "status": "done",
-        "dependencies": [
-          10
-        ],
+        "dependencies": [10],
         "priority": "high",
         "details": "Use the exchange abstraction layer to place market and limit orders. Handle order confirmation and error handling. Implement position sizing and leverage. Use Bybit's API for order placement. Ensure the order execution system is reliable and can handle the trading engine's order placement requirements.",
         "testStrategy": "Test order execution by placing market and limit orders and verifying their execution status. Ensure position sizing and leverage are correctly applied. Verify that the trading engine can use the order execution system to place orders and track their execution status.",
@@ -222,9 +192,7 @@
         "title": "Position Tracking",
         "description": "Implement position tracking and P&L calculation.",
         "status": "done",
-        "dependencies": [
-          11
-        ],
+        "dependencies": [11],
         "priority": "high",
         "details": "Track open positions and calculate P&L in real-time. Use exchange data and order execution details to update positions. Implement different P&L calculation methods. Store positions in Redis for fast access. Ensure the position tracking system is accurate and can handle the trading engine's position management requirements.",
         "testStrategy": "Test position tracking and P&L calculation by simulating trades and verifying the accuracy of the calculated values. Verify that the trading engine can use the position tracking system to track open positions and calculate P&L in real-time.",
@@ -235,9 +203,7 @@
         "title": "Risk Management Framework",
         "description": "Implement a basic risk management framework with stop-loss functionality.",
         "status": "done",
-        "dependencies": [
-          12
-        ],
+        "dependencies": [12],
         "priority": "high",
         "details": "Implement stop-loss orders to limit potential losses. Monitor positions and trigger stop-loss orders when necessary. Allow users to configure stop-loss parameters. Use ccxt's API to implement stop loss orders. Ensure the risk management framework is effective and can protect the trading engine from excessive losses.",
         "testStrategy": "Test stop-loss functionality by simulating trades and verifying that stop-loss orders are triggered correctly. Verify that the trading engine can use the risk management framework to limit potential losses.",
@@ -248,12 +214,7 @@
         "title": "Trading Engine Core",
         "description": "Combine exchange integration, order execution, position tracking, and risk management into a modular trading engine.",
         "status": "done",
-        "dependencies": [
-          10,
-          11,
-          12,
-          13
-        ],
+        "dependencies": [10, 11, 12, 13],
         "priority": "high",
         "details": "Create a modular architecture for the trading engine. Allow different components to be plugged in and configured. Implement a central control loop to manage trading operations.",
         "testStrategy": "Test the trading engine by simulating different trading scenarios and verifying that all components work together correctly.",
@@ -264,9 +225,7 @@
         "title": "Bot Creation & Configuration",
         "description": "Implement a system for creating and configuring trading bots. The backend API is partially implemented, but requires completion. The frontend UI is pending.",
         "status": "done",
-        "dependencies": [
-          14
-        ],
+        "dependencies": [14],
         "priority": "medium",
         "details": "Allow users to create and configure trading bots with different strategies and parameters. Store bot configurations in the database. Implement a user interface for managing bots. Ensure the bot creation and configuration system is user-friendly and allows users to easily create and configure trading bots.\n<info added on 2025-07-02T17:34:40.392Z>\nCODEBASE ANALYSIS: Database schema exists but actual bot management system (CRUD operations, API endpoints) is not implemented.\n</info added on 2025-07-02T17:34:40.392Z>",
         "testStrategy": "N/A - Full-stack bot management system implemented and tested. Verify that users can easily create and configure trading bots with different strategies and parameters, manage bot lifecycles, and track performance.",
@@ -285,9 +244,7 @@
             "title": "Implement Bot Configuration Logic",
             "description": "Develop the backend logic to allow users to configure bots with different trading strategies and parameters.",
             "status": "done",
-            "dependencies": [
-              1
-            ],
+            "dependencies": [1],
             "details": "This includes defining available strategies, parameters for each strategy, and validation rules. Implement the logic to apply these configurations to the bot.",
             "testStrategy": ""
           },
@@ -296,9 +253,7 @@
             "title": "Database Storage for Bot Configurations",
             "description": "Design and implement a database schema to store bot configurations, including bot name, strategy, and parameters.",
             "status": "done",
-            "dependencies": [
-              2
-            ],
+            "dependencies": [2],
             "details": "Choose a suitable database (e.g., PostgreSQL, MySQL, MongoDB). Define the schema and implement the necessary CRUD operations to store and retrieve bot configurations.",
             "testStrategy": ""
           },
@@ -307,9 +262,7 @@
             "title": "Develop Bot Management UI",
             "description": "Create a user interface for managing existing bots, including viewing configurations, editing parameters, starting, and stopping bots.",
             "status": "done",
-            "dependencies": [
-              3
-            ],
+            "dependencies": [3],
             "details": "This UI should allow users to view a list of their bots, view and edit their configurations, and control their execution (start/stop).",
             "testStrategy": ""
           },
@@ -345,9 +298,7 @@
             "title": "Implement Bot CRUD Operations in Backend",
             "description": "Implement the backend API endpoints for creating, reading, updating, and deleting bots.",
             "status": "done",
-            "dependencies": [
-              3
-            ],
+            "dependencies": [3],
             "details": "Create the necessary API endpoints in the backend to handle bot management operations. This includes creating, reading, updating, and deleting bot configurations from the database.\n<info added on 2025-07-03T17:24:04.135Z>\nBackend API is fully implemented with 18 comprehensive endpoints for bot management including CRUD operations, lifecycle controls (start/stop/pause/resume), performance metrics, trades, positions, and configuration validation. All endpoints are secured with JWT authentication and include proper error handling.\n</info added on 2025-07-03T17:24:04.135Z>",
             "testStrategy": "Test the API endpoints to ensure they are functioning correctly and that bot configurations can be managed through the API."
           },
@@ -356,9 +307,7 @@
             "title": "Implement Frontend UI for Bot Creation and Configuration",
             "description": "Implement the frontend UI for creating and configuring bots.",
             "status": "done",
-            "dependencies": [
-              8
-            ],
+            "dependencies": [8],
             "details": "Create the frontend UI components for creating and configuring bots. This includes forms for entering bot parameters, selecting strategies, and configuring risk management settings. The UI should interact with the backend API to save and retrieve bot configurations.",
             "testStrategy": "Test the frontend UI to ensure that bots can be created and configured correctly. Verify that the UI is user-friendly and that all form inputs are validated."
           }
@@ -369,9 +318,7 @@
         "title": "Bot Lifecycle Management",
         "description": "Implement bot lifecycle management (start, stop, pause).",
         "status": "done",
-        "dependencies": [
-          15
-        ],
+        "dependencies": [15],
         "priority": "medium",
         "details": "Allow users to start, stop, and pause trading bots. Implement a state machine to manage bot lifecycle. Update bot status in real-time via WebSocket. Ensure the bot lifecycle management system is reliable and can handle the trading engine's bot management requirements.\n<info added on 2025-07-02T17:34:48.044Z>\nCODEBASE ANALYSIS UPDATE: Bot lifecycle management not actually implemented. Basic files exist but are mostly stubs. Status corrected to \"pending\".\n</info added on 2025-07-02T17:34:48.044Z>",
         "testStrategy": "Test bot lifecycle management by starting, stopping, and pausing bots and verifying that their status is updated correctly. Verify that the trading engine can use the bot lifecycle management system to manage the lifecycle of trading bots.",
@@ -382,9 +329,7 @@
         "title": "Strategy Framework",
         "description": "Implement a strategy framework with a pluggable architecture.",
         "status": "done",
-        "dependencies": [
-          14
-        ],
+        "dependencies": [14],
         "priority": "medium",
         "details": "Implement a strategy framework with a pluggable architecture. The framework allows users to plug in custom strategies and includes basic signal processing (simple moving averages). The strategy framework is flexible and allows users to easily plug in custom trading strategies.\n<info added on 2025-07-02T17:34:55.933Z>\nCODEBASE ANALYSIS UPDATE: Strategy framework has basic structure but is incomplete. Foundation exists but needs significant development.\n</info added on 2025-07-02T17:34:55.933Z>\n<info added on 2025-07-03T00:07:49.628Z>\n✅ COMPLETED: Strategy Framework with Pluggable Architecture\n\nThe Strategy Framework implementation is now complete with all components production-ready and well-documented:\n\n1. **Trading Strategy Interface**\n   - Used the existing comprehensive interfaces in JabbrLabs/target-reacher/interfaces.ts\n   - Full lifecycle methods and well-defined type safety throughout\n\n2. **Plugin Mechanism**\n   - Implemented a robust plugin system for custom strategy loading\n   - Dynamic hot-reloading and comprehensive validation\n   - Plugin registry with search and filtering capabilities\n\n3. **Signal Processing**\n   - SMA signal processor implemented with configurable parameters\n   - Type-safe signal generation and processing\n   - Fully tested with various market conditions\n\n4. **Testing Framework**\n   - Complete backtesting system with market data simulation\n   - Performance metrics calculation and position management\n   - Example scripts for parameter optimization\n\n5. **Documentation**\n   - Comprehensive documentation for all components\n   - Developer guides for creating custom strategies\n   - Usage examples and best practices\n\nThe completed framework allows users to:\n- Create custom trading strategies with full type safety\n- Dynamically load and manage strategy plugins\n- Backtest strategies against historical data\n- Optimize strategy parameters\n- Monitor strategy performance\n\nAll components are ...",
         "testStrategy": "Test the strategy framework by plugging in different strategies and verifying that they generate correct signals. Verify that users can easily plug in custom trading strategies and that they generate correct signals.",
@@ -394,12 +339,7 @@
             "title": "Finalize Strategy Framework Implementation",
             "description": "Finalize the strategy framework implementation, ensuring all components are production-ready and well-documented.",
             "status": "done",
-            "dependencies": [
-              1,
-              2,
-              3,
-              4
-            ],
+            "dependencies": [1, 2, 3, 4],
             "details": "This includes reviewing code, updating documentation, and addressing any remaining issues identified during testing. Ensure the SMA signal processor, backtesting, and integration tests are implemented, documented, and production-ready. Documentation and code should reflect the final, production-ready state.\n<info added on 2025-07-03T00:07:02.749Z>\nCompleted the following components for the strategy framework finalization:\n\n1. Backtesting framework implementation:\n   - Created a comprehensive backtesting system for trading strategies\n   - Added market data simulation with realistic price behavior\n   - Implemented position management and trade execution simulation\n   - Added performance metrics calculation\n   - Fixed all TypeScript errors and ensured type safety\n\n2. Documentation:\n   - Created detailed documentation for the strategy backtesting framework\n   - Included usage examples, configuration options, and advanced usage patterns\n   - Documented all performance metrics and their significance\n\n3. Example implementation:\n   - Created an example script demonstrating parameter optimization\n   - Implemented historical data handling with caching\n   - Added mock data generation for testing purposes\n\nThe backtesting framework now allows users to:\n- Test strategies against historical data\n- Optimize strategy parameters\n- Calculate comprehensive performance metrics\n- Generate equity curves and trade histories\n- Apply realistic trading conditions (fees, slippage)\n\nAll implemented code is type-safe, well-documented, and follows project conventions.\n</info added on 2025-07-03T00:07:02.749Z>",
             "testStrategy": "Verify that all components of the strategy framework are functioning as expected and that the documentation is accurate and complete."
           },
@@ -416,9 +356,7 @@
             "id": 2,
             "title": "Implement Custom Strategy Plugin Mechanism",
             "description": "Develop a mechanism that allows users to easily plug in their own custom trading strategies that conform to the defined interface. This may involve using plugins, configuration files, or other methods.",
-            "dependencies": [
-              1
-            ],
+            "dependencies": [1],
             "details": "Consider security implications and version control for custom strategies.\n<info added on 2025-07-02T21:12:21.549Z>\n✅ MAJOR IMPLEMENTATION COMPLETE - Custom Strategy Plugin Mechanism\n\n**Core Implementation Complete:**\n\n1. **Strategy Plugin Manager** (`packages/backend/src/strategies/plugin-manager.ts`):\n   - Comprehensive plugin system with security validation\n   - Dynamic loading and hot-reloading capabilities\n   - Plugin metadata validation with Zod schemas\n   - Sandbox environment for plugin execution\n   - Plugin registry with lifecycle management\n   - Search and filtering capabilities\n\n2. **Unified Strategy Factory** (`packages/backend/src/strategies/strategy-factory.ts`):\n   - Centralized factory for both built-in and custom strategies\n   - Plugin integration with existing JabbrLabs interfaces\n   - Configuration validation and default config management\n   - Type-safe strategy creation and management\n\n3. **Example Plugin** (`plugins/example-sma-strategy.ts`):\n   - Complete SMA Crossover strategy demonstrating plugin interface\n   - Full IStrategy implementation with proper lifecycle methods\n   - Configuration validation and state management\n   - Integration with logging, storage, and event systems\n\n4. **API Endpoints** (`packages/backend/src/routes/plugins.ts`):\n   - REST API for plugin management (upload, list, search, validate)\n   - File upload handling with security restrictions\n   - Plugin statistics and category management\n   - Complete CRUD operations for plugins\n\n**Key Features Implemented:**\n- ✅ Dynamic plugin loading with security sandboxing\n- ✅ Comprehensive validation (metadata, configuration, implementation)\n- ✅ Hot-reloading and plugin lifecycle management\n- ✅ Integration with existing JabbrLabs strategy interfaces\n- ✅ File upload and plugin registry management\n- ✅ Search, filtering, and categorization\n- ✅ Error handling and logging throughout\n- ✅ Example plugin demonstrating full capabil...",
             "status": "done",
             "testStrategy": ""
@@ -427,9 +365,7 @@
             "id": 3,
             "title": "Implement Basic Signal Processing (SMA)",
             "description": "Implement a basic signal processing module that includes Simple Moving Averages (SMA). This module will be used to generate trading signals based on historical price data.",
-            "dependencies": [
-              1
-            ],
+            "dependencies": [1],
             "details": "Allow users to configure SMA parameters such as period length.",
             "status": "done",
             "testStrategy": ""
@@ -438,10 +374,7 @@
             "id": 4,
             "title": "Test the Strategy Framework",
             "description": "Thoroughly test the strategy framework to ensure that it is functioning correctly and that custom strategies can be plugged in and executed without errors. Test with different market conditions and strategy parameters.",
-            "dependencies": [
-              2,
-              3
-            ],
+            "dependencies": [2, 3],
             "details": "Include unit tests, integration tests, and backtesting with historical data.",
             "status": "done",
             "testStrategy": ""
@@ -453,12 +386,7 @@
         "title": "Bot Status Monitoring - Frontend Integration",
         "description": "Integrate the Strategy Framework with the frontend via WebSocket for real-time monitoring of strategy performance, signals, and execution. The Strategy Framework (Task 17) and Backtesting system have been successfully completed.",
         "status": "done",
-        "dependencies": [
-          16,
-          17,
-          "40",
-          "41"
-        ],
+        "dependencies": [16, 17, "40", "41"],
         "priority": "medium",
         "details": "Connect the Strategy Framework to the frontend via WebSocket. Display strategy performance, signals, and execution data in real-time. Ensure the frontend displays real-time updates on strategy status, P&L, open positions, and signals using the WebSocket feed. The backend WebSocket functionality is already implemented.",
         "testStrategy": "Test strategy status monitoring by running strategies and verifying that their status, P&L, open positions, and signals are updated correctly on the frontend via the WebSocket connection. Verify that the frontend displays real-time updates.",
@@ -469,10 +397,7 @@
         "title": "Per-Bot Risk Management - UI Configuration",
         "description": "Implement per-bot risk management configuration in the UI.",
         "status": "pending",
-        "dependencies": [
-          13,
-          15
-        ],
+        "dependencies": [13, 15],
         "priority": "medium",
         "details": "Create a UI to allow users to configure per-bot risk management parameters. Ensure that each bot has its own risk management parameters and isolated positions. The underlying risk management logic exists in the trading engine, but needs a UI for configuration. Ensure that each bot has its own risk management parameters and isolated positions to prevent bots from interfering with each other.",
         "testStrategy": "Test per-bot risk management by running multiple bots with different risk parameters configured via the UI and verifying that their positions are isolated. Verify that each bot has its own risk management parameters and isolated positions.",
@@ -483,10 +408,7 @@
         "title": "Frontend Setup",
         "description": "Create a modern React/Next.js frontend with TypeScript.",
         "status": "done",
-        "dependencies": [
-          5,
-          18
-        ],
+        "dependencies": [5, 18],
         "priority": "high",
         "details": "Set up a React/Next.js project with TypeScript. Use a component library (e.g., Material UI or Ant Design). Implement routing and state management. Ensure the frontend is well-structured and provides a user-friendly interface for managing trading bots and monitoring their performance.",
         "testStrategy": "Test the frontend by navigating through different pages and verifying that all components are rendered correctly. Verify that the frontend provides a user-friendly interface for managing trading bots and monitoring their performance.",
@@ -497,9 +419,7 @@
         "title": "Real-time Dashboard",
         "description": "Implement a real-time dashboard with WebSocket integration.",
         "status": "done",
-        "dependencies": [
-          5
-        ],
+        "dependencies": [5],
         "priority": "high",
         "details": "Display real-time data such as market data, bot status, and P&L on the dashboard. Use WebSocket to receive updates from the backend. Ensure the real-time dashboard provides a comprehensive overview of market data, bot status, and P&L.",
         "testStrategy": "Test the real-time dashboard by simulating trades and verifying that the data is updated correctly. Verify that the dashboard provides a comprehensive overview of market data, bot status, and P&L.",
@@ -510,9 +430,7 @@
         "title": "Bot Management Interface - Frontend Implementation",
         "description": "Implement the frontend for the bot management interface.",
         "status": "done",
-        "dependencies": [
-          15
-        ],
+        "dependencies": [15],
         "priority": "high",
         "details": "Implement the frontend UI to allow users to create, configure, and manage bots. Display bot status and performance metrics. The backend API (Task 15 & 16) is complete with 18 endpoints. Ensure the bot management interface is intuitive and allows users to easily create, configure, and manage their trading bots.",
         "testStrategy": "Test the bot management interface by creating, configuring, and managing bots and verifying that their status is updated correctly. Verify that the interface is intuitive and allows users to easily manage their trading bots.",
@@ -523,9 +441,7 @@
         "title": "Trading Activity Monitoring - UI Implementation",
         "description": "Implement the UI for trading activity monitoring.",
         "status": "pending",
-        "dependencies": [
-          21
-        ],
+        "dependencies": [21],
         "priority": "medium",
         "details": "Display trading activity in real-time in the UI, using the WebSocket feed (Task 21). Include information such as order execution details, P&L, and risk metrics. Ensure the trading activity monitoring system provides a detailed view of all trading activity, including order execution details, P&L, and risk metrics.",
         "testStrategy": "Test trading activity monitoring by simulating trades and verifying that the data is displayed correctly in the UI. Verify that the system provides a detailed view of all trading activity.",
@@ -536,9 +452,7 @@
         "title": "Position & P&L Visualization - UI Implementation",
         "description": "Implement the UI for position and P&L visualization.",
         "status": "pending",
-        "dependencies": [
-          21
-        ],
+        "dependencies": [21],
         "priority": "medium",
         "details": "Display position and P&L data in a graphical format in the UI, using the WebSocket feed (Task 21). Use charting libraries (e.g., Chart.js or Recharts). Ensure the position and P&L visualization provides a clear and concise view of position and P&L data.",
         "testStrategy": "Test position and P&L visualization by simulating trades and verifying that the data is displayed correctly in the UI. Verify that the visualization provides a clear and concise view of position and P&L data.",
@@ -549,9 +463,7 @@
         "title": "Log Viewer & Alert System - UI Implementation",
         "description": "Implement the UI for the log viewer and alert system.",
         "status": "pending",
-        "dependencies": [
-          7
-        ],
+        "dependencies": [7],
         "priority": "medium",
         "details": "Display logs in a user-friendly format in the UI. Implement an alert system to notify users of important events. Ensure the log viewer and alert system provides a user-friendly way to view logs and receive alerts for important events related to the trading engine.",
         "testStrategy": "Test the log viewer and alert system by generating log messages and verifying that they are displayed correctly in the UI. Verify that the system provides a user-friendly way to view logs and receive alerts for important events.",
@@ -562,11 +474,7 @@
         "title": "Implement Advanced Order Management & TP/SL Automation",
         "description": "Implement advanced order management features including bracket orders, automatic TP/SL management, and position-aware order sizing to enhance the trading engine's capabilities.",
         "status": "done",
-        "dependencies": [
-          13,
-          14,
-          12
-        ],
+        "dependencies": [13, 14, 12],
         "priority": "high",
         "details": "Implement the following functions:\n- `placeBracketOrder(entry, stopLoss, takeProfit)`: Create a bracket order system that places an entry order with automatic TP/SL orders.\n- `setStopLoss(symbol, positionSide, stopPrice)`: Implement position-based SL management to automatically set stop-loss orders based on the current position.\n- `setTakeProfit(symbol, positionSide, takeProfitPrice)`: Implement position-based TP management to automatically set take-profit orders based on the current position.\n- `placeOrderWithRiskManagement(order, riskConfig)`: Develop an intelligent order placement system that considers risk management configurations.\n- Implement position monitoring to automatically update TP/SL orders based on position changes.\n- Implement cross-position risk management and validation to prevent excessive risk across multiple positions.\n- Implement order lifecycle management for complex order types, ensuring proper handling of order status and updates.\nEnsure integration with the existing risk management framework and position tracking system. Use ccxt's API for order placement and management. Consider using Redis for fast access to position data.",
         "testStrategy": "Test the following scenarios:\n- Place bracket orders and verify that the entry, stop-loss, and take-profit orders are placed correctly.\n- Open positions and verify that stop-loss and take-profit orders are automatically placed based on the configured parameters.\n- Modify position sizes and verify that stop-loss and take-profit orders are adjusted accordingly.\n- Place orders with different risk configurations and verify that the order sizes are adjusted based on the risk parameters.\n- Simulate market movements and verify that stop-loss and take-profit orders are triggered correctly.\n- Test cross-position risk management by opening multiple positions and verifying that the risk is managed across all positions.\n- Verify that order lifecycle management handles order status updates and cancellations correctly.",
@@ -603,9 +511,7 @@
             "title": "Implement Position Monitoring and TP/SL Update Logic",
             "description": "Implement a background process or scheduled task to monitor position changes and automatically update TP/SL orders based on these changes. This involves fetching position data and comparing it to existing TP/SL order parameters.",
             "status": "done",
-            "dependencies": [
-              2
-            ],
+            "dependencies": [2],
             "details": "Implement a function to periodically fetch position data using ccxt's fetchPositions or fetchPosition function. Compare the current position size and price to the existing TP/SL order parameters. If the position has changed significantly (e.g., position size has increased or decreased, price has moved significantly), cancel the existing TP/SL orders and create new TP/SL orders with updated parameters using the `setStopLoss` and `setTakeProfit` functions. Consider using Redis for fast access to position data.",
             "testStrategy": "Create integration tests to verify that the position monitoring process correctly detects position changes and updates TP/SL orders accordingly. Simulate position changes by manually placing orders and verify that the TP/SL orders are updated automatically."
           },
@@ -614,11 +520,7 @@
             "title": "Implement Order Lifecycle Management",
             "description": "Implement order lifecycle management for complex order types, ensuring proper handling of order status and updates. This includes tracking order status, handling partial fills, and managing order cancellations.",
             "status": "done",
-            "dependencies": [
-              1,
-              2,
-              3
-            ],
+            "dependencies": [1, 2, 3],
             "details": "Implement a system to track the status of all orders placed through the advanced order management system. Use ccxt's fetchOrder or fetchOrders function to periodically check the status of orders. Handle partial fills by updating the position size and TP/SL orders accordingly. Implement logic to handle order cancellations and rejections. Log all order status changes and errors.",
             "testStrategy": "Create integration tests to verify that the order lifecycle management system correctly tracks order status, handles partial fills, and manages order cancellations. Simulate different order scenarios (successful order placement, partial fill, order cancellation, order rejection) and verify that the system handles them correctly."
           }
@@ -629,9 +531,7 @@
         "title": "Validate Production Environment Configuration",
         "description": "Validate the production environment configuration by ensuring the backend starts correctly with the new settings and that both the frontend and backend recognize the production mode.",
         "status": "done",
-        "dependencies": [
-          5
-        ],
+        "dependencies": [5],
         "priority": "high",
         "details": "1.  Ensure all necessary environment variables are set correctly on the production server, specifically focusing on those required for backend startup.\n2.  Update the backend configuration to use the production Bybit API keys (BYBIT_TESTNET=false). Ensure the keys are securely stored and accessed via environment variables.\n3.  Modify the backend code to correctly identify and operate in production mode by checking environment variables.\n4.  Verify that the trading engine is using the correct exchange adapters and authentication credentials for production by inspecting the loaded environment variables.\n5.  Implement logging to confirm the system's environment mode upon startup.\n",
         "testStrategy": "1.  Start the backend with the production configuration and verify that it starts without errors.\n2.  Check the backend logs to confirm that it is running in production mode and using the correct API keys (verify keys are not testnet).\n3.  Simulate a connection from the frontend to the backend and verify that the environment status is correctly identified.\n4.  Check the logs for any errors or warnings during startup and address them accordingly.",
@@ -642,14 +542,7 @@
         "title": "Create Bot Management Dashboard UI",
         "description": "Implement the main bot management interface including bot list view, lifecycle controls (start/stop/pause/resume), performance metrics display, and bot configuration editing. Integrate with the backend API (Task 15 & 16 - COMPLETE) to fetch and update bot data.",
         "status": "done",
-        "dependencies": [
-          3,
-          5,
-          15,
-          16,
-          20,
-          21
-        ],
+        "dependencies": [3, 5, 15, 16, 20, 21],
         "priority": "high",
         "details": "1.  Create the main Bot Management Dashboard UI using React/Next.js and TypeScript.\n2.  Implement a bot list view to display all available bots with relevant information (status, strategy, P&L, etc.).\n3.  Integrate with the backend API (Task 15 & 16 - COMPLETE) to fetch bot data and display it in the list view.\n4.  Implement lifecycle controls (start, stop, pause, resume) for each bot, connecting these controls to the appropriate backend API endpoints.\n5.  Display performance metrics for each bot, fetching data from the backend API and presenting it in a clear and concise manner (e.g., charts, tables).\n6.  Implement bot configuration editing, allowing users to modify bot parameters and save changes to the backend.\n7.  Use a component library (e.g., Material UI or Ant Design) to ensure a consistent and user-friendly interface.\n8.  Implement real-time updates using WebSockets (Task 5 & 20 - COMPLETE) to reflect changes in bot status and performance metrics.\n9.  Ensure proper error handling and user feedback for all operations.",
         "testStrategy": "1.  Verify that the bot list view displays all available bots with accurate information.\n2.  Test the lifecycle controls (start, stop, pause, resume) for each bot, ensuring that they function correctly and update the bot status in real-time.\n3.  Verify that performance metrics are displayed accurately and updated in real-time.\n4.  Test bot configuration editing, ensuring that changes are saved to the backend and reflected in the bot's behavior.\n5.  Test error handling and user feedback for all operations, ensuring that users are informed of any issues.\n6.  Verify that the UI is responsive and user-friendly on different devices and screen sizes.\n7.  Test WebSocket integration (Task 5 & 20 - COMPLETE) to ensure real-time updates are received and displayed correctly.",
@@ -662,11 +555,7 @@
         "details": "1. Instantiate the AetherSignalGenerator class within the bot trading system.\n2. Modify the strategy framework (Task 17) to accept signals from the AetherSignalGenerator.\n3. Implement signal processing logic to translate Aether signals into trading orders.\n4. Integrate the signal processing logic with the trading engine to execute trades based on Aether signals.\n5. Configure the bot management system (Task 15) to allow users to select and configure the Aether Signal Generator as a trading strategy.\n6. Ensure proper error handling and logging for the Aether Signal Generator integration.\n7. Implement real-time position tracking (Task 12) to monitor the performance of bots using Aether signals.\n<info added on 2025-07-03T00:22:45.842Z>\nUpdate: The Strategy Framework (Task 17) has been successfully completed with a plugin architecture and backtesting capabilities. This task now focuses on implementing the Aether Signal Generator as a strategy plugin that conforms to the existing strategy framework.\n</info added on 2025-07-03T00:22:45.842Z>",
         "testStrategy": "1. Configure a trading bot to use the Aether Signal Generator strategy.\n2. Simulate live trading conditions and verify that the bot executes trades based on Aether signals.\n3. Monitor the bot's performance and P&L to ensure that the Aether signals are generating profitable trades.\n4. Test different Aether signal configurations to optimize trading performance.\n5. Verify that the bot management system correctly displays the status and performance of bots using Aether signals.\n6. Test error handling and logging to ensure that any issues with the Aether Signal Generator integration are properly reported.",
         "status": "done",
-        "dependencies": [
-          15,
-          17,
-          12
-        ],
+        "dependencies": [15, 17, 12],
         "priority": "high",
         "subtasks": []
       },
@@ -677,11 +566,7 @@
         "details": "1.  Clone the Target Reacher repository (JabbrLabs/target-reacher/) into the appropriate directory within the project.\n2.  Adapt the Target Reacher strategy to conform to the strategy framework interface (Task 17).\n3.  Implement signal processing logic to translate Target Reacher signals into trading orders.\n4.  Integrate the signal processing logic with the trading engine to execute trades based on Target Reacher signals.\n5.  Configure the bot management system (Task 15) to allow users to select and configure the Target Reacher strategy as a trading strategy for their bots.\n6.  Ensure that position tracking (Task 12) correctly reflects trades executed by the Target Reacher strategy.\n7.  Implement necessary error handling and logging for the Target Reacher strategy.\n<info added on 2025-07-03T00:23:03.413Z>\nUpdate: The Strategy Framework (Task 17) has been successfully completed with a plugin architecture and backtesting capabilities. This task should now focus on implementing the Target Reacher strategy as a strategy plugin that conforms to the existing strategy framework.\n</info added on 2025-07-03T00:23:03.413Z>",
         "testStrategy": "1.  Configure a trading bot to use the Target Reacher strategy.\n2.  Simulate live trading conditions and verify that the bot executes trades based on Target Reacher signals.\n3.  Monitor the bot's performance and P&L to ensure that the Target Reacher signals are generating profitable trades.\n4.  Test different configurations of the Target Reacher strategy to ensure it functions correctly under various market conditions.\n5.  Verify that the bot management system correctly displays the Target Reacher strategy and its configuration options.\n6.  Check logs for any errors or unexpected behavior during trading.",
         "status": "done",
-        "dependencies": [
-          15,
-          17,
-          12
-        ],
+        "dependencies": [15, 17, 12],
         "priority": "high",
         "subtasks": []
       },
@@ -692,11 +577,7 @@
         "details": "1.  Create a new UI module within the existing React/Next.js frontend (Task 20). \n2.  Design UI components for configuring Aether Signal parameters, allowing users to adjust settings related to Fractional PDE, Reflected BSDE, Mean-Field Games, and Malliavin Calculus.\n3.  Implement real-time signal output visualization using charts and graphs, displaying the generated signals and their characteristics.\n4.  Integrate with the Aether Signal Generator (Task 29) to fetch and display the outputs of the advanced mathematical models.\n5.  Implement monitoring tools to track the performance and behavior of the Aether Signal Generator, providing insights into its effectiveness.\n6.  Ensure the UI is responsive and user-friendly, providing clear feedback and intuitive controls.\n7.  Consider using a charting library like Chart.js or Recharts for signal visualization.\n8.  Implement error handling and validation to prevent invalid configurations and provide informative error messages.\n9.  Use TypeScript for type safety and maintainability.",
         "testStrategy": "1.  Verify that the UI components for configuring Aether Signal parameters are functioning correctly and allow users to adjust settings.\n2.  Test the real-time signal output visualization by generating signals and verifying that they are displayed accurately in the UI.\n3.  Verify that the monitoring tools provide accurate and relevant information about the performance and behavior of the Aether Signal Generator.\n4.  Test the UI with different configurations and scenarios to ensure it handles various situations correctly.\n5.  Verify that error handling and validation are working as expected, preventing invalid configurations and providing informative error messages.\n6.  Ensure the UI is responsive and user-friendly on different devices and screen sizes.\n7.  Simulate live trading conditions and verify that the Aether Signal Generator is generating signals and the UI is displaying them correctly.",
         "status": "pending",
-        "dependencies": [
-          20,
-          29,
-          17
-        ],
+        "dependencies": [20, 29, 17],
         "priority": "medium",
         "subtasks": []
       },
@@ -707,13 +588,7 @@
         "details": "1.  Create a new UI module within the existing React/Next.js frontend (Task 20).\n2.  Design UI components for configuring Target Reacher parameters, including target prices, percentages, risk management settings, and aggressiveness levels. Use appropriate input types and validation.\n3.  Implement real-time monitoring of target achievement using charts and graphs, displaying progress towards targets and key performance indicators.\n4.  Integrate with the Target Reacher backend (when available) to fetch and display performance data and allow users to adjust parameters dynamically.\n5.  Incorporate risk management settings configuration, linking to the per-bot risk management UI (Task 19) and overall bot management dashboard (Task 28).\n6.  Implement modular target reacher performance visualization, allowing users to select and view different performance metrics and timeframes.\n7.  Consider incorporating elements from the Aether Signal UI (Task 31) for signal visualization and parameter adjustment, if applicable.\n8.  Ensure the UI is responsive and user-friendly, providing clear feedback and error handling.",
         "testStrategy": "1.  Verify that the UI components for configuring Target Reacher parameters are functioning correctly and allow users to adjust settings.\n2.  Test the real-time monitoring of target achievement by simulating trades and verifying that the data is displayed accurately in the UI.\n3.  Verify that the risk management settings configuration is integrated correctly with the per-bot risk management UI (Task 19).\n4.  Test the modular target reacher performance visualization by selecting different metrics and timeframes and verifying that the data is displayed correctly.\n5.  Ensure that the UI is responsive and user-friendly, providing clear feedback and error handling.",
         "status": "done",
-        "dependencies": [
-          20,
-          15,
-          19,
-          28,
-          31
-        ],
+        "dependencies": [20, 15, 19, 28, 31],
         "priority": "medium",
         "subtasks": []
       },
@@ -724,11 +599,7 @@
         "details": "1.  Create comprehensive documentation for each indicator (SMA, EMA, MACD, RSI, Bollinger Bands, ATR, etc.) in the JabbrLabs/indicators directory, including descriptions, parameters, and usage examples.\n2.  Standardize the interfaces for all indicators, ensuring consistent input and output formats. Define a common base class or interface for all indicators to inherit from.\n3.  Implement unit tests to validate the calculations of all indicators, ensuring accuracy and reliability. Use historical data to compare the output of each indicator with known correct values.\n4.  Create a unified export system for the indicators library, allowing strategies and signals to easily access and use the indicators. Use a single entry point for importing indicators.\n5.  Refactor the existing indicator implementations to adhere to the standardized interfaces and a unified export system.\n6.  Address edge cases and potential errors in indicator calculations, such as division by zero or invalid input parameters.\n7.  Ensure the indicators library is compatible with the trading engine and bot management components.\n8.  Consider adding new indicators based on user feedback and market analysis.",
         "testStrategy": "1.  Verify that all indicators in the JabbrLabs/indicators directory have comprehensive documentation, including descriptions, parameters, and usage examples.\n2.  Test the standardized interfaces for all indicators, ensuring consistent input and output formats.\n3.  Run unit tests to validate the calculations of all indicators, comparing the output with known correct values.\n4.  Test the unified export system by importing and using indicators in different strategies and signals.\n5.  Verify that the indicators library is compatible with the trading engine and bot management components.\n6.  Test the indicators with different data sets and market conditions to ensure robustness and reliability.\n7.  Measure the performance of the indicators to ensure they are efficient and do not introduce significant overhead.",
         "status": "done",
-        "dependencies": [
-          2,
-          10,
-          14
-        ],
+        "dependencies": [2, 10, 14],
         "priority": "high",
         "subtasks": [
           {
@@ -794,12 +665,7 @@
         "details": "1.  **Strategy Execution Integration:**\n    *   Modify the trading engine (Task 14) to seamlessly integrate with the strategy framework (Tasks 29 & 30). Ensure the engine can dynamically load and execute different trading strategies.\n    *   Implement a strategy selector within the bot management interface (Task 22) to allow users to choose their preferred trading strategy.\n2.  **Signal Processing Integration:**\n    *   Connect the signal processing module to the trading engine. Implement a signal translator to convert signals into actionable trading orders.\n    *   Ensure the signal processing module can handle signals from various sources, including Aether Signal Generator (Task 29) and Target Reacher (Task 30).\n3.  **Risk Management Integration:**\n    *   Integrate the risk management framework (Task 13) with the trading engine to enforce risk limits and stop-loss orders.\n    *   Implement dynamic risk adjustment based on market conditions and bot performance.\n4.  **Position Management Integration:**\n    *   Connect the position management module to the trading engine to track open positions and calculate P&L.\n    *   Implement position-aware order sizing to optimize trade execution.\n5.  **Order Routing Integration:**\n    *   Integrate the order routing module with the exchange abstraction layer (Task 10) to route orders to the appropriate exchanges.\n    *   Implement smart order routing to minimize slippage and maximize execution speed.\n6.  **Lifecycle Management Integration:**\n    *   Implement bot lifecycle management to handle bot startup, shutdown, and error recovery.\n    *   Integrate with the bot status monitoring system (Task 18) to provide real-time updates on bot status and performance.\n7.  **Advanced Order Management:**\n    *   Leverage advanced order management features (Task 26) such as bracket orders and automatic TP/SL management to enhance trading capabilities.\n8.  **Configuration:**\n    *   Create a config...",
         "testStrategy": "1.  **Unit Tests:**\n    *   Write unit tests to verify the integration of each component within the bot-cycle directory.\n    *   Test the signal processing module to ensure it correctly translates signals into trading orders.\n    *   Test the risk management framework to ensure it enforces risk limits and stop-loss orders.\n2.  **Integration Tests:**\n    *   Run integration tests to verify that all components work together seamlessly.\n    *   Simulate live trading conditions and verify that the bot executes trades based on the configured strategy and parameters.\n    *   Monitor the bot's performance and P&L to ensure that it is generating profitable trades.\n3.  **Stress Tests:**\n    *   Run stress tests to verify that the bot can handle high volumes of trades and market data.\n    *   Simulate extreme market conditions and verify that the bot can recover from errors and continue trading.\n4.  **Regression Tests:**\n    *   Run regression tests to ensure that new changes do not break existing functionality.\n5.  **Production Monitoring:**\n    *   Implement comprehensive monitoring to track bot performance, P&L, and risk metrics in production.\n    *   Set up alerts to notify administrators of any issues or anomalies.",
         "status": "review",
-        "dependencies": [
-          14,
-          26,
-          13,
-          10
-        ],
+        "dependencies": [14, 26, 13, 10],
         "priority": "high",
         "subtasks": [
           {
@@ -883,12 +749,7 @@
         "details": "1.  **Audit Existing Strategies:** Review the Aether Signal Generator (Task 29), Target Reacher strategy (Task 30), and any custom strategy plugins to identify all indicator implementations.\n2.  **Identify Duplicate Implementations:** Compare indicator implementations across all strategies and the JabbrLabs/indicators library (Task 33) to identify any duplicates.\n3.  **Update Strategy Implementations:** Modify the Aether Signal Generator, Target Reacher strategy, and custom strategy plugins to import indicators exclusively from the JabbrLabs/indicators library.\n4.  **Remove Duplicate Code:** Delete any duplicate indicator implementations from the strategy codebases.\n5.  **Ensure Consistent Calculations:** Verify that all strategies use the same calculation methods for each indicator, as defined in the JabbrLabs/indicators library.\n6.  **Update Configuration:** Ensure that the strategy framework (Task 17) is updated to correctly utilize the unified indicator sources.\n7.  **Refactor Custom Plugins:** Provide guidance and support for users to refactor their custom strategy plugins to use the unified indicator library.\n<info added on 2025-07-03T00:23:19.302Z>\nThe Strategy Framework (Task 17) has been successfully completed, including a plugin architecture and backtesting capabilities. Unifying indicator sources is now even more critical to maintain consistency across all strategies built using the completed framework.\n</info added on 2025-07-03T00:23:19.302Z>\n<info added on 2025-07-04T21:17:16.562Z>\nANALYSIS COMPLETED - Task 35 Comprehensive Assessment:\n\nCurrent Unified Indicators Library Status:\n✅ Well-established central hub at packages/backend/src/JabbrLabs/indicators/index.ts\n- Complete IndicatorFactory, IndicatorUtils, IndicatorSets\n- Class-based: SMAIndicator, EMAIndicator, MACDIndicator, RSIIndicator, BollingerBandsIndicator, ATRIndicator\n- Function-based: calculateSMA, calculateEMA, calculateMACD, calculateRSI, getMASignals\n- Registry system with aliases and metadata\n\nImport Pattern Analysis:\n✅ PROPERLY USING UNIFIED SOURCE:\n- Aether Signal Core: imports from ../../indicators (unified)\n- Signal Processing Validation: imports from ../JabbrLabs/indicators (unified)\n\n⚠️ NEEDS UNIFICATION (direct imports):\n- SMA Signal Processor: imports from ../../indicators/moving-averages\n- Improved SMA Signal Processor: imports from ../../indicators/moving-averages\n\nRequired Updates:\n1. Update 2 SMA signal processor files to use unified indicators import\n2. Verify internal indicator dependencies remain intact\n3. No duplicate implementations found - all use proper abstractions\n\nRisk Assessment: LOW - Only import statement changes needed\nBuild Status: ✅ Project builds successfully\n</info added on 2025-07-04T21:17:16.562Z>",
         "testStrategy": "1.  **Unit Tests:** Write unit tests to verify that the Aether Signal Generator, Target Reacher strategy, and custom strategy plugins are correctly importing indicators from the JabbrLabs/indicators library.\n2.  **Integration Tests:** Run integration tests to verify that the strategies generate the same signals when using indicators from the JabbrLabs/indicators library as they did with their original implementations.\n3.  **Regression Tests:** Run regression tests to ensure that the changes do not introduce any new bugs or performance issues.\n4.  **Manual Verification:** Manually verify that the strategies are generating the correct signals by comparing their output to known good values.\n5.  **Code Review:** Conduct a code review to ensure that all duplicate indicator implementations have been removed and that the strategies are using the JabbrLabs/indicators library correctly.",
         "status": "done",
-        "dependencies": [
-          17,
-          29,
-          30,
-          33
-        ],
+        "dependencies": [17, 29, 30, 33],
         "priority": "high",
         "subtasks": []
       },
@@ -897,14 +758,7 @@
         "title": "Implement Production-Ready Bot Lifecycle Management System",
         "description": "Implement a production-ready bot lifecycle management system to handle bot initialization, strategy loading, signal processing, trade execution, monitoring, error handling, graceful shutdown, and state persistence. Ensure bots can run continuously in production with proper recovery mechanisms. Core bot lifecycle management is now complete and production-ready.",
         "status": "done",
-        "dependencies": [
-          3,
-          10,
-          14,
-          15,
-          28,
-          46
-        ],
+        "dependencies": [3, 10, 14, 15, 28, 46],
         "priority": "high",
         "details": "1. Implement bot initialization routines, including loading configurations from the database (Task 15) and setting up initial state.\n2. Develop strategy loading mechanisms to dynamically load and switch trading strategies.\n3. Integrate signal processing logic to interpret market signals and generate trading decisions.\n4. Implement trade execution logic using the exchange abstraction layer (Task 10) to place orders on different exchanges.\n5. Implement comprehensive monitoring and logging to track bot performance, resource usage, and potential errors. Monitoring components have been moved to Task #46.\n6. Develop robust error handling mechanisms to gracefully handle exceptions and prevent bot crashes.\n7. Implement graceful shutdown procedures to ensure bots can be stopped and restarted without data loss.\n8. Implement state persistence mechanisms to save and restore bot state, allowing bots to recover from unexpected shutdowns.\n9. Integrate with the authentication system (Task 3) to ensure secure access to bot management functions.\n10. Ensure the system is compatible with the trading engine core (Task 14) and the bot management dashboard UI (Task 28).\n11. Implement automated recovery mechanisms to automatically restart bots after failures.",
         "testStrategy": "1. Verify that bots can be initialized correctly with different configurations.\n2. Test strategy loading and switching to ensure that bots can dynamically adapt to changing market conditions.\n3. Verify that signal processing logic generates correct trading decisions based on market signals.\n4. Test trade execution logic by placing orders on different exchanges and verifying that orders are executed correctly.\n5. Verify that monitoring and logging mechanisms provide comprehensive information about bot performance and potential errors. Monitoring tests are now part of Task #46.\n6. Test error handling mechanisms by simulating different error scenarios and verifying that bots can gracefully handle exceptions.\n7. Test graceful shutdown procedures by stopping and restarting bots and verifying that no data is lost.\n8. Test state persistence mechanisms by simulating unexpected shutdowns and verifying that bots can recover from the last saved state.\n9. Verify that automated recovery mechanisms can automatically restart bots after failures.\n10. Monitor bot performance in a production environment to ensure that bots can run continuously without issues.",
@@ -914,9 +768,7 @@
             "title": "Move Monitoring Components to Task #46",
             "description": "Move the monitoring components (36.5.1-36.5.5) to Task #46 for better organization.",
             "status": "done",
-            "dependencies": [
-              5
-            ],
+            "dependencies": [5],
             "details": "Remove the subtasks related to monitoring from this task and add them to Task #46.",
             "testStrategy": "Verify that the monitoring components are correctly moved to Task #46 and that they are still functioning as expected."
           },
@@ -1001,15 +853,7 @@
         "details": "1.  Design and implement end-to-end tests that cover the entire bot trading flow, including indicator calculations, signal generation, strategy execution, order placement, position management, risk controls, and WebSocket updates.\n2.  Utilize a testing framework (e.g., Jest, Mocha) to create automated tests.\n3.  Simulate realistic market conditions and trading scenarios to thoroughly test the system's behavior.\n4.  Integrate the testing suite with the CI/CD pipeline to ensure continuous testing and validation.\n5.  Implement comprehensive logging and reporting to facilitate debugging and analysis of test results.\n6.  Ensure tests cover edge cases and error handling scenarios.\n7.  Use mock data and services where appropriate to isolate components and improve test performance.",
         "testStrategy": "1.  Execute the entire system integration testing suite and verify that all tests pass.\n2.  Analyze test results to identify any failures or errors.\n3.  Investigate and fix any identified issues, and re-run the tests to ensure they are resolved.\n4.  Monitor system performance during testing to identify any bottlenecks or performance issues.\n5.  Verify that all components of the bot trading flow are functioning correctly and interacting seamlessly.\n6.  Validate that the system can handle realistic trading volumes and market volatility.\n7.  Confirm that risk controls are functioning correctly and preventing excessive losses.\n8.  Verify that WebSocket updates are being received and processed correctly.\n9.  Ensure that the system is robust and can handle unexpected errors or failures.",
         "status": "pending",
-        "dependencies": [
-          10,
-          14,
-          15,
-          28,
-          31,
-          32,
-          33
-        ],
+        "dependencies": [10, 14, 15, 28, 31, 32, 33],
         "priority": "medium",
         "subtasks": []
       },
@@ -1020,17 +864,7 @@
         "details": "1.  Validate all \"done\" tasks are truly production-ready by re-examining their implementation and test results.\n2.  Test all system integrations to ensure seamless communication and data flow between components.\n3.  Verify database connections and ensure data integrity.\n4.  Test all API endpoints for functionality, performance, and security.\n5.  Validate WebSocket functionality for real-time data streaming and bi-directional communication.\n6.  Assess trading engine operations, including order execution, position management, and risk controls.\n7.  Review error handling mechanisms to ensure proper error detection, logging, and recovery.\n8.  Examine logging infrastructure to ensure comprehensive and informative logging.\n9.  Conduct a security audit to identify and address potential vulnerabilities.\n10. Evaluate overall system stability and performance under simulated production load.\n11. Document any identified issues or technical debt and prioritize them for remediation.",
         "testStrategy": "1.  Execute all existing unit and integration tests to verify the functionality of individual components and their interactions.\n2.  Perform end-to-end tests to simulate real-world trading scenarios and validate the complete system flow.\n3.  Conduct load testing to assess system performance under high traffic conditions.\n4.  Perform security scans to identify potential vulnerabilities.\n5.  Review system logs for errors, warnings, and anomalies.\n6.  Manually inspect critical system components and configurations to ensure they are functioning correctly.\n7.  Compare current system performance against baseline metrics to identify any regressions.\n8.  Document all test results and findings in a comprehensive audit report.",
         "status": "pending",
-        "dependencies": [
-          3,
-          4,
-          5,
-          6,
-          7,
-          17,
-          21,
-          27,
-          37
-        ],
+        "dependencies": [3, 4, 5, 6, 7, 17, 21, 27, 37],
         "priority": "critical",
         "subtasks": [
           {
@@ -1130,10 +964,7 @@
         "title": "Fix Critical TypeScript Build Errors",
         "description": "Address critical TypeScript build errors to restore the application's compilation and deployment capabilities. This involves resolving missing dependencies, type safety violations, and interface mismatches. The build is currently failing with 40 TypeScript errors.",
         "status": "done",
-        "dependencies": [
-          35,
-          38
-        ],
+        "dependencies": [35, 38],
         "priority": "high",
         "details": "1. **Analyze Build Errors:** Examine the TypeScript compiler output to identify the root cause of each error. Categorize errors based on type (e.g., missing dependencies, type mismatches, interface violations). Prioritize errors based on their impact on the build process.\n2. **Resolve Missing Dependencies:** Identify and install any missing npm packages or TypeScript definition files (`.d.ts`). Update `package.json` and run `npm install` or `yarn install` to ensure all dependencies are correctly installed.\n3. **Fix Type Safety Violations:** Address type mismatches by modifying code to conform to expected types. Use TypeScript's type checking features to identify and correct type-related errors. Add explicit type annotations where necessary to improve code clarity and prevent future type errors.\n4. **Resolve Interface Mismatches:** Ensure that all classes and functions correctly implement the interfaces they are supposed to. Update interfaces or implementations as needed to resolve any mismatches. Pay close attention to function signatures and property types.\n5. **Refactor Code (if necessary):** If the errors are due to poor code structure or design, refactor the code to improve its maintainability and reduce the likelihood of future errors. Consider using design patterns to improve code organization and reduce complexity.\n6. **Update TypeScript Configuration:** Review the `tsconfig.json` file to ensure that the compiler options are correctly configured. Adjust compiler options as needed to enforce stricter type checking and prevent common errors.\n7. **Linting and Formatting:** Run a linter (e.g., ESLint) and formatter (e.g., Prettier) to identify and fix any code style issues that may be contributing to the errors. Ensure that the code is consistently formatted and follows best practices.\n8. **Incremental Compilation:** Utilize TypeScript's incremental compilation feature to speed up the build process and identify errors more quickly. Enab...\n<info added on 2025-07-03T15:22:29.553Z>\nProgress Update: Reduced build errors from 40 to 36 errors (10% improvement). Successfully:\n\n✅ Fixed MarketType export issue by moving enum to shared package\n✅ Created websocket.service.ts to resolve missing module errors  \n✅ Updated all MarketType imports across the codebase\n✅ Fixed indicators library export issues\n\nRemaining 36 errors are in these categories:\n- Type mismatches in monitoring services (19 errors)\n- Missing exchange types module (2 errors) \n- Bot status type inconsistencies (3 errors)\n- ATR indicator data access issues (3 errors)\n- Strategy and trade executor type issues (5 errors)\n- System monitor type issues (2 errors)\n- Various interface violations (2 errors)\n\nNext focus: Complete remaining type fixes to achieve full build success.\n</info added on 2025-07-03T15:22:29.553Z>\n<info added on 2025-07-03T15:26:29.810Z>\nBuild Error Progress Update - Achieved 12.5% Reduction:\n\n✅ **RESOLVED: WebSocket Service Module Issues**\n   - Created websocket.service.ts wrapper for JabbrWebSocketServer\n   - Fixed imports in database-monitor, exchange-monitor, and bot-manager\n   - Reduced errors from 36 to 35\n\n✅ **RESOLVED: Exchange Type Import Issues** \n   - Fixed MarketType imports from shared package across all files\n   - Corrected import paths in exchange-manager\n\nCurrent Status: 35 errors remaining in 9 files, concentrated in:\n- **Monitoring Services** (22 errors) - Interface mismatches, wrong function signatures\n- **Bot/Trading Logic** (4 errors) - Status type inconsistencies, property mismatches  \n- **ATR Indicator** (3 errors) - Array indexing with undefined values\n- **Strategy Monitor** (2 errors) - Undefined object access\n- **System Monitor** (2 errors) - Type conversion issues\n- **Exchange Manager** (2 errors) - Property type mismatches\n\nNext Priority: Focus on monitoring services as they contain 63% of remaining errors. These appear to be interface definition mismatches rather than missing modules.\n</info added on 2025-07-03T15:26:29.810Z>\n<info added on 2025-07-03T15:34:50.160Z>\nMonitoring Services Fix Progress Update - Achieved 23% Total Reduction:\n\n✅ **FIXED: Health Status Type Mismatches**\n   - Corrected 'critical' → 'unhealthy' and 'warning' → 'degraded' in SystemHealth comparisons\n   - Fixed health status enum alignments with shared package types\n\n✅ **FIXED: MetricsCollector Interface Issues**\n   - Corrected recordMetric wrapper method to use proper parameter structure\n   - Fixed type parameter positioning (gauge, counter, etc.)\n\n✅ **FIXED: AlertManager CreateAlert Interface**\n   - Updated createAlert wrapper to use object-based parameters instead of individual arguments\n   - Mapped severity levels to proper Alert interface structure\n\n**Build Progress**: 35 → 31 errors (23% total reduction from original 40)\n- **Monitoring Services**: Reduced from 19 to 15 errors (21% improvement)\n- Successfully fixed type safety violations and interface mismatches\n\n**Remaining Issues**: \n- AlertManager constructor and missing methods (start/stop)\n- Service constructor signatures (websocket parameter issues)\n- Direct createAlert calls still using old 5-parameter format\n- MetricsCollectorConfig property mismatches\n\nNext: Fix constructor signatures and remaining alert calls.\n</info added on 2025-07-03T15:34:50.160Z>\n<info added on 2025-07-03T15:45:46.178Z>\nMajor Monitoring Services Fix Complete - Achieved 52% Total Reduction:\n\n✅ **MONITORING SERVICES LARGELY FIXED**: \n   - Fixed ALL 9 createAlert calls to use proper object-based Alert interface\n   - Removed non-existent start/stop method calls on AlertManager\n   - Fixed AlertManager constructor parameter signature\n   - Reduced monitoring service errors from 15 to 3 (80% improvement in this area)\n\n**Overall Build Progress**: 40 → 19 errors (52% total reduction!)\n- **Monitoring Services**: 15 → 3 errors (80% reduction)\n- **Successfully resolved**: All alert creation interface mismatches\n\n**Remaining 19 errors breakdown**:\n- **Bot/Trading Logic**: 4 errors (bot-manager, trade-executor)\n- **Exchange Manager**: 2 errors (type mismatches)\n- **ATR Indicator**: 3 errors (array indexing)\n- **Strategy Monitor**: 2 errors (undefined access)\n- **System Monitor**: 2 errors (type conversion)\n- **WebSocket Message Types**: 3 errors (database/exchange monitors)\n- **Service Constructors**: 3 errors (remaining parameter mismatches)\n\nThe monitoring services are now substantially fixed. Focus shifted to remaining constructor issues and other service type mismatches.\n</info added on 2025-07-03T15:45:46.178Z>",
         "testStrategy": "1. **Run TypeScript Compiler:** Execute the TypeScript compiler (`tsc`) to verify that all errors have been resolved and the build completes successfully without errors.\n2. **Unit Tests:** Run all existing unit tests to ensure that the changes made to fix the build errors have not introduced any regressions. Write new unit tests to cover any code that was modified or added.\n3. **Integration Tests:** Run integration tests to verify that the different components of the application are working together correctly. Pay close attention to any areas that were affected by the build errors.\n4. **End-to-End Tests:** Run end-to-end tests to simulate real-world user scenarios and verify that the application is functioning as expected. Ensure that all critical features are working correctly.\n5. **Code Review:** Have another developer review the code to ensure that the changes are correct and that they do not introduce any new issues.\n6. **Regression Testing:** After the build errors have been resolved, perform regression testing to ensure that no existing functionality has been broken.",
@@ -1282,9 +1113,7 @@
         "details": "1. Identify all existing test files across the project, including those at the root level and within existing subdirectories.\n2. Create a standardized test directory structure (unit, integration, e2e, fixtures) at the project's root.\n3. Move all test files to their appropriate locations within the new directory structure.\n4. Update all test imports and references within the codebase to match the new test file locations.\n5. Configure test result collection and reporting using a standardized format (e.g., JUnit, SonarQube).\n6. Ensure all test configuration files (e.g., Jest, Mocha, Cypress) adhere to the new standard and are correctly located.\n7. Update CI/CD workflows (e.g., GitHub Actions, Jenkins) to execute tests from the new directory structure and collect test results.\n8. Document the new test organization in a dedicated test organization guide, including directory structure, naming conventions, and test execution procedures.\n<info added on 2025-07-03T01:37:05.439Z>\nTask completed.\n\nWork done:\n\n1.  Created a standardized test directory structure:\n\n    *   `/tests` as the root directory\n    *   Separate directories for `unit`, `integration`, `e2e`, and `fixtures` tests\n    *   Package-specific subdirectories under each test type\n2.  Moved existing test files to the appropriate locations:\n\n    *   Moved strategy factory tests to integration tests\n    *   Moved SMA signal processor tests to unit tests\n    *   Moved SMA crossover strategy tests to unit tests\n    *   Moved standalone engine tests to e2e tests\n3.  Updated imports in all moved test files to reflect new locations\n4.  Created comprehensive Jest configurations:\n\n    *   Root-level Jest config that references all test projects\n    *   Separate Jest configs for each test type and package\n    *   Setup files for different test environments\n5.  Created test fixtures directory with reusable test data\n6.  Updated package.json files:\n\n    *   Root package.json...",
         "testStrategy": "1. Verify that all test files have been moved to the correct locations within the new directory structure.\n2. Run all unit, integration, and e2e tests to ensure they pass and produce the expected results.\n3. Check that test result collection and reporting are functioning correctly, generating reports in the standardized format.\n4. Verify that CI/CD workflows execute tests from the new directory structure and collect test results.\n5. Confirm that the test organization guide accurately reflects the new structure and procedures.\n6. Ensure that all test configuration files are correctly configured and located.",
         "status": "done",
-        "dependencies": [
-          17
-        ],
+        "dependencies": [17],
         "priority": "high",
         "subtasks": []
       },
@@ -1293,13 +1122,7 @@
         "title": "Comprehensive Code Quality Audit",
         "description": "Conduct a comprehensive code quality audit of the entire project to identify duplicated code, production violations, code standard violations, performance bottlenecks, security vulnerabilities, inconsistencies, unused code, TypeScript issues, error handling gaps, and resource management problems, resulting in a detailed report with recommendations. Code quality audit framework now established and operational. Remaining subtasks focus on standards adherence, performance profiling, security review, and final reporting.",
         "status": "done",
-        "dependencies": [
-          3,
-          14,
-          20,
-          33,
-          37
-        ],
+        "dependencies": [3, 14, 20, 33, 37],
         "priority": "critical",
         "details": "1.  Utilize static analysis tools (e.g., SonarQube, ESLint, TSLint) to automatically scan the codebase for code quality issues.\n2.  Manually review the codebase to identify issues not detectable by automated tools, such as architectural inconsistencies and complex logic.\n3.  Identify and document all instances of duplicated methods and functions across the codebase.\n4.  Identify and categorize production-ready violations that must be fixed before Task 18.0, prioritizing critical issues.\n5.  Assess code adherence to project standards and patterns, documenting deviations and suggesting improvements.\n6.  Profile the application to identify performance bottlenecks and optimization opportunities.\n7.  Perform a security review to identify vulnerabilities and best practice violations, including potential injection flaws, authentication/authorization issues, and data exposure risks.\n8.  Document inconsistencies in coding style and documentation, providing recommendations for standardization.\n9.  Identify and remove unused code, dead imports, and unnecessary dependencies.\n10. Analyze TypeScript code for type safety issues and any usage of 'any' type, suggesting specific type annotations.\n11. Review error handling mechanisms for inconsistencies or gaps, recommending a unified approach.\n12. Identify resource management issues such as memory leaks and unclosed connections, providing remediation strategies.\n13. Generate a comprehensive report detailing each identified issue, categorized by severity and impact, with specific recommendations for resolution.",
         "testStrategy": "1.  Verify that all identified code quality issues are accurately documented in the audit report.\n2.  Ensure that the report includes specific recommendations for resolving each identified issue.\n3.  Validate that the identified issues are correctly categorized by severity and impact.\n4.  Confirm that the recommendations align with project standards and best practices.\n5.  Retest the codebase after implementing the recommendations to ensure that the identified issues have been resolved.\n6.  Run performance tests to verify that the implemented optimizations have improved application performance.\n7.  Perform a security review to ensure that the identified vulnerabilities have been addressed.",
@@ -1381,9 +1204,7 @@
             "title": "Address False Positive Duplicates",
             "description": "Investigate and address the 21 false positive file duplicates identified by the analyzer.",
             "status": "done",
-            "dependencies": [
-              2
-            ],
+            "dependencies": [2],
             "details": "The automated duplication detection identified 21 files as exact duplicates, but manual review indicates these are false positives. Investigate the cause of this misidentification in the analyzer's logic and implement a fix or workaround to prevent future false positives. Document the findings and resolution.\n<info added on 2025-07-04T01:38:42.894Z>\n✅ SUCCESSFULLY RESOLVED: False Positive Duplicates Issue\n\n🎯 PROBLEM IDENTIFIED AND FIXED:\n- Original analyzer had faulty normalization logic causing ALL files to hash to empty string (d41d8cd98f00b204e9800998ecf8427e)\n- Overly aggressive comment removal and whitespace normalization removed all meaningful content\n- Result: 21 false positive \"exact duplicates\" when no actual duplicates existed\n\n🔧 SOLUTION IMPLEMENTED:\n- Created fixed duplication analyzer (scripts/quality/duplication-analyzer-fixed.js)\n- Improved normalization preserves code structure while removing comments properly\n- Added content validation (minimum 10 chars after normalization)\n- Enhanced hash collision detection and validation\n- Added debug logging for transparency\n\n✅ VERIFICATION RESULTS:\n- Fixed analyzer correctly identifies 0 duplicate files (accurate result)\n- All 172 analyzed files have unique, meaningful content hashes\n- 3 files properly skipped for minimal content (empty test files, etc.)\n- Comprehensive fix documentation created (.taskmaster/reports/false-positive-duplication-fix-report.md)\n\n🚀 OUTCOME:\n- FALSE POSITIVES ELIMINATED: All 21 false duplicates resolved\n- CODEBASE VALIDATED: No actual duplicate files exist\n- IMPROVED TOOLING: Fixed analyzer provides accurate duplicate detection\n- READY FOR PRODUCTION: Clean codebase with reliable duplication monitoring\n\nThe original 21 \"duplicates\" were analysis artifacts, not real code duplication issues.\n</info added on 2025-07-04T01:38:42.894Z>",
             "testStrategy": "After implementing the fix, rerun the automated duplication detection to ensure that the false positives are no longer identified."
           },
@@ -1392,9 +1213,7 @@
             "title": "Eliminate Legitimate Code Block Duplications",
             "description": "Eliminate the 4 legitimate code block duplications identified during the manual review.",
             "status": "done",
-            "dependencies": [
-              3
-            ],
+            "dependencies": [3],
             "details": "The manual code review identified 4 instances of duplicated code blocks. Refactor the code to eliminate these duplications, creating shared utilities or functions as appropriate. Verify that the refactored code functions correctly and does not introduce new issues.",
             "testStrategy": "After refactoring, run the application's test suite to ensure that no functionality has been broken. Also, rerun the automated duplication detection to verify that the duplications have been eliminated."
           },
@@ -1403,9 +1222,7 @@
             "title": "Update Production Violations Analysis",
             "description": "Update the production violations analysis to reflect the current state of the codebase.",
             "status": "done",
-            "dependencies": [
-              4
-            ],
+            "dependencies": [4],
             "details": "The initial production violations analysis identified several critical blockers. Since then, some of these issues may have been resolved. Re-run the analysis to ensure that the report accurately reflects the current state of the codebase and that no critical blockers remain.",
             "testStrategy": "Re-run the production violations analysis and verify that the report shows zero critical blockers."
           },
@@ -1454,12 +1271,7 @@
         "details": "1.  **Consolidate Test Directories:** Move all tests from the root-level `./tests` folder and `packages/backend/src/**/__tests__` into `packages/backend/tests/`, `packages/frontend/tests/`, and `packages/shared/tests/` respectively. Remove the root-level `./tests` folder.\n2.  **Convert JavaScript Tests to TypeScript:** Convert all `.js` test files to `.ts` or `.tsx` files, ensuring compatibility with the existing TypeScript codebase. Update import statements accordingly.\n3.  **Establish Testing Conventions:** Define clear testing conventions for future development, including file naming, test structure, and assertion libraries (e.g., Jest, Mocha, Chai). Document these conventions in the project's README or a dedicated testing guide.\n4.  **Update Test Scripts:** Modify the `package.json` scripts in each package to correctly run tests from the new locations. Ensure that test commands execute all tests in the respective `tests` directories.\n5.  **Configure Test Runners:** Configure test runners (e.g., Jest, Mocha) to correctly identify and execute tests in the new directory structure. Update configuration files as needed.\n6.  **Address Import Issues:** Resolve any import issues that arise from moving and converting test files. Ensure that all test files can correctly import modules from the codebase.\n7.  **Integrate with CI/CD:** Ensure that the updated testing structure is correctly integrated with the CI/CD pipeline. Verify that tests are automatically run on each commit and pull request.\n<info added on 2025-07-03T14:03:44.834Z>\nProgress Update: 5/8 subtasks completed (Audit, Directory Structure, File Movement, JS to TS Conversion, Jest Configuration). Test infrastructure is now organized with a 92% success rate (70/76 tests passing).\n\nMajor Accomplishments:\n- Eliminated confusing root-level tests directory\n- Established proper package-specific test directories with unit/integration/e2e separation\n- Successfully migrated all actual test files to appropriate locations\n- Converted JavaScript tests to TypeScript\n- Updated Jest configurations with modern ts-jest presets\n- Fixed import paths and TypeScript compilation issues\n- Created test setup files with proper mocking\n- Updated package.json scripts for new structure\n\nNext Steps: Complete subtasks 42.6 (import standardization), 42.7 (comprehensive validation), and 42.8 (documentation).\n</info added on 2025-07-03T14:03:44.834Z>",
         "testStrategy": "1.  **Verify Directory Structure:** Confirm that all test files have been moved to the correct directories (`packages/backend/tests/`, `packages/frontend/tests/`, `packages/shared/tests/`) and that the root-level `./tests` folder has been removed.\n2.  **Run All Tests:** Execute all tests in each package (`packages/backend/`, `packages/frontend/`, `packages/shared/`) to ensure that they pass and produce the expected results. Use the updated test scripts in `package.json`.\n3.  **Check TypeScript Compilation:** Verify that all TypeScript test files compile without errors. Address any type errors or compilation issues that arise.\n4.  **Validate Testing Conventions:** Ensure that all new and existing test files adhere to the established testing conventions. Verify that file naming, test structure, and assertion libraries are consistent.\n5.  **CI/CD Integration:** Confirm that the CI/CD pipeline correctly runs all tests and reports the results. Verify that test failures cause the build to fail.",
         "status": "done",
-        "dependencies": [
-          2,
-          35,
-          39,
-          40
-        ],
+        "dependencies": [2, 35, 39, 40],
         "priority": "high",
         "subtasks": [
           {
@@ -1543,12 +1355,7 @@
         "details": "1. **Root-Level .env Creation:** Create a `.env` file at the project root to centralize environment variables.\n2. **Variable Standardization:** Rename environment variables in the root `.env` to match those expected by the tests (e.g., `BYBIT_TEST_API_KEY`, `BYBIT_TEST_API_SECRET`).\n3. **Package-Specific Configuration:** Remove or consolidate any existing `.env` files in individual packages (backend, frontend, shared).\n4. **Environment Loading Mechanism:** Implement a mechanism to load environment variables from the root `.env` file into the application's process environment.  Consider using a library like `dotenv` in the backend and a similar approach for the frontend if needed. Ensure this loading happens early in the application lifecycle.\n5. **Test Environment Configuration:** Configure the test environment to use the standardized environment variables.  This may involve setting environment variables directly in the test runner configuration or modifying the test scripts to read from the process environment.\n6. **Production Environment Configuration:** Document how to set environment variables in the production environment.  Emphasize the importance of setting `BYBIT_TESTNET=false` in production.\n7. **Testnet/Mainnet Switching:** Implement a clear mechanism for switching between testnet and mainnet environments using the `BYBIT_TESTNET` variable. Ensure this variable is correctly used throughout the application to determine which API endpoints and credentials to use.\n8. **Documentation:** Create comprehensive documentation on the correct environment setup process, including variable names, locations, and testnet/mainnet switching.\n9. **Security Considerations:**  Explicitly state that API keys should never be committed to the repository and should always be managed through environment variables.\n<info added on 2025-07-03T17:02:58.479Z>\nMAJOR PROGRESS UPDATE: Unified Environment Configuration Implementation\n\n✅ COMPLETED:\n1. Created root-level .env file with comprehensive configuration for entire monorepo\n2. Added dotenv and dotenv-cli dependencies to support unified environment loading\n3. Updated backend package.json scripts to use root .env file via dotenv-cli\n4. Modified Jest setup to load root .env file automatically during tests\n5. Fixed remaining hardcoded API keys in test-trading-engine.ts\n6. Corrected import paths and method signatures in integration tests\n7. Successfully installed all new dependencies\n\n🔧 KEY CHANGES:\n- Root .env file: Contains all API keys and configuration with proper naming (BYBIT_TESTNET_API_KEY/SECRET)\n- Package.json scripts: Now use \"dotenv -e ../../.env\" to load root environment\n- Jest setup: Automatically loads root .env with require('dotenv').config({ path: '../../.env' })\n- Test files: Removed hardcoded credentials, now use process.env variables\n- Method signatures: Fixed getBalance() and getTradingFees() calls in integration tests\n\n⚠️ NEXT STEPS:\n1. Run test suite to verify environment loading works correctly\n2. Validate API connectivity with new unified configuration\n3. Test both development and production environment loading\n4. Consider adding .env.example file for documentation\n\nThis resolves the critical environment configuration issues that were blocking API connections.\n</info added on 2025-07-03T17:02:58.479Z>",
         "testStrategy": "1. **Test Environment Variable Loading:** Write a test case that verifies that the environment variables are correctly loaded from the root `.env` file in the test environment.\n2. **API Connection Tests:**  Write integration tests that connect to the Bybit API using the test API keys and verify that the connection is successful.  These tests should cover both testnet and mainnet configurations.\n3. **Production Environment Validation:**  Deploy the application to a staging environment with production-like configuration and verify that it starts correctly and connects to the Bybit API using the production API keys.\n4. **Testnet/Mainnet Switching Tests:**  Write tests that verify that the application correctly switches between testnet and mainnet environments based on the `BYBIT_TESTNET` variable.\n5. **End-to-End Tests:** Run end-to-end tests that simulate trading scenarios and verify that the application behaves correctly in both testnet and mainnet environments.",
         "status": "done",
-        "dependencies": [
-          39,
-          27,
-          4,
-          3
-        ],
+        "dependencies": [39, 27, 4, 3],
         "priority": "high",
         "subtasks": []
       },
@@ -1559,11 +1366,7 @@
         "details": "1. **Identify and Remove Redundant Files:**\n   - Locate and delete all `env.example` files that are no longer needed due to the unified `.env` at the project root. Pay special attention to package-specific directories (e.g., `packages/backend`, `packages/frontend`, `packages/shared`).\n   - Remove any outdated debug scripts or configuration files that are no longer relevant after the environment unification.\n2. **Update Documentation:**\n   - Review all project documentation (e.g., README files, setup guides, internal documentation) and update references to the new unified environment configuration structure.\n   - Ensure that the documentation clearly explains how to set up and use the `.env` file at the project root.\n   - Update any examples or tutorials that demonstrate environment variable usage to reflect the new configuration.\n3. **Verify Changes:**\n   - After removing files and updating documentation, thoroughly test the application to ensure that it still functions correctly.\n   - Check that all environment variables are being loaded correctly from the unified `.env` file.\n   - Ensure that the updated documentation accurately reflects the current state of the project.\n<info added on 2025-07-03T17:16:23.344Z>\nLEGACY FILE CLEANUP COMPLETED\n\nACTIONS TAKEN:\n1. Removed `packages/backend/env.example` - redundant with root `.env.example`\n2. Cleaned up Next.js webpack cache `.old` files - automatically regenerated\n3. Updated `PRODUCTION_GUIDE.md` to reference root `.env.example` instead of backend package\n4. Updated `CONFIGURATION_GUIDE.md` to reflect unified environment configuration\n\nDOCUMENTATION UPDATES:\n- All references now point to root-level `.env` and `.env.example`\n- Removed outdated package-specific environment file references\n- Updated environment loading instructions to reflect unified approach\n\nREMAINING DEBUG SCRIPTS:\nThe debug scripts in `packages/backend/scripts/debug/` are being kept for now as they may still be useful for development and troubleshooting SMA strategy issues. They can be removed later if truly no longer needed.\n\nThe project now has a clean, unified environment configuration structure with proper documentation.\n</info added on 2025-07-03T17:16:23.344Z>",
         "testStrategy": "1. **File Removal Verification:**\n   - Manually verify that all identified redundant files (e.g., `env.example` in package directories, outdated debug scripts) have been successfully removed.\n   - Use file system commands (e.g., `ls`, `find`) to confirm the absence of these files.\n2. **Documentation Accuracy:**\n   - Review all updated documentation to ensure that it accurately describes the new unified environment configuration.\n   - Follow the documentation to set up the project and verify that all steps are clear and correct.\n3. **Application Functionality:**\n   - Run all existing tests (unit, integration, e2e) to ensure that the application functions correctly after the file removal and documentation updates.\n   - Manually test key features of the application to verify that environment variables are being loaded correctly and that the application behaves as expected in different environments (e.g., development, testing, production).\n4. **Environment Variable Loading:**\n   - Create a test script that specifically checks if all required environment variables are loaded correctly from the root `.env` file.\n   - Verify that the application can access these variables and use them to configure its behavior.",
         "status": "done",
-        "dependencies": [
-          43,
-          42,
-          41
-        ],
+        "dependencies": [43, 42, 41],
         "priority": "medium",
         "subtasks": []
       },
@@ -1574,14 +1377,7 @@
         "details": "1. Update task statuses for Tasks 34, 36, and 41 to ensure consistency and accuracy across the system.\n2. Standardize documentation using templates and formatting guidelines to improve clarity and maintainability.\n3. Optimize configurations for AI models and settings to enhance performance and efficiency.\n4. Enhance monitoring capabilities with validation and tracking mechanisms to ensure system reliability.\n5. Automate processes for status validation to streamline task management workflows.\n6. Implement long-term enhancements such as visualization tools and CI/CD integration to support continuous improvement.",
         "testStrategy": "1. Verify that task statuses for Tasks 34, 36, and 41 are updated correctly and consistently.\n2. Ensure that documentation adheres to the standardized templates and formatting guidelines.\n3. Validate that AI model configurations are optimized for performance and efficiency.\n4. Confirm that enhanced monitoring capabilities provide accurate validation and tracking data.\n5. Test the automated processes for status validation to ensure they function as expected.\n6. Evaluate the effectiveness of long-term enhancements such as visualization tools and CI/CD integration.",
         "status": "done",
-        "dependencies": [
-          38,
-          41,
-          34,
-          36,
-          33,
-          37
-        ],
+        "dependencies": [38, 41, 34, 36, 33, 37],
         "priority": "medium",
         "subtasks": [
           {
@@ -1665,13 +1461,7 @@
         "details": "1.  Implement application performance monitoring (APM) using tools like Prometheus and Grafana to track key metrics such as response times, error rates, and resource utilization.\n2.  Set up database monitoring to track database performance metrics, including query execution times, connection pool usage, and disk I/O.\n3.  Implement exchange connection monitoring to ensure reliable connectivity to exchanges, tracking connection status, latency, and data integrity.\n4.  Develop a centralized metrics collection system to gather metrics from all components of the bot trading platform, including the trading engine, bot lifecycle management system, and exchange abstraction layer.\n5.  Integrate the monitoring components from Task 36's subtasks, ensuring they are properly configured and functioning within the overall monitoring system.\n6.  Configure alerts and notifications to proactively identify and address performance issues or errors.\n7.  Create dashboards to visualize key metrics and provide real-time insights into the health and performance of the bot trading platform.\n8.  Ensure all monitoring data is securely stored and accessible to authorized personnel.",
         "testStrategy": "1.  Verify that application performance monitoring (APM) is correctly tracking key metrics such as response times, error rates, and resource utilization.\n2.  Test database monitoring to ensure it accurately tracks database performance metrics, including query execution times, connection pool usage, and disk I/O.\n3.  Verify that exchange connection monitoring is functioning correctly, tracking connection status, latency, and data integrity.\n4.  Test the centralized metrics collection system to ensure it gathers metrics from all components of the bot trading platform.\n5.  Verify that alerts and notifications are triggered correctly when performance issues or errors are detected.\n6.  Test the dashboards to ensure they accurately visualize key metrics and provide real-time insights into the health and performance of the bot trading platform.\n7.  Simulate various failure scenarios to ensure the monitoring system can detect and alert on issues such as database outages, exchange connection failures, and application errors.",
         "status": "pending",
-        "dependencies": [
-          36,
-          4,
-          10,
-          14,
-          15
-        ],
+        "dependencies": [36, 4, 10, 14, 15],
         "priority": "medium",
         "subtasks": [
           {
@@ -1728,9 +1518,7 @@
         "details": "1.  Review the code quality audit report (Task 41) to understand the identified code duplication issues.\n2.  Verify that the previously addressed code duplication issues are indeed resolved and no new instances have emerged.\n3.  Investigate the analyzer's false positive detections and implement necessary configurations or code adjustments to prevent future occurrences.\n4.  Document the steps taken to resolve the code duplication issues and update the code quality audit report accordingly.\n5.  Ensure that the shared utilities and consolidated interfaces created in the previous effort are properly utilized and maintained.",
         "testStrategy": "1.  Run static analysis tools to confirm that no code duplication violations are detected.\n2.  Manually review the codebase to verify that the identified code duplication issues have been resolved and no new instances have emerged.\n3.  Validate that the analyzer's false positive detections are no longer occurring.\n4.  Verify that the shared utilities and consolidated interfaces are functioning correctly and are being utilized effectively.\n5.  Confirm that the code quality audit report has been updated with the resolution details.",
         "status": "done",
-        "dependencies": [
-          41
-        ],
+        "dependencies": [41],
         "priority": "medium",
         "subtasks": []
       },
@@ -1739,16 +1527,7 @@
         "title": "Resolve Dependency Conflicts and Version Mismatches",
         "description": "Implement a comprehensive TypeScript-first consolidation strategy to resolve dependency conflicts and version mismatches across the monorepo. This includes converting configuration files to TypeScript, establishing a single dependency source, implementing TypeScript project references, and creating a unified configuration system.",
         "status": "done",
-        "dependencies": [
-          39,
-          2,
-          3,
-          7,
-          22,
-          28,
-          31,
-          32
-        ],
+        "dependencies": [39, 2, 3, 7, 22, 28, 31, 32],
         "priority": "critical",
         "details": "1. **Analyze Current Configuration:** Thoroughly analyze all existing JavaScript configuration files (Jest, ESLint, build scripts) and dependency structures across the monorepo to understand the current state and identify areas for improvement.\n2. **Convert Configuration Files to TypeScript:** Convert all JavaScript configuration files (Jest, ESLint, build scripts) to TypeScript (e.g., `jest.config.ts`, `.eslintrc.ts`, `rollup.config.ts`). This ensures consistency and type safety across the project.\n3. **Consolidate Dev Dependencies in Root `package.json`:** Move all `devDependencies` to the root `package.json` to establish a single source of truth for development dependencies. Use `npm install` or `yarn install` with the `--ignore-workspace-root-check` flag if necessary.\n4. **Implement TypeScript Project References:** Configure TypeScript project references (`references` array in `tsconfig.json`) to optimize build times and ensure correct dependency resolution between packages. This will define the build order and dependencies between the different parts of the monorepo.\n5. **Create Unified Configuration System:** Establish a unified configuration system with package-specific overrides. This involves creating a base configuration file (e.g., `eslint.config.base.ts`) and allowing packages to extend or override specific settings as needed.\n6. **Eliminate Version Conflicts:** Ensure that all dependencies are compatible and that there are no version conflicts. Use tools like `npm dedupe` or `yarn dedupe` to resolve any conflicts that arise.  Carefully manage peer dependencies.\n7. **Progressive Testing and Validation:** Implement progressive testing and validation at each step of the consolidation process. This includes running unit tests, integration tests, and end-to-end tests to ensure that the changes do not introduce any regressions.\n8. **Rollback Capabilities and Risk Mitigation:** Develop a rollback plan and implement risk mitigation strategies to address any issues that may arise during the consolidation process. This includes creating backups of configuration files and dependencies.\n9. **Automated Dependency Checks:** Implement automated dependency checks using tools like `npm audit` or `yarn audit` to identify and address security vulnerabilities and dependency issues proactively. Integrate these checks into the CI/CD pipeline.\n10. **Documentation:** Document the new TypeScript-first dependency management approach, including versioning strategies, conflict resolution techniques, and best practices for adding new dependencies. Update README files and other relevant documentation.",
         "testStrategy": "1. **Run Builds:** Execute builds for the root project, backend package, and frontend package to verify that all builds complete successfully without errors.\n2. **Run Tests:** Execute all unit tests, integration tests, and end-to-end tests to ensure that the changes made to resolve dependency conflicts have not introduced any regressions.\n3. **Run Linters:** Execute linters (ESLint, Prettier) to verify that the code adheres to the project's coding standards and that there are no linting errors.\n4. **Verify Dependency Tree:** Use `npm ls` or `yarn why` to verify that there are no conflicting dependencies or version mismatches.\n5. **Manual Verification:** Manually verify that the updated documentation accurately reflects the correct dependency management approach.\n6. **CI/CD Integration:** Integrate the dependency checks into the CI/CD pipeline to ensure that dependency issues are caught early in the development process.\n7. **Configuration Validation:** Validate that all configuration files (Jest, ESLint, build scripts) are correctly converted to TypeScript and that they are functioning as expected.\n8. **Project References Validation:** Verify that TypeScript project references are correctly configured and that the build order is optimized.\n9. **Rollback Testing:** Test the rollback plan to ensure that the project can be successfully reverted to its previous state if necessary.",
@@ -1868,13 +1647,7 @@
         "title": "Implement Critical Production Readiness Fixes",
         "description": "Address critical production readiness issues identified in the backend audit, focusing on stability and security without major refactoring. This includes fixing linting errors, architectural inconsistencies, and production violations across key system areas. Significant progress made with 7 of 12 subtasks completed.",
         "status": "done",
-        "dependencies": [
-          41,
-          38,
-          47,
-          46,
-          10
-        ],
+        "dependencies": [41, 38, 47, 46, 10],
         "priority": "high",
         "details": "1.  Address critical linting and compilation issues, including security vulnerabilities, duplicate files, parsing errors, missing return types, unused variables, import path failures, and complexity violations. Achieved 80% reduction in object injection vulnerabilities (162+ → 33).\n2.  Resolve architectural issues such as conflicting Jest configurations, broken module imports, syntax errors in performance analyzer, time synchronization problems, and WebSocket bridge initialization issues. All TypeScript compilation errors resolved. Backend builds successfully.\n3.  Fix high-severity production violations, security vulnerabilities in file operations, memory leak potentials, error handling gaps, and missing type definitions. Applied security hardening across indicators, authentication middleware, monitoring services, and file operations.\n4.  Implement fixes in specific areas: JabbrLabs signal processing, bot trading cycle integration, exchange integration layer (Bybit, CCXT), WebSocket server and bridge, database monitoring, strategy monitoring, performance monitoring, and authentication middleware. All integrations verified working correctly with proper authentication, channel management, and CCXT exchange support.\n5.  Prioritize fixes based on severity and impact on production stability, ensuring minimal refactoring and maintaining current architecture.\n6.  Update documentation to reflect changes and ensure consistency across the codebase. Remaining work focuses on database services, JabbrLabs signal processing, bot trading cycles, performance monitoring, and final production validation.",
         "testStrategy": "1.  Run static analysis tools (SonarQube, ESLint) to verify that all identified linting and compilation issues are resolved.\n2.  Execute unit and integration tests to ensure that architectural fixes do not introduce regressions.\n3.  Perform security scans to confirm that all identified vulnerabilities are addressed.\n4.  Conduct load testing to verify that memory leak potentials are eliminated and performance is not negatively impacted.\n5.  Deploy changes to a staging environment and monitor for errors and performance issues before deploying to production.\n6.  Verify that all fixes are properly documented and that the codebase is consistent.",
@@ -1996,10 +1769,7 @@
         "details": "1.  **File Conversion:**\n    *   Rename each JavaScript file (.js) to its TypeScript equivalent (.ts).\n    *   Thoroughly analyze each file before conversion to ensure accurate translation of logic and dependencies.\n    *   Update file contents to adhere to TypeScript syntax and best practices.\n2.  **Dependency Updates:**\n    *   Update all internal imports and exports to reflect the new TypeScript file extensions.\n    *   Ensure all dependencies are correctly resolved after the conversion.\n3.  **Type Addition:**\n    *   Add explicit types to variables, function parameters, and return values where necessary to improve code clarity and maintainability.\n    *   Leverage TypeScript's type inference capabilities to minimize boilerplate.\n4.  **Testing and Validation:**\n    *   Run all existing unit and integration tests to ensure that the converted files maintain existing functionality.\n    *   Address any compilation errors or runtime issues that arise during testing.\n5.  **Exclusions:**\n    *   Exclude build outputs (.next, dist, node_modules) from conversion.\n    *   Exclude configuration files that must remain as JavaScript (.eslintrc.js, etc.).\n    *   Exclude third-party generated files.\n6.  **Folder Structure:**\n    *   Respect backend, frontend, and shared folder structures during conversion.\n7.  **Code Quality:**\n    *   Ensure production-ready code quality by adhering to coding standards and best practices.\n    *   Address any code quality issues identified during the conversion process.\n8.  **Version Control:**\n    *   Commit changes in small, logical increments to facilitate code review and rollback if necessary.\n    *   Create a pull request for each converted file or group of related files.\n9.  **Documentation:**\n    *   Update any relevant documentation to reflect the changes made during the conversion process.",
         "testStrategy": "1.  **Compilation Testing:**\n    *   Run the TypeScript compiler (`tsc`) to ensure that all converted files compile without errors.\n    *   Address any compilation errors that arise during the compilation process.\n2.  **Unit Testing:**\n    *   Run all existing unit tests to ensure that the converted files maintain existing functionality.\n    *   Write new unit tests to cover any new functionality or changes made during the conversion process.\n3.  **Integration Testing:**\n    *   Run all existing integration tests to ensure that the converted files integrate correctly with other parts of the system.\n    *   Write new integration tests to cover any new integration points.\n4.  **Runtime Testing:**\n    *   Manually test the converted files in a runtime environment to ensure that they function as expected.\n    *   Monitor the application for any runtime errors or performance issues.\n5.  **Code Review:**\n    *   Have the converted files reviewed by another developer to ensure code quality and adherence to coding standards.\n    *   Address any feedback received during the code review process.\n6.  **Regression Testing:**\n    *   Perform regression testing to ensure that the conversion process has not introduced any new bugs or issues.\n7.  **Performance Testing:**\n    *   Conduct performance testing to ensure that the converted files do not negatively impact the performance of the application.",
         "status": "done",
-        "dependencies": [
-          39,
-          41
-        ],
+        "dependencies": [39, 41],
         "priority": "medium",
         "subtasks": [
           {
@@ -2083,14 +1853,7 @@
         "details": "1.  **Code Quality and TypeScript Compliance:**\n    *   Analyze the backend codebase for TypeScript errors, warnings, and inconsistencies.\n    *   Enforce strict typing and linting rules to improve code quality.\n    *   Identify and refactor any JavaScript code that needs to be migrated to TypeScript.\n2.  **Architecture Consistency and Component Interactions:**\n    *   Review the backend architecture to ensure consistency and adherence to design principles.\n    *   Analyze component interactions to identify potential bottlenecks or dependencies.\n    *   Ensure proper separation of concerns and modularity.\n3.  **Missing Implementation Completions:**\n    *   Identify any incomplete or unimplemented features or methods.\n    *   Prioritize the completion of critical features required for production stability.\n4.  **Environment Configuration and API Key Management:**\n    *   Review environment configuration files to ensure consistency across different environments (development, staging, production).\n    *   Verify that API keys and other sensitive information are properly managed and secured.\n    *   Implement a secure mechanism for storing and accessing environment-specific configurations.\n5.  **Dependencies and Security:**\n    *   Analyze the backend dependencies to identify potential security vulnerabilities.\n    *   Update dependencies to the latest stable versions to address known security issues.\n    *   Remove any unused or unnecessary dependencies.\n6.  **Documentation Accuracy:**\n    *   Review the backend documentation to ensure accuracy and completeness.\n    *   Remove any references to JavaScript and update the documentation to reflect the current TypeScript codebase.\n    *   Document all APIs, data models, and configuration options.\n7.  **Configuration Files Alignment:**\n    *   Ensure that all configuration files (e.g., database connections, API endpoints) are aligned across different environments.\n    *   Implement a mechanism for automatically validating configuration file consistency.\n8.  **Production Deployment Readiness:**\n    *   Verify that the backend is properly configured for production deployment.\n    *   Ensure that all necessary monitoring and logging tools are in place.\n    *   Implement a rollback strategy in case of deployment failures.\n9.  **Duplications and Legacy Code:**\n    *   Identify and remove duplicated code blocks to improve maintainability.\n    *   Refactor or remove legacy code that is no longer needed or is causing issues.\n10. **Missing Functions/Methods:**\n    *   Identify any missing functions or methods that are required for the backend to function correctly.\n    *   Implement the missing functions or methods and ensure they are properly tested.",
         "testStrategy": "1.  **Code Quality and TypeScript Compliance:**\n    *   Run static analysis tools (e.g., ESLint, TSLint) to identify code quality issues and TypeScript errors.\n    *   Manually review the codebase to identify any inconsistencies or bad coding practices.\n2.  **Architecture Consistency and Component Interactions:**\n    *   Review the backend architecture diagrams and documentation to ensure consistency.\n    *   Use debugging tools to trace component interactions and identify potential bottlenecks.\n3.  **Missing Implementation Completions:**\n    *   Create a checklist of all required features and methods and verify that they are implemented.\n    *   Run integration tests to ensure that all features are working as expected.\n4.  **Environment Configuration and API Key Management:**\n    *   Verify that all environment variables are properly configured in each environment.\n    *   Use a secure API key management tool to store and access API keys.\n5.  **Dependencies and Security:**\n    *   Use a dependency scanning tool to identify potential security vulnerabilities.\n    *   Update dependencies to the latest stable versions and re-run the dependency scan.\n6.  **Documentation Accuracy:**\n    *   Manually review the backend documentation to ensure accuracy and completeness.\n    *   Verify that all APIs, data models, and configuration options are properly documented.\n7.  **Configuration Files Alignment:**\n    *   Compare configuration files across different environments to ensure consistency.\n    *   Implement automated tests to validate configuration file consistency.\n8.  **Production Deployment Readiness:**\n    *   Perform a dry run of the production deployment process to identify any potential issues.\n    *   Verify that all necessary monitoring and logging tools are in place.\n    *   Test the rollback strategy to ensure that it works as expected.\n9.  **Duplications and Legacy Code:**\n    *   Use code analysis tools to identify duplicated code blocks.\n    *   Manually review the codebase to identify legacy code.\n10. **Missing Functions/Methods:**\n     *   Review the code and identify any missing functions or methods that are required for the backend to function correctly.\n     *   Implement the missing functions or methods and ensure they are properly tested.",
         "status": "pending",
-        "dependencies": [
-          3,
-          10,
-          14,
-          20,
-          33,
-          37
-        ],
+        "dependencies": [3, 10, 14, 20, 33, 37],
         "priority": "high",
         "subtasks": [
           {
@@ -2174,13 +1937,7 @@
         "details": "1. **Deep Test Analysis**: Analyze every test file individually in root, backend, frontend, and shared packages to understand its purpose and coverage.\n2. **Implementation Alignment**: Cross-reference each test with the actual backend implementation to ensure accuracy and relevance.\n3. **Individual Test Execution**: Run each test file individually to identify specific failures and issues. Avoid running the full npm test suite until all individual tests pass.\n4. **Backend Stability**: Fix all failing tests, addressing any underlying backend implementation issues they reveal. Ensure fixes align with project implementations.\n5. **Missing Test Coverage**: Identify and document all missing test files for critical components, noting areas where test coverage is lacking.\n6. **Production Readiness**: Ensure all tests pass and provide comprehensive coverage for stable deployment. Respect existing project structure and naming conventions; do not recreate files, only fix and enhance existing ones.",
         "testStrategy": "1. **Individual Test Verification**: Execute each test file individually after applying fixes to ensure it passes and covers the intended functionality.\n2. **Coverage Validation**: Use coverage tools to verify that tests cover the critical code paths and components identified as needing coverage.\n3. **Implementation Alignment Verification**: Manually review the alignment between tests and the actual backend implementation to ensure accuracy.\n4. **Documentation Review**: Ensure that all identified missing test coverage areas are documented with clear descriptions of the components needing tests.\n5. **Regression Testing**: After fixing failing tests, run related tests to ensure no regressions were introduced and always analyze the output for prodution-ready violations.",
         "status": "pending",
-        "dependencies": [
-          2,
-          20,
-          38,
-          41,
-          47
-        ],
+        "dependencies": [2, 20, 38, 41, 47],
         "priority": "high",
         "subtasks": [
           {

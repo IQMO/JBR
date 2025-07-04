@@ -1,10 +1,13 @@
 # Documentation Consistency Rule
 
-This rule ensures that all project documentation remains consistent and up-to-date across the entire codebase.
+This rule ensures that all project documentation remains consistent and
+up-to-date across the entire codebase.
 
 ## Purpose
 
-As the project evolves, documentation can become inconsistent with varying statistics, outdated references, and mismatched information. This rule provides automated checks to identify inconsistencies and ensure documentation accuracy.
+As the project evolves, documentation can become inconsistent with varying
+statistics, outdated references, and mismatched information. This rule provides
+automated checks to identify inconsistencies and ensure documentation accuracy.
 
 ## What This Rule Enforces
 
@@ -42,8 +45,10 @@ npx taskmaster lint
 
 When inconsistencies are found:
 
-1. Refer to `docs/DOCUMENTATION_MAINTENANCE.md` for a comprehensive list of all documentation files
-2. Update the flagged documents to match current project statistics and standards
+1. Refer to `docs/DOCUMENTATION_MAINTENANCE.md` for a comprehensive list of all
+   documentation files
+2. Update the flagged documents to match current project statistics and
+   standards
 3. Always update the "Last Updated" date when making changes
 4. Re-run the check to verify fixes
 
@@ -65,5 +70,6 @@ npx taskmaster lint --fix
 
 ## Related Resources
 
-- `docs/DOCUMENTATION_MAINTENANCE.md`: Master reference for documentation standards
+- `docs/DOCUMENTATION_MAINTENANCE.md`: Master reference for documentation
+  standards
 - `docs/TEST_ORGANIZATION_GUIDE.md`: Standards for test organization

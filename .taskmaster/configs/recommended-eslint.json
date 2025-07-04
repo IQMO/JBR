@@ -13,7 +13,7 @@
   "plugins": ["@typescript-eslint", "import", "security", "sonarjs"],
   "rules": {
     "@typescript-eslint/no-explicit-any": "error",
-    "@typescript-eslint/explicit-function-return-type": "error", 
+    "@typescript-eslint/explicit-function-return-type": "error",
     "@typescript-eslint/explicit-return-type": "error",
     "@typescript-eslint/no-unused-vars": "error",
     "@typescript-eslint/require-await": "error",
@@ -23,38 +23,44 @@
     "@typescript-eslint/prefer-readonly": "error",
     "@typescript-eslint/prefer-nullish-coalescing": "error",
     "@typescript-eslint/prefer-optional-chain": "error",
-    "no-magic-numbers": ["warn", {
-      "ignore": [0, 1, -1, 100],
-      "ignoreArrayIndexes": true,
-      "ignoreDefaultValues": true,
-      "detectObjects": false
-    }],
+    "no-magic-numbers": [
+      "warn",
+      {
+        "ignore": [0, 1, -1, 100],
+        "ignoreArrayIndexes": true,
+        "ignoreDefaultValues": true,
+        "detectObjects": false
+      }
+    ],
     "no-console": "warn",
     "no-debugger": "error",
     "no-alert": "error",
     "no-eval": "error",
     "no-implied-eval": "error",
     "no-new-func": "error",
-    
+
     // Import organization
-    "import/order": ["error", {
-      "groups": [
-        "builtin",
-        "external", 
-        "internal",
-        "parent",
-        "sibling",
-        "index"
-      ],
-      "newlines-between": "always",
-      "alphabetize": {
-        "order": "asc",
-        "caseInsensitive": true
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index"
+        ],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
       }
-    }],
+    ],
     "import/no-duplicates": "error",
     "import/no-unused-modules": "warn",
-    
+
     // Naming conventions
     "@typescript-eslint/naming-convention": [
       "error",
@@ -81,7 +87,7 @@
         "format": ["UPPER_CASE"]
       }
     ],
-    
+
     // Security rules
     "security/detect-object-injection": "warn",
     "security/detect-non-literal-regexp": "warn",
@@ -95,7 +101,7 @@
     "security/detect-non-literal-require": "warn",
     "security/detect-possible-timing-attacks": "warn",
     "security/detect-pseudoRandomBytes": "error",
-    
+
     // SonarJS code quality
     "sonarjs/cognitive-complexity": ["error", 15],
     "sonarjs/max-switch-cases": ["error", 30],
@@ -115,15 +121,18 @@
     "sonarjs/prefer-immediate-return": "error",
     "sonarjs/prefer-object-literal": "error",
     "sonarjs/prefer-single-boolean-return": "error",
-    
+
     // Stylistic rules
     "prefer-const": "error",
     "prefer-template": "error",
     "object-shorthand": "error",
-    "prefer-destructuring": ["error", {
-      "array": false,
-      "object": true
-    }],
+    "prefer-destructuring": [
+      "error",
+      {
+        "array": false,
+        "object": true
+      }
+    ],
     "prefer-spread": "error",
     "prefer-rest-params": "error",
     "no-var": "error",

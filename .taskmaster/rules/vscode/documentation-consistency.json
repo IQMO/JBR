@@ -8,10 +8,7 @@
       "name": "Project Statistics Consistency",
       "description": "All documents must report the same project statistics: 37 total tasks, 20 completed (54%)",
       "pattern": "/(56%|22 of 39|22\\/39)/g",
-      "scope": [
-        "**/*.md",
-        "**/*.txt"
-      ],
+      "scope": ["**/*.md", "**/*.txt"],
       "level": "warning"
     },
     {
@@ -19,10 +16,7 @@
       "name": "Documentation Date Consistency",
       "description": "All Last Updated dates should be kept current",
       "pattern": "/Last Updated: (?!July 3, 2025)/g",
-      "scope": [
-        "**/*.md",
-        "**/*.txt"
-      ],
+      "scope": ["**/*.md", "**/*.txt"],
       "level": "warning"
     },
     {
@@ -30,9 +24,7 @@
       "name": "Test Command References",
       "description": "Test command references should match package.json scripts",
       "pattern": "/(cd packages\\/[^\\s]+\\nnpm test)|(cd packages\\/[^\\s]+\\nnpm run test)/g",
-      "scope": [
-        "**/*.md"
-      ],
+      "scope": ["**/*.md"],
       "level": "warning"
     },
     {
@@ -41,9 +33,7 @@
       "description": "Documentation cross-references must be valid and point to existing files",
       "pattern": "/\\[.*\\]\\((?!http)([^)]+)\\)/g",
       "postCheck": "function(match, path) { require('fs').existsSync(path) }",
-      "scope": [
-        "**/*.md"
-      ],
+      "scope": ["**/*.md"],
       "level": "warning"
     },
     {
@@ -51,18 +41,11 @@
       "name": "Test Organization Documentation",
       "description": "Test files and documentation must comply with TEST_ORGANIZATION_GUIDE.md standards",
       "pattern": "/(describe|it)\\(/g",
-      "scope": [
-        "**/*.test.ts",
-        "**/*.spec.ts"
-      ],
+      "scope": ["**/*.test.ts", "**/*.spec.ts"],
       "level": "warning"
     }
   ],
-  "exclude": [
-    "node_modules/**",
-    "dist/**",
-    "**/coverage/**"
-  ],
+  "exclude": ["node_modules/**", "dist/**", "**/coverage/**"],
   "autoFix": false,
   "requires": [],
   "version": "1.0.0"

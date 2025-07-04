@@ -8,10 +8,7 @@
       "name": "Task Statistics Consistency",
       "description": "Ensures all documents report consistent task statistics (37 tasks total, 20 completed, 54%)",
       "pattern": "/(56%|22 of 39|22\\/39)/g",
-      "scope": [
-        "**/*.md",
-        "**/*.txt"
-      ],
+      "scope": ["**/*.md", "**/*.txt"],
       "level": "warning"
     },
     {
@@ -19,11 +16,7 @@
       "name": "Task Priority Alignment",
       "description": "Ensures task priorities in code match documentation",
       "pattern": "/priority[\"']?:\\s[\"']?(high|medium|low)[\"']?/gi",
-      "scope": [
-        "**/*.json",
-        "**/*.js",
-        "**/*.ts"
-      ],
+      "scope": ["**/*.json", "**/*.js", "**/*.ts"],
       "level": "warning"
     },
     {
@@ -32,11 +25,7 @@
       "description": "Ensures task status uses standardized values (done, in-progress, pending, deferred, cancelled)",
       "pattern": "/status[\"']?:\\s[\"']?([^\"'\\s,\\}]+)[\"']?/gi",
       "postCheck": "function(match, status) { return ['done', 'in-progress', 'pending', 'deferred', 'cancelled'].includes(status.toLowerCase()); }",
-      "scope": [
-        "**/*.json",
-        "**/*.js",
-        "**/*.ts"
-      ],
+      "scope": ["**/*.json", "**/*.js", "**/*.ts"],
       "level": "warning"
     },
     {
@@ -44,9 +33,7 @@
       "name": "Task Documentation Alignment",
       "description": "Ensures tasks mentioned in code are documented",
       "pattern": "/id[\"']?:\\s(\\d+)/g",
-      "scope": [
-        "**/.taskmaster/tasks/**/*.json"
-      ],
+      "scope": ["**/.taskmaster/tasks/**/*.json"],
       "level": "warning"
     },
     {
@@ -54,17 +41,11 @@
       "name": "Task Report Freshness",
       "description": "Ensures the TASK_STATUS_REPORT.md is kept up to date",
       "pattern": "/Last [Uu]pdated:(?!.*July 3, 2025)/g",
-      "scope": [
-        "docs/TASK_STATUS_REPORT.md"
-      ],
+      "scope": ["docs/TASK_STATUS_REPORT.md"],
       "level": "warning"
     }
   ],
-  "exclude": [
-    "node_modules/**",
-    "dist/**",
-    "**/coverage/**"
-  ],
+  "exclude": ["node_modules/**", "dist/**", "**/coverage/**"],
   "autoFix": false,
   "requires": [],
   "version": "1.0.0"

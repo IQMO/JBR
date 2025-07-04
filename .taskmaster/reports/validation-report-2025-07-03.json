@@ -856,9 +856,7 @@
       "ruleName": "Parent-Child Status Synchronization",
       "severity": "warning",
       "message": "Task 41 has all subtasks pending but parent status is in-progress",
-      "suggestions": [
-        "Update parent status to pending"
-      ],
+      "suggestions": ["Update parent status to pending"],
       "autoFixed": false
     },
     {

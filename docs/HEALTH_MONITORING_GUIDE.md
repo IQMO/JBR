@@ -2,17 +2,23 @@
 
 ## Overview
 
-The Jabbr Trading Platform includes a comprehensive health monitoring system that provides detailed insights into system components and their operational status. This system is designed for production environments and supports Kubernetes deployment patterns.
+The Jabbr Trading Platform includes a comprehensive health monitoring system
+that provides detailed insights into system components and their operational
+status. This system is designed for production environments and supports
+Kubernetes deployment patterns.
 
 ## Health Check Endpoints
 
 ### Base Health Check
+
 ```
 GET /health
 ```
+
 Returns overall system health status with summary information.
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -36,18 +42,24 @@ Returns overall system health status with summary information.
 ```
 
 ### Quick Health Check
+
 ```
 GET /health/quick
 ```
+
 Fast health check with minimal overhead, suitable for high-frequency monitoring.
 
 ### Detailed Health Check
+
 ```
 GET /health/detailed
 ```
-Comprehensive health information including metrics, performance data, and component details.
+
+Comprehensive health information including metrics, performance data, and
+component details.
 
 **Response includes:**
+
 - Individual component health status
 - Performance metrics (CPU, memory, response times)
 - Active bot statuses
@@ -57,12 +69,15 @@ Comprehensive health information including metrics, performance data, and compon
 - Recent error rates
 
 ### Component-Specific Health
+
 ```
 GET /health/components/:component
 ```
+
 Get detailed health information for a specific component.
 
 **Available components:**
+
 - `database` - Database connection and query performance
 - `memory` - Memory usage and garbage collection metrics
 - `cpu` - CPU utilization and load averages
@@ -74,12 +89,16 @@ Get detailed health information for a specific component.
 ### Kubernetes Probes
 
 #### Readiness Probe
+
 ```
 GET /health/readiness
 ```
-Indicates if the application is ready to receive traffic. Returns 200 when all critical components are healthy.
+
+Indicates if the application is ready to receive traffic. Returns 200 when all
+critical components are healthy.
 
 **Use in Kubernetes:**
+
 ```yaml
 readinessProbe:
   httpGet:
@@ -92,12 +111,16 @@ readinessProbe:
 ```
 
 #### Liveness Probe
+
 ```
 GET /health/liveness
 ```
-Indicates if the application is alive and should not be restarted. Returns 200 unless the application is completely unresponsive.
+
+Indicates if the application is alive and should not be restarted. Returns 200
+unless the application is completely unresponsive.
 
 **Use in Kubernetes:**
+
 ```yaml
 livenessProbe:
   httpGet:
@@ -110,15 +133,20 @@ livenessProbe:
 ```
 
 ### System Metrics
+
 ```
 GET /health/metrics
 ```
-Returns detailed system metrics in a structured format suitable for monitoring systems.
+
+Returns detailed system metrics in a structured format suitable for monitoring
+systems.
 
 ### Status Overview
+
 ```
 GET /health/status
 ```
+
 Simple status endpoint that returns HTTP 200 for healthy, 503 for unhealthy.
 
 ## Health Monitoring Components
@@ -157,21 +185,25 @@ The `SystemHealthService` is responsible for:
 ### Thresholds and Limits
 
 #### Memory
+
 - **Healthy**: < 80% usage
 - **Degraded**: 80-90% usage
 - **Unhealthy**: > 90% usage
 
 #### CPU
+
 - **Healthy**: < 70% usage
 - **Degraded**: 70-85% usage
 - **Unhealthy**: > 85% usage
 
 #### Database
+
 - **Healthy**: Query time < 100ms, connection pool healthy
 - **Degraded**: Query time 100-500ms, some connection issues
 - **Unhealthy**: Query time > 500ms, connection failures
 
 #### Trading Bots
+
 - **Healthy**: All bots responding, no critical errors
 - **Degraded**: Some bots have warnings, minor issues
 - **Unhealthy**: Bot failures, critical trading errors
@@ -179,17 +211,23 @@ The `SystemHealthService` is responsible for:
 ## Monitoring Integration
 
 ### Prometheus Metrics
-The health system can be extended to export metrics in Prometheus format for integration with monitoring stacks.
+
+The health system can be extended to export metrics in Prometheus format for
+integration with monitoring stacks.
 
 ### Alerting
+
 Configure alerts based on:
+
 - Overall system health status
 - Individual component health degradation
 - Performance threshold breaches
 - Error rate increases
 
 ### Logging
+
 All health check activities are logged with appropriate levels:
+
 - **INFO**: Regular health checks
 - **WARN**: Degraded component performance
 - **ERROR**: Component failures
@@ -198,6 +236,7 @@ All health check activities are logged with appropriate levels:
 ## Production Deployment
 
 ### Environment Variables
+
 ```bash
 # Health check configuration
 HEALTH_CHECK_INTERVAL=30000        # 30 seconds
@@ -207,6 +246,7 @@ HEALTH_CHECK_DB_QUERY_TIMEOUT=1000 # 1 second
 ```
 
 ### Monitoring Setup
+
 1. Configure Kubernetes probes
 2. Set up external monitoring (e.g., Prometheus + Grafana)
 3. Configure alerting rules
@@ -214,6 +254,7 @@ HEALTH_CHECK_DB_QUERY_TIMEOUT=1000 # 1 second
 5. Monitor health endpoint response times
 
 ### Best Practices
+
 1. Use quick health checks for high-frequency monitoring
 2. Use detailed checks for diagnostics and troubleshooting
 3. Monitor trends, not just current status
@@ -240,7 +281,9 @@ HEALTH_CHECK_DB_QUERY_TIMEOUT=1000 # 1 second
    - Review error patterns
 
 ### Debug Information
+
 Access detailed debug information through:
+
 - `/health/detailed` - Comprehensive system state
 - `/health/components/:component` - Component-specific details
 - Application logs with health check correlation IDs
@@ -248,15 +291,18 @@ Access detailed debug information through:
 ## API Reference
 
 All health endpoints return standardized responses with:
+
 - `success`: Boolean indicating request success
 - `data`: Health information payload
 - `meta`: Response metadata (timing, timestamps)
 - `error`: Error details (when applicable)
 
 Status codes:
+
 - `200`: Healthy/Success
 - `503`: Unhealthy/Service Unavailable
 - `404`: Component not found
 - `500`: Internal server error
 
-For detailed API schemas and examples, see the individual endpoint documentation above.
+For detailed API schemas and examples, see the individual endpoint documentation
+above.

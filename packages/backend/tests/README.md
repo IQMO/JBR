@@ -22,7 +22,7 @@ npm test -- tests/unit/indicators/
 ## Test Structure
 
 - **`unit/`** - Unit tests for individual components
-- **`integration/`** - Integration tests between components  
+- **`integration/`** - Integration tests between components
 - **`e2e/`** - End-to-end workflow tests
 - **`fixtures/`** - Test data and mock fixtures
 - **`setup.js`** - Global test configuration
@@ -32,7 +32,7 @@ npm test -- tests/unit/indicators/
 ✅ **100% Test Success Rate** (77/77 tests passing)  
 ✅ **Organized Structure** - Clear separation by test type  
 ✅ **TypeScript Support** - Full type checking in tests  
-✅ **Modern Jest** - Version 29.7.0 with latest features  
+✅ **Modern Jest** - Version 29.7.0 with latest features
 
 ## Key Features
 
@@ -45,23 +45,27 @@ npm test -- tests/unit/indicators/
 ## Testing Categories
 
 ### Technical Indicators
+
 - RSI (Relative Strength Index)
-- SMA (Simple Moving Average) 
+- SMA (Simple Moving Average)
 - EMA (Exponential Moving Average)
 - ATR (Average True Range)
 
 ### Signal Processing
+
 - SMA Signal Processor
 - Improved SMA Signal Processor
 - Signal crossover detection
 - Confidence scoring
 
 ### Trading Strategies
+
 - SMA Crossover Strategy
 - Strategy factory patterns
 - Strategy validation
 
 ### Trading Engine
+
 - Market data processing
 - Order execution simulation
 - Risk management
@@ -69,7 +73,8 @@ npm test -- tests/unit/indicators/
 
 ## Guidelines
 
-For detailed testing guidelines and best practices, see [`TESTING_GUIDELINES.md`](./TESTING_GUIDELINES.md).
+For detailed testing guidelines and best practices, see
+[`TESTING_GUIDELINES.md`](./TESTING_GUIDELINES.md).
 
 ## Contributing
 
@@ -86,16 +91,19 @@ When adding new tests:
 ### Common Issues
 
 **Tests failing after changes?**
+
 - Check mock configurations
 - Verify test data format
 - Ensure async operations are properly awaited
 
 **Coverage issues?**
+
 - Add tests for untested code paths
 - Check for skipped or disabled tests
 - Verify test file naming conventions
 
 **Performance issues?**
+
 - Review test data size
 - Check for memory leaks
 - Optimize heavy computations in tests

@@ -23,18 +23,12 @@
   ],
   "gitignore": true,
   "output": "reports/code-duplication-report.json",
-  "format": [
-    "json",
-    "html"
-  ],
+  "format": ["json", "html"],
   "blame": false,
   "cache": true,
   "absolute": true,
   "noEmptyLines": true,
   "skipComments": true,
-  "languages": [
-    "typescript",
-    "javascript"
-  ],
+  "languages": ["typescript", "javascript"],
   "executionId": "jabbr-duplication-check"
 }

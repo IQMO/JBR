@@ -1,6 +1,7 @@
 # 🔧 Jabbr Trading Bot Platform - Configuration Guide
 
 ## 📋 Table of Contents
+
 - [🎯 Quick Start Configuration](#-quick-start-configuration)
 - [📋 Prerequisites](#-prerequisites)
 - [⚡ Quick Setup (5 Minutes)](#-quick-setup-5-minutes)
@@ -20,23 +21,27 @@
 
 ## 🎯 Quick Start Configuration
 
-This guide provides **minimum impact** configuration steps to get the Jabbr Trading Bot Platform operational.
+This guide provides **minimum impact** configuration steps to get the Jabbr
+Trading Bot Platform operational.
 
 ## 📋 Prerequisites
 
 ### **System Requirements**
+
 - **Node.js**: v18+ (recommended: v20+)
 - **npm/pnpm**: Latest version
 - **Git**: For version control
 - **VS Code/Cursor**: Recommended IDE with TypeScript support
 
 ### **Optional Requirements**
+
 - **PostgreSQL**: For full database functionality (can run without for testing)
 - **Redis**: For caching (optional, system works without)
 
 ## ⚡ Quick Setup (5 Minutes)
 
 ### **1. Clone and Install**
+
 ```bash
 git clone <repository-url>
 cd jabbr-trading-bot-platform
@@ -44,7 +49,9 @@ npm install
 ```
 
 ### **2. Environment Configuration**
+
 The project uses a unified root-level `.env` file:
+
 ```bash
 # Copy the example configuration if needed
 cp .env.example .env
@@ -54,6 +61,7 @@ cp .env.example .env
 ```
 
 ### **3. Start Development Servers**
+
 ```bash
 # Option A: Full development (frontend + backend)
 npm run dev
@@ -64,6 +72,7 @@ npx ts-node src/server-standalone.ts
 ```
 
 ### **4. Verify Installation**
+
 - **Health Check**: http://localhost:3001/health
 - **Trading Test**: http://localhost:3001/api/test-trading
 - **Market Data**: http://localhost:3001/api/market/BTCUSDT
@@ -71,6 +80,7 @@ npx ts-node src/server-standalone.ts
 ## 🔐 API Key Configuration
 
 ### **Bybit API Keys**
+
 The system supports both testnet and mainnet configurations:
 
 ```bash
@@ -85,6 +95,7 @@ BYBIT_MAINNET_API_SECRET=k2loWLXJhswTajZvGhwdW98soSGL87BjDIWI
 ```
 
 ### **API Key Security**
+
 - Keys are encrypted using AES-256-CBC
 - Testnet keys are safe for development
 - Mainnet keys should be secured in production
@@ -115,6 +126,7 @@ jabbr-trading-bot-platform/
 ## ⚙️ Configuration Files
 
 ### **Environment Variables (.env)**
+
 Located in the project root (`.env`):
 
 ```bash
@@ -150,6 +162,7 @@ ENABLE_TIME_SYNC=true
 ```
 
 ### **Taskmaster Configuration (.taskmaster/config.json)**
+
 AI model configuration for task management:
 
 ```json
@@ -162,14 +175,14 @@ AI model configuration for task management:
       "temperature": 0.2
     },
     "research": {
-      "provider": "google", 
+      "provider": "google",
       "modelId": "gemini-2.0-flash",
       "maxTokens": 1048000,
       "temperature": 0.1
     },
     "fallback": {
       "provider": "google",
-      "modelId": "gemini-2.0-flash", 
+      "modelId": "gemini-2.0-flash",
       "maxTokens": 1048000,
       "temperature": 0.1
     }
@@ -185,37 +198,47 @@ AI model configuration for task management:
 ## � Strategy Framework
 
 ### **Overview**
-The Strategy Framework allows for development, configuration, and deployment of custom trading strategies using a plugin architecture. Strategies can be defined in TypeScript or JavaScript and are loaded dynamically at runtime.
+
+The Strategy Framework allows for development, configuration, and deployment of
+custom trading strategies using a plugin architecture. Strategies can be defined
+in TypeScript or JavaScript and are loaded dynamically at runtime.
 
 ### **Creating Custom Strategies**
+
 Custom strategies must implement the `Strategy` interface:
 
 ```typescript
 // Example: plugins/example-sma-strategy.ts
-import { Strategy, MarketData, TradeSignal, StrategyParams } from '@jabbr/shared';
+import {
+  Strategy,
+  MarketData,
+  TradeSignal,
+  StrategyParams,
+} from '@jabbr/shared';
 
 export default class SMAStrategy implements Strategy {
   private fastPeriod: number;
   private slowPeriod: number;
-  
+
   constructor(params: StrategyParams) {
     this.fastPeriod = params.fastPeriod || 10;
     this.slowPeriod = params.slowPeriod || 20;
   }
-  
+
   async analyze(data: MarketData[]): Promise<TradeSignal> {
     // Strategy implementation
     return {
       action: 'BUY',
       symbol: 'BTC/USDT',
       confidence: 0.8,
-      timestamp: Date.now()
+      timestamp: Date.now(),
     };
   }
 }
 ```
 
 ### **Backtesting Strategies**
+
 Strategies can be backtested using the built-in backtesting framework:
 
 ```typescript
@@ -228,7 +251,7 @@ const backtest = new StrategyBacktester({
   initialCapital: 10000,
   startDate: '2023-01-01',
   endDate: '2023-12-31',
-  symbol: 'BTC/USDT'
+  symbol: 'BTC/USDT',
 });
 
 backtest.run().then(results => {
@@ -239,6 +262,7 @@ backtest.run().then(results => {
 ## �🚀 Deployment Modes
 
 ### **Mode 1: Standalone (Recommended for Testing)**
+
 - **No Database Required**: Runs without PostgreSQL
 - **Quick Start**: Fastest way to test the trading engine
 - **Full Trading**: Complete trading functionality available
@@ -249,6 +273,7 @@ npx ts-node src/server-standalone.ts
 ```
 
 ### **Mode 2: Full Stack (Production)**
+
 - **Complete Infrastructure**: All services running
 - **Database Integration**: Full PostgreSQL functionality
 - **WebSocket Services**: Real-time communication
@@ -258,6 +283,7 @@ npm run dev
 ```
 
 ### **Mode 3: Production Deployment**
+
 - **Environment Variables**: Production-ready configuration
 - **Security Hardening**: All security measures enabled
 - **Monitoring**: Health checks and logging active
@@ -272,52 +298,57 @@ npm run start
 ### **Trading Engine Settings**
 
 #### **Exchange Configuration**
+
 ```typescript
 // Bybit Configuration
 const exchangeConfig = {
-  spot: true,           // Spot trading enabled
-  futures: true,        // Futures trading enabled
+  spot: true, // Spot trading enabled
+  futures: true, // Futures trading enabled
   maxLeverage: {
-    spot: 10,          // 10x max for spot
-    futures: 100       // 100x max for futures
+    spot: 10, // 10x max for spot
+    futures: 100, // 100x max for futures
   },
   supportedOrderTypes: ['market', 'limit', 'stop', 'stop-limit'],
   rateLimits: {
-    requests: 120,     // 120 requests per minute
-    window: 60000      // 1 minute window
-  }
-}
+    requests: 120, // 120 requests per minute
+    window: 60000, // 1 minute window
+  },
+};
 ```
 
 #### **Risk Management Settings**
+
 ```typescript
 const riskConfig = {
-  maxPositionSize: 0.1,      // 10% of account
-  maxLeverage: 10,           // Maximum 10x leverage
-  stopLossPercentage: 0.02,  // 2% stop loss
-  takeProfitPercentage: 0.05 // 5% take profit
-}
+  maxPositionSize: 0.1, // 10% of account
+  maxLeverage: 10, // Maximum 10x leverage
+  stopLossPercentage: 0.02, // 2% stop loss
+  takeProfitPercentage: 0.05, // 5% take profit
+};
 ```
 
 ### **Strategy Framework Configuration**
 
 #### **Plugin Configuration**
+
 ```typescript
 // Strategy plugin directory configuration
 const pluginConfig = {
-  directory: './plugins',           // Plugin directory location
+  directory: './plugins', // Plugin directory location
   allowedExtensions: ['.ts', '.js'], // Allowed file extensions
-  whitelistedDependencies: [        // Allowed dependencies
+  whitelistedDependencies: [
+    // Allowed dependencies
     '@jabbr/shared',
     'technicalindicators',
-    'zod'
+    'zod',
   ],
-  securitySandbox: true,            // Enable security sandbox
-  dynamicReloading: true            // Enable hot-reloading
-}
+  securitySandbox: true, // Enable security sandbox
+  dynamicReloading: true, // Enable hot-reloading
+};
 ```
 
 #### **Strategy Configuration**
+
 ```typescript
 // Example strategy configuration
 const strategyConfig = {
@@ -326,56 +357,60 @@ const strategyConfig = {
     symbol: 'BTC/USDT',
     fastPeriod: 20,
     slowPeriod: 50,
-    signalThreshold: 0
+    signalThreshold: 0,
   },
   riskManagement: {
-    stopLossPercentage: 0.05,      // 5% stop loss
-    takeProfitPercentage: 0.15     // 15% take profit
+    stopLossPercentage: 0.05, // 5% stop loss
+    takeProfitPercentage: 0.15, // 15% take profit
   },
   execution: {
     timeframe: '1h',
-    minimumConfidence: 0.6
-  }
-}
+    minimumConfidence: 0.6,
+  },
+};
 ```
 
 #### **Backtesting Configuration**
+
 ```typescript
 // Backtesting configuration
 const backtestConfig = {
-  initialCapital: 10000,     // Starting capital
-  fees: 0.001,               // 0.1% fees
-  slippage: 0.001,           // 0.1% slippage
-  startDate: '2023-01-01',   // Backtest start date
-  endDate: '2023-12-31',     // Backtest end date
-  enableLogs: true,          // Enable detailed logging
-  saveTradeDetails: true     // Save individual trade details
-}
+  initialCapital: 10000, // Starting capital
+  fees: 0.001, // 0.1% fees
+  slippage: 0.001, // 0.1% slippage
+  startDate: '2023-01-01', // Backtest start date
+  endDate: '2023-12-31', // Backtest end date
+  enableLogs: true, // Enable detailed logging
+  saveTradeDetails: true, // Save individual trade details
+};
 ```
 
 ### **WebSocket Configuration**
+
 ```typescript
 const wsConfig = {
-  port: 3002,                // WebSocket server port
-  maxConnections: 100,       // Maximum concurrent connections
-  heartbeatInterval: 30000,  // 30 second heartbeat
-  reconnectDelay: 5000       // 5 second reconnect delay
-}
+  port: 3002, // WebSocket server port
+  maxConnections: 100, // Maximum concurrent connections
+  heartbeatInterval: 30000, // 30 second heartbeat
+  reconnectDelay: 5000, // 5 second reconnect delay
+};
 ```
 
 ### **Time Synchronization Settings**
+
 ```typescript
 const timeSyncConfig = {
-  ntpServer: 'pool.ntp.org',    // NTP server
-  syncInterval: 300000,         // 5 minute sync interval
-  maxDrift: 30000,             // 30 second max drift
-  timeout: 10000               // 10 second timeout
-}
+  ntpServer: 'pool.ntp.org', // NTP server
+  syncInterval: 300000, // 5 minute sync interval
+  maxDrift: 30000, // 30 second max drift
+  timeout: 10000, // 10 second timeout
+};
 ```
 
 ## 🛠️ Development Configuration
 
 ### **TypeScript Configuration**
+
 Each package has optimized TypeScript settings:
 
 ```json
@@ -395,6 +430,7 @@ Each package has optimized TypeScript settings:
 ```
 
 ### **Build Configuration**
+
 ```json
 {
   "scripts": {
@@ -410,27 +446,30 @@ Each package has optimized TypeScript settings:
 ## 🔍 Monitoring & Debugging
 
 ### **Health Check Endpoints**
+
 - **System Health**: `GET /health`
 - **Trading Status**: `GET /api/test-trading`
 - **Market Data**: `GET /api/market/:symbol`
 
 ### **Logging Configuration**
+
 ```typescript
 const loggingConfig = {
-  level: 'info',              // Log level
-  format: 'json',             // Log format
+  level: 'info', // Log level
+  format: 'json', // Log format
   transports: [
-    'console',                // Console output
-    'file'                    // File output
+    'console', // Console output
+    'file', // File output
   ],
   rotation: {
-    maxSize: '10m',           // 10MB max file size
-    maxFiles: '5'             // Keep 5 files
-  }
-}
+    maxSize: '10m', // 10MB max file size
+    maxFiles: '5', // Keep 5 files
+  },
+};
 ```
 
 ### **Debug Mode**
+
 ```bash
 # Enable debug logging
 NODE_ENV=development DEBUG=* npm run dev
@@ -447,6 +486,7 @@ npm audit
 ### **Common Issues**
 
 #### **Port Conflicts**
+
 ```bash
 # Check port usage
 netstat -an | findstr :3001
@@ -457,6 +497,7 @@ taskkill /PID <process_id> /F
 ```
 
 #### **Environment Variables Not Loading**
+
 ```bash
 # Verify .env file exists in project root
 ls .env
@@ -467,6 +508,7 @@ ls .env
 ```
 
 #### **TypeScript Compilation Errors**
+
 ```bash
 # Clean build
 rm -rf dist/
@@ -477,6 +519,7 @@ npx tsc --noEmit
 ```
 
 #### **API Connection Issues**
+
 ```bash
 # Test API connectivity
 curl http://localhost:3001/health
@@ -488,6 +531,7 @@ wscat -c ws://localhost:3002
 ### **Performance Optimization**
 
 #### **Database Optimization**
+
 ```sql
 -- Index optimization
 CREATE INDEX idx_trades_timestamp ON trades(timestamp);
@@ -495,24 +539,27 @@ CREATE INDEX idx_positions_symbol ON positions(symbol);
 ```
 
 #### **Memory Optimization**
+
 ```typescript
 // Node.js memory settings
 node --max-old-space-size=4096 src/index.ts
 ```
 
 #### **Rate Limiting Optimization**
+
 ```typescript
 const rateLimitConfig = {
-  windowMs: 60000,     // 1 minute window
-  max: 120,            // 120 requests per window
+  windowMs: 60000, // 1 minute window
+  max: 120, // 120 requests per window
   standardHeaders: true,
-  legacyHeaders: false
-}
+  legacyHeaders: false,
+};
 ```
 
 ## 🔐 Security Configuration
 
 ### **Production Security Checklist**
+
 - [ ] **Environment Variables**: Secure storage of sensitive data
 - [ ] **API Key Encryption**: AES-256-CBC encryption enabled
 - [ ] **JWT Security**: Strong secrets and proper expiration
@@ -523,21 +570,23 @@ const rateLimitConfig = {
 - [ ] **Helmet**: Security headers configured
 
 ### **API Key Management**
+
 ```typescript
 // Secure API key storage
 const encryptedKey = encrypt(apiKey, ENCRYPTION_KEY);
 
 // Rate limiting per API key
 const keyRateLimit = rateLimit({
-  keyGenerator: (req) => req.user.apiKeyId,
+  keyGenerator: req => req.user.apiKeyId,
   windowMs: 60000,
-  max: 60
+  max: 60,
 });
 ```
 
 ## 📈 Performance Monitoring
 
 ### **Key Metrics to Monitor**
+
 - **API Response Time**: <200ms target
 - **WebSocket Latency**: <50ms target
 - **Order Execution Time**: <1s target
@@ -545,17 +594,18 @@ const keyRateLimit = rateLimit({
 - **CPU Usage**: <50% average
 
 ### **Monitoring Tools**
+
 ```typescript
 // Performance monitoring
 const performanceConfig = {
   enableMetrics: true,
-  metricsInterval: 60000,    // 1 minute intervals
+  metricsInterval: 60000, // 1 minute intervals
   alertThresholds: {
-    responseTime: 500,       // 500ms alert threshold
-    errorRate: 0.05,         // 5% error rate alert
-    memoryUsage: 0.8         // 80% memory alert
-  }
-}
+    responseTime: 500, // 500ms alert threshold
+    errorRate: 0.05, // 5% error rate alert
+    memoryUsage: 0.8, // 80% memory alert
+  },
+};
 ```
 
 ---
@@ -570,12 +620,15 @@ const performanceConfig = {
 
 ---
 
-*This configuration guide ensures minimal impact setup while maintaining full functionality and production readiness.*
+_This configuration guide ensures minimal impact setup while maintaining full
+functionality and production readiness._
 
 ## 🧪 Test Configuration
 
 ### **Test File Organization**
+
 All tests must be organized according to the following structure:
+
 ```
 packages/
 ├── backend/
@@ -591,7 +644,9 @@ packages/
 ```
 
 ### **Test File Organization**
+
 All tests must be organized according to the following structure:
+
 ```
 packages/
 ├── backend/
@@ -616,9 +671,12 @@ packages/
         └── results/     # Test results (gitignored)
 ```
 
-**IMPORTANT:** Test files must never be placed at the root level of any package. All test-related artifacts, including results and reports, should be stored within the appropriate tests directory.
+**IMPORTANT:** Test files must never be placed at the root level of any package.
+All test-related artifacts, including results and reports, should be stored
+within the appropriate tests directory.
 
 ### **Test Configuration Files**
+
 ```javascript
 // jest.config.js
 module.exports = {
@@ -628,12 +686,12 @@ module.exports = {
   testMatch: [
     '**/__tests__/**/*.+(ts|tsx|js)',
     '**/tests/**/*.test.+(ts|tsx|js)',
-    '**/tests/**/*.spec.+(ts|tsx|js)'
+    '**/tests/**/*.spec.+(ts|tsx|js)',
   ],
   testPathIgnorePatterns: ['/node_modules/', '/dist/'],
   collectCoverageFrom: ['src/**/*.{js,ts}'],
   coverageDirectory: './tests/results/coverage',
   coverageReporters: ['json', 'lcov', 'text', 'clover'],
-  testResultsProcessor: './tests/results-processor.js'
+  testResultsProcessor: './tests/results-processor.js',
 };
 ```

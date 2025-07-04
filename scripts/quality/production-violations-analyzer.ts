@@ -347,8 +347,13 @@ module.exports = {
          checkStatus: check.status
        });
        
-       if (categoryStats[(violation as any).severity] !== undefined) {
-         categoryStats[(violation as any).severity]++;
+       // Type-safe severity handling
+       const severity = violation.severity?.toUpperCase() as keyof CategoryStats;
+       if (severity && severity in categoryStats) {
+         categoryStats[severity]++;
+       } else {
+         // Default to MEDIUM for unknown severities
+         categoryStats.MEDIUM++;
        }
      }
    }

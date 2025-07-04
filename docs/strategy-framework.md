@@ -2,7 +2,11 @@
 
 ## Overview
 
-The Jabbr Strategy Framework is a comprehensive, modular system for developing and deploying trading strategies. It provides a pluggable architecture that allows developers to create custom trading strategies while leveraging the platform's core infrastructure for market data, order execution, risk management, and more.
+The Jabbr Strategy Framework is a comprehensive, modular system for developing
+and deploying trading strategies. It provides a pluggable architecture that
+allows developers to create custom trading strategies while leveraging the
+platform's core infrastructure for market data, order execution, risk
+management, and more.
 
 ## Architecture
 
@@ -10,15 +14,20 @@ The strategy framework consists of several key components:
 
 ### Core Components
 
-1. **Strategy Interface**: Defines the contract that all trading strategies must implement.
-2. **Strategy Factory**: Central factory for creating strategy instances, supporting both built-in and custom strategies.
-3. **Plugin Manager**: Manages custom strategy plugins with security, validation, and hot-reloading capabilities.
-4. **Signal Processors**: Specialized components for generating trading signals based on specific indicators or techniques.
+1. **Strategy Interface**: Defines the contract that all trading strategies must
+   implement.
+2. **Strategy Factory**: Central factory for creating strategy instances,
+   supporting both built-in and custom strategies.
+3. **Plugin Manager**: Manages custom strategy plugins with security,
+   validation, and hot-reloading capabilities.
+4. **Signal Processors**: Specialized components for generating trading signals
+   based on specific indicators or techniques.
 
 ### Key Classes
 
 - `StrategyFactory`: Entry point for strategy creation and management
-- `StrategyPluginManager`: Handles plugin lifecycle management, security, and loading
+- `StrategyPluginManager`: Handles plugin lifecycle management, security, and
+  loading
 - `SMASignalProcessor`: Implementation of SMA-based signal generation
 - `SMACrossoverStrategy`: Built-in strategy for SMA crossover trading
 
@@ -32,11 +41,11 @@ interface IStrategy {
   readonly version: string;
   readonly description: string;
   readonly supportedMarkets: readonly string[];
-  
+
   initialize(context: StrategyContext): Promise<void>;
   execute(context: StrategyContext): Promise<StrategyResult>;
   cleanup(context: StrategyContext): Promise<void>;
-  
+
   validateConfig(config: Record<string, unknown>): ConfigValidationResult;
   getDefaultConfig(): StrategyConfig;
   getState(): StrategyState;
@@ -48,18 +57,22 @@ interface IStrategy {
 
 The framework includes several built-in strategies:
 
-1. **SMA Crossover Strategy**: Generates signals based on SMA crossovers (see [SMA Strategy Documentation](./sma-strategy.md))
+1. **SMA Crossover Strategy**: Generates signals based on SMA crossovers (see
+   [SMA Strategy Documentation](./sma-strategy.md))
 2. **Target Reacher Strategy**: Generates signals based on price targets
 
 ## Creating Custom Strategies
 
 ### Plugin System
 
-Custom strategies are implemented as plugins, which are TypeScript/JavaScript modules that export a class implementing the `IStrategy` interface. The plugin system provides:
+Custom strategies are implemented as plugins, which are TypeScript/JavaScript
+modules that export a class implementing the `IStrategy` interface. The plugin
+system provides:
 
 1. **Security**: Plugins are validated and run in a secure environment
 2. **Hot-reloading**: Plugins can be updated without restarting the application
-3. **Metadata**: Plugins can include metadata like author, version, risk level, etc.
+3. **Metadata**: Plugins can include metadata like author, version, risk level,
+   etc.
 
 ### Plugin Development
 
@@ -70,11 +83,13 @@ To create a custom strategy plugin:
 3. Add required metadata using `static metadata` property
 4. Implement the strategy logic in the `execute` method
 
-See the [Example SMA Strategy Plugin](../../plugins/example-sma-strategy.ts) for a complete example.
+See the [Example SMA Strategy Plugin](../../plugins/example-sma-strategy.ts) for
+a complete example.
 
 ## Strategy Context
 
-Strategies receive a `StrategyContext` object that provides access to various platform services:
+Strategies receive a `StrategyContext` object that provides access to various
+platform services:
 
 ```typescript
 interface StrategyContext {
@@ -91,7 +106,8 @@ interface StrategyContext {
 
 ## Plugin Management
 
-Plugins are managed through the `StrategyPluginManager`, which provides methods for:
+Plugins are managed through the `StrategyPluginManager`, which provides methods
+for:
 
 - Registering new plugins
 - Loading and unloading plugins
@@ -100,7 +116,8 @@ Plugins are managed through the `StrategyPluginManager`, which provides methods 
 
 ## Integration with Bot System
 
-The strategy framework integrates with the bot management system, allowing users to:
+The strategy framework integrates with the bot management system, allowing users
+to:
 
 1. Select a strategy type (built-in or custom)
 2. Configure strategy parameters
@@ -116,7 +133,8 @@ Strategies can be tested using:
 
 ## Error Handling
 
-The framework includes robust error handling to prevent failed strategies from affecting the overall system:
+The framework includes robust error handling to prevent failed strategies from
+affecting the overall system:
 
 - Strategy exceptions are caught and logged
 - Strategies are automatically recovered when possible

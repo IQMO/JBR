@@ -2,7 +2,9 @@
 
 ## Overview
 
-This document outlines the testing standards, conventions, and best practices for the JabbrLabs Trading Backend project. Following these guidelines ensures consistency, maintainability, and reliability across all test suites.
+This document outlines the testing standards, conventions, and best practices
+for the JabbrLabs Trading Backend project. Following these guidelines ensures
+consistency, maintainability, and reliability across all test suites.
 
 ## Test Structure Organization
 
@@ -32,6 +34,7 @@ packages/backend/tests/
 ### Test Type Guidelines
 
 #### Unit Tests (`unit/`)
+
 - **Purpose**: Test individual functions, classes, and methods in isolation
 - **Scope**: Single component or function
 - **Dependencies**: Should be mocked or stubbed
@@ -39,12 +42,15 @@ packages/backend/tests/
 - **Location**: Mirror the `src/` directory structure
 
 #### Integration Tests (`integration/`)
+
 - **Purpose**: Test interactions between multiple components
 - **Scope**: Multiple related components working together
 - **Dependencies**: Real implementations with controlled environments
-- **Examples**: Strategy factory with real strategies, signal processors with indicators
+- **Examples**: Strategy factory with real strategies, signal processors with
+  indicators
 
 #### End-to-End Tests (`e2e/`)
+
 - **Purpose**: Test complete workflows and user scenarios
 - **Scope**: Full system behavior from input to output
 - **Environment**: As close to production as possible (with appropriate mocking)
@@ -62,15 +68,12 @@ The project uses **Jest 29.7.0** with TypeScript support via `ts-jest`:
   "testEnvironment": "node",
   "roots": ["<rootDir>/tests", "<rootDir>/src"],
   "testMatch": ["**/*.test.ts"],
-  "collectCoverageFrom": [
-    "src/**/*.ts",
-    "!src/**/*.d.ts",
-    "!src/**/index.ts"
-  ]
+  "collectCoverageFrom": ["src/**/*.ts", "!src/**/*.d.ts", "!src/**/index.ts"]
 }
 ```
 
 ### Key Configuration Features
+
 - **TypeScript Support**: Full TypeScript compilation and type checking
 - **Path Mapping**: Supports project path aliases and imports
 - **Coverage Collection**: Automated code coverage reporting
@@ -79,13 +82,15 @@ The project uses **Jest 29.7.0** with TypeScript support via `ts-jest`:
 ## Naming Conventions
 
 ### Test File Naming
+
 - **Format**: `[component-name].test.ts`
-- **Examples**: 
+- **Examples**:
   - `rsi-indicator.test.ts`
   - `sma-signal-processor.test.ts`
   - `strategy-factory.test.ts`
 
 ### Test Suite Organization
+
 ```typescript
 describe('ComponentName', () => {
   describe('methodName', () => {
@@ -97,6 +102,7 @@ describe('ComponentName', () => {
 ```
 
 ### Test Description Patterns
+
 - **Unit Tests**: "should [expected behavior] when [condition]"
 - **Integration Tests**: "should [workflow result] with [components involved]"
 - **E2E Tests**: "Should [user scenario outcome]"
@@ -104,6 +110,7 @@ describe('ComponentName', () => {
 ## Code Quality Standards
 
 ### Test Structure
+
 ```typescript
 describe('RSIIndicator', () => {
   describe('constructor', () => {
@@ -135,11 +142,13 @@ describe('RSIIndicator', () => {
 ### Best Practices
 
 #### 1. Test Isolation
+
 - Each test should be independent and not rely on other tests
 - Use `beforeEach`/`afterEach` for setup and cleanup
 - Avoid shared mutable state between tests
 
 #### 2. Descriptive Test Names
+
 ```typescript
 // ✅ Good
 it('should generate buy signal when fast SMA crosses above slow SMA', () => {});
@@ -149,12 +158,14 @@ it('should work', () => {});
 ```
 
 #### 3. Comprehensive Coverage
+
 - **Happy Path**: Test expected behavior with valid inputs
 - **Edge Cases**: Test boundary conditions and unusual inputs
 - **Error Cases**: Test error handling and validation
 - **Real Data**: Include tests with realistic market data
 
 #### 4. Assertions
+
 ```typescript
 // ✅ Specific assertions
 expect(result.signal).toBe('BUY');
@@ -168,12 +179,14 @@ expect(result).toBeTruthy();
 ## Mocking and Test Data
 
 ### Mock Strategy
+
 - **External APIs**: Always mock external service calls (exchanges, databases)
 - **File System**: Mock file operations for consistent test environments
 - **Time-dependent**: Mock Date/time for predictable test results
 - **Random Values**: Mock random number generation for deterministic tests
 
 ### Test Data Organization
+
 ```typescript
 // fixtures/candles.ts
 export const bullishCandles = [
@@ -189,35 +202,39 @@ export const bearishCandles = [
 ```
 
 ### Mock Examples
+
 ```typescript
 // Mocking external dependencies
 jest.mock('ccxt', () => ({
   bybit: jest.fn().mockImplementation(() => ({
     fetchOHLCV: jest.fn().mockResolvedValue(mockCandles),
-    fetchTicker: jest.fn().mockResolvedValue(mockTicker)
-  }))
+    fetchTicker: jest.fn().mockResolvedValue(mockTicker),
+  })),
 }));
 
 // Mocking internal services
 const mockExchange = {
   connect: jest.fn().mockResolvedValue(true),
-  getMarketData: jest.fn().mockResolvedValue(mockMarketData)
+  getMarketData: jest.fn().mockResolvedValue(mockMarketData),
 };
 ```
 
 ## Performance Considerations
 
 ### Test Execution Speed
+
 - **Unit Tests**: Should complete in milliseconds
 - **Integration Tests**: Should complete within seconds
 - **E2E Tests**: May take longer but should be optimized
 
 ### Memory Management
+
 - Clean up resources in `afterEach` hooks
 - Avoid memory leaks from unclosed connections or listeners
 - Use `jest.clearAllMocks()` to reset mock state
 
 ### Parallel Execution
+
 - Tests should be safe to run in parallel
 - Avoid shared files or global state modifications
 - Use unique identifiers for temporary resources
@@ -225,6 +242,7 @@ const mockExchange = {
 ## Error Handling and Validation
 
 ### Testing Error Scenarios
+
 ```typescript
 describe('error handling', () => {
   it('should throw for insufficient data', () => {
@@ -241,6 +259,7 @@ describe('error handling', () => {
 ```
 
 ### Input Validation Testing
+
 - Test with null/undefined values
 - Test with empty arrays/objects
 - Test with invalid data types
@@ -249,6 +268,7 @@ describe('error handling', () => {
 ## Continuous Integration
 
 ### Test Execution Pipeline
+
 1. **Lint Check**: ESLint validation
 2. **Type Check**: TypeScript compilation
 3. **Unit Tests**: Fast feedback loop
@@ -257,6 +277,7 @@ describe('error handling', () => {
 6. **Coverage Report**: Code coverage analysis
 
 ### Success Criteria
+
 - **Coverage**: Minimum 80% code coverage
 - **All Tests Pass**: 100% test success rate
 - **No Type Errors**: Clean TypeScript compilation
@@ -265,12 +286,14 @@ describe('error handling', () => {
 ## Test Maintenance
 
 ### Regular Maintenance Tasks
+
 - Update test data with realistic market conditions
 - Review and update mocks when dependencies change
 - Refactor tests when source code structure changes
 - Remove obsolete tests for deprecated features
 
 ### Code Review Guidelines
+
 - Verify test coverage for new features
 - Ensure test descriptions are clear and accurate
 - Check for proper error handling test cases
@@ -281,6 +304,7 @@ describe('error handling', () => {
 ### Common Issues and Solutions
 
 #### 1. Mock Configuration Problems
+
 ```typescript
 // ❌ Problem: Mock not properly configured
 const mockFn = jest.fn();
@@ -293,6 +317,7 @@ expect(mockFn).toHaveBeenCalledWith(expectedArgs);
 ```
 
 #### 2. Async Test Issues
+
 ```typescript
 // ❌ Problem: Not awaiting async operations
 it('should process async data', () => {
@@ -308,11 +333,13 @@ it('should process async data', async () => {
 ```
 
 #### 3. Test Data Issues
+
 - Ensure test data matches expected format
 - Verify array lengths match algorithm requirements
 - Check for proper data types and value ranges
 
 ### Debugging Tools
+
 - **Jest Debug Mode**: Run with `--detectOpenHandles` to find resource leaks
 - **Coverage Reports**: Identify untested code paths
 - **Console Logging**: Strategic logging for complex test scenarios
@@ -321,6 +348,7 @@ it('should process async data', async () => {
 ## Migration and Upgrade Guidelines
 
 ### When Upgrading Dependencies
+
 1. Update Jest and related packages together
 2. Review breaking changes in release notes
 3. Update mock configurations if needed
@@ -328,6 +356,7 @@ it('should process async data', async () => {
 5. Update documentation for any new patterns
 
 ### Adding New Test Categories
+
 1. Create appropriate directory structure
 2. Update Jest configuration if needed
 3. Document new testing patterns
@@ -337,6 +366,7 @@ it('should process async data', async () => {
 ## Examples and Templates
 
 ### Unit Test Template
+
 ```typescript
 import { ComponentName } from '../src/path/to/component';
 
@@ -364,14 +394,16 @@ describe('ComponentName', () => {
     });
 
     it('should throw error for invalid input', () => {
-      expect(() => component.methodName(invalidInput))
-        .toThrow('Expected error message');
+      expect(() => component.methodName(invalidInput)).toThrow(
+        'Expected error message'
+      );
     });
   });
 });
 ```
 
 ### Integration Test Template
+
 ```typescript
 import { ServiceA } from '../src/services/serviceA';
 import { ServiceB } from '../src/services/serviceB';
@@ -388,10 +420,10 @@ describe('ServiceA Integration with ServiceB', () => {
   it('should process data through both services correctly', async () => {
     const input = createTestData();
     const result = await serviceA.processWithB(input);
-    
+
     expect(result).toMatchObject({
       processed: true,
-      data: expect.any(Object)
+      data: expect.any(Object),
     });
   });
 });
@@ -399,9 +431,13 @@ describe('ServiceA Integration with ServiceB', () => {
 
 ## Conclusion
 
-Following these guidelines ensures that our test suite remains maintainable, reliable, and provides confidence in our trading system's functionality. Regular review and updates of these guidelines help maintain testing quality as the project evolves.
+Following these guidelines ensures that our test suite remains maintainable,
+reliable, and provides confidence in our trading system's functionality. Regular
+review and updates of these guidelines help maintain testing quality as the
+project evolves.
 
-For questions or suggestions regarding these guidelines, please refer to the development team or create an issue in the project repository.
+For questions or suggestions regarding these guidelines, please refer to the
+development team or create an issue in the project repository.
 
 ---
 
