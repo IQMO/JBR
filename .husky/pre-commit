@@ -1,1 +1,18 @@
-npx lint-staged
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Run lint-staged with better error handling
+echo "🔍 Running pre-commit checks..."
+
+# Set NODE_OPTIONS for better memory handling
+export NODE_OPTIONS="--max-old-space-size=4096"
+
+# Run lint-staged with timeout and error recovery
+npx lint-staged --concurrent=false --verbose || {
+  echo "⚠️  Pre-commit checks failed. You can:"
+  echo "   1. Fix the issues and commit again"
+  echo "   2. Commit with --no-verify to skip checks"
+  exit 1
+}
+
+echo "✅ Pre-commit checks passed!"
