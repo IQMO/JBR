@@ -1,12 +1,12 @@
 {
-  "timestamp": "2025-07-05T17:30:11.142Z",
+  "timestamp": "2025-07-05T18:08:15.824Z",
   "project": "JBR Trading Platform",
   "task": "Task 53.5 - Naming Convention Validation",
   "summary": {
-    "filesScanned": 232,
-    "elementsChecked": 9008,
-    "violations": 199,
-    "errors": 199,
+    "filesScanned": 233,
+    "elementsChecked": 9144,
+    "violations": 204,
+    "errors": 204,
     "warnings": 0
   },
   "violations": [
@@ -3537,6 +3537,96 @@
       },
       "message": "Variables should use camelCase naming: \"DOCS_TO_VALIDATE\" violates Variable camelCase",
       "suggestion": "dOCSTOVALIDATE"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "GridV2Test",
+        "file": "scripts\\testing\\validation\\frontend-comprehensive-test.ts",
+        "line": 422,
+        "context": "const GridV2Test: React.FC = () => {"
+      },
+      "message": "Variables should use camelCase naming: \"GridV2Test\" violates Variable camelCase",
+      "suggestion": "gridV2Test"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "ThemeTest",
+        "file": "scripts\\testing\\validation\\frontend-comprehensive-test.ts",
+        "line": 502,
+        "context": "const ThemeTest: React.FC = () => {"
+      },
+      "message": "Variables should use camelCase naming: \"ThemeTest\" violates Variable camelCase",
+      "suggestion": "themeTest"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "IconTest",
+        "file": "scripts\\testing\\validation\\frontend-comprehensive-test.ts",
+        "line": 553,
+        "context": "const IconTest: React.FC = () => {"
+      },
+      "message": "Variables should use camelCase naming: \"IconTest\" violates Variable camelCase",
+      "suggestion": "iconTest"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-types",
+        "name": "Type PascalCase",
+        "pattern": {},
+        "description": "Type aliases should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "type",
+        "name": "safety",
+        "file": "scripts\\testing\\validation\\frontend-comprehensive-test.ts",
+        "line": 625,
+        "context": "recommendations.push('Enable strict mode for better type safety');"
+      },
+      "message": "Type aliases should use PascalCase naming: \"safety\" violates Type PascalCase",
+      "suggestion": "Safety"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-types",
+        "name": "Type PascalCase",
+        "pattern": {},
+        "description": "Type aliases should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "type",
+        "name": "definitions",
+        "file": "scripts\\testing\\validation\\frontend-comprehensive-test.ts",
+        "line": 773,
+        "context": "recommendations.push('  - Review import statements and type definitions');"
+      },
+      "message": "Type aliases should use PascalCase naming: \"definitions\" violates Type PascalCase",
+      "suggestion": "Definitions"
     },
     {
       "rule": {

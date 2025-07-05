@@ -427,12 +427,9 @@ npx task-master set-status --id=<id> --status=done
 
 ### **Core Documentation**
 
-- **[PROJECT_STATUS_UPDATE.md](PROJECT_STATUS_UPDATE.md)**: Latest project
-  status (July 4, 2025)
-- **[PROJECT_STATUS.md](PROJECT_STATUS.md)**: Comprehensive project overview and
-  metrics
-- **[Configuration Guide](docs/guides/CONFIGURATION_GUIDE.md)**: Complete setup
-  and deployment guide
+- **[Documentation Hub](docs/README.md)**: Complete documentation index and navigation guide
+- **[Project Status Reports](docs/project-status/)**: Latest project status updates and implementation reports
+- **[Configuration Guide](docs/guides/CONFIGURATION_GUIDE.md)**: Complete setup and deployment guide
 
 ### **Technical Documentation**
 
@@ -447,22 +444,19 @@ npx task-master set-status --id=<id> --status=done
 - **[Time Sync Setup](docs/TIME_SYNC_SETUP.md)**: Time synchronization
   configuration
 
-### **Quality & Testing**
+### **Testing & Quality Assurance**
 
-- **[Test Organization Guide](docs/TEST_ORGANIZATION_GUIDE.md)**: Standards for
-  organizing test files
-- **[Production Readiness Report](docs/reports/PRODUCTION_READINESS_FINAL_STATUS.md)**:
-  Latest production status
-- **[Task Status Report](docs/TASK_STATUS_REPORT.md)**: Comprehensive task
-  tracking
-- **[Documentation Maintenance](docs/DOCUMENTATION_MAINTENANCE.md)**:
-  Documentation standards and maintenance
+- **[Tests Documentation](tests/README.md)**: Complete testing infrastructure and strategy guide
+- **[Quality Reports](reports/README.md)**: Analysis reports and quality metrics documentation
+- **[Test Organization Guide](docs/TEST_ORGANIZATION_GUIDE.md)**: Standards for organizing test files
+- **[Production Readiness Report](docs/FINAL_PRODUCTION_READINESS_REPORT.md)**: Latest production status
 
-### **API & Development**
+### **Development & API Documentation**
 
-- **[API Documentation](packages/backend/src/)**: Complete TypeScript API
-  reference
-- **[Taskmaster Integration](.taskmaster/)**: AI-powered task management system
+- **[Packages Documentation](packages/README.md)**: Complete monorepo architecture and package guides
+- **[Backend API](packages/backend/README.md)**: Backend development and API reference
+- **[Frontend Guide](packages/frontend/README.md)**: Frontend development and component architecture
+- **[Shared Types](packages/shared/README.md)**: Common types, utilities, and validation schemas
 - **[Example Strategies](docs/examples/)**: Sample strategy implementations
 
 ## 🤝 Contributing

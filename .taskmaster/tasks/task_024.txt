@@ -1,6 +1,6 @@
 # Task ID: 24
 # Title: Position & P&L Visualization - UI Implementation
-# Status: pending
+# Status: done
 # Dependencies: 21
 # Priority: medium
 # Description: Implement the UI for position and P&L visualization.

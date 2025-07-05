@@ -1,6 +1,6 @@
 # Task ID: 23
 # Title: Trading Activity Monitoring - UI Implementation
-# Status: pending
+# Status: done
 # Dependencies: 21
 # Priority: medium
 # Description: Implement the UI for trading activity monitoring.

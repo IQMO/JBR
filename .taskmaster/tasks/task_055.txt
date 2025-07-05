@@ -1,0 +1,89 @@
+# Task ID: 55
+# Title: Consolidate Project Structure to Root Level
+# Status: done
+# Dependencies: 2, 4, 52, 45
+# Priority: critical
+# Description: Consolidate the project structure to eliminate package-level complexity and manage everything from the root level, ensuring no functionality is broken and all existing scripts and tests continue to work.
+# Details:
+1. **ANALYSIS PHASE**: Audit all current dependencies, map test files, identify configuration files, and document legacy/duplicate files.
+2. **DEPENDENCY CONSOLIDATION**: Move all dependencies to the root package.json, resolve version conflicts, and update workspace configuration.
+3. **TEST CONSOLIDATION**: Create a unified /tests folder structure at the root level, move test files, create a consolidated test runner script, update import paths, and consolidate Jest configurations.
+4. **CONFIGURATION CONSOLIDATION**: Consolidate all tsconfig.json files to a single root configuration, update build and development scripts, and ensure all tools work from a single root configuration.
+5. **SCRIPT CONSOLIDATION**: Create an interface script in /tests/ for test management, update npm scripts to work from the root level, and remove redundant scripts.
+6. **CLEANUP PHASE**: Safely remove legacy package-level configuration files, empty directories, and redundant files.
+7. **VALIDATION & DOCUMENTATION**: Ensure all functionality still works, update documentation, fix misleading comments, and validate orchestrator functionality.
+
+CRITICAL REQUIREMENTS:
+- NO functionality should be broken
+- ALL existing scripts must continue to work
+- ALL tests must continue to pass
+- Maintain production-ready standards
+- Follow project patterns and professional naming conventions
+- Always verify terminal path before executing commands
+- Ensure dependency version compatibility (especially Express v4.x requirements)
+
+# Test Strategy:
+1.  Verify that all dependencies are correctly consolidated in the root package.json and that the application builds successfully.
+2.  Ensure that all tests pass after the consolidation, using the consolidated test runner script.
+3.  Validate that all configuration files are correctly consolidated and that the application functions as expected with the new configuration.
+4.  Test all npm scripts to ensure they work correctly from the root level.
+5.  Verify that all orchestrator scripts and existing workflows continue to function without any issues.
+6.  Run individual tests to ensure coverage and functionality of each component.
+7.  Check for any broken functionality or regressions after the consolidation.
+8.  Ensure that the documentation is updated to reflect the new project structure and that all comments are accurate.
+
+# Subtasks:
+## 3. Create Unified /tests Directory and Move Test Files [completed]
+### Dependencies: None
+### Description: Create a unified `/tests` directory at the root level of the project. Move all test files from their current locations to this new directory, maintaining a logical subdirectory structure within `/tests` to organize tests by feature or module.
+### Details:
+Create the `/tests` directory. Use `mv` command to move test files, preserving the directory structure. For example, if a test file is located at `packages/moduleA/test/moduleA.test.js`, move it to `tests/moduleA/moduleA.test.js`. Ensure the directory structure within `/tests` mirrors the logical structure of the codebase.
+
+## 4. Consolidate Test Runner and Update Import Paths [completed]
+### Dependencies: None
+### Description: Create a consolidated test runner script (e.g., using Jest) in the root directory. Update all import paths in the test files to reflect their new locations within the `/tests` directory. Consolidate Jest configurations into a single root configuration file.
+### Details:
+Update the `test` script in the root `package.json` to point to the consolidated test runner. Use a find and replace tool to update import paths in all test files. For example, replace `require('../../moduleA')` with `require('../../src/moduleA')` if the source code is now in a `src` directory at the root. Consolidate all Jest configurations into a single `jest.config.js` file at the root.
+
+## 5. Consolidate TypeScript Configuration [completed]
+### Dependencies: None
+### Description: Consolidate all `tsconfig.json` files into a single root configuration file. Update build and development scripts to use this single configuration. Ensure all tools (e.g., IDEs, linters) work correctly with the consolidated configuration.
+### Details:
+Merge the contents of all `tsconfig.json` files into a single `tsconfig.json` file at the root. Pay attention to compiler options and include/exclude patterns. Update the `build` and `dev` scripts in the root `package.json` to use the root `tsconfig.json`. Verify that your IDE and linters are using the correct TypeScript configuration.
+
+## 6. Consolidate and Update Scripts [completed]
+### Dependencies: None
+### Description: Create an interface script in `/tests/` for test management. Update npm scripts in the root `package.json` to work from the root level. Remove any redundant scripts from the root `package.json` or any old package-level `package.json` files.
+### Details:
+Review all npm scripts in the root `package.json` and update them to work from the root level. For example, if a script was previously `cd packages/moduleA && npm run build`, update it to `npm run build:moduleA` and create a new script `build:moduleA` that executes the build process for moduleA from the root. Remove any redundant scripts. Create a test management script in `/tests/` if needed.
+
+## 7. Cleanup Legacy Files and Directories [done]
+### Dependencies: None
+### Description: Safely remove legacy package-level configuration files (e.g., `tsconfig.json`, `.eslintrc.js`), empty directories, and redundant files. Ensure that no essential files are accidentally deleted.
+### Details:
+Carefully review the project structure and identify any legacy files and directories that are no longer needed. Before deleting any files, back them up or commit them to version control. Use `rm -rf` to remove files and directories. Double-check that you are not deleting any essential files.
+
+## 8. Validation, Documentation, and Final Testing [done]
+### Dependencies: None
+### Description: Ensure that all functionality still works as expected. Update documentation to reflect the new project structure. Fix any misleading comments in the code. Validate the orchestrator functionality. Run all tests to ensure that they pass.
+### Details:
+Run all tests to ensure that they pass. Manually test all key features of the application to ensure that they are working correctly. Update the project documentation to reflect the new project structure. Fix any misleading comments in the code. Validate the orchestrator functionality by running it and checking for any errors or unexpected behavior.
+
+## 9. Verify Multi-Project Jest Setup [completed]
+### Dependencies: 55.4
+### Description: Confirm that the multi-project Jest setup is correctly configured and functioning as expected, allowing tests for Backend, Frontend, and Shared projects to run from the root level.
+### Details:
+Run the Jest test suite with the multi-project configuration. Verify that tests from each project (Backend, Frontend, Shared) are being discovered and executed. Check the test results to ensure that all tests pass and that the correct test environment is being used for each project.
+
+## 1. Project Audit and Documentation [done]
+### Dependencies: None
+### Description: Audit the existing project structure to identify all dependencies, test files, configuration files (e.g., tsconfig.json, .eslintrc.js), and any legacy or duplicate files. Document the current state, including file locations, dependency versions, and test execution methods.
+### Details:
+Create a spreadsheet or document outlining the location of all key files and dependencies. Pay close attention to version numbers, especially for Express and related packages. Use `npm list` or `yarn list` to get a comprehensive list of dependencies. Note any potential conflicts or redundancies.
+
+## 2. Consolidate Dependencies to Root package.json [done]
+### Dependencies: None
+### Description: Move all dependencies from package-level `package.json` files to the root `package.json`. Resolve any version conflicts that arise during the consolidation process. Update the workspace configuration (if applicable) to reflect the new dependency structure.
+### Details:
+Use `npm install --save` or `yarn add` to add dependencies to the root `package.json`. If version conflicts occur, use `npm update` or `yarn upgrade` to resolve them, ensuring compatibility with existing code. Carefully review the changes to `package-lock.json` or `yarn.lock`. If using workspaces, update the `workspaces` field in the root `package.json` accordingly.
+

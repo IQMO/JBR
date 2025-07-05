@@ -1,6 +1,6 @@
 # Task ID: 25
 # Title: Log Viewer & Alert System - UI Implementation
-# Status: pending
+# Status: done
 # Dependencies: 7
 # Priority: medium
 # Description: Implement the UI for the log viewer and alert system.
