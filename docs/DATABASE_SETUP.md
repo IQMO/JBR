@@ -95,7 +95,7 @@ BYBIT_TESTNET=true
 
 ### 2. Database Setup
 
-#### Option A: Local PostgreSQL
+### Option A: Local PostgreSQL
 
 ```bash
 # Install PostgreSQL
@@ -106,7 +106,7 @@ createdb jabbr_trading_bot
 npm run dev
 ```
 
-#### Option B: Docker PostgreSQL
+### Option B: Docker PostgreSQL
 
 ```bash
 # Start PostgreSQL container

@@ -1,43 +1,43 @@
-import React, { useState, useEffect, useMemo, useCallback } from 'react';
-import { 
+import type { LogEntry, WebSocketResponse } from '@jabbr/shared/src';
+import { CONSTANTS } from '@jabbr/shared/src';
+import {
+  BugReport as DebugIcon,
+  Clear as ClearIcon,
+  Download as DownloadIcon,
+  Error as ErrorIcon,
+  ExpandLess as ExpandLessIcon,
+  ExpandMore as ExpandMoreIcon,
+  FilterList as FilterIcon,
+  Info as InfoIcon,
+  Refresh as RefreshIcon,
+  Search as SearchIcon,
+  Warning as WarningIcon,
+} from '@mui/icons-material';
+import {
+  Badge,
+  Box,
   Card,
   CardContent,
-  Box,
-  Typography,
-  TextField,
-  Select,
-  MenuItem,
-  FormControl,
-  InputLabel,
   Chip,
+  Collapse,
+  Divider,
+  FormControl,
   IconButton,
+  InputLabel,
   List,
   ListItem,
-  Paper,
-  Divider,
-  Collapse,
-  Grid,
+  MenuItem,
   Pagination,
+  Paper,
+  Select,
+  Stack,
+  TextField,
   Tooltip,
-  Badge,
-  Stack
+  Typography,
 } from '@mui/material';
-import {
-  Search as SearchIcon,
-  Clear as ClearIcon,
-  ExpandMore as ExpandMoreIcon,
-  ExpandLess as ExpandLessIcon,
-  Download as DownloadIcon,
-  Refresh as RefreshIcon,
-  FilterList as FilterIcon,
-  Error as ErrorIcon,
-  Warning as WarningIcon,
-  Info as InfoIcon,
-  BugReport as DebugIcon
-} from '@mui/icons-material';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
+
 import useWebSocket from '../hooks/useWebSocket';
-import { CONSTANTS } from '@jabbr/shared/src';
-import type { LogEntry, WebSocketResponse } from '@jabbr/shared/src';
 
 interface LogViewerProps {
   height?: number;
@@ -104,7 +104,7 @@ export const LogViewer: React.FC<LogViewerProps> = ({
   }
 
   // WebSocket connection for real-time log updates
-  const { isConnected, sendMessage, subscribe, unsubscribe } = useWebSocket({
+  const { isConnected, subscribe } = useWebSocket({
     url: process.env.NEXT_PUBLIC_WS_URL || 'ws://localhost:3002',
     token: typeof window !== 'undefined' ? localStorage.getItem('token') || undefined : undefined,
     onMessage: handleWebSocketMessage,
@@ -152,7 +152,7 @@ export const LogViewer: React.FC<LogViewerProps> = ({
 
   // Load logs on component mount and filter changes
   useEffect(() => {
-    fetchLogs();
+    void fetchLogs();
   }, [fetchLogs]);
 
   // Filter logs based on current filters

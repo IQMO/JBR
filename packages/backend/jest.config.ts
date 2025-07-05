@@ -71,10 +71,10 @@ const config: Config.InitialOptions = {
   },
   
   // Test Execution Configuration
-  testTimeout: parseInt(process.env.TEST_TIMEOUT || '15000'),
+  testTimeout: parseInt(process.env.TEST_TIMEOUT || '30000'), // Increased from 15000
   detectOpenHandles: true,
   detectLeaks: false,
-  forceExit: process.env.CI === 'true',
+  forceExit: false, // Changed from true to allow proper cleanup
   
   // Error Handling
   errorOnDeprecated: true

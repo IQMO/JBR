@@ -66,7 +66,7 @@ src/
 
 ## 📊 Key Type Definitions
 
-### **Trading Types** (`types/trading.types.ts`)
+### **Trading Types** (`src/types.ts`)
 ```typescript
 // Core trading interfaces
 export interface TradingSignal {
@@ -111,7 +111,7 @@ export interface Order {
 }
 ```
 
-### **Strategy Types** (`types/strategy.types.ts`)
+### **Strategy Types** (`src/types.ts`)
 ```typescript
 // Strategy framework interfaces
 export interface Strategy {
@@ -143,7 +143,7 @@ export interface BacktestResult {
 }
 ```
 
-### **Bot Types** (`types/bot.types.ts`)
+### **Bot Types** (`src/types.ts`)
 ```typescript
 // Bot management interfaces
 export interface Bot {
@@ -176,7 +176,7 @@ export interface BotPerformance {
 
 ## ✅ Validation Schemas
 
-### **Trading Validation** (`validation/trading.schemas.ts`)
+### **Trading Validation** (`src/validation.ts`)
 ```typescript
 import { z } from 'zod';
 
@@ -208,7 +208,7 @@ export const PositionSchema = z.object({
 });
 ```
 
-### **API Validation** (`validation/api.schemas.ts`)
+### **API Validation** (`src/validation.ts`)
 ```typescript
 // Request/Response validation
 export const CreateStrategyRequestSchema = z.object({
@@ -227,7 +227,7 @@ export const ApiResponseSchema = z.object({
 
 ## 🛠️ Utility Functions
 
-### **Date Utilities** (`utils/date.utils.ts`)
+### **Date Utilities** (`src/utils/status-utils.ts`)
 ```typescript
 // Date manipulation and formatting
 export const formatTimestamp = (date: Date): string => {
@@ -243,7 +243,7 @@ export const getMarketDayRange = (date: Date): DateRange => {
 };
 ```
 
-### **Format Utilities** (`utils/format.utils.ts`)
+### **Format Utilities** (`src/utils/status-utils.ts`)
 ```typescript
 // Data formatting functions
 export const formatCurrency = (amount: number, currency = 'USD'): string => {
@@ -265,7 +265,7 @@ export const formatVolume = (volume: number): string => {
 };
 ```
 
-### **Math Utilities** (`utils/math.utils.ts`)
+### **Math Utilities** (`src/utils/status-utils.ts`)
 ```typescript
 // Mathematical calculations for trading
 export const calculatePercentageChange = (
@@ -304,7 +304,7 @@ export const calculateMaxDrawdown = (values: number[]): number => {
 
 ## 📋 Constants & Configuration
 
-### **Trading Constants** (`constants/trading.constants.ts`)
+### **Trading Constants** (`src/types.ts`)
 ```typescript
 // Trading-specific constants
 export const SUPPORTED_SYMBOLS = [
@@ -329,7 +329,7 @@ export const SIGNAL_TYPES = {
 } as const;
 ```
 
-### **API Constants** (`constants/api.constants.ts`)
+### **API Constants** (`src/types.ts`)
 ```typescript
 // API configuration constants
 export const API_ENDPOINTS = {
@@ -352,7 +352,7 @@ export const HTTP_STATUS = {
 
 ## 🚨 Custom Error Classes
 
-### **Trading Errors** (`errors/trading.errors.ts`)
+### **Trading Errors** (`src/types.ts`)
 ```typescript
 // Trading-specific error classes
 export class InsufficientFundsError extends Error {

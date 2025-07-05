@@ -27,7 +27,12 @@ export type {
   BotStatus,
   BotConfiguration,
   RiskManagement,
-  BotPerformance
+  BotPerformance,
+  PerBotRiskManagement,
+  RiskManagementTemplate,
+  RiskManagementValidationResult,
+  RiskValidationError,
+  RiskValidationWarning
 } from './types';
 
 // Test utility types
@@ -92,14 +97,21 @@ export type {
   LoginResponse,
   RegisterRequest,
   CreateBotRequest,
-  UpdateBotRequest
+  UpdateBotRequest,
+  UpdateBotRiskManagementRequest,
+  GetBotRiskManagementResponse,
+  UpdateBotRiskManagementResponse,
+  GetRiskManagementTemplatesResponse,
+  CreateRiskManagementTemplateRequest,
+  ValidateRiskManagementRequest
 } from './types';
 
 // System and monitoring types
 export type {
   SystemHealth,
   ServiceHealth,
-  LogEntry
+  LogEntry,
+  Alert
 } from './types';
 
 // Utility types

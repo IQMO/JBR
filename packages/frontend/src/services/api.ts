@@ -3,7 +3,20 @@
  * Centralized API calls for the JBR Trading Platform frontend
  */
 
+import type { Alert, LogEntry } from '@jabbr/shared/src';
+
 import config from '../config/app';
+import type {
+  PerBotRiskManagement,
+  RiskManagementTemplate,
+  RiskManagementValidationResult,
+  UpdateBotRiskManagementRequest,
+  GetBotRiskManagementResponse,
+  UpdateBotRiskManagementResponse,
+  GetRiskManagementTemplatesResponse,
+  CreateRiskManagementTemplateRequest,
+  ValidateRiskManagementRequest
+} from '@jabbr/shared';
 
 // Type definitions
 interface Trade {
@@ -249,16 +262,97 @@ class ApiService {
     });
   }
 
+  // Risk Management endpoints
+  async getBotRiskManagement(botId: string): Promise<GetBotRiskManagementResponse> {
+    const response = await this.request<PerBotRiskManagement>(`/api/bots/${botId}/risk-management`);
+    return {
+      success: response.success,
+      data: response.data,
+      timestamp: new Date().toISOString()
+    };
+  }
+
+  async updateBotRiskManagement(
+    botId: string,
+    riskManagement: PerBotRiskManagement
+  ): Promise<UpdateBotRiskManagementResponse> {
+    const requestBody: UpdateBotRiskManagementRequest = { riskManagement };
+    const response = await this.request<{
+      data: PerBotRiskManagement;
+      validation: RiskManagementValidationResult;
+    }>(`/api/bots/${botId}/risk-management`, {
+      method: 'PUT',
+      body: JSON.stringify(requestBody),
+    });
+
+    return {
+      success: response.success,
+      data: response.data.data,
+      validation: response.data.validation,
+      timestamp: new Date().toISOString()
+    };
+  }
+
+  async validateBotRiskManagement(
+    botId: string,
+    riskManagement: PerBotRiskManagement,
+    accountBalance?: number
+  ): Promise<ApiResponse<RiskManagementValidationResult>> {
+    const requestBody: ValidateRiskManagementRequest = {
+      riskManagement,
+      botId,
+      accountBalance
+    };
+    return this.request(`/api/bots/${botId}/risk-management/validate`, {
+      method: 'POST',
+      body: JSON.stringify(requestBody),
+    });
+  }
+
+  async getRiskManagementTemplates(): Promise<GetRiskManagementTemplatesResponse> {
+    const response = await this.request<RiskManagementTemplate[]>('/api/risk-management/templates');
+    return {
+      success: response.success,
+      data: response.data,
+      timestamp: new Date().toISOString()
+    };
+  }
+
+  async createRiskManagementTemplate(
+    template: CreateRiskManagementTemplateRequest
+  ): Promise<ApiResponse<RiskManagementTemplate>> {
+    return this.request('/api/risk-management/templates', {
+      method: 'POST',
+      body: JSON.stringify(template),
+    });
+  }
+
+  async validateRiskManagement(
+    riskManagement: PerBotRiskManagement,
+    botId?: string,
+    accountBalance?: number
+  ): Promise<ApiResponse<RiskManagementValidationResult>> {
+    const requestBody: ValidateRiskManagementRequest = {
+      riskManagement,
+      botId,
+      accountBalance
+    };
+    return this.request('/api/risk-management/validate', {
+      method: 'POST',
+      body: JSON.stringify(requestBody),
+    });
+  }
+
   // Authentication endpoints
   async login(credentials: { email: string; password: string }): Promise<ApiResponse<{ token: string; user: User }>> {
-    return this.request('/api/auth/login', {
+    return this.request('/auth/login', {
       method: 'POST',
       body: JSON.stringify(credentials),
     });
   }
 
   async logout(): Promise<ApiResponse<{ message: string }>> {
-    const response = await this.request<{ message: string }>('/api/auth/logout', {
+    const response = await this.request<{ message: string }>('/auth/logout', {
       method: 'POST',
     });
     
@@ -270,9 +364,107 @@ class ApiService {
   }
 
   async refreshToken(): Promise<ApiResponse<{ token: string }>> {
-    return this.request('/api/auth/refresh', {
+    return this.request('/auth/refresh', {
       method: 'POST',
     });
+  }
+
+  // Alert endpoints (based on real backend API)
+  async getAlerts(params?: {
+    type?: string;
+    level?: string;
+    category?: string;
+    acknowledged?: boolean;
+    resolved?: boolean;
+    escalated?: boolean;
+    since?: string;
+  }): Promise<ApiResponse<Alert[]>> {
+    const searchParams = new URLSearchParams();
+    if (params?.type) {
+      searchParams.set('type', params.type);
+    }
+    if (params?.level) {
+      searchParams.set('level', params.level);
+    }
+    if (params?.category) {
+      searchParams.set('category', params.category);
+    }
+    if (params?.acknowledged !== undefined) {
+      searchParams.set('acknowledged', params.acknowledged.toString());
+    }
+    if (params?.resolved !== undefined) {
+      searchParams.set('resolved', params.resolved.toString());
+    }
+    if (params?.escalated !== undefined) {
+      searchParams.set('escalated', params.escalated.toString());
+    }
+    if (params?.since) {
+      searchParams.set('since', params.since);
+    }
+
+    const query = searchParams.toString();
+    return this.request(`/api/alerts${query ? `?${query}` : ''}`);
+  }
+
+  async acknowledgeAlert(alertId: string): Promise<ApiResponse<Alert>> {
+    return this.request(`/api/alerts/${alertId}/acknowledge`, {
+      method: 'POST',
+    });
+  }
+
+  async resolveAlert(alertId: string): Promise<ApiResponse<Alert>> {
+    return this.request(`/api/alerts/${alertId}/resolve`, {
+      method: 'POST',
+    });
+  }
+
+  // Log endpoints (based on real backend API)
+  async getLogs(params?: {
+    page?: number;
+    limit?: number;
+    levels?: string;
+    categories?: string;
+    search?: string;
+    startDate?: string;
+    endDate?: string;
+    userId?: string;
+    botId?: string;
+    tradeId?: string;
+  }): Promise<ApiResponse<LogEntry[]>> {
+    const searchParams = new URLSearchParams();
+    if (params?.page) {
+      searchParams.set('page', params.page.toString());
+    }
+    if (params?.limit) {
+      searchParams.set('limit', params.limit.toString());
+    }
+    if (params?.levels) {
+      searchParams.set('levels', params.levels);
+    }
+    if (params?.categories) {
+      searchParams.set('categories', params.categories);
+    }
+    if (params?.search) {
+      searchParams.set('search', params.search);
+    }
+    if (params?.startDate) {
+      searchParams.set('startDate', params.startDate);
+    }
+    if (params?.endDate) {
+      searchParams.set('endDate', params.endDate);
+    }
+    if (params?.userId) {
+      searchParams.set('userId', params.userId);
+    }
+    if (params?.botId) {
+      searchParams.set('botId', params.botId);
+    }
+    if (params?.tradeId) {
+      searchParams.set('tradeId', params.tradeId);
+    }
+
+    const query = searchParams.toString();
+    return this.request(`/api/logs${query ? `?${query}` : ''}`);
   }
 
   // Utility methods

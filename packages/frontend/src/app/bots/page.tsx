@@ -1,9 +1,9 @@
 "use client";
 
-import { CONSTANTS } from '@jabbr/shared/src';
-import type { Bot, BotStatus } from '@jabbr/shared/src/types';
-import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
+import type { Bot, BotStatus } from '@jabbr/shared/src/types';
+import { CONSTANTS } from '@jabbr/shared/src';
 
 import StrategyMonitor from '../../components/StrategyMonitor';
 import useWebSocket from '../../hooks/useWebSocket';
@@ -62,7 +62,7 @@ export default function BotsPage() {
 
   // Fetch bots on component mount
   useEffect(() => {
-    fetchBots();
+    void fetchBots();
   }, []);
 
   // Filter and sort bots when filters or sort config changes
@@ -131,7 +131,7 @@ export default function BotsPage() {
       setBots(data.data || []);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to fetch bots');
-      console.error('Error fetching bots:', err);
+      // Error fetching bots - silently handle
     } finally {
       setLoading(false);
     }

@@ -99,6 +99,63 @@ export interface RiskManagement {
   riskScore: number; // 1-10 scale
 }
 
+// Enhanced per-bot risk management configuration
+export interface PerBotRiskManagement {
+  // Position sizing
+  maxPositionSize: number; // Maximum position size in base currency
+  maxPositionSizePercent: number; // Maximum position size as percentage of account balance
+  positionSizingMethod: 'fixed' | 'percentage' | 'kelly' | 'volatility-adjusted';
+
+  // Stop loss and take profit
+  stopLossType: 'percentage' | 'fixed' | 'atr' | 'dynamic';
+  stopLossValue: number; // Value based on type (percentage, fixed price, ATR multiplier)
+  takeProfitType: 'percentage' | 'fixed' | 'risk-reward-ratio' | 'dynamic';
+  takeProfitValue: number; // Value based on type
+
+  // Risk limits
+  maxDailyLoss: number; // Maximum daily loss in base currency
+  maxDailyLossPercent: number; // Maximum daily loss as percentage of account balance
+  maxDrawdown: number; // Maximum drawdown percentage
+  maxConcurrentTrades: number; // Maximum number of concurrent positions
+
+  // Leverage and exposure
+  maxLeverage: number; // Maximum leverage allowed
+  maxExposure: number; // Maximum total exposure across all positions
+  maxExposurePercent: number; // Maximum exposure as percentage of account balance
+
+  // Risk scoring and controls
+  riskScore: number; // 1-10 scale (1 = very conservative, 10 = very aggressive)
+  emergencyStop: boolean; // Emergency stop flag
+  enableRiskManagement: boolean; // Master switch for risk management
+
+  // Advanced settings
+  correlationLimit: number; // Maximum correlation between positions (0-1)
+  volatilityAdjustment: boolean; // Adjust position sizes based on volatility
+  timeBasedLimits: {
+    enabled: boolean;
+    maxTradesPerHour: number;
+    maxTradesPerDay: number;
+    cooldownPeriodMinutes: number;
+  };
+
+  // Risk monitoring
+  riskMonitoring: {
+    enabled: boolean;
+    alertThresholds: {
+      dailyLossPercent: number; // Alert when daily loss exceeds this percentage
+      drawdownPercent: number; // Alert when drawdown exceeds this percentage
+      exposurePercent: number; // Alert when exposure exceeds this percentage
+    };
+    autoReduceExposure: boolean; // Automatically reduce exposure when risk thresholds are hit
+    autoStopTrading: boolean; // Automatically stop trading when risk limits are exceeded
+  };
+
+  // Metadata
+  templateName?: string; // Name of risk template if using predefined template
+  lastUpdated: string; // ISO timestamp of last update
+  updatedBy: string; // User ID who last updated the configuration
+}
+
 export interface BotPerformance {
   totalTrades: number;
   winningTrades: number;
@@ -248,6 +305,41 @@ export interface RiskMetrics {
   leverageUtilization: number; // percentage
   exposurePercentage: number; // percentage of portfolio
   stopLossDistance: number; // percentage
+}
+
+// Risk management templates for quick setup
+export interface RiskManagementTemplate {
+  id: string;
+  name: string;
+  description: string;
+  category: 'conservative' | 'moderate' | 'aggressive' | 'custom';
+  isDefault: boolean;
+  configuration: PerBotRiskManagement;
+  createdAt: string;
+  updatedAt: string;
+}
+
+// Risk management validation result
+export interface RiskManagementValidationResult {
+  isValid: boolean;
+  errors: RiskValidationError[];
+  warnings: RiskValidationWarning[];
+  riskLevel: 'low' | 'medium' | 'high' | 'extreme';
+  recommendations: string[];
+}
+
+export interface RiskValidationError {
+  field: string;
+  message: string;
+  code: string;
+  severity: 'error' | 'warning';
+}
+
+export interface RiskValidationWarning {
+  field: string;
+  message: string;
+  code: string;
+  impact: 'low' | 'medium' | 'high';
 }
 
 export interface StrategyUpdateMessage {
@@ -412,6 +504,43 @@ export interface UpdateBotRequest {
   riskManagement?: Partial<RiskManagement>;
 }
 
+// Per-bot risk management API types
+export interface UpdateBotRiskManagementRequest {
+  riskManagement: PerBotRiskManagement;
+}
+
+export interface GetBotRiskManagementResponse {
+  success: boolean;
+  data: PerBotRiskManagement;
+  timestamp: string;
+}
+
+export interface UpdateBotRiskManagementResponse {
+  success: boolean;
+  data: PerBotRiskManagement;
+  validation: RiskManagementValidationResult;
+  timestamp: string;
+}
+
+export interface GetRiskManagementTemplatesResponse {
+  success: boolean;
+  data: RiskManagementTemplate[];
+  timestamp: string;
+}
+
+export interface CreateRiskManagementTemplateRequest {
+  name: string;
+  description: string;
+  category: RiskManagementTemplate['category'];
+  configuration: PerBotRiskManagement;
+}
+
+export interface ValidateRiskManagementRequest {
+  riskManagement: PerBotRiskManagement;
+  botId?: string; // Optional, for context-specific validation
+  accountBalance?: number; // Optional, for percentage-based validations
+}
+
 // ============================================================================
 // SYSTEM & MONITORING TYPES
 // ============================================================================
@@ -441,6 +570,28 @@ export interface LogEntry {
   tradeId?: string;
   metadata?: Record<string, any>;
   timestamp: Date;
+}
+
+export interface Alert {
+  id: string;
+  type: 'system' | 'application' | 'trading' | 'security' | 'custom';
+  category: string; // cpu, memory, response_time, error_rate, etc.
+  level: 'info' | 'warning' | 'error' | 'critical';
+  title: string;
+  message: string;
+  source: string; // which service generated the alert
+  value?: number;
+  threshold?: number;
+  metadata?: any;
+  timestamp: Date;
+  acknowledged: boolean;
+  acknowledgedBy?: string;
+  acknowledgedAt?: Date;
+  resolved: boolean;
+  resolvedAt?: Date;
+  escalated: boolean;
+  escalatedAt?: Date;
+  notificationsSent: string[]; // channels where notifications were sent
 }
 
 // ============================================================================

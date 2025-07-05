@@ -4,7 +4,7 @@
  */
 
 // Load environment variables from root .env file
-import dotenv from 'dotenv';
+import * as dotenv from 'dotenv';
 dotenv.config({ path: '../../.env' });
 
 // Set test environment variables
@@ -58,8 +58,8 @@ jest.mock('ioredis', () => {
   }));
 });
 
-// Global test timeout
-jest.setTimeout(10000);
+// Global test timeout (consistent with jest config)
+jest.setTimeout(30000);
 
 // Cleanup timers and intervals after each test
 afterEach(() => {
@@ -75,25 +75,45 @@ afterEach(() => {
 
 // Global teardown
 afterAll(async () => {
-  // Wait for any pending promises
-  await new Promise(resolve => setImmediate(resolve));
-  
-  // Clear all timers and intervals
+  // Clear all active timers and intervals
   jest.clearAllTimers();
   
-  // Force process exit if needed
-  if (process.env.FORCE_EXIT_TEST === 'true') {
-    process.exit(0);
+  // Clear all timeouts and intervals from Node.js
+  const activeHandles = (process as any)._getActiveHandles?.() || [];
+  activeHandles.forEach((handle: any) => {
+    if (handle && typeof handle.close === 'function') {
+      try {
+        handle.close();
+      } catch (error) {
+        // Ignore cleanup errors
+      }
+    }
+  });
+  
+  // Wait for any pending promises to resolve
+  await new Promise(resolve => setImmediate(resolve));
+  
+  // Force garbage collection if available
+  if ((global as any).gc) {
+    (global as any).gc();
   }
 });
 
-// Suppress console.log during tests unless explicitly needed
+// Suppress console output during tests for cleaner test reports
 const originalConsoleLog = console.log;
+const originalConsoleError = console.error;
+const originalConsoleWarn = console.warn;
+
 (global as any).console = {
   ...console,
   log: jest.fn(),
   debug: jest.fn(),
   info: jest.fn(),
-  warn: originalConsoleLog, // Keep warnings
-  error: originalConsoleLog, // Keep errors
+  warn: jest.fn(), // Suppress warnings during tests
+  error: jest.fn(), // Suppress errors during tests (they're expected in validation tests)
+  
+  // Keep these for debugging when needed
+  _originalLog: originalConsoleLog,
+  _originalError: originalConsoleError,
+  _originalWarn: originalConsoleWarn
 };

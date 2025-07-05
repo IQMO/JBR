@@ -107,6 +107,9 @@ public
 tmp/
 temp/
 
+.idea
+.vscode
+
 # Task files
 # tasks.json
 # tasks/ 

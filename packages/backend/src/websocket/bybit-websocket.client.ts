@@ -111,7 +111,10 @@ export class BybitWebSocketClient extends EventEmitter {
 
     } catch (error) {
       this.isConnecting = false;
-      console.error('❌ Failed to connect to Bybit WebSocket:', error);
+      // Log errors unless in test environment (reduces console noise during tests)
+      if (process.env.NODE_ENV !== 'test') {
+        console.error('❌ Failed to connect to Bybit WebSocket:', error);
+      }
       this.emit('error', error);
       
       // Schedule reconnection

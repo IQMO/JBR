@@ -93,7 +93,6 @@ const DEFAULT_OPTIONS: DocValidationOptions = {
   strictMode: false,
   excludePatterns: [
     'node_modules',
-    '.git',
     'dist',
     'build',
     'coverage',
@@ -165,8 +164,15 @@ class DocumentationScanner {
   }
 
   private static shouldExcludePath(filePath: string, options: DocValidationOptions): boolean {
-    return options.excludePatterns.some(pattern => 
-      filePath.includes(pattern) || path.basename(filePath).includes(pattern)
+    const baseName = path.basename(filePath);
+
+    // Exclude all dot folders except .github
+    if (baseName.startsWith('.') && baseName !== '.github') {
+      return true;
+    }
+
+    return options.excludePatterns.some(pattern =>
+      filePath.includes(pattern) || baseName.includes(pattern)
     );
   }
 

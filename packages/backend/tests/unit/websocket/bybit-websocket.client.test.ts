@@ -1,3 +1,6 @@
+// Import test configuration to ensure NODE_ENV=test and clean console output
+import '../../config/test-config';
+
 import BybitWebSocketClient from '../../../src/websocket/bybit-websocket.client';
 
 // Mock ws with proper default export structure

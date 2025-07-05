@@ -1,0 +1,60 @@
+# Task ID: 61
+# Title: Remove Unused Frontend Variables and Interfaces
+# Status: pending
+# Dependencies: 20, 51, 56, 58, 59
+# Priority: medium
+# Description: Remove unused variables and interfaces across specified frontend components, ensuring no impact on backend functionality. This task focuses on cleaning up the frontend codebase by eliminating dead code related to showFilters in LogViewer, SymbolPerformance in PositionPnLVisualization, and OrderUpdate in TradingActivityMonitor.
+# Details:
+1. **Identify Unused Code:** Use TypeScript compiler options (e.g., `noUnusedLocals`, `noUnusedParameters`) and ESLint rules to identify unused variables and interfaces within the specified components (LogViewer, PositionPnLVisualization, TradingActivityMonitor).
+2. **Verify Against Backend Usage:** Before removing any code, thoroughly verify that the identified variables and interfaces are not being used by the backend. This may involve:
+    *   Searching the backend codebase for references to these variables/interfaces.
+    *   Consulting with backend developers to confirm their usage.
+    *   Analyzing API contracts to ensure no data is being sent or received that relies on these elements.
+3. **Remove Unused Code:** Carefully remove the identified unused variables and interfaces from the frontend components. Ensure that the removal does not introduce any compile-time or runtime errors.
+4. **Refactor Component Logic:** If necessary, refactor the component logic to remove any dependencies on the removed variables and interfaces. Ensure that the component functionality remains intact.
+5. **Update Component Documentation:** Update any relevant component documentation to reflect the changes made during the code removal process.
+
+# Test Strategy:
+1. **TypeScript Compilation:** Run the TypeScript compiler to ensure that there are no type errors after removing the unused variables and interfaces.
+2. **Component Functionality Testing:** Manually test the functionality of the LogViewer, PositionPnLVisualization, and TradingActivityMonitor components to ensure that they are still working as expected. Verify that all features and functionalities are intact.
+3. **Integration Testing:** Perform integration tests to ensure that the frontend components are still communicating correctly with the backend APIs. Verify that no data is being lost or corrupted as a result of the code removal.
+4. **Regression Testing:** Run regression tests to ensure that the changes have not introduced any new bugs or issues in other parts of the application.
+5. **Code Review:** Have another developer review the code changes to ensure that the code removal was done correctly and that no potential issues were overlooked.
+
+# Subtasks:
+## 1. Analyze Backend Usage of Frontend Variables/Interfaces [pending]
+### Dependencies: None
+### Description: Thoroughly analyze the backend codebase and API contracts to determine if the frontend variables and interfaces (showFilters in LogViewer, SymbolPerformance in PositionPnLVisualization, and OrderUpdate in TradingActivityMonitor) are being used. Focus on identifying any data dependencies or functional requirements that rely on these elements.
+### Details:
+1. Use grep or similar tools to search the backend codebase for references to 'showFilters', 'SymbolPerformance', and 'OrderUpdate'.
+2. Examine API request and response schemas to identify if these variables are part of the data exchange.
+3. Consult with backend developers to confirm the usage or non-usage of these variables/interfaces.
+4. Document the findings for each variable/interface, clearly stating whether it's used by the backend or not.
+
+## 2. Remove Unused 'showFilters' from LogViewer [pending]
+### Dependencies: None
+### Description: Remove the 'showFilters' variable and related interface definitions from the LogViewer component, if the backend analysis confirms it's not being used. Refactor the component logic to eliminate any dependencies on 'showFilters'.
+### Details:
+1. Delete the 'showFilters' variable and any associated interface definitions from the LogViewer component.
+2. Identify and remove any code that uses 'showFilters'.
+3. Refactor the LogViewer component to ensure it functions correctly without 'showFilters'.
+4. Update any relevant documentation or comments to reflect the removal of 'showFilters'.
+
+## 3. Remove Unused 'SymbolPerformance' from PositionPnLVisualization [pending]
+### Dependencies: None
+### Description: Remove the 'SymbolPerformance' variable and related interface definitions from the PositionPnLVisualization component, if the backend analysis confirms it's not being used. Refactor the component logic to eliminate any dependencies on 'SymbolPerformance'.
+### Details:
+1. Delete the 'SymbolPerformance' variable and any associated interface definitions from the PositionPnLVisualization component.
+2. Identify and remove any code that uses 'SymbolPerformance'.
+3. Refactor the PositionPnLVisualization component to ensure it functions correctly without 'SymbolPerformance'.
+4. Update any relevant documentation or comments to reflect the removal of 'SymbolPerformance'.
+
+## 4. Remove Unused 'OrderUpdate' from TradingActivityMonitor [pending]
+### Dependencies: None
+### Description: Remove the 'OrderUpdate' variable and related interface definitions from the TradingActivityMonitor component, if the backend analysis confirms it's not being used. Refactor the component logic to eliminate any dependencies on 'OrderUpdate'.
+### Details:
+1. Delete the 'OrderUpdate' variable and any associated interface definitions from the TradingActivityMonitor component.
+2. Identify and remove any code that uses 'OrderUpdate'.
+3. Refactor the TradingActivityMonitor component to ensure it functions correctly without 'OrderUpdate'.
+4. Update any relevant documentation or comments to reflect the removal of 'OrderUpdate'.
+

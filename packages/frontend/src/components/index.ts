@@ -7,3 +7,6 @@ export { LogAndAlertDashboard } from './LogAndAlertDashboard';
 export { default as PositionPnLVisualization } from './PositionPnLVisualization';
 export { default as StrategyMonitor } from './StrategyMonitor';
 export { default as TradingActivityMonitor } from './TradingActivityMonitor';
+
+// Risk Management Components
+export { RiskManagementForm, RiskManagementDashboard } from './RiskManagement';

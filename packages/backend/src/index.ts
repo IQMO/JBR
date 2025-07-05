@@ -10,7 +10,7 @@
  */
 
 // Load environment variables from root .env file
-import dotenv from 'dotenv';
+import * as dotenv from 'dotenv';
 import path from 'path';
 dotenv.config({ path: path.join(__dirname, '../../../.env') });
 

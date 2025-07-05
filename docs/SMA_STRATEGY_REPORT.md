@@ -40,7 +40,7 @@ The fixed implementation successfully generated trades on our test data:
 
 ## Recommendations for the Original Implementation
 
-To fix the original SMA Signal Processor (`src/JabbrLabs/signals/sma/sma-signal-processor.ts`), we recommend:
+To fix the original SMA Signal Processor (`packages/backend/src/JabbrLabs/signals/sma/sma-signal-processor.ts`), we recommend:
 
 1. Lower the default `confidenceThreshold` in the configuration:
    ```typescript

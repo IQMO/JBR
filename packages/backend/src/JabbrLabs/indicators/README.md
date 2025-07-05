@@ -172,8 +172,8 @@ To add a new indicator:
 ## References
 - [Investopedia: Technical Indicators](https://www.investopedia.com/terms/t/technicalindicator.asp)
 - [TradingView: Pine Script Reference](https://www.tradingview.com/pine-script-docs/en/v5/)
-- [Jabbr Trading Bot Platform Documentation](../../../../docs/)
+- [Jabbr Trading Bot Platform Documentation](../../../../../docs/)
 
 ---
 
-For questions or contributions, please see the main Jabbr repository or contact the JabbrLabs team. 
+For questions or contributions, please see the main Jabbr repository or contact the JabbrLabs team.

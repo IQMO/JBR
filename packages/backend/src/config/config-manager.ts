@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-import dotenv from 'dotenv';
+import * as dotenv from 'dotenv';
 import { z } from 'zod';
 
 /**

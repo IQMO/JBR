@@ -182,17 +182,17 @@ npm run format
 
 ## 📊 Key Services
 
-### **Strategy Service** (`src/services/strategy.service.ts`)
-- Strategy registration and management
+### **Bot Service** (`src/services/bot.service.ts`)
+- Bot registration and management
 - Performance tracking and analytics
 - Risk management integration
 
-### **Market Data Service** (`src/services/market-data.service.ts`)
+### **Data Service** (`src/services/data-service.ts`)
 - Real-time price data collection
-- Historical data management  
+- Historical data management
 - WebSocket connection management
 
-### **Order Management Service** (`src/services/order-management.service.ts`)
+### **Risk Management Service** (`src/services/risk-management.service.ts`)
 - Order placement and tracking
 - Portfolio management
 - Risk assessment and position sizing

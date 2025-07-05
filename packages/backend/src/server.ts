@@ -7,7 +7,7 @@ import { bybitTimeSync } from './websocket/bybit-time-sync';
 import { CONSTANTS } from '@jabbr/shared';
 import compression from 'compression';
 import cors from 'cors';
-import dotenv from 'dotenv';
+import * as dotenv from 'dotenv';
 import express from 'express';
 import helmet from 'helmet';
 import morgan from 'morgan';
@@ -18,6 +18,7 @@ dotenv.config({ path: path.join(__dirname, '../../../.env') });
 
 import authRoutes from './auth/auth.routes';
 import botRoutes from './bots/bots.routes';
+import { botRiskManagementRoutes, globalRiskManagementRoutes } from './risk-management/risk-management.routes';
 import { initializeDatabase, shutdownDatabase } from './database/database.config';
 import { runMigrations } from './database/migration-runner';
 import { appMonitoringMiddleware } from './middleware/app-monitoring.middleware';
@@ -169,6 +170,10 @@ class JabbrServer {
 
     // Bot management routes
     this.app.use('/api/bots', botRoutes);
+
+    // Risk management routes
+    this.app.use('/api/bots/:botId/risk-management', botRiskManagementRoutes);
+    this.app.use('/api/risk-management', globalRiskManagementRoutes);
 
     // API version endpoint
     this.app.get('/api/version', (req, res) => {

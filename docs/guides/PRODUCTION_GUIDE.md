@@ -572,7 +572,7 @@ git push origin feature/new-feature
 ### Documentation
 
 - **Configuration Guide:** [CONFIGURATION_GUIDE.md](CONFIGURATION_GUIDE.md)
-- **Project Status:** [PROJECT_STATUS.md](PROJECT_STATUS.md)
+- **Project Status:** [PROJECT_STATUS.md](../project-status/PROJECT_STATUS.md)
 - **API Documentation:** Available at `/docs` endpoint
 - **WebSocket Documentation:** Real-time API reference
 

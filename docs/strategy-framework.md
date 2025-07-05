@@ -83,7 +83,7 @@ To create a custom strategy plugin:
 3. Add required metadata using `static metadata` property
 4. Implement the strategy logic in the `execute` method
 
-See the [Example SMA Strategy Plugin](../../plugins/example-sma-strategy.ts) for
+See the [SMA Crossover Strategy](../packages/backend/src/JabbrLabs/signals/sma/sma-crossover-strategy.ts) for
 a complete example.
 
 ## Strategy Context

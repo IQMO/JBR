@@ -1,7 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useMemo } from 'react';
-
+import type { Position, Trade } from '@jabbr/shared/src';
 import {
   TrendingUp,
   TrendingDown,
@@ -20,6 +19,7 @@ import {
   CheckCircle,
   XCircle
 } from 'lucide-react';
+import React, { useState, useEffect, useMemo } from 'react';
 import {
   LineChart,
   Line,
@@ -39,29 +39,13 @@ import {
   ReferenceLine
 } from 'recharts';
 
-import type { Position, Trade } from '@jabbr/shared/src';
 
 import { useWebSocketContext } from '@/contexts/WebSocketContext';
+
 import { apiService } from '../services/api';
-import { componentClasses, getPnLColor } from '../utils/theme';
-import { ErrorBoundaryWrapper } from './ErrorBoundary';
-import { LoadingSpinner } from './Loading';
 
 // Types and Interfaces
-interface LocalPosition {
-  id: string
-  symbol: string
-  side: 'LONG' | 'SHORT'
-  size: number
-  entryPrice: number
-  currentPrice: number
-  unrealizedPnL: number
-  realizedPnL: number
-  percentage: number
-  timestamp: string
-  value: number
-  margin: number
-}
+// Note: LocalPosition interface removed as it was unused
 
 interface PnLHistoryPoint {
   timestamp: string
@@ -134,7 +118,7 @@ const PositionPnLVisualization: React.FC = () => {
   
   const [positions, setPositions] = useState<Position[]>([])
   const [pnlHistory, setPnlHistory] = useState<PnLHistoryPoint[]>([])
-  const [symbolPerformance, setSymbolPerformance] = useState<SymbolPerformance[]>([])
+  // Note: symbolPerformance removed as it was unused
   const [metrics, setMetrics] = useState<PnLMetrics>({
     totalUnrealizedPnL: 0,
     totalRealizedPnL: 0,
@@ -382,7 +366,7 @@ const PositionPnLVisualization: React.FC = () => {
       }
     };
 
-    fetchData();
+    void fetchData();
   }, [isConnected]);
 
   // Helper function to process trades into PnL history

@@ -6,9 +6,9 @@
 
 'use client';
 
-import { CONSTANTS } from '@jabbr/shared/src';
-import type { MarketDataMessage } from '@jabbr/shared/src/types';
 import { useState, useEffect } from 'react';
+import type { MarketDataMessage } from '@jabbr/shared/src/types';
+import { CONSTANTS } from '@jabbr/shared/src';
 
 import config from '../config/app';
 import useWebSocket from '../hooks/useWebSocket';
@@ -32,18 +32,14 @@ export default function HomePage() {
     // For now, we'll test without authentication
     // token: 'your-jwt-token-here',
     onOpen: () => {
-      if (process.env.NODE_ENV === 'development') {
-        console.log('🚀 WebSocket connected');
-      }
+      // WebSocket connected
       setMessages((prev: string[]) => [...prev, '✅ Connected to WebSocket server']);
       // Subscribe to essential channels
       subscribe(CONSTANTS.WS_CHANNELS.SYSTEM_HEALTH);
       subscribe(CONSTANTS.WS_CHANNELS.BOT_STATUS);
     },
     onMessage: (message) => {
-      if (process.env.NODE_ENV === 'development') {
-        console.log('📡 Message received:', message);
-      }
+      // Message received
       setMessages((prev: string[]) => [...prev, `📡 ${message.type}: ${message.channel}`]);
       
       // Handle market data
@@ -61,9 +57,7 @@ export default function HomePage() {
       setMessages((prev: string[]) => [...prev, '❌ Connection error occurred']);
     },
     onClose: (event) => {
-      if (process.env.NODE_ENV === 'development') {
-        console.log('🔌 WebSocket disconnected:', event);
-      }
+      // WebSocket disconnected
       setMessages((prev: string[]) => [...prev, `🔌 Disconnected (${event.code})`]);
     }
   });

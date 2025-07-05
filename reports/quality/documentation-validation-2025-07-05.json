@@ -1,2242 +1,247 @@
 {
-  "timestamp": "2025-07-05T18:12:40.627Z",
-  "totalFiles": 171,
+  "timestamp": "2025-07-05T19:20:38.370Z",
+  "totalFiles": 55,
   "totalRules": 10,
   "results": [
     {
       "type": "warning",
       "rule": "code-references",
-      "message": "Referenced file not found: .taskmaster/config.json",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\.windsurf\\rules\\dev_workflow.md",
-      "line": 420,
+      "message": "Referenced file not found: tasks.json",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.github\\instructions\\dev_workflow.md",
+      "line": 65,
       "suggestion": "Verify the file path or check if the file has been moved/renamed"
     },
     {
       "type": "warning",
       "rule": "code-references",
-      "message": "Referenced file not found: .windsurf/mcp.json",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\.windsurf\\rules\\dev_workflow.md",
-      "line": 439,
+      "message": "Referenced file not found: .taskmaster/config.json",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.github\\instructions\\dev_workflow.md",
+      "line": 275,
+      "suggestion": "Verify the file path or check if the file has been moved/renamed"
+    },
+    {
+      "type": "warning",
+      "rule": "code-references",
+      "message": "Referenced file not found: mcp.json",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.github\\instructions\\dev_workflow.md",
+      "line": 283,
+      "suggestion": "Verify the file path or check if the file has been moved/renamed"
+    },
+    {
+      "type": "warning",
+      "rule": "code-references",
+      "message": "Referenced file not found: .vscode/mcp.json",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.github\\instructions\\dev_workflow.md",
+      "line": 286,
       "suggestion": "Verify the file path or check if the file has been moved/renamed"
     },
     {
       "type": "warning",
       "rule": "code-references",
       "message": "Referenced file not found: .taskmaster/state.json",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\.windsurf\\rules\\dev_workflow.md",
-      "line": 443,
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.github\\instructions\\dev_workflow.md",
+      "line": 289,
       "suggestion": "Verify the file path or check if the file has been moved/renamed"
     },
     {
       "type": "warning",
       "rule": "code-references",
-      "message": "Referenced file not found: .windsurf/mcp.json",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\.windsurf\\rules\\dev_workflow.md",
-      "line": 453,
+      "message": "Referenced file not found: .vscode/mcp.json",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.github\\instructions\\dev_workflow.md",
+      "line": 295,
       "suggestion": "Verify the file path or check if the file has been moved/renamed"
     },
     {
       "type": "warning",
       "rule": "markdown-syntax",
       "message": "Potentially malformed bold text (unmatched asterisks)",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\.windsurf\\rules\\dev_workflow.md",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.github\\instructions\\dev_workflow.md",
+      "line": 3,
+      "suggestion": "Ensure bold text uses ** on both sides"
+    },
+    {
+      "type": "warning",
+      "rule": "markdown-syntax",
+      "message": "Potentially malformed bold text (unmatched asterisks)",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.github\\instructions\\dev_workflow.md",
+      "line": 65,
+      "suggestion": "Ensure bold text uses ** on both sides"
+    },
+    {
+      "type": "warning",
+      "rule": "markdown-syntax",
+      "message": "Potentially malformed bold text (unmatched asterisks)",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.github\\instructions\\dev_workflow.md",
+      "line": 71,
+      "suggestion": "Ensure bold text uses ** on both sides"
+    },
+    {
+      "type": "warning",
+      "rule": "markdown-syntax",
+      "message": "Potentially malformed bold text (unmatched asterisks)",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.github\\instructions\\dev_workflow.md",
+      "line": 77,
+      "suggestion": "Ensure bold text uses ** on both sides"
+    },
+    {
+      "type": "warning",
+      "rule": "markdown-syntax",
+      "message": "Potentially malformed bold text (unmatched asterisks)",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.github\\instructions\\dev_workflow.md",
+      "line": 85,
+      "suggestion": "Ensure bold text uses ** on both sides"
+    },
+    {
+      "type": "warning",
+      "rule": "markdown-syntax",
+      "message": "Potentially malformed bold text (unmatched asterisks)",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.github\\instructions\\dev_workflow.md",
+      "line": 100,
+      "suggestion": "Ensure bold text uses ** on both sides"
+    },
+    {
+      "type": "warning",
+      "rule": "markdown-syntax",
+      "message": "Potentially malformed bold text (unmatched asterisks)",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.github\\instructions\\dev_workflow.md",
+      "line": 107,
+      "suggestion": "Ensure bold text uses ** on both sides"
+    },
+    {
+      "type": "warning",
+      "rule": "markdown-syntax",
+      "message": "Potentially malformed bold text (unmatched asterisks)",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.github\\instructions\\dev_workflow.md",
+      "line": 388,
+      "suggestion": "Ensure bold text uses ** on both sides"
+    },
+    {
+      "type": "error",
+      "rule": "broken-links",
+      "message": "Broken internal link: .github/instructions/prisma.md",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.github\\instructions\\self_improve.md",
+      "line": 42,
+      "suggestion": "Check if the file path is correct or if the file has been moved"
+    },
+    {
+      "type": "error",
+      "rule": "broken-links",
+      "message": "Broken internal link: .github/instructions/vscode_rules.md",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.github\\instructions\\self_improve.md",
+      "line": 72,
+      "suggestion": "Check if the file path is correct or if the file has been moved"
+    },
+    {
+      "type": "warning",
+      "rule": "markdown-syntax",
+      "message": "Potentially malformed bold text (unmatched asterisks)",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.github\\instructions\\self_improve.md",
       "line": 3,
       "suggestion": "Ensure bold text uses ** on both sides"
     },
     {
       "type": "error",
       "rule": "broken-links",
-      "message": "Broken internal link: .windsurf/rules/prisma.md",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\.windsurf\\rules\\self_improve.md",
-      "line": 43,
+      "message": "Broken internal link: .github/instructions/dev_workflow.md",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.github\\instructions\\taskmaster.md",
+      "line": 558,
       "suggestion": "Check if the file path is correct or if the file has been moved"
     },
     {
-      "type": "error",
-      "rule": "broken-links",
-      "message": "Broken internal link: .windsurf/rules/windsurf_rules.md",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\.windsurf\\rules\\self_improve.md",
-      "line": 73,
-      "suggestion": "Check if the file path is correct or if the file has been moved"
+      "type": "warning",
+      "rule": "code-references",
+      "message": "Referenced file not found: .taskmaster/config.json",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.github\\instructions\\taskmaster.md",
+      "line": 85,
+      "suggestion": "Verify the file path or check if the file has been moved/renamed"
+    },
+    {
+      "type": "warning",
+      "rule": "code-references",
+      "message": "Referenced file not found: .taskmaster/config.json",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.github\\instructions\\taskmaster.md",
+      "line": 536,
+      "suggestion": "Verify the file path or check if the file has been moved/renamed"
+    },
+    {
+      "type": "warning",
+      "rule": "code-references",
+      "message": "Referenced file not found: .vscode/mcp.json",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.github\\instructions\\taskmaster.md",
+      "line": 554,
+      "suggestion": "Verify the file path or check if the file has been moved/renamed"
+    },
+    {
+      "type": "warning",
+      "rule": "code-references",
+      "message": "Referenced file not found: .taskmaster/config.json",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.github\\instructions\\taskmaster.md",
+      "line": 554,
+      "suggestion": "Verify the file path or check if the file has been moved/renamed"
     },
     {
       "type": "warning",
       "rule": "markdown-syntax",
       "message": "Potentially malformed bold text (unmatched asterisks)",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\.windsurf\\rules\\self_improve.md",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.github\\instructions\\taskmaster.md",
       "line": 3,
       "suggestion": "Ensure bold text uses ** on both sides"
     },
     {
-      "type": "error",
-      "rule": "broken-links",
-      "message": "Broken internal link: .windsurf/rules/dev_workflow.md",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\.windsurf\\rules\\taskmaster.md",
-      "line": 956,
-      "suggestion": "Check if the file path is correct or if the file has been moved"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: .taskmaster/config.json",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\.windsurf\\rules\\taskmaster.md",
-      "line": 157,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: .taskmaster/config.json",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\.windsurf\\rules\\taskmaster.md",
-      "line": 926,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: .windsurf/mcp.json",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\.windsurf\\rules\\taskmaster.md",
-      "line": 948,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: .taskmaster/config.json",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\.windsurf\\rules\\taskmaster.md",
-      "line": 950,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
       "type": "warning",
       "rule": "markdown-syntax",
       "message": "Potentially malformed bold text (unmatched asterisks)",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\.windsurf\\rules\\taskmaster.md",
-      "line": 3,
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.github\\instructions\\taskmaster.md",
+      "line": 42,
       "suggestion": "Ensure bold text uses ** on both sides"
     },
     {
       "type": "error",
       "rule": "broken-links",
       "message": "Broken internal link: mdc:path/to/file",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\.windsurf\\rules\\windsurf_rules.md",
-      "line": 24,
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.github\\instructions\\vscode_rules.md",
+      "line": 21,
       "suggestion": "Check if the file path is correct or if the file has been moved"
     },
     {
       "type": "error",
       "rule": "broken-links",
       "message": "Broken internal link: mdc:filename",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\.windsurf\\rules\\windsurf_rules.md",
-      "line": 24,
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.github\\instructions\\vscode_rules.md",
+      "line": 21,
       "suggestion": "Check if the file path is correct or if the file has been moved"
     },
     {
       "type": "error",
       "rule": "broken-links",
-      "message": "Broken internal link: .windsurf/rules/prisma.md",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\.windsurf\\rules\\windsurf_rules.md",
-      "line": 26,
+      "message": "Broken internal link: .github/instructions/prisma.md",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.github\\instructions\\vscode_rules.md",
+      "line": 22,
       "suggestion": "Check if the file path is correct or if the file has been moved"
     },
     {
       "type": "error",
       "rule": "broken-links",
       "message": "Broken internal link: mdc:prisma/schema.prisma",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\.windsurf\\rules\\windsurf_rules.md",
-      "line": 27,
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.github\\instructions\\vscode_rules.md",
+      "line": 23,
       "suggestion": "Check if the file path is correct or if the file has been moved"
     },
     {
       "type": "warning",
       "rule": "markdown-syntax",
       "message": "Potentially malformed bold text (unmatched asterisks)",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\.windsurf\\rules\\windsurf_rules.md",
-      "line": 14,
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.github\\instructions\\vscode_rules.md",
+      "line": 11,
       "suggestion": "Ensure bold text uses ** on both sides"
     },
     {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: packages/backend/src/strategies/interfaces.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_017.txt",
-      "line": 98,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: packages/backend/src/strategies/plugin-manager.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_017.txt",
-      "line": 136,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: packages/backend/src/strategies/strategy-factory.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_017.txt",
-      "line": 144,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: plugins/example-sma-strategy.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_017.txt",
-      "line": 150,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: packages/backend/src/routes/plugins.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_017.txt",
-      "line": 156,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
       "type": "info",
       "rule": "format-consistency",
       "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_031.txt",
-      "line": 8,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_033.txt",
-      "line": 65,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_034.txt",
-      "line": 93,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: packages/backend/src/bots/bot-runtime.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_036.txt",
-      "line": 48,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: packages/backend/src/bots/bot-manager.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_036.txt",
-      "line": 58,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: packages/backend/src/bots/bots.controller.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_036.txt",
-      "line": 66,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: order-tracker.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_036.txt",
-      "line": 186,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "version-consistency",
-      "message": "Multiple versions found: 36.5.1, 36.5.5",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_036.txt",
-      "suggestion": "Ensure version consistency across the document"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_036.txt",
-      "line": 278,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: JabbrLabs/indicators/index.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_039.txt",
-      "line": 126,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_039.txt",
-      "line": 20,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_039.txt",
-      "line": 26,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_039.txt",
-      "line": 43,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_039.txt",
-      "line": 49,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_039.txt",
-      "line": 76,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_039.txt",
-      "line": 87,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_041.txt",
-      "line": 211,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_041.txt",
-      "line": 237,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_041.txt",
-      "line": 268,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: test-strategy-framework.js",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_042.txt",
-      "line": 50,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: jest.config.js",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_042.txt",
-      "line": 137,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_042.txt",
-      "line": 126,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: src/progress-tracker.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_045.txt",
-      "line": 183,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: src/dashboard-generator.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_045.txt",
-      "line": 189,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: src/metrics-collector.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_045.txt",
-      "line": 195,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: src/cli.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_045.txt",
-      "line": 201,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: .taskmaster/src/progress-tracker.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_045.txt",
-      "line": 222,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: .taskmaster/src/dashboard-generator.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_045.txt",
-      "line": 223,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: .taskmaster/src/metrics-collector.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_045.txt",
-      "line": 224,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: .taskmaster/src/cli.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_045.txt",
-      "line": 225,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: .taskmaster/package.json",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_045.txt",
-      "line": 226,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: .taskmaster/tsconfig.json",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_045.txt",
-      "line": 227,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: .taskmaster/progress-config.json",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_045.txt",
-      "line": 228,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: src/status-validator.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_045.txt",
-      "line": 255,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: src/cli.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_045.txt",
-      "line": 270,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_045.txt",
-      "line": 119,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_045.txt",
-      "line": 169,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_045.txt",
-      "line": 176,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: .eslintrc.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_048.txt",
-      "line": 9,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: rollup.config.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_048.txt",
-      "line": 9,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: eslint.config.base.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_048.txt",
-      "line": 12,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: jest.config.js",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_048.txt",
-      "line": 33,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: jest.config.js",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_048.txt",
-      "line": 35,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: .eslintrc.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_048.txt",
-      "line": 39,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: .eslintrc.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_048.txt",
-      "line": 41,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: jest --config jest.config.js",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_048.txt",
-      "line": 71,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: jest --config jest.config.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_048.txt",
-      "line": 71,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_049.txt",
-      "line": 127,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: packages/backend/test-db-connection.js",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_050.txt",
-      "line": 169,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: packages/backend/tests/test-mainnet-safe.js",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_050.txt",
-      "line": 170,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: test-db-connection.js",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_050.txt",
-      "line": 173,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: npx tsx scripts/quality/duplication-analyzer.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_050.txt",
-      "line": 259,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: npx tsx scripts/quality/production-violations-analyzer.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_050.txt",
-      "line": 260,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: npx tsx scripts/quality/analyze.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_050.txt",
-      "line": 263,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: tests/test-mainnet-safe.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_050.txt",
-      "line": 282,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: npx tsx scripts/quality/analyze.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_050.txt",
-      "line": 292,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: npx tsx scripts/quality/duplication-analyzer.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_050.txt",
-      "line": 293,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: debug-sma.js",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_050.txt",
-      "line": 321,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_050.txt",
-      "line": 156,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_050.txt",
-      "line": 210,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_050.txt",
-      "line": 298,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_050.txt",
-      "line": 320,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_050.txt",
-      "line": 337,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: *.test.js",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_052.txt",
-      "line": 27,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: *.spec.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_052.txt",
-      "line": 27,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: .taskmaster/reports/test-inventory.json",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_052.txt",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.github\\instructions\\vscode_rules.md",
       "line": 53,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_052.txt",
-      "line": 88,
       "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_052.txt",
-      "line": 102,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_052.txt",
-      "line": 133,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_052.txt",
-      "line": 159,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_052.txt",
-      "line": 165,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_052.txt",
-      "line": 180,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_052.txt",
-      "line": 190,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_052.txt",
-      "line": 217,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\backups\\tasks-backup-20250705-075131\\task_052.txt",
-      "line": 230,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: src/progress-tracker.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\ENHANCED_PROGRESS_TRACKING_SUMMARY.md",
-      "line": 199,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: src/dashboard-generator.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\ENHANCED_PROGRESS_TRACKING_SUMMARY.md",
-      "line": 200,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: src/metrics-collector.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\ENHANCED_PROGRESS_TRACKING_SUMMARY.md",
-      "line": 201,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: src/cli.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\ENHANCED_PROGRESS_TRACKING_SUMMARY.md",
-      "line": 202,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: reports/dashboard.json",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\ENHANCED_PROGRESS_TRACKING_SUMMARY.md",
-      "line": 211,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: reports/metrics-export-*.json",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\ENHANCED_PROGRESS_TRACKING_SUMMARY.md",
-      "line": 212,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "date-consistency",
-      "message": "Document contains future dates",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\prd.txt",
-      "suggestion": "Verify if the future date is intentional"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\project-understanding.md",
-      "line": 46,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: plugins/example-sma-strategy.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\strategy-framework-status.md",
-      "line": 36,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: .taskmaster/tasks/tasks.json",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\strategy-framework-status.md",
-      "line": 37,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "error",
-      "rule": "broken-links",
-      "message": "Broken internal link: ../design/api-spec.md",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\templates\\DOCUMENTATION_STYLE_GUIDE.md",
-      "line": 150,
-      "suggestion": "Check if the file path is correct or if the file has been moved"
-    },
-    {
-      "type": "warning",
-      "rule": "broken-links",
-      "message": "Potentially broken anchor link: #section-heading",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\templates\\DOCUMENTATION_STYLE_GUIDE.md",
-      "line": 151,
-      "suggestion": "Verify that the anchor exists in the document"
-    },
-    {
-      "type": "error",
-      "rule": "broken-links",
-      "message": "Broken internal link: images/diagram-name.png",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\templates\\DOCUMENTATION_STYLE_GUIDE.md",
-      "line": 173,
-      "suggestion": "Check if the file path is correct or if the file has been moved"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: src/components/Button.tsx",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\templates\\DOCUMENTATION_STYLE_GUIDE.md",
-      "line": 114,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: src/utils/helpers.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\templates\\DOCUMENTATION_STYLE_GUIDE.md",
-      "line": 130,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "version-consistency",
-      "message": "Multiple versions found: v2.0.0, v1.0.0, v1.1.0, 1.0.0",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\templates\\README.md",
-      "suggestion": "Ensure version consistency across the document"
-    },
-    {
-      "type": "warning",
-      "rule": "broken-links",
-      "message": "Potentially broken anchor link: #getting-started",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\templates\\USER_MANUAL_TEMPLATE.md",
-      "line": 13,
-      "suggestion": "Verify that the anchor exists in the document"
-    },
-    {
-      "type": "warning",
-      "rule": "broken-links",
-      "message": "Potentially broken anchor link: #system-requirements",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\templates\\USER_MANUAL_TEMPLATE.md",
-      "line": 14,
-      "suggestion": "Verify that the anchor exists in the document"
-    },
-    {
-      "type": "warning",
-      "rule": "broken-links",
-      "message": "Potentially broken anchor link: #installation-guide",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\templates\\USER_MANUAL_TEMPLATE.md",
-      "line": 15,
-      "suggestion": "Verify that the anchor exists in the document"
-    },
-    {
-      "type": "warning",
-      "rule": "broken-links",
-      "message": "Potentially broken anchor link: #quick-start-guide",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\templates\\USER_MANUAL_TEMPLATE.md",
-      "line": 16,
-      "suggestion": "Verify that the anchor exists in the document"
-    },
-    {
-      "type": "warning",
-      "rule": "broken-links",
-      "message": "Potentially broken anchor link: #user-interface-overview",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\templates\\USER_MANUAL_TEMPLATE.md",
-      "line": 17,
-      "suggestion": "Verify that the anchor exists in the document"
-    },
-    {
-      "type": "warning",
-      "rule": "broken-links",
-      "message": "Potentially broken anchor link: #core-features",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\templates\\USER_MANUAL_TEMPLATE.md",
-      "line": 18,
-      "suggestion": "Verify that the anchor exists in the document"
-    },
-    {
-      "type": "warning",
-      "rule": "broken-links",
-      "message": "Potentially broken anchor link: #advanced-features",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\templates\\USER_MANUAL_TEMPLATE.md",
-      "line": 19,
-      "suggestion": "Verify that the anchor exists in the document"
-    },
-    {
-      "type": "warning",
-      "rule": "broken-links",
-      "message": "Potentially broken anchor link: #frequently-asked-questions",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\templates\\USER_MANUAL_TEMPLATE.md",
-      "line": 22,
-      "suggestion": "Verify that the anchor exists in the document"
-    },
-    {
-      "type": "warning",
-      "rule": "broken-links",
-      "message": "Potentially broken anchor link: #support-and-contact",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\templates\\USER_MANUAL_TEMPLATE.md",
-      "line": 23,
-      "suggestion": "Verify that the anchor exists in the document"
-    },
-    {
-      "type": "info",
-      "rule": "toc-consistency",
-      "message": "Document contains table of contents - verify it matches headers",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\templates\\USER_MANUAL_TEMPLATE.md",
-      "suggestion": "Ensure TOC entries match document headers"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: tests/e2e/trading/engine/standalone-engine.test.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\test-audit-mapping.md",
-      "line": 19,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: tests/e2e/trading/trading-engine.test.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\test-audit-mapping.md",
-      "line": 20,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: tests/integration/backend/strategies/strategy-factory.test.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\test-audit-mapping.md",
-      "line": 21,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: tests/unit/backend/indicators/atr-indicator.test.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\test-audit-mapping.md",
-      "line": 22,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: tests/unit/backend/indicators/ema-indicator.test.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\test-audit-mapping.md",
-      "line": 23,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: tests/unit/backend/indicators/rsi-indicator.test.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\test-audit-mapping.md",
-      "line": 24,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: tests/unit/backend/indicators/sma-indicator.test.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\test-audit-mapping.md",
-      "line": 25,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: tests/unit/backend/JabbrLabs/signals/sma/sma-crossover-strategy.test.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\test-audit-mapping.md",
-      "line": 26,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: tests/unit/backend/JabbrLabs/signals/sma/sma-signal-processor.test.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\test-audit-mapping.md",
-      "line": 27,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: tests/unit/shared/validation.test.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\test-audit-mapping.md",
-      "line": 28,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: packages/backend/tests/JabbrLabs/signals/sma/improved-sma-signal-processor.test.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\test-audit-mapping.md",
-      "line": 35,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: packages/backend/tests/JabbrLabs/signals/sma/sma-crossover-strategy.test.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\test-audit-mapping.md",
-      "line": 36,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: packages/backend/tests/JabbrLabs/signals/sma/sma-signal-processor.test.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\test-audit-mapping.md",
-      "line": 37,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: packages/backend/tests/strategies/strategy-factory.test.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\test-audit-mapping.md",
-      "line": 38,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: packages/backend/tests/test-strategy-framework.js",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\test-audit-mapping.md",
-      "line": 39,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: packages/backend/src/JabbrLabs/indicators/__tests__/atr-indicator.test.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\test-audit-mapping.md",
-      "line": 46,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: packages/backend/src/JabbrLabs/indicators/__tests__/ema-indicator.test.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\test-audit-mapping.md",
-      "line": 47,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: packages/backend/src/JabbrLabs/indicators/__tests__/rsi-indicator.test.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\test-audit-mapping.md",
-      "line": 48,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: packages/backend/src/JabbrLabs/indicators/__tests__/sma-indicator.test.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\test-audit-mapping.md",
-      "line": 49,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: packages/backend/tests/compare-sma-processors.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\test-audit-mapping.md",
-      "line": 56,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: packages/backend/tests/debug-sma-processor.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\test-audit-mapping.md",
-      "line": 57,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: packages/backend/tests/debug-sma-signals.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\test-audit-mapping.md",
-      "line": 58,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: packages/backend/tests/fixed-sma-backtest.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\test-audit-mapping.md",
-      "line": 59,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: packages/backend/tests/run-sma-test.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\test-audit-mapping.md",
-      "line": 60,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: packages/backend/tests/simple-sma-debug.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\test-audit-mapping.md",
-      "line": 61,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: packages/backend/tests/sma-backtest.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\test-audit-mapping.md",
-      "line": 62,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: packages/backend/tests/test-engine-standalone.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\test-audit-mapping.md",
-      "line": 63,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: packages/backend/tests/test-futures-beast.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\test-audit-mapping.md",
-      "line": 64,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: packages/backend/tests/test-futures-position-modify.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\test-audit-mapping.md",
-      "line": 65,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: packages/backend/tests/test-live-order.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\test-audit-mapping.md",
-      "line": 66,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: packages/backend/tests/test-mainnet-small.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\test-audit-mapping.md",
-      "line": 67,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: packages/backend/tests/test-market-data.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\test-audit-mapping.md",
-      "line": 68,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: packages/backend/tests/test-sma-backtest.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\test-audit-mapping.md",
-      "line": 69,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: packages/backend/tests/test-sma-signals.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\test-audit-mapping.md",
-      "line": 70,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: packages/backend/tests/test-trading-engine.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\test-audit-mapping.md",
-      "line": 71,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: packages/backend/tests/verify-order.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\test-audit-mapping.md",
-      "line": 72,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: packages/backend/tests/test-strategy-framework.js",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\test-audit-mapping.md",
-      "line": 182,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: packages/backend/tests/unit/utils/strategy-framework.test.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\test-audit-mapping.md",
-      "line": 182,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: tests/unit/backend/indicators/atr-indicator.test.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\test-audit-mapping.md",
-      "line": 186,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: tests/unit/backend/indicators/ema-indicator.test.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\test-audit-mapping.md",
-      "line": 187,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: tests/unit/backend/indicators/rsi-indicator.test.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\test-audit-mapping.md",
-      "line": 188,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: tests/unit/backend/indicators/sma-indicator.test.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\test-audit-mapping.md",
-      "line": 189,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: tests/unit/backend/JabbrLabs/signals/sma/sma-crossover-strategy.test.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\test-audit-mapping.md",
-      "line": 190,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: tests/unit/backend/JabbrLabs/signals/sma/sma-signal-processor.test.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\test-audit-mapping.md",
-      "line": 191,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: tests/integration/backend/strategies/strategy-factory.test.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\test-audit-mapping.md",
-      "line": 192,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: packages/backend/jest.config.js",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\test-audit-mapping.md",
-      "line": 197,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: packages/frontend/jest.config.js",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\test-audit-mapping.md",
-      "line": 198,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: packages/shared/jest.config.js",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\docs\\test-audit-mapping.md",
-      "line": 199,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: .taskmaster/progress-config.json",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\README.md",
-      "line": 289,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "structure-consistency",
-      "message": "Header level jump from 1 to 3",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\README.md",
-      "line": 87,
-      "suggestion": "Use sequential header levels for better document structure"
-    },
-    {
-      "type": "warning",
-      "rule": "structure-consistency",
-      "message": "Header level jump from 1 to 3",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\README.md",
-      "line": 146,
-      "suggestion": "Use sequential header levels for better document structure"
-    },
-    {
-      "type": "warning",
-      "rule": "structure-consistency",
-      "message": "Header level jump from 1 to 3",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\README.md",
-      "line": 162,
-      "suggestion": "Use sequential header levels for better document structure"
-    },
-    {
-      "type": "warning",
-      "rule": "structure-consistency",
-      "message": "Header level jump from 1 to 3",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\README.md",
-      "line": 179,
-      "suggestion": "Use sequential header levels for better document structure"
-    },
-    {
-      "type": "warning",
-      "rule": "structure-consistency",
-      "message": "Header level jump from 1 to 3",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\README.md",
-      "line": 193,
-      "suggestion": "Use sequential header levels for better document structure"
-    },
-    {
-      "type": "warning",
-      "rule": "structure-consistency",
-      "message": "Header level jump from 1 to 3",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\README.md",
-      "line": 209,
-      "suggestion": "Use sequential header levels for better document structure"
-    },
-    {
-      "type": "warning",
-      "rule": "structure-consistency",
-      "message": "Header level jump from 1 to 3",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\README.md",
-      "line": 222,
-      "suggestion": "Use sequential header levels for better document structure"
-    },
-    {
-      "type": "warning",
-      "rule": "structure-consistency",
-      "message": "Header level jump from 1 to 3",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\README.md",
-      "line": 235,
-      "suggestion": "Use sequential header levels for better document structure"
-    },
-    {
-      "type": "warning",
-      "rule": "structure-consistency",
-      "message": "Header level jump from 1 to 3",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\README.md",
-      "line": 248,
-      "suggestion": "Use sequential header levels for better document structure"
-    },
-    {
-      "type": "warning",
-      "rule": "structure-consistency",
-      "message": "Header level jump from 1 to 3",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\README.md",
-      "line": 261,
-      "suggestion": "Use sequential header levels for better document structure"
-    },
-    {
-      "type": "warning",
-      "rule": "structure-consistency",
-      "message": "Header level jump from 1 to 3",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\README.md",
-      "line": 274,
-      "suggestion": "Use sequential header levels for better document structure"
-    },
-    {
-      "type": "warning",
-      "rule": "structure-consistency",
-      "message": "Header level jump from 1 to 3",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\README.md",
-      "line": 731,
-      "suggestion": "Use sequential header levels for better document structure"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: packages/backend/src/strategies/interfaces.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_017.txt",
-      "line": 98,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: packages/backend/src/strategies/plugin-manager.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_017.txt",
-      "line": 136,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: packages/backend/src/strategies/strategy-factory.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_017.txt",
-      "line": 144,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: plugins/example-sma-strategy.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_017.txt",
-      "line": 150,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: packages/backend/src/routes/plugins.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_017.txt",
-      "line": 156,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_031.txt",
-      "line": 8,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_033.txt",
-      "line": 65,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_034.txt",
-      "line": 93,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: packages/backend/src/bots/bot-runtime.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_036.txt",
-      "line": 48,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: packages/backend/src/bots/bot-manager.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_036.txt",
-      "line": 58,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: packages/backend/src/bots/bots.controller.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_036.txt",
-      "line": 66,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: order-tracker.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_036.txt",
-      "line": 186,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "version-consistency",
-      "message": "Multiple versions found: 36.5.1, 36.5.5",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_036.txt",
-      "suggestion": "Ensure version consistency across the document"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_036.txt",
-      "line": 278,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: JabbrLabs/indicators/index.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_039.txt",
-      "line": 126,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_039.txt",
-      "line": 20,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_039.txt",
-      "line": 26,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_039.txt",
-      "line": 43,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_039.txt",
-      "line": 49,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_039.txt",
-      "line": 76,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_039.txt",
-      "line": 87,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_041.txt",
-      "line": 211,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_041.txt",
-      "line": 237,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_041.txt",
-      "line": 268,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: test-strategy-framework.js",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_042.txt",
-      "line": 50,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: jest.config.js",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_042.txt",
-      "line": 137,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_042.txt",
-      "line": 126,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: src/progress-tracker.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_045.txt",
-      "line": 183,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: src/dashboard-generator.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_045.txt",
-      "line": 189,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: src/metrics-collector.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_045.txt",
-      "line": 195,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: src/cli.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_045.txt",
-      "line": 201,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: .taskmaster/src/progress-tracker.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_045.txt",
-      "line": 222,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: .taskmaster/src/dashboard-generator.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_045.txt",
-      "line": 223,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: .taskmaster/src/metrics-collector.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_045.txt",
-      "line": 224,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: .taskmaster/src/cli.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_045.txt",
-      "line": 225,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: .taskmaster/package.json",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_045.txt",
-      "line": 226,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: .taskmaster/tsconfig.json",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_045.txt",
-      "line": 227,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: .taskmaster/progress-config.json",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_045.txt",
-      "line": 228,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: src/status-validator.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_045.txt",
-      "line": 255,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: src/cli.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_045.txt",
-      "line": 270,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_045.txt",
-      "line": 119,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_045.txt",
-      "line": 169,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_045.txt",
-      "line": 176,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: .eslintrc.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_048.txt",
-      "line": 9,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: rollup.config.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_048.txt",
-      "line": 9,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: eslint.config.base.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_048.txt",
-      "line": 12,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: jest.config.js",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_048.txt",
-      "line": 33,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: jest.config.js",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_048.txt",
-      "line": 35,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: .eslintrc.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_048.txt",
-      "line": 39,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: .eslintrc.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_048.txt",
-      "line": 41,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: jest --config jest.config.js",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_048.txt",
-      "line": 71,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: jest --config jest.config.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_048.txt",
-      "line": 71,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_049.txt",
-      "line": 127,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: packages/backend/test-db-connection.js",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_050.txt",
-      "line": 169,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: packages/backend/tests/test-mainnet-safe.js",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_050.txt",
-      "line": 170,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: test-db-connection.js",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_050.txt",
-      "line": 173,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: npx tsx scripts/quality/duplication-analyzer.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_050.txt",
-      "line": 259,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: npx tsx scripts/quality/production-violations-analyzer.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_050.txt",
-      "line": 260,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: npx tsx scripts/quality/analyze.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_050.txt",
-      "line": 263,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: tests/test-mainnet-safe.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_050.txt",
-      "line": 282,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: npx tsx scripts/quality/analyze.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_050.txt",
-      "line": 292,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: npx tsx scripts/quality/duplication-analyzer.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_050.txt",
-      "line": 293,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: debug-sma.js",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_050.txt",
-      "line": 321,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_050.txt",
-      "line": 156,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_050.txt",
-      "line": 210,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_050.txt",
-      "line": 298,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_050.txt",
-      "line": 320,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_050.txt",
-      "line": 337,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: *.test.js",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_052.txt",
-      "line": 27,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: *.spec.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_052.txt",
-      "line": 27,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "warning",
-      "rule": "code-references",
-      "message": "Referenced file not found: .taskmaster/reports/test-inventory.json",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_052.txt",
-      "line": 53,
-      "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_052.txt",
-      "line": 88,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_052.txt",
-      "line": 102,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_052.txt",
-      "line": 133,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_052.txt",
-      "line": 159,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_052.txt",
-      "line": 165,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_052.txt",
-      "line": 180,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_052.txt",
-      "line": 190,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_052.txt",
-      "line": 217,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\tasks\\task_052.txt",
-      "line": 230,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "warning",
-      "rule": "markdown-syntax",
-      "message": "Unmatched square brackets in line",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\templates\\example_prd.txt",
-      "line": 6,
-      "suggestion": "Check for missing opening or closing brackets"
-    },
-    {
-      "type": "warning",
-      "rule": "markdown-syntax",
-      "message": "Unmatched square brackets in line",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\templates\\example_prd.txt",
-      "line": 9,
-      "suggestion": "Check for missing opening or closing brackets"
-    },
-    {
-      "type": "warning",
-      "rule": "markdown-syntax",
-      "message": "Unmatched square brackets in line",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\templates\\example_prd.txt",
-      "line": 12,
-      "suggestion": "Check for missing opening or closing brackets"
-    },
-    {
-      "type": "warning",
-      "rule": "markdown-syntax",
-      "message": "Unmatched square brackets in line",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\templates\\example_prd.txt",
-      "line": 15,
-      "suggestion": "Check for missing opening or closing brackets"
-    },
-    {
-      "type": "warning",
-      "rule": "markdown-syntax",
-      "message": "Unmatched square brackets in line",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\templates\\example_prd.txt",
-      "line": 19,
-      "suggestion": "Check for missing opening or closing brackets"
-    },
-    {
-      "type": "warning",
-      "rule": "markdown-syntax",
-      "message": "Unmatched square brackets in line",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\templates\\example_prd.txt",
-      "line": 23,
-      "suggestion": "Check for missing opening or closing brackets"
-    },
-    {
-      "type": "warning",
-      "rule": "markdown-syntax",
-      "message": "Unmatched square brackets in line",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\templates\\example_prd.txt",
-      "line": 26,
-      "suggestion": "Check for missing opening or closing brackets"
-    },
-    {
-      "type": "warning",
-      "rule": "markdown-syntax",
-      "message": "Unmatched square brackets in line",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\templates\\example_prd.txt",
-      "line": 29,
-      "suggestion": "Check for missing opening or closing brackets"
-    },
-    {
-      "type": "warning",
-      "rule": "markdown-syntax",
-      "message": "Unmatched square brackets in line",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\templates\\example_prd.txt",
-      "line": 32,
-      "suggestion": "Check for missing opening or closing brackets"
-    },
-    {
-      "type": "warning",
-      "rule": "markdown-syntax",
-      "message": "Unmatched square brackets in line",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\templates\\example_prd.txt",
-      "line": 35,
-      "suggestion": "Check for missing opening or closing brackets"
-    },
-    {
-      "type": "warning",
-      "rule": "markdown-syntax",
-      "message": "Unmatched square brackets in line",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\templates\\example_prd.txt",
-      "line": 38,
-      "suggestion": "Check for missing opening or closing brackets"
-    },
-    {
-      "type": "warning",
-      "rule": "markdown-syntax",
-      "message": "Unmatched square brackets in line",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\templates\\example_prd.txt",
-      "line": 41,
-      "suggestion": "Check for missing opening or closing brackets"
-    },
-    {
-      "type": "warning",
-      "rule": "markdown-syntax",
-      "message": "Unmatched square brackets in line",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\templates\\example_prd.txt",
-      "line": 44,
-      "suggestion": "Check for missing opening or closing brackets"
-    },
-    {
-      "type": "warning",
-      "rule": "markdown-syntax",
-      "message": "Unmatched square brackets in line",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\.taskmaster\\templates\\example_prd.txt",
-      "line": 46,
-      "suggestion": "Check for missing opening or closing brackets"
     },
     {
       "type": "warning",
@@ -2352,7 +357,7 @@
     {
       "type": "warning",
       "rule": "structure-consistency",
-      "message": "Header level jump from 1 to 4",
+      "message": "Header level jump from 1 to 3",
       "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\docs\\DATABASE_SETUP.md",
       "line": 109,
       "suggestion": "Use sequential header levels for better document structure"
@@ -2685,14 +690,6 @@
       "suggestion": "Use sequential header levels for better document structure"
     },
     {
-      "type": "error",
-      "rule": "broken-links",
-      "message": "Broken internal link: PROJECT_STATUS.md",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\docs\\guides\\PRODUCTION_GUIDE.md",
-      "line": 575,
-      "suggestion": "Check if the file path is correct or if the file has been moved"
-    },
-    {
       "type": "warning",
       "rule": "structure-consistency",
       "message": "Header level jump from 1 to 3",
@@ -2862,8 +859,87 @@
     },
     {
       "type": "warning",
+      "rule": "structure-consistency",
+      "message": "Header level jump from 1 to 3",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\docs\\project-status\\FRONTEND_TESTING_IMPLEMENTATION_REPORT.md",
+      "line": 110,
+      "suggestion": "Use sequential header levels for better document structure"
+    },
+    {
+      "type": "warning",
+      "rule": "structure-consistency",
+      "message": "Header level jump from 1 to 3",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\docs\\project-status\\FRONTEND_TESTING_IMPLEMENTATION_REPORT.md",
+      "line": 119,
+      "suggestion": "Use sequential header levels for better document structure"
+    },
+    {
+      "type": "warning",
+      "rule": "structure-consistency",
+      "message": "Header level jump from 1 to 3",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\docs\\project-status\\PRE_COMMIT_HOOKS_DISABLED_REPORT.md",
+      "line": 164,
+      "suggestion": "Use sequential header levels for better document structure"
+    },
+    {
+      "type": "info",
+      "rule": "format-consistency",
+      "message": "Line has trailing whitespace",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\docs\\project-status\\project-understanding-report.md",
+      "line": 10,
+      "suggestion": "Remove trailing whitespace"
+    },
+    {
+      "type": "warning",
       "rule": "code-references",
-      "message": "Referenced file not found: src/JabbrLabs/signals/sma/sma-signal-processor.ts",
+      "message": "Referenced file not found: scripts/orchestrator.ts",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\docs\\project-status\\SCRIPTS_COMPLETION_REPORT.md",
+      "line": 71,
+      "suggestion": "Verify the file path or check if the file has been moved/renamed"
+    },
+    {
+      "type": "warning",
+      "rule": "markdown-syntax",
+      "message": "Potentially malformed bold text (unmatched asterisks)",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\docs\\project-status\\SCRIPTS_COMPLETION_REPORT.md",
+      "line": 10,
+      "suggestion": "Ensure bold text uses ** on both sides"
+    },
+    {
+      "type": "warning",
+      "rule": "markdown-syntax",
+      "message": "Potentially malformed bold text (unmatched asterisks)",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\docs\\README.md",
+      "line": 50,
+      "suggestion": "Ensure bold text uses ** on both sides"
+    },
+    {
+      "type": "warning",
+      "rule": "markdown-syntax",
+      "message": "Potentially malformed bold text (unmatched asterisks)",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\docs\\README.md",
+      "line": 51,
+      "suggestion": "Ensure bold text uses ** on both sides"
+    },
+    {
+      "type": "warning",
+      "rule": "markdown-syntax",
+      "message": "Potentially malformed bold text (unmatched asterisks)",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\docs\\README.md",
+      "line": 153,
+      "suggestion": "Ensure bold text uses ** on both sides"
+    },
+    {
+      "type": "info",
+      "rule": "toc-consistency",
+      "message": "Document contains table of contents - verify it matches headers",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\docs\\README.md",
+      "suggestion": "Ensure TOC entries match document headers"
+    },
+    {
+      "type": "warning",
+      "rule": "code-references",
+      "message": "Referenced file not found: packages/backend/src/JabbrLabs/signals/sma/sma-signal-processor.ts",
       "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\docs\\SMA_IMPLEMENTATION_PLAN.md",
       "line": 7,
       "suggestion": "Verify the file path or check if the file has been moved/renamed"
@@ -2871,7 +947,7 @@
     {
       "type": "warning",
       "rule": "code-references",
-      "message": "Referenced file not found: src/JabbrLabs/signals/sma/sma-crossover-strategy.ts",
+      "message": "Referenced file not found: packages/backend/src/JabbrLabs/signals/sma/sma-crossover-strategy.ts",
       "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\docs\\SMA_IMPLEMENTATION_PLAN.md",
       "line": 16,
       "suggestion": "Verify the file path or check if the file has been moved/renamed"
@@ -2879,7 +955,7 @@
     {
       "type": "warning",
       "rule": "code-references",
-      "message": "Referenced file not found: src/JabbrLabs/signals/sma/moving-averages.ts",
+      "message": "Referenced file not found: packages/backend/src/JabbrLabs/signals/sma/moving-averages.ts",
       "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\docs\\SMA_IMPLEMENTATION_PLAN.md",
       "line": 24,
       "suggestion": "Verify the file path or check if the file has been moved/renamed"
@@ -2887,7 +963,7 @@
     {
       "type": "warning",
       "rule": "code-references",
-      "message": "Referenced file not found: src/JabbrLabs/signals/sma/sma-signal-processor.ts",
+      "message": "Referenced file not found: packages/backend/src/JabbrLabs/signals/sma/sma-signal-processor.ts",
       "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\docs\\SMA_STRATEGY_REPORT.md",
       "line": 43,
       "suggestion": "Verify the file path or check if the file has been moved/renamed"
@@ -3018,6 +1094,22 @@
       "message": "Referenced file not found: scripts/validate-documentation-precise.js",
       "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\docs\\status\\JS_TO_TS_MIGRATION_ANALYSIS.md",
       "line": 36,
+      "suggestion": "Verify the file path or check if the file has been moved/renamed"
+    },
+    {
+      "type": "warning",
+      "rule": "code-references",
+      "message": "Referenced file not found: .eslintrc.js",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\docs\\status\\JS_TO_TS_MIGRATION_ANALYSIS.md",
+      "line": 41,
+      "suggestion": "Verify the file path or check if the file has been moved/renamed"
+    },
+    {
+      "type": "warning",
+      "rule": "code-references",
+      "message": "Referenced file not found: .eslintrc.security.js",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\docs\\status\\JS_TO_TS_MIGRATION_ANALYSIS.md",
+      "line": 42,
       "suggestion": "Verify the file path or check if the file has been moved/renamed"
     },
     {
@@ -3210,14 +1302,6 @@
       "message": "Document contains table of contents - verify it matches headers",
       "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\docs\\strategy-backtesting.md",
       "suggestion": "Ensure TOC entries match document headers"
-    },
-    {
-      "type": "error",
-      "rule": "broken-links",
-      "message": "Broken internal link: ../../plugins/example-sma-strategy.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\docs\\strategy-framework.md",
-      "line": 86,
-      "suggestion": "Check if the file path is correct or if the file has been moved"
     },
     {
       "type": "warning",
@@ -3563,22 +1647,6 @@
       "suggestion": "Use sequential header levels for better document structure"
     },
     {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\docs\\TIME_SYNC_SETUP.md",
-      "line": 365,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\docs\\TRADING_ENGINE_SETUP.md",
-      "line": 162,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
       "type": "warning",
       "rule": "structure-consistency",
       "message": "Header level jump from 1 to 3",
@@ -3595,36 +1663,67 @@
       "suggestion": "Use sequential header levels for better document structure"
     },
     {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\docs\\WEBSOCKET_SETUP.md",
-      "line": 342,
-      "suggestion": "Remove trailing whitespace"
+      "type": "warning",
+      "rule": "code-references",
+      "message": "Referenced file not found: src/services/bot.service.ts",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\packages\\backend\\README.md",
+      "line": 185,
+      "suggestion": "Verify the file path or check if the file has been moved/renamed"
+    },
+    {
+      "type": "warning",
+      "rule": "code-references",
+      "message": "Referenced file not found: src/services/data-service.ts",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\packages\\backend\\README.md",
+      "line": 190,
+      "suggestion": "Verify the file path or check if the file has been moved/renamed"
+    },
+    {
+      "type": "warning",
+      "rule": "code-references",
+      "message": "Referenced file not found: src/services/risk-management.service.ts",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\packages\\backend\\README.md",
+      "line": 195,
+      "suggestion": "Verify the file path or check if the file has been moved/renamed"
+    },
+    {
+      "type": "warning",
+      "rule": "version-consistency",
+      "message": "Multiple versions found: v1.0.0, 18.0.0",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\packages\\backend\\README.md",
+      "suggestion": "Ensure version consistency across the document"
     },
     {
       "type": "warning",
       "rule": "structure-consistency",
       "message": "Header level jump from 1 to 3",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\FRONTEND_TESTING_IMPLEMENTATION_REPORT.md",
-      "line": 110,
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\packages\\backend\\README.md",
+      "line": 74,
       "suggestion": "Use sequential header levels for better document structure"
     },
     {
       "type": "warning",
       "rule": "structure-consistency",
       "message": "Header level jump from 1 to 3",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\FRONTEND_TESTING_IMPLEMENTATION_REPORT.md",
-      "line": 119,
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\packages\\backend\\README.md",
+      "line": 153,
       "suggestion": "Use sequential header levels for better document structure"
     },
     {
-      "type": "error",
-      "rule": "broken-links",
-      "message": "Broken internal link: ../../../../docs/",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\packages\\backend\\src\\JabbrLabs\\indicators\\README.md",
-      "line": 175,
-      "suggestion": "Check if the file path is correct or if the file has been moved"
+      "type": "warning",
+      "rule": "structure-consistency",
+      "message": "Header level jump from 1 to 3",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\packages\\backend\\README.md",
+      "line": 165,
+      "suggestion": "Use sequential header levels for better document structure"
+    },
+    {
+      "type": "warning",
+      "rule": "structure-consistency",
+      "message": "Header level jump from 1 to 3",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\packages\\backend\\README.md",
+      "line": 260,
+      "suggestion": "Use sequential header levels for better document structure"
     },
     {
       "type": "warning",
@@ -3763,52 +1862,12 @@
       "suggestion": "Check for missing opening or closing brackets"
     },
     {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\packages\\backend\\src\\JabbrLabs\\indicators\\README.md",
-      "line": 179,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
       "type": "warning",
       "rule": "code-references",
       "message": "Referenced file not found: setup.js",
       "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\packages\\backend\\tests\\README.md",
       "line": 28,
       "suggestion": "Verify the file path or check if the file has been moved/renamed"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\packages\\backend\\tests\\README.md",
-      "line": 32,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\packages\\backend\\tests\\README.md",
-      "line": 33,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\packages\\backend\\tests\\README.md",
-      "line": 34,
-      "suggestion": "Remove trailing whitespace"
-    },
-    {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\packages\\backend\\tests\\README.md",
-      "line": 129,
-      "suggestion": "Remove trailing whitespace"
     },
     {
       "type": "warning",
@@ -3916,74 +1975,311 @@
     },
     {
       "type": "warning",
+      "rule": "version-consistency",
+      "message": "Multiple versions found: v1.0.0, 18.0.0",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\packages\\frontend\\README.md",
+      "suggestion": "Ensure version consistency across the document"
+    },
+    {
+      "type": "warning",
       "rule": "structure-consistency",
       "message": "Header level jump from 1 to 3",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\PRE_COMMIT_HOOKS_DISABLED_REPORT.md",
-      "line": 164,
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\packages\\frontend\\README.md",
+      "line": 96,
       "suggestion": "Use sequential header levels for better document structure"
     },
     {
-      "type": "info",
-      "rule": "format-consistency",
-      "message": "Line has trailing whitespace",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\project-understanding-report.md",
-      "line": 10,
-      "suggestion": "Remove trailing whitespace"
+      "type": "warning",
+      "rule": "structure-consistency",
+      "message": "Header level jump from 1 to 3",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\packages\\frontend\\README.md",
+      "line": 313,
+      "suggestion": "Use sequential header levels for better document structure"
     },
     {
-      "type": "error",
-      "rule": "broken-links",
-      "message": "Broken internal link: docs/reports/PRODUCTION_READINESS_FINAL_STATUS.md",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\README.md",
-      "line": 454,
-      "suggestion": "Check if the file path is correct or if the file has been moved"
+      "type": "warning",
+      "rule": "structure-consistency",
+      "message": "Header level jump from 1 to 3",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\packages\\frontend\\README.md",
+      "line": 360,
+      "suggestion": "Use sequential header levels for better document structure"
     },
     {
-      "type": "error",
-      "rule": "broken-links",
-      "message": "Broken internal link: LICENSE",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\README.md",
-      "line": 496,
-      "suggestion": "Check if the file path is correct or if the file has been moved"
+      "type": "warning",
+      "rule": "code-references",
+      "message": "Referenced file not found: src/server.ts",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\packages\\README.md",
+      "line": 42,
+      "suggestion": "Verify the file path or check if the file has been moved/renamed"
+    },
+    {
+      "type": "warning",
+      "rule": "code-references",
+      "message": "Referenced file not found: src/server-standalone.ts",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\packages\\README.md",
+      "line": 43,
+      "suggestion": "Verify the file path or check if the file has been moved/renamed"
+    },
+    {
+      "type": "warning",
+      "rule": "code-references",
+      "message": "Referenced file not found: src/index.ts",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\packages\\README.md",
+      "line": 44,
+      "suggestion": "Verify the file path or check if the file has been moved/renamed"
+    },
+    {
+      "type": "warning",
+      "rule": "code-references",
+      "message": "Referenced file not found: src/app/page.tsx",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\packages\\README.md",
+      "line": 52,
+      "suggestion": "Verify the file path or check if the file has been moved/renamed"
+    },
+    {
+      "type": "warning",
+      "rule": "code-references",
+      "message": "Referenced file not found: src/app/layout.tsx",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\packages\\README.md",
+      "line": 53,
+      "suggestion": "Verify the file path or check if the file has been moved/renamed"
+    },
+    {
+      "type": "warning",
+      "rule": "code-references",
+      "message": "Referenced file not found: src/index.ts",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\packages\\README.md",
+      "line": 61,
+      "suggestion": "Verify the file path or check if the file has been moved/renamed"
+    },
+    {
+      "type": "warning",
+      "rule": "code-references",
+      "message": "Referenced file not found: src/types.ts",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\packages\\shared\\README.md",
+      "line": 69,
+      "suggestion": "Verify the file path or check if the file has been moved/renamed"
+    },
+    {
+      "type": "warning",
+      "rule": "code-references",
+      "message": "Referenced file not found: src/types.ts",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\packages\\shared\\README.md",
+      "line": 114,
+      "suggestion": "Verify the file path or check if the file has been moved/renamed"
+    },
+    {
+      "type": "warning",
+      "rule": "code-references",
+      "message": "Referenced file not found: src/types.ts",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\packages\\shared\\README.md",
+      "line": 146,
+      "suggestion": "Verify the file path or check if the file has been moved/renamed"
+    },
+    {
+      "type": "warning",
+      "rule": "code-references",
+      "message": "Referenced file not found: src/validation.ts",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\packages\\shared\\README.md",
+      "line": 179,
+      "suggestion": "Verify the file path or check if the file has been moved/renamed"
+    },
+    {
+      "type": "warning",
+      "rule": "code-references",
+      "message": "Referenced file not found: src/validation.ts",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\packages\\shared\\README.md",
+      "line": 211,
+      "suggestion": "Verify the file path or check if the file has been moved/renamed"
+    },
+    {
+      "type": "warning",
+      "rule": "code-references",
+      "message": "Referenced file not found: src/utils/status-utils.ts",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\packages\\shared\\README.md",
+      "line": 230,
+      "suggestion": "Verify the file path or check if the file has been moved/renamed"
+    },
+    {
+      "type": "warning",
+      "rule": "code-references",
+      "message": "Referenced file not found: src/utils/status-utils.ts",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\packages\\shared\\README.md",
+      "line": 246,
+      "suggestion": "Verify the file path or check if the file has been moved/renamed"
+    },
+    {
+      "type": "warning",
+      "rule": "code-references",
+      "message": "Referenced file not found: src/utils/status-utils.ts",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\packages\\shared\\README.md",
+      "line": 268,
+      "suggestion": "Verify the file path or check if the file has been moved/renamed"
+    },
+    {
+      "type": "warning",
+      "rule": "code-references",
+      "message": "Referenced file not found: src/types.ts",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\packages\\shared\\README.md",
+      "line": 307,
+      "suggestion": "Verify the file path or check if the file has been moved/renamed"
+    },
+    {
+      "type": "warning",
+      "rule": "code-references",
+      "message": "Referenced file not found: src/types.ts",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\packages\\shared\\README.md",
+      "line": 332,
+      "suggestion": "Verify the file path or check if the file has been moved/renamed"
+    },
+    {
+      "type": "warning",
+      "rule": "code-references",
+      "message": "Referenced file not found: src/types.ts",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\packages\\shared\\README.md",
+      "line": 355,
+      "suggestion": "Verify the file path or check if the file has been moved/renamed"
+    },
+    {
+      "type": "warning",
+      "rule": "markdown-syntax",
+      "message": "Unmatched square brackets in line",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\packages\\shared\\README.md",
+      "line": 310,
+      "suggestion": "Check for missing opening or closing brackets"
+    },
+    {
+      "type": "warning",
+      "rule": "markdown-syntax",
+      "message": "Unmatched square brackets in line",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\packages\\shared\\README.md",
+      "line": 312,
+      "suggestion": "Check for missing opening or closing brackets"
+    },
+    {
+      "type": "warning",
+      "rule": "version-consistency",
+      "message": "Multiple versions found: 18.0.0, 5.0.0, 3.20.0, v1.0.0",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\packages\\shared\\README.md",
+      "suggestion": "Ensure version consistency across the document"
+    },
+    {
+      "type": "warning",
+      "rule": "structure-consistency",
+      "message": "Header level jump from 1 to 3",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\packages\\shared\\README.md",
+      "line": 414,
+      "suggestion": "Use sequential header levels for better document structure"
     },
     {
       "type": "warning",
       "rule": "code-references",
       "message": "Referenced file not found: .spec.ts",
       "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\README.md",
-      "line": 486,
+      "line": 484,
+      "suggestion": "Verify the file path or check if the file has been moved/renamed"
+    },
+    {
+      "type": "warning",
+      "rule": "structure-consistency",
+      "message": "Header level jump from 1 to 3",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\README.md",
+      "line": 303,
+      "suggestion": "Use sequential header levels for better document structure"
+    },
+    {
+      "type": "warning",
+      "rule": "code-references",
+      "message": "Referenced file not found: documentation-validation-*.json",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\reports\\README.md",
+      "line": 31,
+      "suggestion": "Verify the file path or check if the file has been moved/renamed"
+    },
+    {
+      "type": "warning",
+      "rule": "code-references",
+      "message": "Referenced file not found: quality-analysis-*.json",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\reports\\README.md",
+      "line": 37,
+      "suggestion": "Verify the file path or check if the file has been moved/renamed"
+    },
+    {
+      "type": "warning",
+      "rule": "code-references",
+      "message": "Referenced file not found: security-report-*.json",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\reports\\README.md",
+      "line": 43,
+      "suggestion": "Verify the file path or check if the file has been moved/renamed"
+    },
+    {
+      "type": "warning",
+      "rule": "code-references",
+      "message": "Referenced file not found: frontend-comprehensive-*.json",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\reports\\README.md",
+      "line": 49,
       "suggestion": "Verify the file path or check if the file has been moved/renamed"
     },
     {
       "type": "warning",
       "rule": "markdown-syntax",
       "message": "Potentially malformed bold text (unmatched asterisks)",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\README.md",
-      "line": 541,
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\reports\\README.md",
+      "line": 31,
       "suggestion": "Ensure bold text uses ** on both sides"
     },
     {
       "type": "warning",
-      "rule": "structure-consistency",
-      "message": "Header level jump from 1 to 3",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\README.md",
-      "line": 103,
-      "suggestion": "Use sequential header levels for better document structure"
+      "rule": "markdown-syntax",
+      "message": "Potentially malformed bold text (unmatched asterisks)",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\reports\\README.md",
+      "line": 37,
+      "suggestion": "Ensure bold text uses ** on both sides"
+    },
+    {
+      "type": "warning",
+      "rule": "markdown-syntax",
+      "message": "Potentially malformed bold text (unmatched asterisks)",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\reports\\README.md",
+      "line": 43,
+      "suggestion": "Ensure bold text uses ** on both sides"
+    },
+    {
+      "type": "warning",
+      "rule": "markdown-syntax",
+      "message": "Potentially malformed bold text (unmatched asterisks)",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\reports\\README.md",
+      "line": 49,
+      "suggestion": "Ensure bold text uses ** on both sides"
+    },
+    {
+      "type": "warning",
+      "rule": "markdown-syntax",
+      "message": "Unmatched square brackets in line",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\reports\\README.md",
+      "line": 117,
+      "suggestion": "Check for missing opening or closing brackets"
+    },
+    {
+      "type": "warning",
+      "rule": "markdown-syntax",
+      "message": "Unmatched square brackets in line",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\reports\\README.md",
+      "line": 119,
+      "suggestion": "Check for missing opening or closing brackets"
+    },
+    {
+      "type": "warning",
+      "rule": "version-consistency",
+      "message": "Multiple versions found: 1.0.0, v1.0.0",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\reports\\README.md",
+      "suggestion": "Ensure version consistency across the document"
     },
     {
       "type": "warning",
       "rule": "structure-consistency",
       "message": "Header level jump from 1 to 3",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\README.md",
-      "line": 272,
-      "suggestion": "Use sequential header levels for better document structure"
-    },
-    {
-      "type": "warning",
-      "rule": "structure-consistency",
-      "message": "Header level jump from 1 to 3",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\README.md",
-      "line": 299,
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\reports\\README.md",
+      "line": 194,
       "suggestion": "Use sequential header levels for better document structure"
     },
     {
@@ -4085,34 +2381,161 @@
     {
       "type": "warning",
       "rule": "code-references",
-      "message": "Referenced file not found: scripts/orchestrator.ts",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\SCRIPTS_COMPLETION_REPORT.md",
-      "line": 71,
+      "message": "Referenced file not found: packages/shared/src/test-utils/data-generators.ts",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\tests\\README.md",
+      "line": 208,
+      "suggestion": "Verify the file path or check if the file has been moved/renamed"
+    },
+    {
+      "type": "warning",
+      "rule": "code-references",
+      "message": "Referenced file not found: packages/shared/src/test-utils/context-generators.ts",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\tests\\README.md",
+      "line": 237,
+      "suggestion": "Verify the file path or check if the file has been moved/renamed"
+    },
+    {
+      "type": "warning",
+      "rule": "code-references",
+      "message": "Referenced file not found: packages/shared/src/test-utils/context-generators.ts",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\tests\\README.md",
+      "line": 252,
+      "suggestion": "Verify the file path or check if the file has been moved/renamed"
+    },
+    {
+      "type": "warning",
+      "rule": "code-references",
+      "message": "Referenced file not found: *.test.ts",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\tests\\README.md",
+      "line": 299,
+      "suggestion": "Verify the file path or check if the file has been moved/renamed"
+    },
+    {
+      "type": "warning",
+      "rule": "code-references",
+      "message": "Referenced file not found: *.spec.ts",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\tests\\README.md",
+      "line": 299,
+      "suggestion": "Verify the file path or check if the file has been moved/renamed"
+    },
+    {
+      "type": "warning",
+      "rule": "code-references",
+      "message": "Referenced file not found: coverage/coverage-final.json",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\tests\\README.md",
+      "line": 381,
       "suggestion": "Verify the file path or check if the file has been moved/renamed"
     },
     {
       "type": "warning",
       "rule": "markdown-syntax",
+      "message": "Unmatched square brackets in line",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\tests\\README.md",
+      "line": 147,
+      "suggestion": "Check for missing opening or closing brackets"
+    },
+    {
+      "type": "warning",
+      "rule": "markdown-syntax",
       "message": "Potentially malformed bold text (unmatched asterisks)",
-      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\SCRIPTS_COMPLETION_REPORT.md",
-      "line": 10,
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\tests\\README.md",
+      "line": 148,
       "suggestion": "Ensure bold text uses ** on both sides"
+    },
+    {
+      "type": "warning",
+      "rule": "markdown-syntax",
+      "message": "Potentially malformed bold text (unmatched asterisks)",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\tests\\README.md",
+      "line": 149,
+      "suggestion": "Ensure bold text uses ** on both sides"
+    },
+    {
+      "type": "warning",
+      "rule": "markdown-syntax",
+      "message": "Unmatched square brackets in line",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\tests\\README.md",
+      "line": 150,
+      "suggestion": "Check for missing opening or closing brackets"
+    },
+    {
+      "type": "warning",
+      "rule": "markdown-syntax",
+      "message": "Unmatched square brackets in line",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\tests\\README.md",
+      "line": 153,
+      "suggestion": "Check for missing opening or closing brackets"
+    },
+    {
+      "type": "warning",
+      "rule": "markdown-syntax",
+      "message": "Potentially malformed bold text (unmatched asterisks)",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\tests\\README.md",
+      "line": 154,
+      "suggestion": "Ensure bold text uses ** on both sides"
+    },
+    {
+      "type": "warning",
+      "rule": "markdown-syntax",
+      "message": "Potentially malformed bold text (unmatched asterisks)",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\tests\\README.md",
+      "line": 155,
+      "suggestion": "Ensure bold text uses ** on both sides"
+    },
+    {
+      "type": "warning",
+      "rule": "markdown-syntax",
+      "message": "Unmatched square brackets in line",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\tests\\README.md",
+      "line": 157,
+      "suggestion": "Check for missing opening or closing brackets"
+    },
+    {
+      "type": "warning",
+      "rule": "markdown-syntax",
+      "message": "Potentially malformed bold text (unmatched asterisks)",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\tests\\README.md",
+      "line": 299,
+      "suggestion": "Ensure bold text uses ** on both sides"
+    },
+    {
+      "type": "warning",
+      "rule": "structure-consistency",
+      "message": "Header level jump from 1 to 3",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\tests\\README.md",
+      "line": 105,
+      "suggestion": "Use sequential header levels for better document structure"
+    },
+    {
+      "type": "warning",
+      "rule": "structure-consistency",
+      "message": "Header level jump from 1 to 3",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\tests\\README.md",
+      "line": 120,
+      "suggestion": "Use sequential header levels for better document structure"
+    },
+    {
+      "type": "warning",
+      "rule": "structure-consistency",
+      "message": "Header level jump from 1 to 3",
+      "filePath": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\tests\\README.md",
+      "line": 341,
+      "suggestion": "Use sequential header levels for better document structure"
     }
   ],
   "summary": {
-    "errors": 14,
-    "warnings": 418,
-    "infos": 81,
-    "filesWithIssues": 71
+    "errors": 7,
+    "warnings": 300,
+    "infos": 9,
+    "filesWithIssues": 40
   },
   "ruleBreakdown": {
-    "code-references": 239,
-    "markdown-syntax": 75,
-    "broken-links": 63,
-    "format-consistency": 76,
-    "version-consistency": 3,
-    "date-consistency": 1,
+    "code-references": 120,
+    "markdown-syntax": 88,
+    "broken-links": 46,
+    "format-consistency": 4,
     "toc-consistency": 5,
-    "structure-consistency": 51
+    "structure-consistency": 49,
+    "version-consistency": 4
   }
 }

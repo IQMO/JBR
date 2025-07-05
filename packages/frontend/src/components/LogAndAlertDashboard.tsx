@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
 import {
-  Grid,
-  Paper,
   Box,
-  Typography,
-  Tabs,
-  Tab,
   Card,
-  CardContent
+  CardContent,
+  Grid,
+  Tab,
+  Tabs,
+  Typography,
 } from '@mui/material';
-import { LogViewer } from './LogViewer';
+import React, { useState } from 'react';
+
 import { AlertSystem } from './AlertSystem';
+import { LogViewer } from './LogViewer';
 
 interface TabPanelProps {
   children?: React.ReactNode;

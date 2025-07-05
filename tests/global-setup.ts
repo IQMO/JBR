@@ -4,7 +4,7 @@
  */
 
 import { performance } from 'perf_hooks';
-import dotenv from 'dotenv';
+import * as dotenv from 'dotenv';
 import { resolve } from 'path';
 
 interface TestPerformance {

@@ -5,7 +5,7 @@
  * Perfect for proving the system works before setting up full infrastructure
  */
 
-import dotenv from 'dotenv';
+import * as dotenv from 'dotenv';
 import path from 'path';
 // Load environment variables from root .env file
 dotenv.config({ path: path.join(__dirname, '../../../.env') });

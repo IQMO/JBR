@@ -1,12 +1,12 @@
 "use client";
 
-import { zodResolver } from '@hookform/resolvers/zod';
-import type { Bot } from '@jabbr/shared/src/types';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
-import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
+import type { Bot, PerBotRiskManagement } from '@jabbr/shared';
 
 // Form validation schema
 const editBotSchema = z.object({
@@ -111,7 +111,7 @@ export default function EditBotPage() {
     };
 
     if (botId) {
-      fetchBot();
+      void fetchBot();
     }
   }, [botId, reset]);
 
@@ -454,6 +454,61 @@ export default function EditBotPage() {
             </div>
           </div>
         </form>
+
+        {/* Risk Management Section */}
+        <div className="mt-8 bg-white rounded-lg shadow-sm border p-6">
+          <div className="flex items-center justify-between mb-6">
+            <div>
+              <h3 className="text-lg font-medium text-gray-900">Risk Management</h3>
+              <p className="text-sm text-gray-600 mt-1">
+                Configure risk parameters to protect your trading capital
+              </p>
+            </div>
+            <Link
+              href={`/bots/${botId}/risk-management`}
+              className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 text-sm font-medium"
+            >
+              Configure Risk Settings
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="bg-gray-50 p-4 rounded-lg">
+              <div className="text-sm font-medium text-gray-600 mb-1">Current Risk Score</div>
+              <div className="text-2xl font-bold text-gray-900">
+                {bot?.riskManagement?.riskScore || 'Not Set'}
+              </div>
+              <div className="text-sm text-gray-500">Scale: 1-10</div>
+            </div>
+
+            <div className="bg-gray-50 p-4 rounded-lg">
+              <div className="text-sm font-medium text-gray-600 mb-1">Max Daily Loss</div>
+              <div className="text-2xl font-bold text-gray-900">
+                {bot?.riskManagement?.maxDailyLoss ? `${bot.riskManagement.maxDailyLoss}%` : 'Not Set'}
+              </div>
+              <div className="text-sm text-gray-500">Percentage limit</div>
+            </div>
+
+            <div className="bg-gray-50 p-4 rounded-lg">
+              <div className="text-sm font-medium text-gray-600 mb-1">Max Drawdown</div>
+              <div className="text-2xl font-bold text-gray-900">
+                {bot?.riskManagement?.maxDrawdown ? `${bot.riskManagement.maxDrawdown}%` : 'Not Set'}
+              </div>
+              <div className="text-sm text-gray-500">Maximum allowed</div>
+            </div>
+          </div>
+
+          {!bot?.riskManagement && (
+            <div className="mt-4 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+              <div className="flex items-center">
+                <div className="text-yellow-800">
+                  <strong>Warning:</strong> Risk management is not configured for this bot.
+                  It's highly recommended to set up risk parameters before starting trading.
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

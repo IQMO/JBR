@@ -74,7 +74,9 @@ npm run build
 npm run test
 ```
 
-### **Inter-package Dependencies**
+## Inter-package Dependencies
+
+### **Dependency Flow**
 - Frontend → Shared (types, utilities)
 - Backend → Shared (types, validation)
 - Packages are developed independently but share common interfaces

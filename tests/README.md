@@ -131,7 +131,7 @@ cd packages/shared && npm test
 
 ## 🔧 Test Configuration
 
-### **Jest Configuration** (`config/jest.config.ts`)
+### **Jest Configuration** (`jest.config.ts`)
 ```typescript
 export default {
   // Global test setup
@@ -205,7 +205,7 @@ export const TEST_STRATEGIES = {
 };
 ```
 
-### **Mock Factories** (`./utils/mock-factories.ts`)
+### **Mock Factories** (`packages/shared/src/test-utils/data-generators.ts`)
 Dynamic test data generation:
 
 ```typescript
@@ -234,7 +234,7 @@ export function createMockMarketData(symbol: string): MarketData {
 
 ## 🔍 Test Utilities
 
-### **Database Helpers** (`./utils/database-helpers.ts`)
+### **Database Helpers** (`packages/shared/src/test-utils/context-generators.ts`)
 ```typescript
 // Clean database state between tests
 export async function cleanDatabase() {
@@ -249,7 +249,7 @@ export async function seedTestData() {
 }
 ```
 
-### **API Test Helpers** (`./utils/test-helpers.ts`)
+### **API Test Helpers** (`packages/shared/src/test-utils/context-generators.ts`)
 ```typescript
 // Authenticated API requests
 export function createAuthenticatedRequest(app: Express) {

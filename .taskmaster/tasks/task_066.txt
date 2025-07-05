@@ -1,0 +1,24 @@
+# Task ID: 66
+# Title: Implement Unified Real-Data Testing Strategy
+# Status: pending
+# Dependencies: 3, 10, 14, 37, 54
+# Priority: critical
+# Description: Develop a unified real-data testing strategy to ensure consistent test patterns using actual API calls and database connections, addressing inconsistencies in mock vs. real-data usage.
+# Details:
+1.  Establish a single `.env` source configuration for all tests.
+2.  Implement a `BYBIT_TESTNET` toggle to control real money vs. testnet environments.
+3.  Clearly separate sensitive operations within the testing framework.
+4.  Develop production-ready test patterns that validate actual backend functionality.
+5.  Minimize changes to existing code while ensuring tests provide production confidence through real-environment validation.
+6.  Refactor existing tests to align with the new unified strategy, prioritizing tests related to core trading engine components and exchange integrations.
+7.  Implement a mechanism to automatically switch between mock and real data based on the `BYBIT_TESTNET` toggle.
+8.  Document the new testing strategy and provide examples for future test development.
+
+# Test Strategy:
+1.  Verify that all tests use the single `.env` source configuration.
+2.  Test the `BYBIT_TESTNET` toggle to ensure it correctly switches between real money and testnet environments.
+3.  Confirm that sensitive operations are properly separated and protected during testing.
+4.  Execute all tests and verify that they pass in both real money and testnet environments.
+5.  Monitor test execution time and resource usage to ensure stability and minimal impact on performance.
+6.  Validate that the tests accurately reflect production scenarios and provide confidence in the system's functionality.
+7.  Ensure that the documentation is clear and comprehensive, enabling developers to easily create new tests following the established patterns.

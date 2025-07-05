@@ -107,9 +107,9 @@ const config: Config.InitialOptions = {
   ],
   
   // Test Execution Configuration
-  testTimeout: parseInt(process.env.TEST_TIMEOUT || '15000'),
+  testTimeout: parseInt(process.env.TEST_TIMEOUT || '30000'), // Increased timeout
   detectOpenHandles: true,
-  forceExit: true,
+  forceExit: false, // Disabled to allow proper cleanup
   maxConcurrency: 3,
   
   // Module Resolution

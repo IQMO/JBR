@@ -1,6 +1,11 @@
 import type { PoolClient, PoolConfig } from 'pg';
 import { Pool } from 'pg';
 import { z } from 'zod';
+import * as dotenv from 'dotenv';
+import { resolve } from 'path';
+
+// Load environment variables from the root .env file
+dotenv.config({ path: resolve(process.cwd(), '.env') });
 
 /**
  * Database Configuration Schema
@@ -11,11 +16,11 @@ const DatabaseConfigSchema = z.object({
   DATABASE_URL: z.string().optional(),
   
   // Individual connection parameters
-  DB_HOST: z.string().default('localhost'),
+  DB_HOST: z.string().min(1, 'Database host is required').default('localhost'),
   DB_PORT: z.coerce.number().min(1).max(65535).default(5432),
-  DB_NAME: z.string().default('jabbr_trading_bot'),
-  DB_USER: z.string().default('postgres'),
-  DB_PASSWORD: z.string().default(''),
+  DB_NAME: z.string().min(1, 'Database name is required').default('jabbr_trading_bot'),
+  DB_USER: z.string().min(1, 'Database user is required').default('postgres'),
+  DB_PASSWORD: z.string().min(1, 'Database password is required'),
   DB_SSL: z.preprocess((val) => {
     if (typeof val === 'string') {
       return val.toLowerCase() === 'true';
@@ -46,22 +51,43 @@ export class DatabaseManager {
 
   constructor() {
     // Validate and parse environment configuration
-    console.log('🔍 Raw DB_SSL env value:', process.env.DB_SSL, typeof process.env.DB_SSL);
-    this.config = DatabaseConfigSchema.parse({
-      DATABASE_URL: process.env.DATABASE_URL,
-      DB_HOST: process.env.DB_HOST,
-      DB_PORT: process.env.DB_PORT,
-      DB_NAME: process.env.DB_NAME,
-      DB_USER: process.env.DB_USER,
-      DB_PASSWORD: process.env.DB_PASSWORD,
-      DB_SSL: process.env.DB_SSL,
-      DB_POOL_MIN: process.env.DB_POOL_MIN,
-      DB_POOL_MAX: process.env.DB_POOL_MAX,
-      DB_POOL_IDLE_TIMEOUT: process.env.DB_POOL_IDLE_TIMEOUT,
-      DB_POOL_CONNECTION_TIMEOUT: process.env.DB_POOL_CONNECTION_TIMEOUT,
-      NODE_ENV: process.env.NODE_ENV
-    });
-    console.log('🔍 Parsed DB_SSL config value:', this.config.DB_SSL, typeof this.config.DB_SSL);
+    try {
+      this.config = DatabaseConfigSchema.parse({
+        DATABASE_URL: process.env.DATABASE_URL,
+        DB_HOST: process.env.DB_HOST,
+        DB_PORT: process.env.DB_PORT,
+        DB_NAME: process.env.DB_NAME,
+        DB_USER: process.env.DB_USER,
+        DB_PASSWORD: process.env.DB_PASSWORD,
+        DB_SSL: process.env.DB_SSL,
+        DB_POOL_MIN: process.env.DB_POOL_MIN,
+        DB_POOL_MAX: process.env.DB_POOL_MAX,
+        DB_POOL_IDLE_TIMEOUT: process.env.DB_POOL_IDLE_TIMEOUT,
+        DB_POOL_CONNECTION_TIMEOUT: process.env.DB_POOL_CONNECTION_TIMEOUT,
+        NODE_ENV: process.env.NODE_ENV
+      });
+      
+      // Log successful configuration (without sensitive data)
+      console.log('� Database configuration loaded:', {
+        host: this.config.DB_HOST,
+        port: this.config.DB_PORT,
+        database: this.config.DB_NAME,
+        user: this.config.DB_USER,
+        ssl: this.config.DB_SSL,
+        poolMin: this.config.DB_POOL_MIN,
+        poolMax: this.config.DB_POOL_MAX
+      });
+      
+    } catch (error) {
+      console.error('❌ Database configuration validation failed:', error);
+      if (error instanceof z.ZodError) {
+        console.error('📋 Configuration errors:');
+        error.errors.forEach(err => {
+          console.error(`   - ${err.path.join('.')}: ${err.message}`);
+        });
+      }
+      throw new Error('Database configuration validation failed. Check environment variables.');
+    }
   }
 
   /**
@@ -75,26 +101,44 @@ export class DatabaseManager {
 
     try {
       const poolConfig: PoolConfig = this.createPoolConfig();
-      console.log('🔍 Database config debug:', {
-        host: poolConfig.host || 'using connectionString',
-        database: poolConfig.database || 'from connectionString',
-        ssl: poolConfig.ssl,
-        hasConnectionString: !!poolConfig.connectionString
-      });
       
       this.pool = new Pool(poolConfig);
 
-      // Test the connection
+      // Test the connection with timeout
       const client = await this.pool.connect();
-      await client.query('SELECT NOW()');
-      client.release();
-
-      this.isConnected = true;
-      console.log('✅ Database connected successfully');
-      console.log(`📊 Connected to: ${this.config.DB_HOST}:${this.config.DB_PORT}/${this.config.DB_NAME}`);
+      try {
+        await client.query('SELECT NOW() as current_time, version() as pg_version');
+        this.isConnected = true;
+        console.log('✅ Database connected successfully');
+        console.log(`📊 Connected to: ${this.config.DB_HOST}:${this.config.DB_PORT}/${this.config.DB_NAME}`);
+      } finally {
+        client.release();
+      }
       
     } catch (error) {
-      console.error('❌ Database connection failed:', error);
+      this.isConnected = false;
+      
+      // Provide specific error messages for common issues
+      if (error instanceof Error) {
+        const errorMessage = error.message.toLowerCase();
+        
+        if (errorMessage.includes('authentication failed') || errorMessage.includes('password')) {
+          console.error('❌ Database authentication failed: Invalid username or password');
+          console.error('💡 Check DB_USER and DB_PASSWORD environment variables');
+        } else if (errorMessage.includes('connection refused') || errorMessage.includes('econnrefused')) {
+          console.error('❌ Database connection refused: PostgreSQL server is not running or not accessible');
+          console.error('� Check if PostgreSQL is running and DB_HOST/DB_PORT are correct');
+        } else if (errorMessage.includes('database') && errorMessage.includes('does not exist')) {
+          console.error('❌ Database does not exist');
+          console.error('💡 Check DB_NAME environment variable or create the database');
+        } else if (errorMessage.includes('timeout')) {
+          console.error('❌ Database connection timeout');
+          console.error('💡 Check network connectivity and database server performance');
+        } else {
+          console.error('❌ Database connection failed:', error.message);
+        }
+      }
+      
       throw new Error(`Database connection failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
     }
   }

@@ -4,7 +4,7 @@
 
 ### 1. SMA Signal Processor
 
-**File**: `src/JabbrLabs/signals/sma/sma-signal-processor.ts`
+**File**: `packages/backend/src/JabbrLabs/signals/sma/sma-signal-processor.ts`
 
 - Fix the `generateSignal` method to properly detect crossovers
 - Adjust confidence threshold calculation
@@ -13,7 +13,7 @@
 
 ### 2. SMA Crossover Strategy
 
-**File**: `src/JabbrLabs/signals/sma/sma-crossover-strategy.ts`
+**File**: `packages/backend/src/JabbrLabs/signals/sma/sma-crossover-strategy.ts`
 
 - Update strategy to handle the improved signal generation
 - Ensure correct interpretation of confidence values
@@ -21,7 +21,7 @@
 
 ### 3. Moving Averages Utility
 
-**File**: `src/JabbrLabs/signals/sma/moving-averages.ts`
+**File**: `packages/backend/src/JabbrLabs/signals/sma/moving-averages.ts`
 
 - Add additional validation for input data
 - Improve error handling for edge cases

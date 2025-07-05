@@ -1,63 +1,66 @@
-import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import type { WebSocketResponse } from '@jabbr/shared/src';
+import { CONSTANTS } from '@jabbr/shared/src';
 import {
+  Check as AckIcon,
+  CheckCircle,
+  CheckCircle as ResolvedIcon,
+  Error as ErrorIcon,
+  ExpandMore as ExpandMoreIcon,
+  Info as InfoIcon,
+  Refresh as RefreshIcon,
+  Schedule as PendingIcon,
+  Warning as WarningIcon,
+} from '@mui/icons-material';
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Badge,
+  Box,
+  Button,
   Card,
   CardContent,
-  Box,
-  Typography,
   Chip,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  Divider,
   IconButton,
   List,
   ListItem,
-  ListItemText,
   ListItemSecondaryAction,
+  ListItemText,
   Paper,
-  Divider,
-  Grid,
-  Button,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-  Alert as MuiAlert,
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
-  Badge,
+  Stack,
   Tooltip,
-  Stack
+  Typography,
 } from '@mui/material';
-import {
-  Error as ErrorIcon,
-  Warning as WarningIcon,
-  Info as InfoIcon,
-  CheckCircle as ResolvedIcon,
-  CheckCircle,
-  ExpandMore as ExpandMoreIcon,
-  Refresh as RefreshIcon,
-  Check as AckIcon,
-  Close as CloseIcon,
-  Schedule as PendingIcon
-} from '@mui/icons-material';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
+
 import useWebSocket from '../hooks/useWebSocket';
-import { CONSTANTS } from '@jabbr/shared/src';
-import type { WebSocketResponse } from '@jabbr/shared/src';
+import { apiService } from '../services/api';
 
 interface Alert {
   id: string;
+  type: 'system' | 'application' | 'trading' | 'security' | 'custom';
+  category: string;
   level: 'info' | 'warning' | 'error' | 'critical';
   title: string;
   message: string;
   source: string;
-  category: string;
+  value?: number;
+  threshold?: number;
+  metadata?: Record<string, unknown>;
   timestamp: Date;
   acknowledged: boolean;
-  resolved: boolean;
-  escalated: boolean;
   acknowledgedBy?: string;
   acknowledgedAt?: Date;
-  resolvedBy?: string;
+  resolved: boolean;
   resolvedAt?: Date;
-  metadata?: Record<string, any>;
+  escalated: boolean;
+  escalatedAt?: Date;
+  notificationsSent?: string[];
 }
 
 interface AlertSystemProps {
@@ -83,7 +86,7 @@ export const AlertSystem: React.FC<AlertSystemProps> = ({
   const [alerts, setAlerts] = useState<Alert[]>([]);
   const [loading, setLoading] = useState(false);
   const [selectedAlert, setSelectedAlert] = useState<Alert | null>(null);
-  const [showAckDialog, setShowAckDialog] = useState(false);
+  // Note: showAckDialog removed as it was unused
 
   // WebSocket message handler
   function handleWebSocketMessage(message: WebSocketResponse) {
@@ -93,9 +96,8 @@ export const AlertSystem: React.FC<AlertSystemProps> = ({
         const existing = prev.find(a => a.id === alert.id);
         if (existing) {
           return prev.map(a => a.id === alert.id ? alert : a);
-        } else {
-          return [alert, ...prev];
         }
+        return [alert, ...prev];
       });
     }
   }
@@ -115,15 +117,9 @@ export const AlertSystem: React.FC<AlertSystemProps> = ({
   const fetchAlerts = useCallback(async () => {
     setLoading(true);
     try {
-      const response = await fetch('/api/alerts', {
-        headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
-        }
-      });
-      
-      if (response.ok) {
-        const data = await response.json();
-        setAlerts(data.alerts || []);
+      const response = await apiService.getAlerts();
+      if (response.success) {
+        setAlerts(response.data || []);
       }
     } catch (error) {
       console.error('Failed to fetch alerts:', error);
@@ -134,10 +130,10 @@ export const AlertSystem: React.FC<AlertSystemProps> = ({
 
   // Auto-refresh alerts
   useEffect(() => {
-    fetchAlerts();
+    void fetchAlerts();
     
     if (autoRefresh) {
-      const interval = setInterval(fetchAlerts, refreshInterval);
+      const interval = setInterval(() => void fetchAlerts(), refreshInterval);
       return () => clearInterval(interval);
     }
   }, [fetchAlerts, autoRefresh, refreshInterval]);
@@ -163,15 +159,8 @@ export const AlertSystem: React.FC<AlertSystemProps> = ({
   // Acknowledge alert
   const acknowledgeAlert = async (alertId: string) => {
     try {
-      const response = await fetch(`/api/alerts/${alertId}/acknowledge`, {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`,
-          'Content-Type': 'application/json'
-        }
-      });
-
-      if (response.ok) {
+      const response = await apiService.acknowledgeAlert(alertId);
+      if (response.success) {
         setAlerts(prev => prev.map(alert => 
           alert.id === alertId 
             ? { ...alert, acknowledged: true, acknowledgedAt: new Date() }
@@ -237,7 +226,7 @@ export const AlertSystem: React.FC<AlertSystemProps> = ({
           
           <Box display="flex" gap={1}>
             <Tooltip title="Refresh alerts">
-              <IconButton onClick={fetchAlerts} disabled={loading}>
+              <IconButton onClick={() => void fetchAlerts()} disabled={loading}>
                 <RefreshIcon />
               </IconButton>
             </Tooltip>
@@ -306,7 +295,9 @@ export const AlertSystem: React.FC<AlertSystemProps> = ({
         <List dense>
           {ALERT_LEVELS.map((level) => {
             const levelAlerts = alertsByLevel[level.value] || [];
-            if (levelAlerts.length === 0) return null;
+            if (levelAlerts.length === 0) {
+              return null;
+            }
 
             return (
               <Accordion key={level.value} defaultExpanded={level.value === 'critical' || level.value === 'error'}>
@@ -392,7 +383,7 @@ export const AlertSystem: React.FC<AlertSystemProps> = ({
                                   <IconButton 
                                     size="small" 
                                     color="primary"
-                                    onClick={() => acknowledgeAlert(alert.id)}
+                                    onClick={() => void acknowledgeAlert(alert.id)}
                                   >
                                     <AckIcon />
                                   </IconButton>
@@ -404,7 +395,9 @@ export const AlertSystem: React.FC<AlertSystemProps> = ({
                                   <IconButton 
                                     size="small" 
                                     color="success"
-                                    onClick={() => resolveAlert(alert.id)}
+                                    onClick={() => void resolveAlert(alert.id).catch((error) => {
+                                      console.error('Failed to resolve alert:', error);
+                                    })}
                                   >
                                     <ResolvedIcon />
                                   </IconButton>
@@ -523,13 +516,7 @@ export const AlertSystem: React.FC<AlertSystemProps> = ({
                     </Box>
                   )}
                   
-                  {selectedAlert.resolvedBy && (
-                    <Box>
-                      <Typography variant="body2">
-                        <strong>Resolved by:</strong> {selectedAlert.resolvedBy}
-                      </Typography>
-                    </Box>
-                  )}
+                  {/* Note: resolvedBy removed as it's not in the backend Alert interface */}
                 </Box>
                 
                 {selectedAlert.metadata && (
@@ -555,7 +542,7 @@ export const AlertSystem: React.FC<AlertSystemProps> = ({
               {!selectedAlert.acknowledged && (
                 <Button 
                   onClick={() => {
-                    acknowledgeAlert(selectedAlert.id);
+                    void acknowledgeAlert(selectedAlert.id);
                     setSelectedAlert(null);
                   }}
                   color="primary"
@@ -568,8 +555,11 @@ export const AlertSystem: React.FC<AlertSystemProps> = ({
               {!selectedAlert.resolved && (
                 <Button 
                   onClick={() => {
-                    resolveAlert(selectedAlert.id);
-                    setSelectedAlert(null);
+                    void resolveAlert(selectedAlert.id).then(() => {
+                      setSelectedAlert(null);
+                    }).catch((error) => {
+                      console.error('Failed to resolve alert:', error);
+                    });
                   }}
                   color="success"
                   startIcon={<ResolvedIcon />}

@@ -102,7 +102,7 @@ NEXT_PUBLIC_WS_URL=ws://localhost:3001
 
 # Application Settings
 NEXT_PUBLIC_APP_NAME=JBR Trading Platform
-NEXT_PUBLIC_VERSION=1.0.0
+NEXT_PUBLIC_VERSION=v1.0.0
 ```
 
 ## 📱 Application Pages

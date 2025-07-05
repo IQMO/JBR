@@ -2,15 +2,13 @@
 
 import React, { useState, useEffect, useMemo } from 'react';
 
-import type { ApiError } from '../services/api';
-
 import { useWebSocketContext } from '../contexts/WebSocketContext';
 import { apiService } from '../services/api';
-import { componentClasses, getPnLColor } from '../utils/theme';
 import ErrorHandler from '../utils/errorHandler';
+import { componentClasses, getPnLColor } from '../utils/theme';
 
 import { ErrorBoundaryWrapper } from './ErrorBoundary';
-import { LoadingState, LoadingTable } from './Loading';
+import { LoadingTable } from './Loading';
 
 // Types for trading activity data
 interface Trade {
@@ -74,7 +72,7 @@ interface SortOptions {
 export const TradingActivityMonitor: React.FC = () => {
   // State management
   const [trades, setTrades] = useState<Trade[]>([]);
-  const [orderUpdates, setOrderUpdates] = useState<OrderUpdate[]>([]);
+  // Note: orderUpdates removed as it was unused
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [filters, setFilters] = useState<FilterOptions>({
@@ -93,9 +91,8 @@ export const TradingActivityMonitor: React.FC = () => {
   const { 
     isConnected, 
     subscribe, 
-    unsubscribe,
-    marketData,
-    botStatuses 
+    unsubscribe
+    // Note: marketData and botStatuses removed as they were unused
   } = useWebSocketContext();
 
   // Load initial trading data
@@ -125,7 +122,7 @@ export const TradingActivityMonitor: React.FC = () => {
       }
     };
 
-    loadTradingData();
+    void loadTradingData();
   }, [filters.timeframe, filters.symbol, filters.status]);
 
   // Subscribe to real-time updates

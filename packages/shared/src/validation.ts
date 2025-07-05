@@ -94,6 +94,91 @@ export const RiskManagementSchema = z.object({
   riskScore: z.number().min(1).max(10)
 });
 
+// Enhanced per-bot risk management validation schema
+export const PerBotRiskManagementSchema = z.object({
+  // Position sizing
+  maxPositionSize: z.number().positive(),
+  maxPositionSizePercent: z.number().positive().max(100),
+  positionSizingMethod: z.enum(['fixed', 'percentage', 'kelly', 'volatility-adjusted']),
+
+  // Stop loss and take profit
+  stopLossType: z.enum(['percentage', 'fixed', 'atr', 'dynamic']),
+  stopLossValue: z.number().positive(),
+  takeProfitType: z.enum(['percentage', 'fixed', 'risk-reward-ratio', 'dynamic']),
+  takeProfitValue: z.number().positive(),
+
+  // Risk limits
+  maxDailyLoss: z.number().positive(),
+  maxDailyLossPercent: z.number().positive().max(100),
+  maxDrawdown: z.number().positive().max(100),
+  maxConcurrentTrades: z.number().positive().max(50),
+
+  // Leverage and exposure
+  maxLeverage: z.number().positive().max(1000),
+  maxExposure: z.number().positive(),
+  maxExposurePercent: z.number().positive().max(100),
+
+  // Risk scoring and controls
+  riskScore: z.number().min(1).max(10),
+  emergencyStop: z.boolean(),
+  enableRiskManagement: z.boolean(),
+
+  // Advanced settings
+  correlationLimit: z.number().min(0).max(1),
+  volatilityAdjustment: z.boolean(),
+  timeBasedLimits: z.object({
+    enabled: z.boolean(),
+    maxTradesPerHour: z.number().nonnegative().max(1000),
+    maxTradesPerDay: z.number().nonnegative().max(10000),
+    cooldownPeriodMinutes: z.number().nonnegative().max(1440) // Max 24 hours
+  }),
+
+  // Risk monitoring
+  riskMonitoring: z.object({
+    enabled: z.boolean(),
+    alertThresholds: z.object({
+      dailyLossPercent: z.number().positive().max(100),
+      drawdownPercent: z.number().positive().max(100),
+      exposurePercent: z.number().positive().max(100)
+    }),
+    autoReduceExposure: z.boolean(),
+    autoStopTrading: z.boolean()
+  }),
+
+  // Metadata
+  templateName: z.string().optional(),
+  lastUpdated: z.string().datetime(),
+  updatedBy: z.string().uuid()
+});
+
+export const RiskManagementTemplateSchema = z.object({
+  id: z.string().uuid(),
+  name: z.string().min(1).max(100),
+  description: z.string().max(500),
+  category: z.enum(['conservative', 'moderate', 'aggressive', 'custom']),
+  isDefault: z.boolean(),
+  configuration: PerBotRiskManagementSchema,
+  createdAt: z.string().datetime(),
+  updatedAt: z.string().datetime()
+});
+
+export const UpdateBotRiskManagementRequestSchema = z.object({
+  riskManagement: PerBotRiskManagementSchema
+});
+
+export const CreateRiskManagementTemplateRequestSchema = z.object({
+  name: z.string().min(1).max(100),
+  description: z.string().max(500),
+  category: z.enum(['conservative', 'moderate', 'aggressive', 'custom']),
+  configuration: PerBotRiskManagementSchema
+});
+
+export const ValidateRiskManagementRequestSchema = z.object({
+  riskManagement: PerBotRiskManagementSchema,
+  botId: z.string().uuid().optional(),
+  accountBalance: z.number().positive().optional()
+});
+
 export const BotPerformanceSchema = z.object({
   totalTrades: z.number().nonnegative(),
   winningTrades: z.number().nonnegative(),
