@@ -71,7 +71,9 @@ export class BotManager extends EventEmitter {
     this.setupEventListeners();
 
     this.setupMonitoring();
-    this.initializeDynamicStrategyLoader();
+    this.initializeDynamicStrategyLoader().catch(error => {
+      console.error('Failed to initialize dynamic strategy loader:', error);
+    });
 
     console.log('🤖 BotManager initialized', {
       maxConcurrentBots: this.config.maxConcurrentBots,
@@ -122,7 +124,9 @@ export class BotManager extends EventEmitter {
 
       dynamicStrategyLoader.on('strategy-underperforming', (data) => {
         // logger.warn('📡 Strategy underperforming event', LogCategory.STRATEGY, data);
-        this.handleUnderperformingStrategy(data.botId, data.performance);
+        this.handleUnderperformingStrategy(data.botId, data.performance).catch(error => {
+          console.error('Error handling underperforming strategy:', error);
+        });
       });
 
       // logger.info('✅ Dynamic Strategy Loader integrated with Bot Manager');

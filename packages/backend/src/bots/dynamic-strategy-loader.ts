@@ -497,6 +497,14 @@ export class DynamicStrategyLoader extends EventEmitter {
    */
   private async loadStrategyRegistry(): Promise<void> {
     try {
+      // Check if database connection is available before attempting query
+      if (!database.isConnectionActive()) {
+        console.warn('⚠️ Database not connected during strategy registry load, will retry later');
+        // Schedule retry after database is connected
+        setTimeout(() => this.loadStrategyRegistry().catch(() => {}), 5000);
+        return;
+      }
+
       const result = await database.query(`
         SELECT bot_id, strategy_data 
         FROM bot_strategy_versions 

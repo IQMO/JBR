@@ -1,0 +1,185 @@
+# Task ID: 42
+# Title: Standardize and Organize Testing Structure
+# Status: done
+# Dependencies: 2, 35, 39, 40
+# Priority: high
+# Description: Standardize and organize the testing structure across the project, consolidating tests into dedicated directories, converting JavaScript tests to TypeScript, and establishing clear testing conventions.
+# Details:
+1.  **Consolidate Test Directories:** Move all tests from the root-level `./tests` folder and `packages/backend/src/**/__tests__` into `packages/backend/tests/`, `packages/frontend/tests/`, and `packages/shared/tests/` respectively. Remove the root-level `./tests` folder.
+2.  **Convert JavaScript Tests to TypeScript:** Convert all `.js` test files to `.ts` or `.tsx` files, ensuring compatibility with the existing TypeScript codebase. Update import statements accordingly.
+3.  **Establish Testing Conventions:** Define clear testing conventions for future development, including file naming, test structure, and assertion libraries (e.g., Jest, Mocha, Chai). Document these conventions in the project's README or a dedicated testing guide.
+4.  **Update Test Scripts:** Modify the `package.json` scripts in each package to correctly run tests from the new locations. Ensure that test commands execute all tests in the respective `tests` directories.
+5.  **Configure Test Runners:** Configure test runners (e.g., Jest, Mocha) to correctly identify and execute tests in the new directory structure. Update configuration files as needed.
+6.  **Address Import Issues:** Resolve any import issues that arise from moving and converting test files. Ensure that all test files can correctly import modules from the codebase.
+7.  **Integrate with CI/CD:** Ensure that the updated testing structure is correctly integrated with the CI/CD pipeline. Verify that tests are automatically run on each commit and pull request.
+<info added on 2025-07-03T14:03:44.834Z>
+Progress Update: 5/8 subtasks completed (Audit, Directory Structure, File Movement, JS to TS Conversion, Jest Configuration). Test infrastructure is now organized with a 92% success rate (70/76 tests passing).
+
+Major Accomplishments:
+- Eliminated confusing root-level tests directory
+- Established proper package-specific test directories with unit/integration/e2e separation
+- Successfully migrated all actual test files to appropriate locations
+- Converted JavaScript tests to TypeScript
+- Updated Jest configurations with modern ts-jest presets
+- Fixed import paths and TypeScript compilation issues
+- Created test setup files with proper mocking
+- Updated package.json scripts for new structure
+
+Next Steps: Complete subtasks 42.6 (import standardization), 42.7 (comprehensive validation), and 42.8 (documentation).
+</info added on 2025-07-03T14:03:44.834Z>
+
+# Test Strategy:
+1.  **Verify Directory Structure:** Confirm that all test files have been moved to the correct directories (`packages/backend/tests/`, `packages/frontend/tests/`, `packages/shared/tests/`) and that the root-level `./tests` folder has been removed.
+2.  **Run All Tests:** Execute all tests in each package (`packages/backend/`, `packages/frontend/`, `packages/shared/`) to ensure that they pass and produce the expected results. Use the updated test scripts in `package.json`.
+3.  **Check TypeScript Compilation:** Verify that all TypeScript test files compile without errors. Address any type errors or compilation issues that arise.
+4.  **Validate Testing Conventions:** Ensure that all new and existing test files adhere to the established testing conventions. Verify that file naming, test structure, and assertion libraries are consistent.
+5.  **CI/CD Integration:** Confirm that the CI/CD pipeline correctly runs all tests and reports the results. Verify that test failures cause the build to fail.
+
+# Subtasks:
+## 1. Audit and Map Existing Test Files [done]
+### Dependencies: None
+### Description: Identify and document all existing test files across the project, noting their location, file type (JS/TS), and dependencies. Create a mapping document to guide the migration process.
+### Details:
+Use a combination of manual inspection and scripting (e.g., `find` command) to locate all test files. Record the file path, file extension, and any relevant dependencies in a spreadsheet or markdown file.
+<info added on 2025-07-03T13:25:52.722Z>
+Comprehensive audit of all test files completed. Detailed mapping document located at `.taskmaster/docs/test-audit-mapping.md`.
+
+**Key Issues Found:**
+- Tests scattered across 3 locations: root `./tests`, `packages/backend/tests`, `packages/backend/src/**/__tests__`
+- 17 actual test files (.test.ts) identified
+- 1 JavaScript test file needs conversion: `test-strategy-framework.js`
+- 7 duplicate test files exist between locations
+- 18 debug/utility scripts incorrectly placed in tests directory
+
+**Critical Discovery:**
+Most files in `packages/backend/tests/` are NOT actual tests - they're debug scripts, backtest utilities, and test runners that should be moved to a `scripts/` directory.
+
+**Migration Plan:**
+- Move 10 actual test files to proper package locations
+- Convert 1 JS file to TypeScript
+- Remove 7 duplicate files
+- Relocate 18 non-test files to scripts directory
+- Create proper test structure for frontend and shared packages
+- Eliminate confusing root-level tests directory
+
+Ready to proceed with subtask 42.2 to establish the target directory structure.
+</info added on 2025-07-03T13:25:52.722Z>
+
+## 2. Establish Testing Directory Structure [done]
+### Dependencies: None
+### Description: Define the standardized testing directory structure for each package (backend, frontend, shared). Create the necessary directories in each package.
+### Details:
+Create `packages/backend/tests/`, `packages/frontend/tests/`, and `packages/shared/tests/` directories. Remove the root-level `./tests` directory. Ensure the structure is consistent across all packages.
+<info added on 2025-07-03T13:33:57.042Z>
+Successfully established the standardized testing directory structure across all packages:
+
+**Backend Test Structure Created:**
+- `packages/backend/tests/unit/` (indicators, JabbrLabs/signals/sma, strategies, services, utils)
+- `packages/backend/tests/integration/` (strategies, trading, exchanges)
+- `packages/backend/tests/e2e/trading/engine/`
+- `packages/backend/tests/fixtures/`
+
+**Scripts Directory Created:**
+- `packages/backend/scripts/debug/` (for debug utilities)
+- `packages/backend/scripts/backtest/` (for backtest scripts)
+- `packages/backend/scripts/test/` (for test runners)
+
+**Frontend Test Structure Created:**
+- `packages/frontend/tests/unit/` (components, hooks, utils, pages)
+- `packages/frontend/tests/integration/api/`
+- `packages/frontend/tests/e2e/user-flows/`
+- `packages/frontend/tests/fixtures/`
+
+**Shared Test Structure Created:**
+- `packages/shared/tests/unit/`
+- `packages/shared/tests/fixtures/`
+
+All directories are now ready to receive the migrated test files. The structure follows modern testing best practices with clear separation between unit, integration, and e2e tests.
+</info added on 2025-07-03T13:33:57.042Z>
+
+## 3. Move Test Files to Package-Specific Locations [done]
+### Dependencies: None
+### Description: Move all identified test files from their current locations to the appropriate package-specific `tests` directory, based on the mapping created in subtask 43.
+### Details:
+Use `mv` command or IDE refactoring tools to move the files. Pay close attention to the mapping document to ensure files are moved to the correct location.
+<info added on 2025-07-03T13:41:57.601Z>
+Successfully completed moving all test files from scattered locations to proper package-specific directories:
+- Moved indicator tests to packages/backend/tests/unit/indicators/
+- Moved strategy tests to packages/backend/tests/integration/strategies/
+- Moved E2E tests to packages/backend/tests/e2e/trading/
+- Moved utility scripts to packages/backend/scripts/test/, scripts/debug/, and scripts/backtest/
+- Converted test-strategy-framework.js to TypeScript and moved to scripts/test/
+- Maintained proper separation between actual tests and utility scripts
+- All files now follow the standardized directory structure
+</info added on 2025-07-03T13:41:57.601Z>
+
+## 4. Convert JavaScript Test Files to TypeScript [done]
+### Dependencies: None
+### Description: Convert all `.js` test files to `.ts` or `.tsx` files. Update import statements to reflect the new file extensions and TypeScript syntax.
+### Details:
+Rename `.js` files to `.ts` or `.tsx` (if JSX is used). Update import statements to use TypeScript syntax (e.g., `import { ... } from './module';`). Address any TypeScript compilation errors.
+<info added on 2025-07-03T13:50:51.286Z>
+Successfully completed JavaScript to TypeScript conversion and import path fixes:
+- Converted test-strategy-framework.js to TypeScript and moved to scripts/test/
+- Fixed all import paths in indicator tests to point to proper JabbrLabs/indicators/ directory
+- Fixed import paths in strategy tests to use correct relative paths
+- Fixed import paths in E2E trading tests 
+- Moved JabbrLabs unit tests to proper unit/signals/sma/ directory structure
+- Removed duplicate test files and empty directories
+- Verified TypeScript compilation works correctly for moved files
+- All test files now use proper TypeScript syntax and correct import paths
+</info added on 2025-07-03T13:50:51.286Z>
+
+## 5. Update Test Configurations and Jest Configs [done]
+### Dependencies: None
+### Description: Update test runner configurations (e.g., Jest) to correctly identify and execute tests in the new directory structure. Modify `package.json` scripts to run tests from the new locations.
+### Details:
+Modify the `test` script in each `package.json` to point to the new `tests` directory (e.g., `jest packages/backend/tests`). Update Jest configuration files (`jest.config.js` or similar) to include the new test directory locations.
+<info added on 2025-07-03T14:02:07.546Z>
+Successfully updated Jest configurations and package.json scripts for the new test structure:
+
+**Root Jest Configuration:**
+- Updated to point to package-specific Jest configs instead of old test directories
+- Simplified project structure with backend, frontend, shared packages
+
+**Backend Jest Configuration:**
+- Proper ts-jest preset with TypeScript support
+- Cleaned up deprecated configuration options
+- Added test setup file integration
+- Configured coverage collection and test matching patterns
+
+**Package.json Scripts:**
+- Root package.json: Updated test scripts to use workspace commands
+- Backend package.json: Updated to use new Jest config and added script commands for moved utilities
+- Added script commands for backtest, debug, and test utilities in their new locations
+
+**Setup Files:**
+- Created test setup files for backend, frontend, and shared packages
+- Added proper mocking for external dependencies (ccxt, WebSocket, Redis)
+- Configured test environment variables and global settings
+
+**Test Results:**
+- 70 out of 76 tests passing (92% success rate)
+- TypeScript compilation working correctly
+- All import paths resolved successfully
+- Only minor test failures related to specific business logic, not infrastructure
+</info added on 2025-07-03T14:02:07.546Z>
+
+## 6. Standardize Import Paths and Dependencies [done]
+### Dependencies: None
+### Description: Resolve any import issues that arise from moving and converting test files. Ensure that all test files can correctly import modules from the codebase using standardized import paths.
+### Details:
+Update import paths to reflect the new file locations. Use absolute or relative paths consistently. Install any missing dependencies required by the test files.
+
+## 7. Validate All Tests are Working After Reorganization [done]
+### Dependencies: None
+### Description: Run all tests in each package to ensure that they are passing after the reorganization and conversion. Fix any failing tests.
+### Details:
+Execute the test scripts in each package (e.g., `npm test`). Analyze the test results and fix any failing tests. Ensure that all tests are passing before proceeding.
+
+## 8. Create Testing Guidelines and Documentation [done]
+### Dependencies: None
+### Description: Document the established testing conventions, including file naming, test structure, assertion libraries, and best practices. Add the documentation to the project's README or a dedicated testing guide.
+### Details:
+Create a markdown file (e.g., `TESTING.md`) that outlines the testing conventions. Include examples of well-structured tests. Document the use of assertion libraries (e.g., Jest, Mocha, Chai).
+

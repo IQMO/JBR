@@ -1,0 +1,3597 @@
+{
+  "timestamp": "2025-07-05T17:30:11.142Z",
+  "project": "JBR Trading Platform",
+  "task": "Task 53.5 - Naming Convention Validation",
+  "summary": {
+    "filesScanned": 232,
+    "elementsChecked": 9008,
+    "violations": 199,
+    "errors": 199,
+    "warnings": 0
+  },
+  "violations": [
+    {
+      "rule": {
+        "id": "PascalCase-types",
+        "name": "Type PascalCase",
+        "pattern": {},
+        "description": "Type aliases should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "type",
+        "name": "to",
+        "file": "packages\\backend\\src\\auth\\auth.middleware.ts",
+        "line": 6,
+        "context": "// Extend Express Request type to include user information"
+      },
+      "message": "Type aliases should use PascalCase naming: \"to\" violates Type PascalCase",
+      "suggestion": "To"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "AuthConfigSchema",
+        "file": "packages\\backend\\src\\auth\\auth.service.ts",
+        "line": 14,
+        "context": "const AuthConfigSchema = z.object({"
+      },
+      "message": "Variables should use camelCase naming: \"AuthConfigSchema\" violates Variable camelCase",
+      "suggestion": "authConfigSchema"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-interfaces",
+        "name": "Interface PascalCase",
+        "pattern": {},
+        "description": "Interfaces should use PascalCase naming (optionally prefixed with I)",
+        "severity": "error"
+      },
+      "element": {
+        "type": "interface",
+        "name": "with",
+        "file": "packages\\backend\\src\\bots\\bots.controller.ts",
+        "line": 8,
+        "context": "* Extended Request interface with user information from auth middleware"
+      },
+      "message": "Interfaces should use PascalCase naming (optionally prefixed with I): \"with\" violates Interface PascalCase",
+      "suggestion": "With"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-types",
+        "name": "Type PascalCase",
+        "pattern": {},
+        "description": "Type aliases should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "type",
+        "name": "and",
+        "file": "packages\\backend\\src\\bots\\bots.controller.ts",
+        "line": 722,
+        "context": "error: 'Strategy type and config are required',"
+      },
+      "message": "Type aliases should use PascalCase naming: \"and\" violates Type PascalCase",
+      "suggestion": "And"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-types",
+        "name": "Type PascalCase",
+        "pattern": {},
+        "description": "Type aliases should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "type",
+        "name": "for",
+        "file": "packages\\backend\\src\\bots\\bots.service.ts",
+        "line": 701,
+        "context": "description: 'Price type for average calculation'"
+      },
+      "message": "Type aliases should use PascalCase naming: \"for\" violates Type PascalCase",
+      "suggestion": "For"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "EnhancedStateManagementDocumentation",
+        "file": "packages\\backend\\src\\bots\\enhanced-bot-integration.ts",
+        "line": 227,
+        "context": "export const EnhancedStateManagementDocumentation = {"
+      },
+      "message": "Variables should use camelCase naming: \"EnhancedStateManagementDocumentation\" violates Variable camelCase",
+      "suggestion": "enhancedStateManagementDocumentation"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-types",
+        "name": "Type PascalCase",
+        "pattern": {},
+        "description": "Type aliases should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "type",
+        "name": "from",
+        "file": "packages\\backend\\src\\bots\\trade-executor.ts",
+        "line": 245,
+        "context": "// Determine market type from bot configuration"
+      },
+      "message": "Type aliases should use PascalCase naming: \"from\" violates Type PascalCase",
+      "suggestion": "From"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-types",
+        "name": "Type PascalCase",
+        "pattern": {},
+        "description": "Type aliases should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "type",
+        "name": "from",
+        "file": "packages\\backend\\src\\bots\\trade-executor.ts",
+        "line": 299,
+        "context": "// Determine market type from bot configuration"
+      },
+      "message": "Type aliases should use PascalCase naming: \"from\" violates Type PascalCase",
+      "suggestion": "From"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "ConfigSchema",
+        "file": "packages\\backend\\src\\config\\config-manager.ts",
+        "line": 16,
+        "context": "const ConfigSchema = z.object({"
+      },
+      "message": "Variables should use camelCase naming: \"ConfigSchema\" violates Variable camelCase",
+      "suggestion": "configSchema"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "EnvironmentOptimizations",
+        "file": "packages\\backend\\src\\config\\config-manager.ts",
+        "line": 137,
+        "context": "const EnvironmentOptimizations = {"
+      },
+      "message": "Variables should use camelCase naming: \"EnvironmentOptimizations\" violates Variable camelCase",
+      "suggestion": "environmentOptimizations"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "DatabaseConfigSchema",
+        "file": "packages\\backend\\src\\database\\database.config.ts",
+        "line": 9,
+        "context": "const DatabaseConfigSchema = z.object({"
+      },
+      "message": "Variables should use camelCase naming: \"DatabaseConfigSchema\" violates Variable camelCase",
+      "suggestion": "databaseConfigSchema"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-interfaces",
+        "name": "Interface PascalCase",
+        "pattern": {},
+        "description": "Interfaces should use PascalCase naming (optionally prefixed with I)",
+        "severity": "error"
+      },
+      "element": {
+        "type": "interface",
+        "name": "that",
+        "file": "packages\\backend\\src\\exchanges\\base-exchange.ts",
+        "line": 116,
+        "context": "* Defines the interface that all exchange implementations must follow"
+      },
+      "message": "Interfaces should use PascalCase naming (optionally prefixed with I): \"that\" violates Interface PascalCase",
+      "suggestion": "That"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-types",
+        "name": "Type PascalCase",
+        "pattern": {},
+        "description": "Type aliases should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "type",
+        "name": "is",
+        "file": "packages\\backend\\src\\exchanges\\base-exchange.ts",
+        "line": 338,
+        "context": "throw new Error('Order type is required');"
+      },
+      "message": "Type aliases should use PascalCase naming: \"is\" violates Type PascalCase",
+      "suggestion": "Is"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-types",
+        "name": "Type PascalCase",
+        "pattern": {},
+        "description": "Type aliases should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "type",
+        "name": "is",
+        "file": "packages\\backend\\src\\exchanges\\base-exchange.ts",
+        "line": 351,
+        "context": "// Check if market type is supported"
+      },
+      "message": "Type aliases should use PascalCase naming: \"is\" violates Type PascalCase",
+      "suggestion": "Is"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-types",
+        "name": "Type PascalCase",
+        "pattern": {},
+        "description": "Type aliases should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "type",
+        "name": "is",
+        "file": "packages\\backend\\src\\exchanges\\base-exchange.ts",
+        "line": 371,
+        "context": "// Check if order type is supported"
+      },
+      "message": "Type aliases should use PascalCase naming: \"is\" violates Type PascalCase",
+      "suggestion": "Is"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-types",
+        "name": "Type PascalCase",
+        "pattern": {},
+        "description": "Type aliases should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "type",
+        "name": "$",
+        "file": "packages\\backend\\src\\exchanges\\base-exchange.ts",
+        "line": 373,
+        "context": "throw new Error(`Order type ${orderRequest.type} not supported`);"
+      },
+      "message": "Type aliases should use PascalCase naming: \"$\" violates Type PascalCase",
+      "suggestion": "$"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-types",
+        "name": "Type PascalCase",
+        "pattern": {},
+        "description": "Type aliases should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "type",
+        "name": "for",
+        "file": "packages\\backend\\src\\exchanges\\bybit-exchange.ts",
+        "line": 309,
+        "context": "// Set the market type for this request"
+      },
+      "message": "Type aliases should use PascalCase naming: \"for\" violates Type PascalCase",
+      "suggestion": "For"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-types",
+        "name": "Type PascalCase",
+        "pattern": {},
+        "description": "Type aliases should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "type",
+        "name": "for",
+        "file": "packages\\backend\\src\\exchanges\\bybit-exchange.ts",
+        "line": 498,
+        "context": "// Set the market type for this request"
+      },
+      "message": "Type aliases should use PascalCase naming: \"for\" violates Type PascalCase",
+      "suggestion": "For"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-types",
+        "name": "Type PascalCase",
+        "pattern": {},
+        "description": "Type aliases should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "type",
+        "name": "as",
+        "file": "packages\\backend\\src\\exchanges\\bybit-exchange.ts",
+        "line": 695,
+        "context": "type: order.type as TradeType,"
+      },
+      "message": "Type aliases should use PascalCase naming: \"as\" violates Type PascalCase",
+      "suggestion": "As"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-types",
+        "name": "Type PascalCase",
+        "pattern": {},
+        "description": "Type aliases should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "type",
+        "name": "as",
+        "file": "packages\\backend\\src\\exchanges\\bybit-exchange.ts",
+        "line": 730,
+        "context": "type: order.type as TradeType,"
+      },
+      "message": "Type aliases should use PascalCase naming: \"as\" violates Type PascalCase",
+      "suggestion": "As"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-types",
+        "name": "Type PascalCase",
+        "pattern": {},
+        "description": "Type aliases should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "type",
+        "name": "as",
+        "file": "packages\\backend\\src\\exchanges\\bybit-exchange.ts",
+        "line": 759,
+        "context": "type: order.type as TradeType,"
+      },
+      "message": "Type aliases should use PascalCase naming: \"as\" violates Type PascalCase",
+      "suggestion": "As"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-types",
+        "name": "Type PascalCase",
+        "pattern": {},
+        "description": "Type aliases should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "type",
+        "name": "is",
+        "file": "packages\\backend\\src\\exchanges\\bybit-exchange.ts",
+        "line": 1158,
+        "context": "limitPrice?: number; // Required if type is stop_limit"
+      },
+      "message": "Type aliases should use PascalCase naming: \"is\" violates Type PascalCase",
+      "suggestion": "Is"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-types",
+        "name": "Type PascalCase",
+        "pattern": {},
+        "description": "Type aliases should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "type",
+        "name": "is",
+        "file": "packages\\backend\\src\\exchanges\\bybit-exchange.ts",
+        "line": 1352,
+        "context": "limitPrice?: number; // Required if type is stop_limit"
+      },
+      "message": "Type aliases should use PascalCase naming: \"is\" violates Type PascalCase",
+      "suggestion": "Is"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-types",
+        "name": "Type PascalCase",
+        "pattern": {},
+        "description": "Type aliases should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "type",
+        "name": "const",
+        "file": "packages\\backend\\src\\exchanges\\exchange-manager.ts",
+        "line": 203,
+        "context": "// Find exchanges that support this symbol and market type"
+      },
+      "message": "Type aliases should use PascalCase naming: \"const\" violates Type PascalCase",
+      "suggestion": "Const"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-types",
+        "name": "Type PascalCase",
+        "pattern": {},
+        "description": "Type aliases should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "type",
+        "name": "if",
+        "file": "packages\\backend\\src\\exchanges\\exchange-manager.ts",
+        "line": 209,
+        "context": "// Check if exchange supports the market type"
+      },
+      "message": "Type aliases should use PascalCase naming: \"if\" violates Type PascalCase",
+      "suggestion": "If"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-interfaces",
+        "name": "Interface PascalCase",
+        "pattern": {},
+        "description": "Interfaces should use PascalCase naming (optionally prefixed with I)",
+        "severity": "error"
+      },
+      "element": {
+        "type": "interface",
+        "name": "export",
+        "file": "packages\\backend\\src\\JabbrLabs\\bot-cycle\\unified-trading-engine.ts",
+        "line": 11,
+        "context": "// JabbrLabs enhancements interface"
+      },
+      "message": "Interfaces should use PascalCase naming (optionally prefixed with I): \"export\" violates Interface PascalCase",
+      "suggestion": "Export"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "ATR_METADATA",
+        "file": "packages\\backend\\src\\JabbrLabs\\indicators\\atr.ts",
+        "line": 13,
+        "context": "const ATR_METADATA: IndicatorMetadata = {"
+      },
+      "message": "Variables should use camelCase naming: \"ATR_METADATA\" violates Variable camelCase",
+      "suggestion": "aTRMETADATA"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-classes",
+        "name": "Class PascalCase",
+        "pattern": {},
+        "description": "Classes should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "class",
+        "name": "instead",
+        "file": "packages\\backend\\src\\JabbrLabs\\indicators\\atr.ts",
+        "line": 197,
+        "context": "* @deprecated Use ATRIndicator class instead."
+      },
+      "message": "Classes should use PascalCase naming: \"instead\" violates Class PascalCase",
+      "suggestion": "Instead"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-classes",
+        "name": "Class PascalCase",
+        "pattern": {},
+        "description": "Classes should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "class",
+        "name": "instead",
+        "file": "packages\\backend\\src\\JabbrLabs\\indicators\\atr.ts",
+        "line": 202,
+        "context": "* @deprecated Use ATRIndicator class instead."
+      },
+      "message": "Classes should use PascalCase naming: \"instead\" violates Class PascalCase",
+      "suggestion": "Instead"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "EMA_METADATA",
+        "file": "packages\\backend\\src\\JabbrLabs\\indicators\\ema-indicator.ts",
+        "line": 17,
+        "context": "const EMA_METADATA: IndicatorMetadata = {"
+      },
+      "message": "Variables should use camelCase naming: \"EMA_METADATA\" violates Variable camelCase",
+      "suggestion": "eMAMETADATA"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "IndicatorRegistry",
+        "file": "packages\\backend\\src\\JabbrLabs\\indicators\\index.ts",
+        "line": 53,
+        "context": "export const IndicatorRegistry: Record<string, IndicatorConstructor> = {"
+      },
+      "message": "Variables should use camelCase naming: \"IndicatorRegistry\" violates Variable camelCase",
+      "suggestion": "indicatorRegistry"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "IndicatorClass",
+        "file": "packages\\backend\\src\\JabbrLabs\\indicators\\index.ts",
+        "line": 83,
+        "context": "const IndicatorClass = IndicatorRegistry[name.toLowerCase()];"
+      },
+      "message": "Variables should use camelCase naming: \"IndicatorClass\" violates Variable camelCase",
+      "suggestion": "indicatorClass"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "IndicatorSets",
+        "file": "packages\\backend\\src\\JabbrLabs\\indicators\\index.ts",
+        "line": 216,
+        "context": "export const IndicatorSets = {"
+      },
+      "message": "Variables should use camelCase naming: \"IndicatorSets\" violates Variable camelCase",
+      "suggestion": "indicatorSets"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-classes",
+        "name": "Class PascalCase",
+        "pattern": {},
+        "description": "Classes should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "class",
+        "name": "for",
+        "file": "packages\\backend\\src\\JabbrLabs\\indicators\\indicator-interface.ts",
+        "line": 119,
+        "context": "* Base abstract class for indicators"
+      },
+      "message": "Classes should use PascalCase naming: \"for\" violates Class PascalCase",
+      "suggestion": "For"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-interfaces",
+        "name": "Interface PascalCase",
+        "pattern": {},
+        "description": "Interfaces should use PascalCase naming (optionally prefixed with I)",
+        "severity": "error"
+      },
+      "element": {
+        "type": "interface",
+        "name": "for",
+        "file": "packages\\backend\\src\\JabbrLabs\\indicators\\indicator-interface.ts",
+        "line": 4,
+        "context": "* Provides a standard interface for technical indicators to ensure"
+      },
+      "message": "Interfaces should use PascalCase naming (optionally prefixed with I): \"for\" violates Interface PascalCase",
+      "suggestion": "For"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-interfaces",
+        "name": "Interface PascalCase",
+        "pattern": {},
+        "description": "Interfaces should use PascalCase naming (optionally prefixed with I)",
+        "severity": "error"
+      },
+      "element": {
+        "type": "interface",
+        "name": "for",
+        "file": "packages\\backend\\src\\JabbrLabs\\indicators\\indicator-interface.ts",
+        "line": 49,
+        "context": "* Base interface for all indicators"
+      },
+      "message": "Interfaces should use PascalCase naming (optionally prefixed with I): \"for\" violates Interface PascalCase",
+      "suggestion": "For"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "RSI_METADATA",
+        "file": "packages\\backend\\src\\JabbrLabs\\indicators\\rsi.ts",
+        "line": 13,
+        "context": "const RSI_METADATA: IndicatorMetadata = {"
+      },
+      "message": "Variables should use camelCase naming: \"RSI_METADATA\" violates Variable camelCase",
+      "suggestion": "rSIMETADATA"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-classes",
+        "name": "Class PascalCase",
+        "pattern": {},
+        "description": "Classes should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "class",
+        "name": "instead",
+        "file": "packages\\backend\\src\\JabbrLabs\\indicators\\rsi.ts",
+        "line": 148,
+        "context": "* @deprecated Use RSIIndicator class instead."
+      },
+      "message": "Classes should use PascalCase naming: \"instead\" violates Class PascalCase",
+      "suggestion": "Instead"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "SMA_METADATA",
+        "file": "packages\\backend\\src\\JabbrLabs\\indicators\\sma-indicator.ts",
+        "line": 17,
+        "context": "const SMA_METADATA: IndicatorMetadata = {"
+      },
+      "message": "Variables should use camelCase naming: \"SMA_METADATA\" violates Variable camelCase",
+      "suggestion": "sMAMETADATA"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-interfaces",
+        "name": "Interface PascalCase",
+        "pattern": {},
+        "description": "Interfaces should use PascalCase naming (optionally prefixed with I)",
+        "severity": "error"
+      },
+      "element": {
+        "type": "interface",
+        "name": "for",
+        "file": "packages\\backend\\src\\JabbrLabs\\signal-processing\\signal-processing-manager.ts",
+        "line": 22,
+        "context": "* Generic signal source interface for event emission"
+      },
+      "message": "Interfaces should use PascalCase naming (optionally prefixed with I): \"for\" violates Interface PascalCase",
+      "suggestion": "For"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-interfaces",
+        "name": "Interface PascalCase",
+        "pattern": {},
+        "description": "Interfaces should use PascalCase naming (optionally prefixed with I)",
+        "severity": "error"
+      },
+      "element": {
+        "type": "interface",
+        "name": "for",
+        "file": "packages\\backend\\src\\JabbrLabs\\signal-processing\\signal-processing-manager.ts",
+        "line": 25,
+        "context": "// Common interface for signal sources"
+      },
+      "message": "Interfaces should use PascalCase naming (optionally prefixed with I): \"for\" violates Interface PascalCase",
+      "suggestion": "For"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-interfaces",
+        "name": "Interface PascalCase",
+        "pattern": {},
+        "description": "Interfaces should use PascalCase naming (optionally prefixed with I)",
+        "severity": "error"
+      },
+      "element": {
+        "type": "interface",
+        "name": "for",
+        "file": "packages\\backend\\src\\JabbrLabs\\signal-processing\\signal-processing-manager.ts",
+        "line": 44,
+        "context": "* Trading Engine interface for processing signals"
+      },
+      "message": "Interfaces should use PascalCase naming (optionally prefixed with I): \"for\" violates Interface PascalCase",
+      "suggestion": "For"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "DEFAULT_AETHER_PARAMETERS",
+        "file": "packages\\backend\\src\\JabbrLabs\\signals\\aether\\parameters.ts",
+        "line": 7,
+        "context": "export const DEFAULT_AETHER_PARAMETERS: AetherParameters = {"
+      },
+      "message": "Variables should use camelCase naming: \"DEFAULT_AETHER_PARAMETERS\" violates Variable camelCase",
+      "suggestion": "dEFAULTAETHERPARAMETERS"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "CONSERVATIVE_PARAMETERS",
+        "file": "packages\\backend\\src\\JabbrLabs\\signals\\aether\\parameters.ts",
+        "line": 29,
+        "context": "export const CONSERVATIVE_PARAMETERS: AetherParameters = {"
+      },
+      "message": "Variables should use camelCase naming: \"CONSERVATIVE_PARAMETERS\" violates Variable camelCase",
+      "suggestion": "cONSERVATIVEPARAMETERS"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "AGGRESSIVE_PARAMETERS",
+        "file": "packages\\backend\\src\\JabbrLabs\\signals\\aether\\parameters.ts",
+        "line": 37,
+        "context": "export const AGGRESSIVE_PARAMETERS: AetherParameters = {"
+      },
+      "message": "Variables should use camelCase naming: \"AGGRESSIVE_PARAMETERS\" violates Variable camelCase",
+      "suggestion": "aGGRESSIVEPARAMETERS"
+    },
+    {
+      "rule": {
+        "id": "camelCase-functions",
+        "name": "Function camelCase",
+        "pattern": {},
+        "description": "Functions should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "function",
+        "name": "__setAetherDeterministicMode",
+        "file": "packages\\backend\\src\\JabbrLabs\\signals\\aether\\utils.ts",
+        "line": 36,
+        "context": "export function __setAetherDeterministicMode(enabled: boolean, randomValue = 0.0) {"
+      },
+      "message": "Functions should use camelCase naming: \"__setAetherDeterministicMode\" violates Function camelCase",
+      "suggestion": "setAetherDeterministicMode"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-interfaces",
+        "name": "Interface PascalCase",
+        "pattern": {},
+        "description": "Interfaces should use PascalCase naming (optionally prefixed with I)",
+        "severity": "error"
+      },
+      "element": {
+        "type": "interface",
+        "name": "for",
+        "file": "packages\\backend\\src\\JabbrLabs\\signals\\sma\\models.ts",
+        "line": 8,
+        "context": "* Configuration interface for SMA signal processing"
+      },
+      "message": "Interfaces should use PascalCase naming (optionally prefixed with I): \"for\" violates Interface PascalCase",
+      "suggestion": "For"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "SMACrossoverConfigSchema",
+        "file": "packages\\backend\\src\\JabbrLabs\\signals\\sma\\sma-crossover-strategy.ts",
+        "line": 22,
+        "context": "const SMACrossoverConfigSchema = z.object({"
+      },
+      "message": "Variables should use camelCase naming: \"SMACrossoverConfigSchema\" violates Variable camelCase",
+      "suggestion": "sMACrossoverConfigSchema"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "DEFAULT_TARGET_PARAMETERS",
+        "file": "packages\\backend\\src\\JabbrLabs\\target-reacher\\parameters.ts",
+        "line": 28,
+        "context": "export const DEFAULT_TARGET_PARAMETERS: TargetReacherParameters = {"
+      },
+      "message": "Variables should use camelCase naming: \"DEFAULT_TARGET_PARAMETERS\" violates Variable camelCase",
+      "suggestion": "dEFAULTTARGETPARAMETERS"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-types",
+        "name": "Type PascalCase",
+        "pattern": {},
+        "description": "Type aliases should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "type",
+        "name": "guard",
+        "file": "packages\\backend\\src\\JabbrLabs\\target-reacher\\target-reacher-factory.ts",
+        "line": 29,
+        "context": "// Canonical: Use runtime type guard for config"
+      },
+      "message": "Type aliases should use PascalCase naming: \"guard\" violates Type PascalCase",
+      "suggestion": "Guard"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-types",
+        "name": "Type PascalCase",
+        "pattern": {},
+        "description": "Type aliases should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "type",
+        "name": "definitions",
+        "file": "packages\\backend\\src\\JabbrLabs\\unified-strategies.ts",
+        "line": 24,
+        "context": "// Temporary type definitions"
+      },
+      "message": "Type aliases should use PascalCase naming: \"definitions\" violates Type PascalCase",
+      "suggestion": "Definitions"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-classes",
+        "name": "Class PascalCase",
+        "pattern": {},
+        "description": "Classes should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "class",
+        "name": "for",
+        "file": "packages\\backend\\src\\middleware\\app-monitoring.middleware.ts",
+        "line": 197,
+        "context": "// Export class for custom instances"
+      },
+      "message": "Classes should use PascalCase naming: \"for\" violates Class PascalCase",
+      "suggestion": "For"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-interfaces",
+        "name": "Interface PascalCase",
+        "pattern": {},
+        "description": "Interfaces should use PascalCase naming (optionally prefixed with I)",
+        "severity": "error"
+      },
+      "element": {
+        "type": "interface",
+        "name": "with",
+        "file": "packages\\backend\\src\\middleware\\app-monitoring.middleware.ts",
+        "line": 16,
+        "context": "* Extended request interface with monitoring data"
+      },
+      "message": "Interfaces should use PascalCase naming (optionally prefixed with I): \"with\" violates Interface PascalCase",
+      "suggestion": "With"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-types",
+        "name": "Type PascalCase",
+        "pattern": {},
+        "description": "Type aliases should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "type",
+        "name": "as",
+        "file": "packages\\backend\\src\\routes\\alerts.routes.ts",
+        "line": 48,
+        "context": "if (type) criteria.type = type as string;"
+      },
+      "message": "Type aliases should use PascalCase naming: \"as\" violates Type PascalCase",
+      "suggestion": "As"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-types",
+        "name": "Type PascalCase",
+        "pattern": {},
+        "description": "Type aliases should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "type",
+        "name": "$",
+        "file": "packages\\backend\\src\\routes\\performance.routes.ts",
+        "line": 1435,
+        "context": "details: `Received value of type ${typeof value}`"
+      },
+      "message": "Type aliases should use PascalCase naming: \"$\" violates Type PascalCase",
+      "suggestion": "$"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "PORT",
+        "file": "packages\\backend\\src\\server-standalone.ts",
+        "line": 26,
+        "context": "const PORT = process.env.PORT || 3001;"
+      },
+      "message": "Variables should use camelCase naming: \"PORT\" violates Variable camelCase",
+      "suggestion": "pORT"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "WS_PORT",
+        "file": "packages\\backend\\src\\server-standalone.ts",
+        "line": 27,
+        "context": "const WS_PORT = process.env.WS_PORT || 3002;"
+      },
+      "message": "Variables should use camelCase naming: \"WS_PORT\" violates Variable camelCase",
+      "suggestion": "wSPORT"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "DEFAULT_DATA_DIR",
+        "file": "packages\\backend\\src\\services\\data-service.ts",
+        "line": 17,
+        "context": "const DEFAULT_DATA_DIR = path.join(process.cwd(), 'data', 'historical');"
+      },
+      "message": "Variables should use camelCase naming: \"DEFAULT_DATA_DIR\" violates Variable camelCase",
+      "suggestion": "dEFAULTDATADIR"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "EncryptionConfigSchema",
+        "file": "packages\\backend\\src\\services\\encryption.service.ts",
+        "line": 8,
+        "context": "const EncryptionConfigSchema = z.object({"
+      },
+      "message": "Variables should use camelCase naming: \"EncryptionConfigSchema\" violates Variable camelCase",
+      "suggestion": "encryptionConfigSchema"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-types",
+        "name": "Type PascalCase",
+        "pattern": {},
+        "description": "Type aliases should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "type",
+        "name": "constructor",
+        "file": "packages\\backend\\src\\services\\monitoring.service.ts",
+        "line": 62,
+        "context": "private websocketServer?: any; // JabbrWebSocketServer type"
+      },
+      "message": "Type aliases should use PascalCase naming: \"constructor\" violates Type PascalCase",
+      "suggestion": "Constructor"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-interfaces",
+        "name": "Interface PascalCase",
+        "pattern": {},
+        "description": "Interfaces should use PascalCase naming (optionally prefixed with I)",
+        "severity": "error"
+      },
+      "element": {
+        "type": "interface",
+        "name": "TP_SL_Config",
+        "file": "packages\\backend\\src\\services\\position-monitor.service.ts",
+        "line": 5,
+        "context": "interface TP_SL_Config {"
+      },
+      "message": "Interfaces should use PascalCase naming (optionally prefixed with I): \"TP_SL_Config\" violates Interface PascalCase",
+      "suggestion": "TPSLConfig"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "TimeSyncConfigSchema",
+        "file": "packages\\backend\\src\\services\\time-sync.service.ts",
+        "line": 10,
+        "context": "const TimeSyncConfigSchema = z.object({"
+      },
+      "message": "Variables should use camelCase naming: \"TimeSyncConfigSchema\" violates Variable camelCase",
+      "suggestion": "timeSyncConfigSchema"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "AetherSignalStrategyMetadata",
+        "file": "packages\\backend\\src\\strategies\\aether-signal-strategy.ts",
+        "line": 22,
+        "context": "export const AetherSignalStrategyMetadata = {"
+      },
+      "message": "Variables should use camelCase naming: \"AetherSignalStrategyMetadata\" violates Variable camelCase",
+      "suggestion": "aetherSignalStrategyMetadata"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "PluginMetadataSchema",
+        "file": "packages\\backend\\src\\strategies\\plugin-manager.ts",
+        "line": 48,
+        "context": "const PluginMetadataSchema = z.object({"
+      },
+      "message": "Variables should use camelCase naming: \"PluginMetadataSchema\" violates Variable camelCase",
+      "suggestion": "pluginMetadataSchema"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "PluginClass",
+        "file": "packages\\backend\\src\\strategies\\plugin-manager.ts",
+        "line": 406,
+        "context": "const PluginClass = pluginModule.default;"
+      },
+      "message": "Variables should use camelCase naming: \"PluginClass\" violates Variable camelCase",
+      "suggestion": "pluginClass"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-classes",
+        "name": "Class PascalCase",
+        "pattern": {},
+        "description": "Classes should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "class",
+        "name": "constructor",
+        "file": "packages\\backend\\src\\strategies\\plugin-manager.ts",
+        "line": 409,
+        "context": "throw new Error('Plugin default export must be a class constructor');"
+      },
+      "message": "Classes should use PascalCase naming: \"constructor\" violates Class PascalCase",
+      "suggestion": "Constructor"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-interfaces",
+        "name": "Interface PascalCase",
+        "pattern": {},
+        "description": "Interfaces should use PascalCase naming (optionally prefixed with I)",
+        "severity": "error"
+      },
+      "element": {
+        "type": "interface",
+        "name": "export",
+        "file": "packages\\backend\\src\\strategies\\plugin-manager.ts",
+        "line": 22,
+        "context": "// Plugin metadata interface"
+      },
+      "message": "Interfaces should use PascalCase naming (optionally prefixed with I): \"export\" violates Interface PascalCase",
+      "suggestion": "Export"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-interfaces",
+        "name": "Interface PascalCase",
+        "pattern": {},
+        "description": "Interfaces should use PascalCase naming (optionally prefixed with I)",
+        "severity": "error"
+      },
+      "element": {
+        "type": "interface",
+        "name": "compliance",
+        "file": "packages\\backend\\src\\strategies\\plugin-manager.ts",
+        "line": 412,
+        "context": "// Create temporary instance to check interface compliance"
+      },
+      "message": "Interfaces should use PascalCase naming (optionally prefixed with I): \"compliance\" violates Interface PascalCase",
+      "suggestion": "Compliance"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-interfaces",
+        "name": "Interface PascalCase",
+        "pattern": {},
+        "description": "Interfaces should use PascalCase naming (optionally prefixed with I)",
+        "severity": "error"
+      },
+      "element": {
+        "type": "interface",
+        "name": "interface",
+        "file": "packages\\backend\\src\\strategies\\strategy-factory.ts",
+        "line": 33,
+        "context": "// Strategy factory interface"
+      },
+      "message": "Interfaces should use PascalCase naming (optionally prefixed with I): \"interface\" violates Interface PascalCase",
+      "suggestion": "Interface"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-types",
+        "name": "Type PascalCase",
+        "pattern": {},
+        "description": "Type aliases should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "type",
+        "name": "as",
+        "file": "packages\\backend\\src\\strategies\\strategy-factory.ts",
+        "line": 121,
+        "context": "const factory = builtInFactories[type as keyof typeof builtInFactories];"
+      },
+      "message": "Type aliases should use PascalCase naming: \"as\" violates Type PascalCase",
+      "suggestion": "As"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-types",
+        "name": "Type PascalCase",
+        "pattern": {},
+        "description": "Type aliases should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "type",
+        "name": "as",
+        "file": "packages\\backend\\src\\strategies\\strategy-factory.ts",
+        "line": 149,
+        "context": "const factory = builtInFactories[type as keyof typeof builtInFactories];"
+      },
+      "message": "Type aliases should use PascalCase naming: \"as\" violates Type PascalCase",
+      "suggestion": "As"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-types",
+        "name": "Type PascalCase",
+        "pattern": {},
+        "description": "Type aliases should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "type",
+        "name": "as",
+        "file": "packages\\backend\\src\\strategies\\strategy-factory.ts",
+        "line": 189,
+        "context": "const factory = builtInFactories[type as keyof typeof builtInFactories];"
+      },
+      "message": "Type aliases should use PascalCase naming: \"as\" violates Type PascalCase",
+      "suggestion": "As"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "TargetReacherStrategyMetadata",
+        "file": "packages\\backend\\src\\strategies\\target-reacher-strategy.ts",
+        "line": 21,
+        "context": "export const TargetReacherStrategyMetadata = {"
+      },
+      "message": "Variables should use camelCase naming: \"TargetReacherStrategyMetadata\" violates Variable camelCase",
+      "suggestion": "targetReacherStrategyMetadata"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-types",
+        "name": "Type PascalCase",
+        "pattern": {},
+        "description": "Type aliases should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "type",
+        "name": "for",
+        "file": "packages\\backend\\src\\strategies\\target-reacher-strategy.ts",
+        "line": 62,
+        "context": "description: 'Price type for average calculation'"
+      },
+      "message": "Type aliases should use PascalCase naming: \"for\" violates Type PascalCase",
+      "suggestion": "For"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-types",
+        "name": "Type PascalCase",
+        "pattern": {},
+        "description": "Type aliases should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "type",
+        "name": "must",
+        "file": "packages\\backend\\src\\strategies\\target-reacher-strategy.ts",
+        "line": 273,
+        "context": "message: 'Average type must be one of: open, high, low, close',"
+      },
+      "message": "Type aliases should use PascalCase naming: \"must\" violates Type PascalCase",
+      "suggestion": "Must"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-interfaces",
+        "name": "Interface PascalCase",
+        "pattern": {},
+        "description": "Interfaces should use PascalCase naming (optionally prefixed with I)",
+        "severity": "error"
+      },
+      "element": {
+        "type": "interface",
+        "name": "for",
+        "file": "packages\\backend\\src\\users\\database-user.repository.ts",
+        "line": 7,
+        "context": "// Extended User interface for internal use (includes additional fields not in shared types)"
+      },
+      "message": "Interfaces should use PascalCase naming (optionally prefixed with I): \"for\" violates Interface PascalCase",
+      "suggestion": "For"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-interfaces",
+        "name": "Interface PascalCase",
+        "pattern": {},
+        "description": "Interfaces should use PascalCase naming (optionally prefixed with I)",
+        "severity": "error"
+      },
+      "element": {
+        "type": "interface",
+        "name": "for",
+        "file": "packages\\backend\\src\\users\\user.repository.ts",
+        "line": 3,
+        "context": "// Extended User interface for internal use (includes additional fields not in shared types)"
+      },
+      "message": "Interfaces should use PascalCase naming (optionally prefixed with I): \"for\" violates Interface PascalCase",
+      "suggestion": "For"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-interfaces",
+        "name": "Interface PascalCase",
+        "pattern": {},
+        "description": "Interfaces should use PascalCase naming (optionally prefixed with I)",
+        "severity": "error"
+      },
+      "element": {
+        "type": "interface",
+        "name": "defines",
+        "file": "packages\\backend\\src\\users\\user.repository.ts",
+        "line": 10,
+        "context": "// This interface defines the contract for user data access"
+      },
+      "message": "Interfaces should use PascalCase naming (optionally prefixed with I): \"defines\" violates Interface PascalCase",
+      "suggestion": "Defines"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-classes",
+        "name": "Class PascalCase",
+        "pattern": {},
+        "description": "Classes should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "class",
+        "name": "for",
+        "file": "packages\\backend\\src\\websocket\\bybit-time-sync.ts",
+        "line": 263,
+        "context": "// Export class for dependency injection"
+      },
+      "message": "Classes should use PascalCase naming: \"for\" violates Class PascalCase",
+      "suggestion": "For"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-types",
+        "name": "Type PascalCase",
+        "pattern": {},
+        "description": "Type aliases should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "type",
+        "name": "and",
+        "file": "packages\\backend\\src\\websocket\\bybit-websocket.client.ts",
+        "line": 543,
+        "context": "* Parse topic string to extract type and symbol"
+      },
+      "message": "Type aliases should use PascalCase naming: \"and\" violates Type PascalCase",
+      "suggestion": "And"
+    },
+    {
+      "rule": {
+        "id": "camelCase-methods",
+        "name": "Method camelCase",
+        "pattern": {},
+        "description": "Methods should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "method",
+        "name": "Date",
+        "file": "packages\\backend\\src\\websocket\\bybit-websocket.client.ts",
+        "line": 336,
+        "context": "const timestamp = message.ts ? new Date(message.ts) : new Date();"
+      },
+      "message": "Methods should use camelCase naming: \"Date\" violates Method camelCase",
+      "suggestion": "date"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-interfaces",
+        "name": "Interface PascalCase",
+        "pattern": {},
+        "description": "Interfaces should use PascalCase naming (optionally prefixed with I)",
+        "severity": "error"
+      },
+      "element": {
+        "type": "interface",
+        "name": "console",
+        "file": "packages\\backend\\src\\websocket\\websocket-bridge.ts",
+        "line": 94,
+        "context": "// For now, we'll create a simple interface"
+      },
+      "message": "Interfaces should use PascalCase naming (optionally prefixed with I): \"console\" violates Interface PascalCase",
+      "suggestion": "Console"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-types",
+        "name": "Type PascalCase",
+        "pattern": {},
+        "description": "Type aliases should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "type",
+        "name": "switch",
+        "file": "packages\\backend\\src\\websocket\\websocket-server.ts",
+        "line": 189,
+        "context": "// Route message based on type"
+      },
+      "message": "Type aliases should use PascalCase naming: \"switch\" violates Type PascalCase",
+      "suggestion": "Switch"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "errorQuery_record",
+        "file": "packages\\backend\\tests\\integration\\database-monitoring.test.ts",
+        "line": 167,
+        "context": "const errorQuery_record = history.find(q => q.error);"
+      },
+      "message": "Variables should use camelCase naming: \"errorQuery_record\" violates Variable camelCase",
+      "suggestion": "errorQueryRecord"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-types",
+        "name": "Type PascalCase",
+        "pattern": {},
+        "description": "Type aliases should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "type",
+        "name": "when",
+        "file": "packages\\backend\\tests\\integration\\metrics-collection.test.ts",
+        "line": 302,
+        "context": "test('should use default type when not specified', async () => {"
+      },
+      "message": "Type aliases should use PascalCase naming: \"when\" violates Type PascalCase",
+      "suggestion": "When"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-interfaces",
+        "name": "Interface PascalCase",
+        "pattern": {},
+        "description": "Interfaces should use PascalCase naming (optionally prefixed with I)",
+        "severity": "error"
+      },
+      "element": {
+        "type": "interface",
+        "name": "size",
+        "file": "packages\\backend\\tests\\test-sma-backtest.ts",
+        "line": 231,
+        "context": "side: position as 'long' | 'short', // Type assertion to match Position interface"
+      },
+      "message": "Interfaces should use PascalCase naming (optionally prefixed with I): \"size\" violates Interface PascalCase",
+      "suggestion": "Size"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "MockWebSocket",
+        "file": "packages\\backend\\tests\\unit\\websocket\\bybit-websocket.client.test.ts",
+        "line": 31,
+        "context": "let MockWebSocket: jest.MockedFunction<any>;"
+      },
+      "message": "Variables should use camelCase naming: \"MockWebSocket\" violates Variable camelCase",
+      "suggestion": "mockWebSocket"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "GridTest",
+        "file": "packages\\frontend\\production-readiness-test.ts",
+        "line": 276,
+        "context": "const GridTest: React.FC = () => ("
+      },
+      "message": "Variables should use camelCase naming: \"GridTest\" violates Variable camelCase",
+      "suggestion": "gridTest"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-types",
+        "name": "Type PascalCase",
+        "pattern": {},
+        "description": "Type aliases should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "type",
+        "name": "used",
+        "file": "packages\\frontend\\production-readiness-test.ts",
+        "line": 219,
+        "context": "result.warnings.push(`Line ${lineNumber}: 'any' type used - consider more specific typing`);"
+      },
+      "message": "Type aliases should use PascalCase naming: \"used\" violates Type PascalCase",
+      "suggestion": "Used"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "STRATEGIES",
+        "file": "packages\\frontend\\src\\app\\bots\\create\\page.tsx",
+        "line": 8,
+        "context": "const STRATEGIES = {"
+      },
+      "message": "Variables should use camelCase naming: \"STRATEGIES\" violates Variable camelCase",
+      "suggestion": "sTRATEGIES"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "MARKET_TYPES",
+        "file": "packages\\frontend\\src\\app\\bots\\create\\page.tsx",
+        "line": 31,
+        "context": "const MARKET_TYPES = ["
+      },
+      "message": "Variables should use camelCase naming: \"MARKET_TYPES\" violates Variable camelCase",
+      "suggestion": "mARKETTYPES"
+    },
+    {
+      "rule": {
+        "id": "camelCase-functions",
+        "name": "Function camelCase",
+        "pattern": {},
+        "description": "Functions should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "function",
+        "name": "BotCreatePage",
+        "file": "packages\\frontend\\src\\app\\bots\\create\\page.tsx",
+        "line": 45,
+        "context": "export default function BotCreatePage() {"
+      },
+      "message": "Functions should use camelCase naming: \"BotCreatePage\" violates Function camelCase",
+      "suggestion": "botCreatePage"
+    },
+    {
+      "rule": {
+        "id": "camelCase-functions",
+        "name": "Function camelCase",
+        "pattern": {},
+        "description": "Functions should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "function",
+        "name": "BotsPage",
+        "file": "packages\\frontend\\src\\app\\bots\\page.tsx",
+        "line": 29,
+        "context": "export default function BotsPage() {"
+      },
+      "message": "Functions should use camelCase naming: \"BotsPage\" violates Function camelCase",
+      "suggestion": "botsPage"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "TIMEFRAMES",
+        "file": "packages\\frontend\\src\\app\\bots\\[id]\\edit\\page.tsx",
+        "line": 35,
+        "context": "const TIMEFRAMES = ["
+      },
+      "message": "Variables should use camelCase naming: \"TIMEFRAMES\" violates Variable camelCase",
+      "suggestion": "tIMEFRAMES"
+    },
+    {
+      "rule": {
+        "id": "camelCase-functions",
+        "name": "Function camelCase",
+        "pattern": {},
+        "description": "Functions should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "function",
+        "name": "EditBotPage",
+        "file": "packages\\frontend\\src\\app\\bots\\[id]\\edit\\page.tsx",
+        "line": 44,
+        "context": "export default function EditBotPage() {"
+      },
+      "message": "Functions should use camelCase naming: \"EditBotPage\" violates Function camelCase",
+      "suggestion": "editBotPage"
+    },
+    {
+      "rule": {
+        "id": "camelCase-functions",
+        "name": "Function camelCase",
+        "pattern": {},
+        "description": "Functions should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "function",
+        "name": "Navigation",
+        "file": "packages\\frontend\\src\\app\\layout.tsx",
+        "line": 10,
+        "context": "function Navigation() {"
+      },
+      "message": "Functions should use camelCase naming: \"Navigation\" violates Function camelCase",
+      "suggestion": "navigation"
+    },
+    {
+      "rule": {
+        "id": "camelCase-functions",
+        "name": "Function camelCase",
+        "pattern": {},
+        "description": "Functions should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "function",
+        "name": "RootLayout",
+        "file": "packages\\frontend\\src\\app\\layout.tsx",
+        "line": 45,
+        "context": "export default function RootLayout({"
+      },
+      "message": "Functions should use camelCase naming: \"RootLayout\" violates Function camelCase",
+      "suggestion": "rootLayout"
+    },
+    {
+      "rule": {
+        "id": "camelCase-functions",
+        "name": "Function camelCase",
+        "pattern": {},
+        "description": "Functions should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "function",
+        "name": "LogsAndAlertsPage",
+        "file": "packages\\frontend\\src\\app\\logs\\page.tsx",
+        "line": 11,
+        "context": "export default function LogsAndAlertsPage() {"
+      },
+      "message": "Functions should use camelCase naming: \"LogsAndAlertsPage\" violates Function camelCase",
+      "suggestion": "logsAndAlertsPage"
+    },
+    {
+      "rule": {
+        "id": "camelCase-functions",
+        "name": "Function camelCase",
+        "pattern": {},
+        "description": "Functions should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "function",
+        "name": "HomePage",
+        "file": "packages\\frontend\\src\\app\\page.tsx",
+        "line": 19,
+        "context": "export default function HomePage() {"
+      },
+      "message": "Functions should use camelCase naming: \"HomePage\" violates Function camelCase",
+      "suggestion": "homePage"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "ALERT_LEVELS",
+        "file": "packages\\frontend\\src\\components\\AlertSystem.tsx",
+        "line": 70,
+        "context": "const ALERT_LEVELS = ["
+      },
+      "message": "Variables should use camelCase naming: \"ALERT_LEVELS\" violates Variable camelCase",
+      "suggestion": "aLERTLEVELS"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "AlertSystem",
+        "file": "packages\\frontend\\src\\components\\AlertSystem.tsx",
+        "line": 77,
+        "context": "export const AlertSystem: React.FC<AlertSystemProps> = ({"
+      },
+      "message": "Variables should use camelCase naming: \"AlertSystem\" violates Variable camelCase",
+      "suggestion": "alertSystem"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "ConnectionStatus",
+        "file": "packages\\frontend\\src\\components\\ConnectionStatus.tsx",
+        "line": 14,
+        "context": "const ConnectionStatus = ({"
+      },
+      "message": "Variables should use camelCase naming: \"ConnectionStatus\" violates Variable camelCase",
+      "suggestion": "connectionStatus"
+    },
+    {
+      "rule": {
+        "id": "camelCase-functions",
+        "name": "Function camelCase",
+        "pattern": {},
+        "description": "Functions should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "function",
+        "name": "ConnectionStatus",
+        "file": "packages\\frontend\\src\\components\\ConnectionStatus.tsx",
+        "line": 14,
+        "context": "const ConnectionStatus = ({"
+      },
+      "message": "Functions should use camelCase naming: \"ConnectionStatus\" violates Function camelCase",
+      "suggestion": "connectionStatus"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "ErrorBoundaryWrapper",
+        "file": "packages\\frontend\\src\\components\\ErrorBoundary.tsx",
+        "line": 152,
+        "context": "export const ErrorBoundaryWrapper: React.FC<ErrorBoundaryWrapperProps> = ({"
+      },
+      "message": "Variables should use camelCase naming: \"ErrorBoundaryWrapper\" violates Variable camelCase",
+      "suggestion": "errorBoundaryWrapper"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "LoadingSpinner",
+        "file": "packages\\frontend\\src\\components\\Loading.tsx",
+        "line": 13,
+        "context": "export const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({"
+      },
+      "message": "Variables should use camelCase naming: \"LoadingSpinner\" violates Variable camelCase",
+      "suggestion": "loadingSpinner"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "LoadingState",
+        "file": "packages\\frontend\\src\\components\\Loading.tsx",
+        "line": 50,
+        "context": "export const LoadingState: React.FC<LoadingStateProps> = ({"
+      },
+      "message": "Variables should use camelCase naming: \"LoadingState\" violates Variable camelCase",
+      "suggestion": "loadingState"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "LoadingOverlay",
+        "file": "packages\\frontend\\src\\components\\Loading.tsx",
+        "line": 69,
+        "context": "export const LoadingOverlay: React.FC<LoadingOverlayProps> = ({"
+      },
+      "message": "Variables should use camelCase naming: \"LoadingOverlay\" violates Variable camelCase",
+      "suggestion": "loadingOverlay"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "LoadingCard",
+        "file": "packages\\frontend\\src\\components\\Loading.tsx",
+        "line": 94,
+        "context": "export const LoadingCard: React.FC<LoadingCardProps> = ({"
+      },
+      "message": "Variables should use camelCase naming: \"LoadingCard\" violates Variable camelCase",
+      "suggestion": "loadingCard"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "LoadingTable",
+        "file": "packages\\frontend\\src\\components\\Loading.tsx",
+        "line": 116,
+        "context": "export const LoadingTable: React.FC<LoadingTableProps> = ({"
+      },
+      "message": "Variables should use camelCase naming: \"LoadingTable\" violates Variable camelCase",
+      "suggestion": "loadingTable"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "LoadingButton",
+        "file": "packages\\frontend\\src\\components\\Loading.tsx",
+        "line": 160,
+        "context": "export const LoadingButton: React.FC<LoadingButtonProps> = ({"
+      },
+      "message": "Variables should use camelCase naming: \"LoadingButton\" violates Variable camelCase",
+      "suggestion": "loadingButton"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "LogAndAlertDashboard",
+        "file": "packages\\frontend\\src\\components\\LogAndAlertDashboard.tsx",
+        "line": 41,
+        "context": "export const LogAndAlertDashboard: React.FC = () => {"
+      },
+      "message": "Variables should use camelCase naming: \"LogAndAlertDashboard\" violates Variable camelCase",
+      "suggestion": "logAndAlertDashboard"
+    },
+    {
+      "rule": {
+        "id": "camelCase-functions",
+        "name": "Function camelCase",
+        "pattern": {},
+        "description": "Functions should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "function",
+        "name": "TabPanel",
+        "file": "packages\\frontend\\src\\components\\LogAndAlertDashboard.tsx",
+        "line": 21,
+        "context": "function TabPanel(props: TabPanelProps) {"
+      },
+      "message": "Functions should use camelCase naming: \"TabPanel\" violates Function camelCase",
+      "suggestion": "tabPanel"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "LOG_LEVELS",
+        "file": "packages\\frontend\\src\\components\\LogViewer.tsx",
+        "line": 61,
+        "context": "const LOG_LEVELS = ["
+      },
+      "message": "Variables should use camelCase naming: \"LOG_LEVELS\" violates Variable camelCase",
+      "suggestion": "lOGLEVELS"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "LOG_CATEGORIES",
+        "file": "packages\\frontend\\src\\components\\LogViewer.tsx",
+        "line": 68,
+        "context": "const LOG_CATEGORIES = ["
+      },
+      "message": "Variables should use camelCase naming: \"LOG_CATEGORIES\" violates Variable camelCase",
+      "suggestion": "lOGCATEGORIES"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "LogViewer",
+        "file": "packages\\frontend\\src\\components\\LogViewer.tsx",
+        "line": 72,
+        "context": "export const LogViewer: React.FC<LogViewerProps> = ({"
+      },
+      "message": "Variables should use camelCase naming: \"LogViewer\" violates Variable camelCase",
+      "suggestion": "logViewer"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "PositionPnLVisualization",
+        "file": "packages\\frontend\\src\\components\\PositionPnLVisualization.tsx",
+        "line": 131,
+        "context": "const PositionPnLVisualization: React.FC = () => {"
+      },
+      "message": "Variables should use camelCase naming: \"PositionPnLVisualization\" violates Variable camelCase",
+      "suggestion": "positionPnLVisualization"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "CHART_COLORS",
+        "file": "packages\\frontend\\src\\components\\PositionPnLVisualization.tsx",
+        "line": 183,
+        "context": "const CHART_COLORS = {"
+      },
+      "message": "Variables should use camelCase naming: \"CHART_COLORS\" violates Variable camelCase",
+      "suggestion": "cHARTCOLORS"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "PIE_COLORS",
+        "file": "packages\\frontend\\src\\components\\PositionPnLVisualization.tsx",
+        "line": 194,
+        "context": "const PIE_COLORS = ["
+      },
+      "message": "Variables should use camelCase naming: \"PIE_COLORS\" violates Variable camelCase",
+      "suggestion": "pIECOLORS"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "MetricsCards",
+        "file": "packages\\frontend\\src\\components\\PositionPnLVisualization.tsx",
+        "line": 461,
+        "context": "const MetricsCards: React.FC = () => ("
+      },
+      "message": "Variables should use camelCase naming: \"MetricsCards\" violates Variable camelCase",
+      "suggestion": "metricsCards"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "ChartControls",
+        "file": "packages\\frontend\\src\\components\\PositionPnLVisualization.tsx",
+        "line": 542,
+        "context": "const ChartControls: React.FC = () => ("
+      },
+      "message": "Variables should use camelCase naming: \"ChartControls\" violates Variable camelCase",
+      "suggestion": "chartControls"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "FilterControls",
+        "file": "packages\\frontend\\src\\components\\PositionPnLVisualization.tsx",
+        "line": 624,
+        "context": "const FilterControls: React.FC = () => ("
+      },
+      "message": "Variables should use camelCase naming: \"FilterControls\" violates Variable camelCase",
+      "suggestion": "filterControls"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "ChartRenderer",
+        "file": "packages\\frontend\\src\\components\\PositionPnLVisualization.tsx",
+        "line": 762,
+        "context": "const ChartRenderer: React.FC = () => {"
+      },
+      "message": "Variables should use camelCase naming: \"ChartRenderer\" violates Variable camelCase",
+      "suggestion": "chartRenderer"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "PositionsTable",
+        "file": "packages\\frontend\\src\\components\\PositionPnLVisualization.tsx",
+        "line": 1005,
+        "context": "const PositionsTable: React.FC = () => ("
+      },
+      "message": "Variables should use camelCase naming: \"PositionsTable\" violates Variable camelCase",
+      "suggestion": "positionsTable"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "PositionDetailModal",
+        "file": "packages\\frontend\\src\\components\\PositionPnLVisualization.tsx",
+        "line": 1117,
+        "context": "const PositionDetailModal: React.FC = () => {"
+      },
+      "message": "Variables should use camelCase naming: \"PositionDetailModal\" violates Variable camelCase",
+      "suggestion": "positionDetailModal"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "ConnectionStatus",
+        "file": "packages\\frontend\\src\\components\\PositionPnLVisualization.tsx",
+        "line": 1237,
+        "context": "const ConnectionStatus: React.FC = () => ("
+      },
+      "message": "Variables should use camelCase naming: \"ConnectionStatus\" violates Variable camelCase",
+      "suggestion": "connectionStatus"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "StrategyMonitor",
+        "file": "packages\\frontend\\src\\components\\StrategyMonitor.tsx",
+        "line": 34,
+        "context": "export const StrategyMonitor: React.FC<StrategyMonitorProps> = ({"
+      },
+      "message": "Variables should use camelCase naming: \"StrategyMonitor\" violates Variable camelCase",
+      "suggestion": "strategyMonitor"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-types",
+        "name": "Type PascalCase",
+        "pattern": {},
+        "description": "Type aliases should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "type",
+        "name": "definitions",
+        "file": "packages\\frontend\\src\\components\\StrategyMonitor.tsx",
+        "line": 16,
+        "context": "// Temporary type definitions until shared types are fully available"
+      },
+      "message": "Type aliases should use PascalCase naming: \"definitions\" violates Type PascalCase",
+      "suggestion": "Definitions"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "TradingActivityMonitor",
+        "file": "packages\\frontend\\src\\components\\TradingActivityMonitor.tsx",
+        "line": 74,
+        "context": "export const TradingActivityMonitor: React.FC = () => {"
+      },
+      "message": "Variables should use camelCase naming: \"TradingActivityMonitor\" violates Variable camelCase",
+      "suggestion": "tradingActivityMonitor"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "WebSocketContext",
+        "file": "packages\\frontend\\src\\contexts\\WebSocketContext.tsx",
+        "line": 62,
+        "context": "const WebSocketContext = createContext<WebSocketContextValue | undefined>(undefined);"
+      },
+      "message": "Variables should use camelCase naming: \"WebSocketContext\" violates Variable camelCase",
+      "suggestion": "webSocketContext"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "WebSocketProvider",
+        "file": "packages\\frontend\\src\\contexts\\WebSocketContext.tsx",
+        "line": 70,
+        "context": "export const WebSocketProvider: React.FC<WebSocketProviderProps> = ({"
+      },
+      "message": "Variables should use camelCase naming: \"WebSocketProvider\" violates Variable camelCase",
+      "suggestion": "webSocketProvider"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-classes",
+        "name": "Class PascalCase",
+        "pattern": {},
+        "description": "Classes should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "class",
+        "name": "for",
+        "file": "packages\\frontend\\src\\services\\api.ts",
+        "line": 77,
+        "context": "// Custom error class for API errors"
+      },
+      "message": "Classes should use PascalCase naming: \"for\" violates Class PascalCase",
+      "suggestion": "For"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "TestLogViewerCore",
+        "file": "packages\\frontend\\test-dependency-verification.ts",
+        "line": 78,
+        "context": "const TestLogViewerCore: React.FC = () => {"
+      },
+      "message": "Variables should use camelCase naming: \"TestLogViewerCore\" violates Variable camelCase",
+      "suggestion": "testLogViewerCore"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "GridTest",
+        "file": "packages\\frontend\\test-typescript-analysis.ts",
+        "line": 202,
+        "context": "const GridTest: React.FC = () => {"
+      },
+      "message": "Variables should use camelCase naming: \"GridTest\" violates Variable camelCase",
+      "suggestion": "gridTest"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "CONSTANTS",
+        "file": "packages\\shared\\src\\index.ts",
+        "line": 309,
+        "context": "export const CONSTANTS = {"
+      },
+      "message": "Variables should use camelCase naming: \"CONSTANTS\" violates Variable camelCase",
+      "suggestion": "cONSTANTS"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-types",
+        "name": "Type PascalCase",
+        "pattern": {},
+        "description": "Type aliases should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "type",
+        "name": "enum",
+        "file": "packages\\shared\\src\\index.ts",
+        "line": 66,
+        "context": "// Market type enum"
+      },
+      "message": "Type aliases should use PascalCase naming: \"enum\" violates Type PascalCase",
+      "suggestion": "Enum"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-types",
+        "name": "Type PascalCase",
+        "pattern": {},
+        "description": "Type aliases should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "type",
+        "name": "enumeration",
+        "file": "packages\\shared\\src\\types.ts",
+        "line": 148,
+        "context": "* Market type enumeration"
+      },
+      "message": "Type aliases should use PascalCase naming: \"enumeration\" violates Type PascalCase",
+      "suggestion": "Enumeration"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "StrategySchema",
+        "file": "packages\\shared\\src\\validation.ts",
+        "line": 15,
+        "context": "export const StrategySchema = z.enum(['aether', 'target-reacher', 'sma-crossover', 'rsi-divergence', 'custom']);"
+      },
+      "message": "Variables should use camelCase naming: \"StrategySchema\" violates Variable camelCase",
+      "suggestion": "strategySchema"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "ExchangeSchema",
+        "file": "packages\\shared\\src\\validation.ts",
+        "line": 16,
+        "context": "export const ExchangeSchema = z.enum(['bybit', 'binance', 'okx', 'coinbase', 'kraken']);"
+      },
+      "message": "Variables should use camelCase naming: \"ExchangeSchema\" violates Variable camelCase",
+      "suggestion": "exchangeSchema"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "TimeframeSchema",
+        "file": "packages\\shared\\src\\validation.ts",
+        "line": 17,
+        "context": "export const TimeframeSchema = z.enum(['1m', '3m', '5m', '15m', '30m', '1h', '2h', '4h', '6h', '8h', '12h', '1d', '3d', '1w', '1M']);"
+      },
+      "message": "Variables should use camelCase naming: \"TimeframeSchema\" violates Variable camelCase",
+      "suggestion": "timeframeSchema"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "TradeSideSchema",
+        "file": "packages\\shared\\src\\validation.ts",
+        "line": 18,
+        "context": "export const TradeSideSchema = z.enum(['buy', 'sell']);"
+      },
+      "message": "Variables should use camelCase naming: \"TradeSideSchema\" violates Variable camelCase",
+      "suggestion": "tradeSideSchema"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "TradeTypeSchema",
+        "file": "packages\\shared\\src\\validation.ts",
+        "line": 19,
+        "context": "export const TradeTypeSchema = z.enum(['market', 'limit', 'stop', 'stop-limit']);"
+      },
+      "message": "Variables should use camelCase naming: \"TradeTypeSchema\" violates Variable camelCase",
+      "suggestion": "tradeTypeSchema"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "TradeStatusSchema",
+        "file": "packages\\shared\\src\\validation.ts",
+        "line": 20,
+        "context": "export const TradeStatusSchema = z.enum(['pending', 'open', 'filled', 'partial', 'cancelled', 'rejected', 'closed']);"
+      },
+      "message": "Variables should use camelCase naming: \"TradeStatusSchema\" violates Variable camelCase",
+      "suggestion": "tradeStatusSchema"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "BotStatusSchema",
+        "file": "packages\\shared\\src\\validation.ts",
+        "line": 21,
+        "context": "export const BotStatusSchema = z.enum(['stopped', 'starting', 'running', 'pausing', 'paused', 'stopping', 'error']);"
+      },
+      "message": "Variables should use camelCase naming: \"BotStatusSchema\" violates Variable camelCase",
+      "suggestion": "botStatusSchema"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "NotificationSettingsSchema",
+        "file": "packages\\shared\\src\\validation.ts",
+        "line": 27,
+        "context": "export const NotificationSettingsSchema = z.object({"
+      },
+      "message": "Variables should use camelCase naming: \"NotificationSettingsSchema\" violates Variable camelCase",
+      "suggestion": "notificationSettingsSchema"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "DashboardSettingsSchema",
+        "file": "packages\\shared\\src\\validation.ts",
+        "line": 35,
+        "context": "export const DashboardSettingsSchema = z.object({"
+      },
+      "message": "Variables should use camelCase naming: \"DashboardSettingsSchema\" violates Variable camelCase",
+      "suggestion": "dashboardSettingsSchema"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "UserPreferencesSchema",
+        "file": "packages\\shared\\src\\validation.ts",
+        "line": 41,
+        "context": "export const UserPreferencesSchema = z.object({"
+      },
+      "message": "Variables should use camelCase naming: \"UserPreferencesSchema\" violates Variable camelCase",
+      "suggestion": "userPreferencesSchema"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "ExchangeApiKeySchema",
+        "file": "packages\\shared\\src\\validation.ts",
+        "line": 48,
+        "context": "export const ExchangeApiKeySchema = z.object({"
+      },
+      "message": "Variables should use camelCase naming: \"ExchangeApiKeySchema\" violates Variable camelCase",
+      "suggestion": "exchangeApiKeySchema"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "UserSchema",
+        "file": "packages\\shared\\src\\validation.ts",
+        "line": 63,
+        "context": "export const UserSchema = z.object({"
+      },
+      "message": "Variables should use camelCase naming: \"UserSchema\" violates Variable camelCase",
+      "suggestion": "userSchema"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "BotConfigurationSchema",
+        "file": "packages\\shared\\src\\validation.ts",
+        "line": 78,
+        "context": "export const BotConfigurationSchema = z.object({"
+      },
+      "message": "Variables should use camelCase naming: \"BotConfigurationSchema\" violates Variable camelCase",
+      "suggestion": "botConfigurationSchema"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "RiskManagementSchema",
+        "file": "packages\\shared\\src\\validation.ts",
+        "line": 89,
+        "context": "export const RiskManagementSchema = z.object({"
+      },
+      "message": "Variables should use camelCase naming: \"RiskManagementSchema\" violates Variable camelCase",
+      "suggestion": "riskManagementSchema"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "BotPerformanceSchema",
+        "file": "packages\\shared\\src\\validation.ts",
+        "line": 97,
+        "context": "export const BotPerformanceSchema = z.object({"
+      },
+      "message": "Variables should use camelCase naming: \"BotPerformanceSchema\" violates Variable camelCase",
+      "suggestion": "botPerformanceSchema"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "BotSchema",
+        "file": "packages\\shared\\src\\validation.ts",
+        "line": 109,
+        "context": "export const BotSchema = z.object({"
+      },
+      "message": "Variables should use camelCase naming: \"BotSchema\" violates Variable camelCase",
+      "suggestion": "botSchema"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "TradeSchema",
+        "file": "packages\\shared\\src\\validation.ts",
+        "line": 130,
+        "context": "export const TradeSchema = z.object({"
+      },
+      "message": "Variables should use camelCase naming: \"TradeSchema\" violates Variable camelCase",
+      "suggestion": "tradeSchema"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "PositionSchema",
+        "file": "packages\\shared\\src\\validation.ts",
+        "line": 155,
+        "context": "export const PositionSchema = z.object({"
+      },
+      "message": "Variables should use camelCase naming: \"PositionSchema\" violates Variable camelCase",
+      "suggestion": "positionSchema"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "SignalSchema",
+        "file": "packages\\shared\\src\\validation.ts",
+        "line": 178,
+        "context": "export const SignalSchema = z.object({"
+      },
+      "message": "Variables should use camelCase naming: \"SignalSchema\" violates Variable camelCase",
+      "suggestion": "signalSchema"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "WebSocketMessageTypeSchema",
+        "file": "packages\\shared\\src\\validation.ts",
+        "line": 196,
+        "context": "export const WebSocketMessageTypeSchema = z.enum(["
+      },
+      "message": "Variables should use camelCase naming: \"WebSocketMessageTypeSchema\" violates Variable camelCase",
+      "suggestion": "webSocketMessageTypeSchema"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "WebSocketMessageSchema",
+        "file": "packages\\shared\\src\\validation.ts",
+        "line": 214,
+        "context": "export const WebSocketMessageSchema = z.object({"
+      },
+      "message": "Variables should use camelCase naming: \"WebSocketMessageSchema\" violates Variable camelCase",
+      "suggestion": "webSocketMessageSchema"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "WebSocketSubscriptionSchema",
+        "file": "packages\\shared\\src\\validation.ts",
+        "line": 222,
+        "context": "export const WebSocketSubscriptionSchema = z.object({"
+      },
+      "message": "Variables should use camelCase naming: \"WebSocketSubscriptionSchema\" violates Variable camelCase",
+      "suggestion": "webSocketSubscriptionSchema"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "BotActionMessageSchema",
+        "file": "packages\\shared\\src\\validation.ts",
+        "line": 229,
+        "context": "export const BotActionMessageSchema = z.object({"
+      },
+      "message": "Variables should use camelCase naming: \"BotActionMessageSchema\" violates Variable camelCase",
+      "suggestion": "botActionMessageSchema"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "MarketDataMessageSchema",
+        "file": "packages\\shared\\src\\validation.ts",
+        "line": 235,
+        "context": "export const MarketDataMessageSchema = z.object({"
+      },
+      "message": "Variables should use camelCase naming: \"MarketDataMessageSchema\" violates Variable camelCase",
+      "suggestion": "marketDataMessageSchema"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "TimeSyncMessageSchema",
+        "file": "packages\\shared\\src\\validation.ts",
+        "line": 243,
+        "context": "export const TimeSyncMessageSchema = z.object({"
+      },
+      "message": "Variables should use camelCase naming: \"TimeSyncMessageSchema\" violates Variable camelCase",
+      "suggestion": "timeSyncMessageSchema"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "ApiResponseSchema",
+        "file": "packages\\shared\\src\\validation.ts",
+        "line": 253,
+        "context": "export const ApiResponseSchema = z.object({"
+      },
+      "message": "Variables should use camelCase naming: \"ApiResponseSchema\" violates Variable camelCase",
+      "suggestion": "apiResponseSchema"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "PaginationSchema",
+        "file": "packages\\shared\\src\\validation.ts",
+        "line": 260,
+        "context": "export const PaginationSchema = z.object({"
+      },
+      "message": "Variables should use camelCase naming: \"PaginationSchema\" violates Variable camelCase",
+      "suggestion": "paginationSchema"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "PaginatedResponseSchema",
+        "file": "packages\\shared\\src\\validation.ts",
+        "line": 268,
+        "context": "export const PaginatedResponseSchema = z.object({"
+      },
+      "message": "Variables should use camelCase naming: \"PaginatedResponseSchema\" violates Variable camelCase",
+      "suggestion": "paginatedResponseSchema"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "LoginRequestSchema",
+        "file": "packages\\shared\\src\\validation.ts",
+        "line": 277,
+        "context": "export const LoginRequestSchema = z.object({"
+      },
+      "message": "Variables should use camelCase naming: \"LoginRequestSchema\" violates Variable camelCase",
+      "suggestion": "loginRequestSchema"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "RegisterRequestSchema",
+        "file": "packages\\shared\\src\\validation.ts",
+        "line": 282,
+        "context": "export const RegisterRequestSchema = z.object({"
+      },
+      "message": "Variables should use camelCase naming: \"RegisterRequestSchema\" violates Variable camelCase",
+      "suggestion": "registerRequestSchema"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "LoginResponseSchema",
+        "file": "packages\\shared\\src\\validation.ts",
+        "line": 291,
+        "context": "export const LoginResponseSchema = z.object({"
+      },
+      "message": "Variables should use camelCase naming: \"LoginResponseSchema\" violates Variable camelCase",
+      "suggestion": "loginResponseSchema"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "CreateBotRequestSchema",
+        "file": "packages\\shared\\src\\validation.ts",
+        "line": 298,
+        "context": "export const CreateBotRequestSchema = z.object({"
+      },
+      "message": "Variables should use camelCase naming: \"CreateBotRequestSchema\" violates Variable camelCase",
+      "suggestion": "createBotRequestSchema"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "UpdateBotRequestSchema",
+        "file": "packages\\shared\\src\\validation.ts",
+        "line": 308,
+        "context": "export const UpdateBotRequestSchema = z.object({"
+      },
+      "message": "Variables should use camelCase naming: \"UpdateBotRequestSchema\" violates Variable camelCase",
+      "suggestion": "updateBotRequestSchema"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "ServiceHealthSchema",
+        "file": "packages\\shared\\src\\validation.ts",
+        "line": 319,
+        "context": "export const ServiceHealthSchema = z.object({"
+      },
+      "message": "Variables should use camelCase naming: \"ServiceHealthSchema\" violates Variable camelCase",
+      "suggestion": "serviceHealthSchema"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "SystemHealthSchema",
+        "file": "packages\\shared\\src\\validation.ts",
+        "line": 327,
+        "context": "export const SystemHealthSchema = z.object({"
+      },
+      "message": "Variables should use camelCase naming: \"SystemHealthSchema\" violates Variable camelCase",
+      "suggestion": "systemHealthSchema"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "LogEntrySchema",
+        "file": "packages\\shared\\src\\validation.ts",
+        "line": 334,
+        "context": "export const LogEntrySchema = z.object({"
+      },
+      "message": "Variables should use camelCase naming: \"LogEntrySchema\" violates Variable camelCase",
+      "suggestion": "logEntrySchema"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "TimeRangeSchema",
+        "file": "packages\\shared\\src\\validation.ts",
+        "line": 350,
+        "context": "export const TimeRangeSchema = z.object({"
+      },
+      "message": "Variables should use camelCase naming: \"TimeRangeSchema\" violates Variable camelCase",
+      "suggestion": "timeRangeSchema"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "PaginationRequestSchema",
+        "file": "packages\\shared\\src\\validation.ts",
+        "line": 357,
+        "context": "export const PaginationRequestSchema = z.object({"
+      },
+      "message": "Variables should use camelCase naming: \"PaginationRequestSchema\" violates Variable camelCase",
+      "suggestion": "paginationRequestSchema"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "FilterOptionsSchema",
+        "file": "packages\\shared\\src\\validation.ts",
+        "line": 364,
+        "context": "export const FilterOptionsSchema = z.object({"
+      },
+      "message": "Variables should use camelCase naming: \"FilterOptionsSchema\" violates Variable camelCase",
+      "suggestion": "filterOptionsSchema"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "AppErrorSchema",
+        "file": "packages\\shared\\src\\validation.ts",
+        "line": 376,
+        "context": "export const AppErrorSchema = z.object({"
+      },
+      "message": "Variables should use camelCase naming: \"AppErrorSchema\" violates Variable camelCase",
+      "suggestion": "appErrorSchema"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "ValidationErrorSchema",
+        "file": "packages\\shared\\src\\validation.ts",
+        "line": 383,
+        "context": "export const ValidationErrorSchema = AppErrorSchema.extend({"
+      },
+      "message": "Variables should use camelCase naming: \"ValidationErrorSchema\" violates Variable camelCase",
+      "suggestion": "validationErrorSchema"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "ExchangeErrorSchema",
+        "file": "packages\\shared\\src\\validation.ts",
+        "line": 389,
+        "context": "export const ExchangeErrorSchema = AppErrorSchema.extend({"
+      },
+      "message": "Variables should use camelCase naming: \"ExchangeErrorSchema\" violates Variable camelCase",
+      "suggestion": "exchangeErrorSchema"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "ExchangeConfigSchema",
+        "file": "packages\\shared\\src\\validation.ts",
+        "line": 399,
+        "context": "export const ExchangeConfigSchema = z.object({"
+      },
+      "message": "Variables should use camelCase naming: \"ExchangeConfigSchema\" violates Variable camelCase",
+      "suggestion": "exchangeConfigSchema"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "AppConfigSchema",
+        "file": "packages\\shared\\src\\validation.ts",
+        "line": 414,
+        "context": "export const AppConfigSchema = z.object({"
+      },
+      "message": "Variables should use camelCase naming: \"AppConfigSchema\" violates Variable camelCase",
+      "suggestion": "appConfigSchema"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "TestBotConfigurationSchema",
+        "file": "packages\\shared\\src\\validation.ts",
+        "line": 475,
+        "context": "const TestBotConfigurationSchema = z.object({"
+      },
+      "message": "Variables should use camelCase naming: \"TestBotConfigurationSchema\" violates Variable camelCase",
+      "suggestion": "testBotConfigurationSchema"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-types",
+        "name": "Type PascalCase",
+        "pattern": {},
+        "description": "Type aliases should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "type",
+        "name": "checking",
+        "file": "scripts\\analysis\\analyze.ts",
+        "line": 152,
+        "context": "typescript: 'Strict type checking enabled',"
+      },
+      "message": "Type aliases should use PascalCase naming: \"checking\" violates Type PascalCase",
+      "suggestion": "Checking"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "DEFAULT_CONFIG",
+        "file": "scripts\\analysis\\architectural-analyzer.ts",
+        "line": 123,
+        "context": "const DEFAULT_CONFIG: AnalysisConfig = {"
+      },
+      "message": "Variables should use camelCase naming: \"DEFAULT_CONFIG\" violates Variable camelCase",
+      "suggestion": "dEFAULTCONFIG"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "DEFAULT_OPTIONS",
+        "file": "scripts\\analysis\\duplicate-method-detector.ts",
+        "line": 71,
+        "context": "const DEFAULT_OPTIONS: DetectionOptions = {"
+      },
+      "message": "Variables should use camelCase naming: \"DEFAULT_OPTIONS\" violates Variable camelCase",
+      "suggestion": "dEFAULTOPTIONS"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-classes",
+        "name": "Class PascalCase",
+        "pattern": {},
+        "description": "Classes should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "class",
+        "name": "properties",
+        "file": "scripts\\analysis\\duplicate-method-detector.ts",
+        "line": 92,
+        "context": "// Arrow functions as class properties"
+      },
+      "message": "Classes should use PascalCase naming: \"properties\" violates Class PascalCase",
+      "suggestion": "Properties"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-classes",
+        "name": "Class PascalCase",
+        "pattern": {},
+        "description": "Classes should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "class",
+        "name": "class",
+        "file": "scripts\\analysis\\duplicate-method-detector.ts",
+        "line": 278,
+        "context": "// Main duplicate method detector class"
+      },
+      "message": "Classes should use PascalCase naming: \"class\" violates Class PascalCase",
+      "suggestion": "Class"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-classes",
+        "name": "Class PascalCase",
+        "pattern": {},
+        "description": "Classes should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "class",
+        "name": "class",
+        "file": "scripts\\analysis\\duplicate-method-detector.ts",
+        "line": 542,
+        "context": "// Report generator class"
+      },
+      "message": "Classes should use PascalCase naming: \"class\" violates Class PascalCase",
+      "suggestion": "Class"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-classes",
+        "name": "Class PascalCase",
+        "pattern": {},
+        "description": "Classes should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "class",
+        "name": "patterns",
+        "file": "scripts\\analysis\\duplication-analyzer.ts",
+        "line": 414,
+        "context": "recommendations.push('Create base classes for duplicated class patterns');"
+      },
+      "message": "Classes should use PascalCase naming: \"patterns\" violates Class PascalCase",
+      "suggestion": "Patterns"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-types",
+        "name": "Type PascalCase",
+        "pattern": {},
+        "description": "Type aliases should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "type",
+        "name": "definitions",
+        "file": "scripts\\analysis\\duplication-analyzer.ts",
+        "line": 415,
+        "context": "recommendations.push('Consolidate similar interfaces into shared type definitions');"
+      },
+      "message": "Type aliases should use PascalCase naming: \"definitions\" violates Type PascalCase",
+      "suggestion": "Definitions"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "DEFAULT_OPTIONS",
+        "file": "scripts\\monitoring\\comprehensive-doc-validator.ts",
+        "line": 89,
+        "context": "const DEFAULT_OPTIONS: DocValidationOptions = {"
+      },
+      "message": "Variables should use camelCase naming: \"DEFAULT_OPTIONS\" violates Variable camelCase",
+      "suggestion": "dEFAULTOPTIONS"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-classes",
+        "name": "Class PascalCase",
+        "pattern": {},
+        "description": "Classes should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "class",
+        "name": "references",
+        "file": "scripts\\monitoring\\comprehensive-doc-validator.ts",
+        "line": 347,
+        "context": "// Check for function/class references"
+      },
+      "message": "Classes should use PascalCase naming: \"references\" violates Class PascalCase",
+      "suggestion": "References"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-classes",
+        "name": "Class PascalCase",
+        "pattern": {},
+        "description": "Classes should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "class",
+        "name": "class",
+        "file": "scripts\\monitoring\\comprehensive-doc-validator.ts",
+        "line": 679,
+        "context": "// Main documentation validator class"
+      },
+      "message": "Classes should use PascalCase naming: \"class\" violates Class PascalCase",
+      "suggestion": "Class"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-types",
+        "name": "Type PascalCase",
+        "pattern": {},
+        "description": "Type aliases should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "type",
+        "name": "definitions",
+        "file": "scripts\\monitoring\\post-implementation-validator.ts",
+        "line": 150,
+        "context": "'Check for missing dependencies or type definitions',"
+      },
+      "message": "Type aliases should use PascalCase naming: \"definitions\" violates Type PascalCase",
+      "suggestion": "Definitions"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-types",
+        "name": "Type PascalCase",
+        "pattern": {},
+        "description": "Type aliases should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "type",
+        "name": "safety",
+        "file": "scripts\\monitoring\\production-violations-analyzer.ts",
+        "line": 439,
+        "context": "recommendations.push('Fix TypeScript compilation errors for type safety');"
+      },
+      "message": "Type aliases should use PascalCase naming: \"safety\" violates Type PascalCase",
+      "suggestion": "Safety"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "EXPECTED_VALUES",
+        "file": "scripts\\monitoring\\validate-documentation.ts",
+        "line": 20,
+        "context": "const EXPECTED_VALUES: ExpectedValues = {  // check mcp get_tasks actuall tasks etc."
+      },
+      "message": "Variables should use camelCase naming: \"EXPECTED_VALUES\" violates Variable camelCase",
+      "suggestion": "eXPECTEDVALUES"
+    },
+    {
+      "rule": {
+        "id": "camelCase-variables",
+        "name": "Variable camelCase",
+        "pattern": {},
+        "description": "Variables should use camelCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "variable",
+        "name": "DOCS_TO_VALIDATE",
+        "file": "scripts\\monitoring\\validate-documentation.ts",
+        "line": 29,
+        "context": "const DOCS_TO_VALIDATE: string[] = ["
+      },
+      "message": "Variables should use camelCase naming: \"DOCS_TO_VALIDATE\" violates Variable camelCase",
+      "suggestion": "dOCSTOVALIDATE"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-classes",
+        "name": "Class PascalCase",
+        "pattern": {},
+        "description": "Classes should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "class",
+        "name": "if",
+        "file": "scripts\\utilities\\naming-validator.ts",
+        "line": 243,
+        "context": "// Only count as method if inside a class"
+      },
+      "message": "Classes should use PascalCase naming: \"if\" violates Class PascalCase",
+      "suggestion": "If"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-classes",
+        "name": "Class PascalCase",
+        "pattern": {},
+        "description": "Classes should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "class",
+        "name": "definition",
+        "file": "scripts\\utilities\\naming-validator.ts",
+        "line": 270,
+        "context": "* Check if position is inside a class definition"
+      },
+      "message": "Classes should use PascalCase naming: \"definition\" violates Class PascalCase",
+      "suggestion": "Definition"
+    },
+    {
+      "rule": {
+        "id": "PascalCase-types",
+        "name": "Type PascalCase",
+        "pattern": {},
+        "description": "Type aliases should use PascalCase naming",
+        "severity": "error"
+      },
+      "element": {
+        "type": "type",
+        "name": "aliases",
+        "file": "scripts\\utilities\\naming-validator.ts",
+        "line": 208,
+        "context": "// Extract type aliases"
+      },
+      "message": "Type aliases should use PascalCase naming: \"aliases\" violates Type PascalCase",
+      "suggestion": "Aliases"
+    }
+  ],
+  "overallStatus": "FAIL"
+}

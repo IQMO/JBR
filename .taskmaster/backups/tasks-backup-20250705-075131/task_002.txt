@@ -1,0 +1,44 @@
+# Task ID: 2
+# Title: Shared Types & Validation
+# Status: done
+# Dependencies: 1
+# Priority: high
+# Description: Set up shared TypeScript types and Zod validation schemas in the 'shared' package.
+# Details:
+Define common data types (User, Bot, Trade, Signal, Position) in 'shared/src/types.ts'. Create Zod schemas for validating user inputs and API responses in 'shared/src/validation.ts'. Export these types and schemas for use in both frontend and backend. Install Zod using `pnpm add zod` in the shared directory. Ensure all types and schemas are compatible with the completed trading engine infrastructure.
+
+# Test Strategy:
+Write unit tests to validate the Zod schemas. Ensure that the defined types are correctly used in both frontend and backend and are compatible with the trading engine. Pay special attention to types related to order execution, position tracking, and risk management.
+
+# Subtasks:
+## 1. Define Data Types [done]
+### Dependencies: None
+### Description: Define the TypeScript data types for all shared data structures between the frontend and backend.
+### Details:
+Identify all data structures that need to be shared, such as user objects, product objects, or API request/response formats. Define corresponding TypeScript types with appropriate properties and types.
+<info added on 2025-07-02T00:10:59.169Z>
+✅ COMPLETED: Successfully defined comprehensive TypeScript types for the Jabbr trading bot platform. Created 400+ lines of well-structured types covering:
+
+- Core entities (User, ExchangeApiKey, UserPreferences)
+- Bot entities (Bot, BotConfiguration, RiskManagement, BotPerformance)
+- Trading entities (Trade, Position, Signal)
+- WebSocket message types for real-time communication
+- API request/response types
+- System monitoring and logging types
+- Configuration and error types
+
+All types are properly documented and follow the PRD requirements for WebSocket-first architecture, multi-bot support, and modular design. Types support all planned features including Aether/Target Reacher strategies, Bybit integration, risk management, and real-time monitoring.
+</info added on 2025-07-02T00:10:59.169Z>
+
+## 2. Create Zod Schemas [done]
+### Dependencies: 2.1
+### Description: Create Zod schemas for validating the shared data types.
+### Details:
+Using the defined TypeScript types, create corresponding Zod schemas to enforce data validation rules. This includes defining required fields, data types, and any custom validation logic. Ensure schemas align with the trading engine's data structures for order execution, position tracking, and risk management.
+
+## 3. Export Types and Schemas [done]
+### Dependencies: 2.2
+### Description: Export the defined TypeScript types and Zod schemas for use in both the frontend and backend applications.
+### Details:
+Configure the build process to export the TypeScript types and Zod schemas in a format that can be easily imported and used by both the frontend and backend. This may involve creating a separate shared library or module. Ensure the exported types and schemas are compatible with the trading engine's modules.
+

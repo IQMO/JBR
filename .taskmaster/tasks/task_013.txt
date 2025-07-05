@@ -1,0 +1,11 @@
+# Task ID: 13
+# Title: Risk Management Framework
+# Status: done
+# Dependencies: 12
+# Priority: high
+# Description: Implement a basic risk management framework with stop-loss functionality.
+# Details:
+Implement stop-loss orders to limit potential losses. Monitor positions and trigger stop-loss orders when necessary. Allow users to configure stop-loss parameters. Use ccxt's API to implement stop loss orders. Ensure the risk management framework is effective and can protect the trading engine from excessive losses.
+
+# Test Strategy:
+Test stop-loss functionality by simulating trades and verifying that stop-loss orders are triggered correctly. Verify that the trading engine can use the risk management framework to limit potential losses.

@@ -16,7 +16,12 @@ const DatabaseConfigSchema = z.object({
   DB_NAME: z.string().default('jabbr_trading_bot'),
   DB_USER: z.string().default('postgres'),
   DB_PASSWORD: z.string().default(''),
-  DB_SSL: z.coerce.boolean().default(false),
+  DB_SSL: z.preprocess((val) => {
+    if (typeof val === 'string') {
+      return val.toLowerCase() === 'true';
+    }
+    return Boolean(val);
+  }, z.boolean().default(false)),
   
   // Connection pool settings
   DB_POOL_MIN: z.coerce.number().min(0).default(2),
@@ -41,6 +46,7 @@ export class DatabaseManager {
 
   constructor() {
     // Validate and parse environment configuration
+    console.log('🔍 Raw DB_SSL env value:', process.env.DB_SSL, typeof process.env.DB_SSL);
     this.config = DatabaseConfigSchema.parse({
       DATABASE_URL: process.env.DATABASE_URL,
       DB_HOST: process.env.DB_HOST,
@@ -55,6 +61,7 @@ export class DatabaseManager {
       DB_POOL_CONNECTION_TIMEOUT: process.env.DB_POOL_CONNECTION_TIMEOUT,
       NODE_ENV: process.env.NODE_ENV
     });
+    console.log('🔍 Parsed DB_SSL config value:', this.config.DB_SSL, typeof this.config.DB_SSL);
   }
 
   /**
@@ -68,6 +75,13 @@ export class DatabaseManager {
 
     try {
       const poolConfig: PoolConfig = this.createPoolConfig();
+      console.log('🔍 Database config debug:', {
+        host: poolConfig.host || 'using connectionString',
+        database: poolConfig.database || 'from connectionString',
+        ssl: poolConfig.ssl,
+        hasConnectionString: !!poolConfig.connectionString
+      });
+      
       this.pool = new Pool(poolConfig);
 
       // Test the connection
@@ -194,7 +208,7 @@ export class DatabaseManager {
           responseTime
         }
       };
-    } catch (error) {
+    } catch (_error) {
       return {
         status: 'unhealthy',
         details: {

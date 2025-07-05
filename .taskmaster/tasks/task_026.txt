@@ -1,0 +1,153 @@
+# Task ID: 26
+# Title: Implement Advanced Order Management & TP/SL Automation
+# Status: done
+# Dependencies: 13, 14, 12
+# Priority: high
+# Description: Implement advanced order management features including bracket orders, automatic TP/SL management, and position-aware order sizing to enhance the trading engine's capabilities.
+# Details:
+Implement the following functions:
+- `placeBracketOrder(entry, stopLoss, takeProfit)`: Create a bracket order system that places an entry order with automatic TP/SL orders.
+- `setStopLoss(symbol, positionSide, stopPrice)`: Implement position-based SL management to automatically set stop-loss orders based on the current position.
+- `setTakeProfit(symbol, positionSide, takeProfitPrice)`: Implement position-based TP management to automatically set take-profit orders based on the current position.
+- `placeOrderWithRiskManagement(order, riskConfig)`: Develop an intelligent order placement system that considers risk management configurations.
+- Implement position monitoring to automatically update TP/SL orders based on position changes.
+- Implement cross-position risk management and validation to prevent excessive risk across multiple positions.
+- Implement order lifecycle management for complex order types, ensuring proper handling of order status and updates.
+Ensure integration with the existing risk management framework and position tracking system. Use ccxt's API for order placement and management. Consider using Redis for fast access to position data.
+
+# Test Strategy:
+Test the following scenarios:
+- Place bracket orders and verify that the entry, stop-loss, and take-profit orders are placed correctly.
+- Open positions and verify that stop-loss and take-profit orders are automatically placed based on the configured parameters.
+- Modify position sizes and verify that stop-loss and take-profit orders are adjusted accordingly.
+- Place orders with different risk configurations and verify that the order sizes are adjusted based on the risk parameters.
+- Simulate market movements and verify that stop-loss and take-profit orders are triggered correctly.
+- Test cross-position risk management by opening multiple positions and verifying that the risk is managed across all positions.
+- Verify that order lifecycle management handles order status updates and cancellations correctly.
+
+# Subtasks:
+## 1. Implement `placeBracketOrder` Function [done]
+### Dependencies: None
+### Description: Implement the `placeBracketOrder(entry, stopLoss, takeProfit)` function within the BybitExchange class using ccxt to create an entry order with associated stop-loss and take-profit orders. This function should handle different order types (market, limit) for the entry order.
+### Details:
+Implement the function to accept entry order parameters (symbol, type, side, amount, price), stop-loss price, and take-profit price. Use ccxt's createOrder function to place the entry order. Upon successful entry order placement, create and place the stop-loss and take-profit orders using ccxt's createOrder function with appropriate order types (e.g., 'stop_market' or 'limit'). Handle potential errors during order placement and log them appropriately.
+<info added on 2025-07-02T03:11:23.030Z>
+✅ IMPLEMENTATION COMPLETE - placeBracketOrder Function
+
+🎯 SUCCESSFULLY IMPLEMENTED:
+- Complete placeBracketOrder function in BybitExchange class
+- Comprehensive parameter validation with price relationship checks
+- Atomic order placement: entry order + stop loss + take profit
+- Support for all order types: market, limit, stop_market, stop_limit
+- Proper error handling with graceful degradation
+- Support for both spot and futures markets
+- Reduce-only flag for futures positions
+- Client order ID management with SL/TP suffixes
+- Event emission for bracket order placement
+
+🔧 KEY FEATURES IMPLEMENTED:
+1. Entry Order Placement - Any type (market/limit)
+2. Stop Loss Order - Automatic opposite side placement
+3. Take Profit Order - Automatic opposite side placement
+4. Price Validation - Ensures SL below entry and TP above entry for longs (opposite for shorts)
+5. Error Recovery - Returns entry order even if SL/TP fail
+6. Comprehensive Logging - Full operation tracking
+
+📋 TESTING INFRASTRUCTURE:
+- Created comprehensive test file: test-bracket-order.ts
+- 5 test scenarios: market entry, limit entry, short positions, error handling, spot market
+- Proper ExchangeApiKey mock for testing
+- Full validation of all order types and error conditions
+
+🚀 READY FOR PRODUCTION:
+The placeBracketOrder function is fully implemented and tested. It provides the core advanced order management capability that will be used by all higher-level trading fun...
+
+## 2. Implement Position-Based TP/SL Management Functions [done]
+### Dependencies: None
+### Description: Implement `setStopLoss(symbol, positionSide, stopPrice)` and `setTakeProfit(symbol, positionSide, takeProfitPrice)` functions within the BybitExchange class. These functions should automatically set or update stop-loss and take-profit orders based on the current position.
+### Details:
+Implement the functions to retrieve the current position for the given symbol and position side using ccxt's fetchPositions or fetchPosition function. If a stop-loss or take-profit order already exists for the position, cancel it using ccxt's cancelOrder function. Create and place a new stop-loss or take-profit order using ccxt's createOrder function with the specified stop price or take-profit price. Handle different position sides (long, short) and order types (e.g., 'stop_market' or 'limit').
+<info added on 2025-07-02T03:13:37.164Z>
+✅ IMPLEMENTATION COMPLETE - Position-Based TP/SL Management Functions
+
+🎯 SUCCESSFULLY IMPLEMENTED:
+
+🔧 CORE FUNCTIONS:
+1. **setStopLoss(symbol, positionSide, stopPrice, options)** - Complete implementation
+   - Automatic position detection and validation
+   - Cancels existing stop loss orders before placing new ones
+   - Support for stop_market and stop_limit order types
+   - Comprehensive price validation (SL below entry for longs, above for shorts)
+   - Reduce-only flag for futures positions
+   - Event emission for tracking
+
+2. **setTakeProfit(symbol, positionSide, takeProfitPrice, options)** - Complete implementation
+   - Automatic position detection and validation
+   - Cancels existing take profit orders before placing new ones
+   - Support for limit and take_profit_market order types
+   - Comprehensive price validation (TP above entry for longs, below for shorts)
+   - Reduce-only flag for futures positions
+   - Event emission for tracking
+
+🛡️ VALIDATION & SAFETY:
+- Position existence validation before order placement
+- Price relationship validation (prevents invalid SL/TP prices)
+- Automatic order replacement (cancels old before placing new)
+- Graceful error handling with detailed error messages
+- Position size matching for accurate order amounts
+
+📋 TESTING INFRASTRUCTURE:
+- Created comprehensive test file: test-position-management.ts
+- 6 test scenarios covering all use c...
+
+## 3. Implement `placeOrderWithRiskManagement` Function [done]
+### Dependencies: None
+### Description: Develop the `placeOrderWithRiskManagement(order, riskConfig)` function within the BybitExchange class. This function should intelligently place orders considering risk management configurations, such as maximum position size, maximum loss per trade, and leverage limits.
+### Details:
+Implement the function to validate the order against the provided risk configuration. Check if the order exceeds the maximum position size, maximum loss per trade, or leverage limits. If the order violates any risk management rules, reject the order and return an error message. If the order passes the risk management checks, place the order using ccxt's createOrder function. Integrate with the existing risk management framework to retrieve risk configurations.
+<info added on 2025-07-02T03:16:05.819Z>
+✅ IMPLEMENTATION COMPLETE - Risk Management Order Placement
+
+🛡️ SUCCESSFULLY IMPLEMENTED:
+
+🔧 CORE FUNCTIONS:
+1. **placeOrderWithRiskManagement(orderRequest, riskConfig)** - Complete implementation
+   - Comprehensive risk validation before order placement
+   - 7-point risk analysis system with detailed checks
+   - Intelligent position size validation (considers existing positions)
+   - Leverage limit enforcement
+   - Daily loss and drawdown monitoring
+   - Concurrent trades limit management
+   - Emergency stop functionality
+   - Risk score-based warnings and restrictions
+
+2. **validateOrderRisk(orderRequest, riskConfig)** - Bonus validation function
+   - Risk validation without actual order placement
+   - Perfect for pre-flight checks and UI validation
+   - Returns detailed violations and warnings
+
+🛡️ COMPREHENSIVE RISK CHECKS:
+1. **Emergency Stop Check** - Immediate halt if activated
+2. **Leverage Validation** - Enforces maximum leverage limits
+3. **Position Size Control** - Prevents oversized positions (considers existing)
+4. **Concurrent Trades Limit** - Controls maximum simultaneous positions
+5. **Daily Loss Monitoring** - Tracks and limits daily losses
+6. **Drawdown Protection** - Prevents excessive drawdown
+7. **Risk Score Analysis** - Provides warnings based on risk tolerance
+
+🎯 INTELLIGENT FEATURES:
+- **Position Awareness**: Considers existing positions when calculating new position sizes
+- **Smart Warn...
+
+## 4. Implement Position Monitoring and TP/SL Update Logic [done]
+### Dependencies: 26.2
+### Description: Implement a background process or scheduled task to monitor position changes and automatically update TP/SL orders based on these changes. This involves fetching position data and comparing it to existing TP/SL order parameters.
+### Details:
+Implement a function to periodically fetch position data using ccxt's fetchPositions or fetchPosition function. Compare the current position size and price to the existing TP/SL order parameters. If the position has changed significantly (e.g., position size has increased or decreased, price has moved significantly), cancel the existing TP/SL orders and create new TP/SL orders with updated parameters using the `setStopLoss` and `setTakeProfit` functions. Consider using Redis for fast access to position data.
+
+## 5. Implement Order Lifecycle Management [done]
+### Dependencies: 26.1, 26.2, 26.3
+### Description: Implement order lifecycle management for complex order types, ensuring proper handling of order status and updates. This includes tracking order status, handling partial fills, and managing order cancellations.
+### Details:
+Implement a system to track the status of all orders placed through the advanced order management system. Use ccxt's fetchOrder or fetchOrders function to periodically check the status of orders. Handle partial fills by updating the position size and TP/SL orders accordingly. Implement logic to handle order cancellations and rejections. Log all order status changes and errors.
+

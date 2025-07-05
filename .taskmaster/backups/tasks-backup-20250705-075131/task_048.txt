@@ -1,0 +1,102 @@
+# Task ID: 48
+# Title: Resolve Dependency Conflicts and Version Mismatches
+# Status: done
+# Dependencies: 39, 2, 3, 7, 22, 28, 31, 32
+# Priority: critical
+# Description: Implement a comprehensive TypeScript-first consolidation strategy to resolve dependency conflicts and version mismatches across the monorepo. This includes converting configuration files to TypeScript, establishing a single dependency source, implementing TypeScript project references, and creating a unified configuration system.
+# Details:
+1. **Analyze Current Configuration:** Thoroughly analyze all existing JavaScript configuration files (Jest, ESLint, build scripts) and dependency structures across the monorepo to understand the current state and identify areas for improvement.
+2. **Convert Configuration Files to TypeScript:** Convert all JavaScript configuration files (Jest, ESLint, build scripts) to TypeScript (e.g., `jest.config.ts`, `.eslintrc.ts`, `rollup.config.ts`). This ensures consistency and type safety across the project.
+3. **Consolidate Dev Dependencies in Root `package.json`:** Move all `devDependencies` to the root `package.json` to establish a single source of truth for development dependencies. Use `npm install` or `yarn install` with the `--ignore-workspace-root-check` flag if necessary.
+4. **Implement TypeScript Project References:** Configure TypeScript project references (`references` array in `tsconfig.json`) to optimize build times and ensure correct dependency resolution between packages. This will define the build order and dependencies between the different parts of the monorepo.
+5. **Create Unified Configuration System:** Establish a unified configuration system with package-specific overrides. This involves creating a base configuration file (e.g., `eslint.config.base.ts`) and allowing packages to extend or override specific settings as needed.
+6. **Eliminate Version Conflicts:** Ensure that all dependencies are compatible and that there are no version conflicts. Use tools like `npm dedupe` or `yarn dedupe` to resolve any conflicts that arise.  Carefully manage peer dependencies.
+7. **Progressive Testing and Validation:** Implement progressive testing and validation at each step of the consolidation process. This includes running unit tests, integration tests, and end-to-end tests to ensure that the changes do not introduce any regressions.
+8. **Rollback Capabilities and Risk Mitigation:** Develop a rollback plan and implement risk mitigation strategies to address any issues that may arise during the consolidation process. This includes creating backups of configuration files and dependencies.
+9. **Automated Dependency Checks:** Implement automated dependency checks using tools like `npm audit` or `yarn audit` to identify and address security vulnerabilities and dependency issues proactively. Integrate these checks into the CI/CD pipeline.
+10. **Documentation:** Document the new TypeScript-first dependency management approach, including versioning strategies, conflict resolution techniques, and best practices for adding new dependencies. Update README files and other relevant documentation.
+
+# Test Strategy:
+1. **Run Builds:** Execute builds for the root project, backend package, and frontend package to verify that all builds complete successfully without errors.
+2. **Run Tests:** Execute all unit tests, integration tests, and end-to-end tests to ensure that the changes made to resolve dependency conflicts have not introduced any regressions.
+3. **Run Linters:** Execute linters (ESLint, Prettier) to verify that the code adheres to the project's coding standards and that there are no linting errors.
+4. **Verify Dependency Tree:** Use `npm ls` or `yarn why` to verify that there are no conflicting dependencies or version mismatches.
+5. **Manual Verification:** Manually verify that the updated documentation accurately reflects the correct dependency management approach.
+6. **CI/CD Integration:** Integrate the dependency checks into the CI/CD pipeline to ensure that dependency issues are caught early in the development process.
+7. **Configuration Validation:** Validate that all configuration files (Jest, ESLint, build scripts) are correctly converted to TypeScript and that they are functioning as expected.
+8. **Project References Validation:** Verify that TypeScript project references are correctly configured and that the build order is optimized.
+9. **Rollback Testing:** Test the rollback plan to ensure that the project can be successfully reverted to its previous state if necessary.
+
+# Subtasks:
+## 1. Convert Jest Configs to TypeScript [done]
+### Dependencies: None
+### Description: Convert all Jest configuration files (e.g., `jest.config.js`) to TypeScript (`jest.config.ts`). Ensure proper typing for all configuration options.
+### Details:
+Rename `jest.config.js` to `jest.config.ts`. Install `@types/jest` if not already present. Update the configuration file to use TypeScript syntax and types. Verify that all Jest options are correctly typed and that the tests still run successfully.
+
+## 2. Convert ESLint Configs to TypeScript [done]
+### Dependencies: None
+### Description: Convert all ESLint configuration files (e.g., `.eslintrc.js`) to TypeScript (`.eslintrc.ts`). Ensure typed rules and configurations.
+### Details:
+Rename `.eslintrc.js` to `.eslintrc.ts`. Install `@typescript-eslint/eslint-plugin` and `@typescript-eslint/parser` if not already present. Update the configuration file to use TypeScript syntax and types. Verify that all ESLint rules are correctly typed and that linting passes successfully.
+
+## 3. Move Dev Dependencies to Root `package.json` [done]
+### Dependencies: None
+### Description: Move all `devDependencies` from individual package `package.json` files to the root `package.json` file. This establishes a single source of truth for development dependencies.
+### Details:
+Iterate through each package's `package.json` file. Extract all `devDependencies`. Merge these into the root `package.json`'s `devDependencies`. Remove the `devDependencies` section from each package's `package.json`. Run `npm install` or `yarn install` in the root directory to install the new dependencies. Use `--ignore-workspace-root-check` if necessary.
+
+## 4. Standardize Runtime Dependencies to Exact Versions [done]
+### Dependencies: None
+### Description: Standardize all runtime dependencies to use exact versions across all packages in the monorepo. This avoids version conflicts and ensures consistent behavior.
+### Details:
+Iterate through all `package.json` files in the monorepo. For each runtime dependency (dependencies, not devDependencies), specify the exact version number (e.g., `1.2.3` instead of `^1.2.3` or `~1.2.3`). Run `npm install` or `yarn install` in the root directory to update the dependencies.
+
+## 5. Create TypeScript Project References [done]
+### Dependencies: None
+### Description: Configure TypeScript project references (`references` array in `tsconfig.json`) to define dependencies between packages and optimize build times.
+### Details:
+For each package in the monorepo, update its `tsconfig.json` file to include a `references` array. Each entry in the array should point to the `tsconfig.json` file of any packages that it depends on. Ensure the `composite` flag is set to true in each `tsconfig.json`.
+
+## 6. Convert Scripts to TypeScript [done]
+### Dependencies: None
+### Description: Convert all `.js` scripts in the `scripts/` folder (or equivalent) to `.ts` files. Ensure proper typing for all script logic.
+### Details:
+Rename all `.js` files in the `scripts/` folder to `.ts`. Update the script code to use TypeScript syntax and types. Add type annotations where necessary. Compile the TypeScript scripts to JavaScript.
+
+## 7. Update `package.json` Scripts [done]
+### Dependencies: None
+### Description: Update all `package.json` scripts to use the TypeScript versions of the configuration files and scripts.
+### Details:
+Update the `package.json` scripts to point to the new `.ts` configuration files and scripts. For example, change `jest --config jest.config.js` to `jest --config jest.config.ts`. Use `ts-node` or a similar tool to execute the TypeScript scripts directly.
+
+## 8. Install `@types` Packages [done]
+### Dependencies: None
+### Description: Install and configure `@types` packages for all JavaScript dependencies used in the project. This provides type definitions for JavaScript libraries.
+### Details:
+Inspect the `dependencies` and `devDependencies` in the root `package.json`. For each JavaScript dependency that does not have a corresponding `@types` package installed, install it using `npm install --save-dev @types/<package-name>` or `yarn add --dev @types/<package-name>`.
+
+## 9. Create Unified Build System [done]
+### Dependencies: None
+### Description: Create a unified build system that leverages TypeScript project references to build all packages in the correct order.
+### Details:
+Create a root-level `tsconfig.json` file that includes all packages as references. Use the `tsc --build` command to build all packages in the correct order based on the project references. Configure the build system to output the compiled JavaScript files to a consistent location.
+
+## 10. Implement Strict TypeScript Compiler Options [done]
+### Dependencies: None
+### Description: Implement strict TypeScript compiler options across all packages to enforce stricter type checking and improve code quality.
+### Details:
+Enable strict compiler options in all `tsconfig.json` files, including `strict`, `noImplicitAny`, `noImplicitThis`, `alwaysStrict`, `strictNullChecks`, `strictFunctionTypes`, and `strictBindCallApply`. Address any type errors that arise from enabling these options.
+
+## 11. Add Lint-Staged and Husky Hooks [done]
+### Dependencies: None
+### Description: Add comprehensive lint-staged and husky hooks for TypeScript validation to ensure code quality and consistency.
+### Details:
+Install `husky` and `lint-staged` as dev dependencies. Configure `husky` to run `lint-staged` on pre-commit. Configure `lint-staged` to run ESLint and TypeScript type checking on staged files. This will prevent commits with linting errors or type errors.
+
+## 12. Validate Entire System Builds Correctly [done]
+### Dependencies: None
+### Description: Validate that the entire system builds correctly with the new TypeScript consolidation strategy. This includes running all tests and ensuring that all packages are built in the correct order.
+### Details:
+Run `tsc --build` in the root directory to build all packages. Run all unit tests, integration tests, and end-to-end tests to ensure that the application functions as expected. Verify that all packages are built in the correct order based on the project references.
+

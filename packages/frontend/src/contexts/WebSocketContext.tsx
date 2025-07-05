@@ -1,7 +1,7 @@
 'use client';
 
-import type { WebSocketResponse} from '@jabbr/shared';
-import { CONSTANTS } from '@jabbr/shared';
+import type { WebSocketResponse} from '@jabbr/shared/src';
+import { CONSTANTS } from '@jabbr/shared/src';
 import React, { createContext, useContext, useState, useCallback } from 'react';
 
 import useWebSocket from '../hooks/useWebSocket';

@@ -28,15 +28,15 @@ Trading Bot Platform operational.
 
 ### **System Requirements**
 
-- **Node.js**: v18+ (recommended: v20+)
-- **npm/pnpm**: Latest version
-- **Git**: For version control
-- **VS Code/Cursor**: Recommended IDE with TypeScript support
+- **Node.js:** v18+ (recommended: v20+)
+- **npm/pnpm:** Latest version
+- **Git:** For version control
+- **VS Code/Cursor:** Recommended IDE with TypeScript support
 
 ### **Optional Requirements**
 
-- **PostgreSQL**: For full database functionality (can run without for testing)
-- **Redis**: For caching (optional, system works without)
+- **PostgreSQL:** For full database functionality (can run without for testing)
+- **Redis:** For caching (optional, system works without)
 
 ## ⚡ Quick Setup (5 Minutes)
 
@@ -73,9 +73,9 @@ npx ts-node src/server-standalone.ts
 
 ### **4. Verify Installation**
 
-- **Health Check**: http://localhost:3001/health
-- **Trading Test**: http://localhost:3001/api/test-trading
-- **Market Data**: http://localhost:3001/api/market/BTCUSDT
+- **Health Check:** http://localhost:3001/health
+- **Trading Test:** http://localhost:3001/api/test-trading
+- **Market Data:** http://localhost:3001/api/market/BTCUSDT
 
 ## 🔐 API Key Configuration
 
@@ -263,9 +263,9 @@ backtest.run().then(results => {
 
 ### **Mode 1: Standalone (Recommended for Testing)**
 
-- **No Database Required**: Runs without PostgreSQL
-- **Quick Start**: Fastest way to test the trading engine
-- **Full Trading**: Complete trading functionality available
+- **No Database Required:** Runs without PostgreSQL
+- **Quick Start:** Fastest way to test the trading engine
+- **Full Trading:** Complete trading functionality available
 
 ```bash
 cd packages/backend
@@ -274,9 +274,9 @@ npx ts-node src/server-standalone.ts
 
 ### **Mode 2: Full Stack (Production)**
 
-- **Complete Infrastructure**: All services running
-- **Database Integration**: Full PostgreSQL functionality
-- **WebSocket Services**: Real-time communication
+- **Complete Infrastructure:** All services running
+- **Database Integration:** Full PostgreSQL functionality
+- **WebSocket Services:** Real-time communication
 
 ```bash
 npm run dev
@@ -284,9 +284,9 @@ npm run dev
 
 ### **Mode 3: Production Deployment**
 
-- **Environment Variables**: Production-ready configuration
-- **Security Hardening**: All security measures enabled
-- **Monitoring**: Health checks and logging active
+- **Environment Variables:** Production-ready configuration
+- **Security Hardening:** All security measures enabled
+- **Monitoring:** Health checks and logging active
 
 ```bash
 npm run build
@@ -447,9 +447,9 @@ Each package has optimized TypeScript settings:
 
 ### **Health Check Endpoints**
 
-- **System Health**: `GET /health`
-- **Trading Status**: `GET /api/test-trading`
-- **Market Data**: `GET /api/market/:symbol`
+- **System Health:** `GET /health`
+- **Trading Status:** `GET /api/test-trading`
+- **Market Data:** `GET /api/market/:symbol`
 
 ### **Logging Configuration**
 
@@ -560,14 +560,14 @@ const rateLimitConfig = {
 
 ### **Production Security Checklist**
 
-- [ ] **Environment Variables**: Secure storage of sensitive data
-- [ ] **API Key Encryption**: AES-256-CBC encryption enabled
-- [ ] **JWT Security**: Strong secrets and proper expiration
-- [ ] **Rate Limiting**: Protection against abuse
-- [ ] **Input Validation**: Zod schema validation active
-- [ ] **HTTPS**: SSL/TLS encryption for production
-- [ ] **CORS**: Proper cross-origin configuration
-- [ ] **Helmet**: Security headers configured
+- [ ] **Environment Variables:** Secure storage of sensitive data
+- [ ] **API Key Encryption:** AES-256-CBC encryption enabled
+- **[ ] JWT Security:** Strong secrets and proper expiration
+- [ ] **Rate Limiting:** Protection against abuse
+- [ ] **Input Validation:** Zod schema validation active
+- [ ] **HTTPS:** SSL/TLS encryption for production
+- [ ] **CORS:** Proper cross-origin configuration
+- [ ] **Helmet:** Security headers configured
 
 ### **API Key Management**
 
@@ -587,11 +587,11 @@ const keyRateLimit = rateLimit({
 
 ### **Key Metrics to Monitor**
 
-- **API Response Time**: <200ms target
-- **WebSocket Latency**: <50ms target
-- **Order Execution Time**: <1s target
-- **Memory Usage**: <1GB target
-- **CPU Usage**: <50% average
+- **API Response Time:** <200ms target
+- **WebSocket Latency:** <50ms target
+- **Order Execution Time:** <1s target
+- **Memory Usage:** <1GB target
+- **CPU Usage:** <50% average
 
 ### **Monitoring Tools**
 

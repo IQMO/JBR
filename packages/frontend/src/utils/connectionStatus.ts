@@ -11,10 +11,10 @@ export interface ConnectionStatusState {
 }
 
 export const getStatusColor = ({ isConnected, isConnecting, connectionError }: ConnectionStatusState): string => {
-  if (isConnected) {return 'text-green-600';}
-  if (isConnecting) {return 'text-yellow-600';}
-  if (connectionError) {return 'text-red-600';}
-  return 'text-gray-600';
+  if (isConnected) {return 'text-status-success';}
+  if (isConnecting) {return 'text-status-warning';}
+  if (connectionError) {return 'text-status-error';}
+  return 'text-muted';
 };
 
 export const getStatusText = ({ isConnected, isConnecting, connectionError }: ConnectionStatusState): string => {

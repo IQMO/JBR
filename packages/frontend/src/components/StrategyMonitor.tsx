@@ -7,8 +7,8 @@
 
 "use client";
 
-import type { StrategyPerformanceMetrics, SignalSummary} from '@jabbr/shared';
-import { CONSTANTS, PositionSummary, RiskMetrics } from '@jabbr/shared';
+import type { StrategyPerformanceMetrics, SignalSummary} from '@jabbr/shared/src';
+import { CONSTANTS, PositionSummary, RiskMetrics } from '@jabbr/shared/src';
 import React, { useState } from 'react';
 
 import useWebSocket from '../hooks/useWebSocket';

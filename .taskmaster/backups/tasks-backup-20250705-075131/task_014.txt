@@ -1,0 +1,11 @@
+# Task ID: 14
+# Title: Trading Engine Core
+# Status: done
+# Dependencies: 10, 11, 12, 13
+# Priority: high
+# Description: Combine exchange integration, order execution, position tracking, and risk management into a modular trading engine.
+# Details:
+Create a modular architecture for the trading engine. Allow different components to be plugged in and configured. Implement a central control loop to manage trading operations.
+
+# Test Strategy:
+Test the trading engine by simulating different trading scenarios and verifying that all components work together correctly.

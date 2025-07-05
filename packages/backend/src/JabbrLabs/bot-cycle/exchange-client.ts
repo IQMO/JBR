@@ -6,9 +6,9 @@ import { BybitExchange } from '../../exchanges/bybit-exchange';
 export type BybitTradeType = 'spot' | 'futures' | 'margin';
 
 // JabbrLabs wrapper: add any custom logging or enhancements here, but delegate to canonical
-export async function getExchangeClient(tradeType: BybitTradeType = 'spot') {
+export async function getExchangeClient(_tradeType: BybitTradeType = 'spot') {
   // FIXME: Create proper exchange client factory - currently returning BybitExchange instance
-  // e.g., uiLogger.info(`[JabbrLabs] Getting exchange client for ${tradeType}`, LogCategory.API);
+  // e.g., uiLogger.info(`[JabbrLabs] Getting exchange client for ${_tradeType}`, LogCategory.API);
   
   // For now, return a new BybitExchange instance
   // This needs proper factory pattern implementation

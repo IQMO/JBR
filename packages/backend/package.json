@@ -2,11 +2,11 @@
   "name": "@jabbr/backend",
   "version": "1.0.0",
   "description": "Jabbr Trading Bot Platform - Backend API",
-  "main": "dist/index.js",
+  "main": "src/index.ts",
   "scripts": {
     "dev": "dotenv -e ../../.env ts-node src/index.ts",
-    "build": "tsc",
-    "start": "dotenv -e ../../.env node dist/index.js",
+    "type-check": "tsc --noEmit",
+    "start": "dotenv -e ../../.env ts-node src/index.ts",
     "test": "dotenv -e ../../.env jest",
     "test:unit": "dotenv -e ../../.env jest --selectProjects \"Unit Tests\"",
     "test:integration": "dotenv -e ../../.env jest --selectProjects \"Integration Tests\"",
@@ -20,8 +20,7 @@
     "debug:signals": "dotenv -e ../../.env ts-node scripts/debug/debug-sma-signals.ts",
     "debug:processor": "dotenv -e ../../.env ts-node scripts/debug/debug-sma-processor.ts",
     "debug:simple": "dotenv -e ../../.env ts-node scripts/debug/simple-sma-debug.ts",
-    "lint": "eslint \"src/**/*.ts\"",
-    "clean": "rimraf dist"
+    "lint": "eslint \"src/**/*.ts\" --config eslint.config.mjs"
   },
   "dependencies": {
     "@jabbr/shared": "file:../shared",
@@ -43,6 +42,7 @@
     "zod": "^3.25.67"
   },
   "devDependencies": {
+    "@eslint/js": "^9.30.1",
     "@types/bcryptjs": "^2.4.6",
     "@types/compression": "^1.7.5",
     "@types/cors": "^2.8.17",
@@ -52,6 +52,9 @@
     "@types/pg": "^8.10.9",
     "@types/supertest": "^2.0.16",
     "@types/ws": "^8.5.8",
+    "@typescript-eslint/eslint-plugin": "^8.35.1",
+    "@typescript-eslint/parser": "^8.35.1",
+    "eslint": "^9.30.1",
     "supertest": "^6.3.3"
   },
   "keywords": [

@@ -9,9 +9,10 @@
  * - Real-time market data from Bybit
  */
 
-// Load environment variables first
+// Load environment variables from root .env file
 import dotenv from 'dotenv';
-dotenv.config();
+import path from 'path';
+dotenv.config({ path: path.join(__dirname, '../../../.env') });
 
 import server from './server';
 import { initializeDatabase } from './services/database.service';

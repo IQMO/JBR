@@ -1,0 +1,49 @@
+# Task ID: 40
+# Title: Standardize and Organize Test Files
+# Status: done
+# Dependencies: 17
+# Priority: high
+# Description: Organize and standardize all test files according to a new directory structure, ensuring proper test execution and reporting within the CI/CD pipeline. All tests must be inside the tests folder, not at root level.
+# Details:
+1. Identify all existing test files across the project, including those at the root level and within existing subdirectories.
+2. Create a standardized test directory structure (unit, integration, e2e, fixtures) at the project's root.
+3. Move all test files to their appropriate locations within the new directory structure.
+4. Update all test imports and references within the codebase to match the new test file locations.
+5. Configure test result collection and reporting using a standardized format (e.g., JUnit, SonarQube).
+6. Ensure all test configuration files (e.g., Jest, Mocha, Cypress) adhere to the new standard and are correctly located.
+7. Update CI/CD workflows (e.g., GitHub Actions, Jenkins) to execute tests from the new directory structure and collect test results.
+8. Document the new test organization in a dedicated test organization guide, including directory structure, naming conventions, and test execution procedures.
+<info added on 2025-07-03T01:37:05.439Z>
+Task completed.
+
+Work done:
+
+1.  Created a standardized test directory structure:
+
+    *   `/tests` as the root directory
+    *   Separate directories for `unit`, `integration`, `e2e`, and `fixtures` tests
+    *   Package-specific subdirectories under each test type
+2.  Moved existing test files to the appropriate locations:
+
+    *   Moved strategy factory tests to integration tests
+    *   Moved SMA signal processor tests to unit tests
+    *   Moved SMA crossover strategy tests to unit tests
+    *   Moved standalone engine tests to e2e tests
+3.  Updated imports in all moved test files to reflect new locations
+4.  Created comprehensive Jest configurations:
+
+    *   Root-level Jest config that references all test projects
+    *   Separate Jest configs for each test type and package
+    *   Setup files for different test environments
+5.  Created test fixtures directory with reusable test data
+6.  Updated package.json files:
+
+    *   Root package.json...
+
+# Test Strategy:
+1. Verify that all test files have been moved to the correct locations within the new directory structure.
+2. Run all unit, integration, and e2e tests to ensure they pass and produce the expected results.
+3. Check that test result collection and reporting are functioning correctly, generating reports in the standardized format.
+4. Verify that CI/CD workflows execute tests from the new directory structure and collect test results.
+5. Confirm that the test organization guide accurately reflects the new structure and procedures.
+6. Ensure that all test configuration files are correctly configured and located.

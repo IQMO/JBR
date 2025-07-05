@@ -1,0 +1,51 @@
+# Task ID: 35
+# Title: Unify Indicator Sources for Strategies and Signals
+# Status: done
+# Dependencies: 17, 29, 30, 33
+# Priority: high
+# Description: Standardize indicator usage across all strategies and signals. Audit and update all strategies (Aether Signal, Target Reacher, custom plugins) to ensure they import indicators from the unified JabbrLabs/indicators source, removing duplicate implementations and ensuring consistent calculation methods.
+# Details:
+1.  **Audit Existing Strategies:** Review the Aether Signal Generator (Task 29), Target Reacher strategy (Task 30), and any custom strategy plugins to identify all indicator implementations.
+2.  **Identify Duplicate Implementations:** Compare indicator implementations across all strategies and the JabbrLabs/indicators library (Task 33) to identify any duplicates.
+3.  **Update Strategy Implementations:** Modify the Aether Signal Generator, Target Reacher strategy, and custom strategy plugins to import indicators exclusively from the JabbrLabs/indicators library.
+4.  **Remove Duplicate Code:** Delete any duplicate indicator implementations from the strategy codebases.
+5.  **Ensure Consistent Calculations:** Verify that all strategies use the same calculation methods for each indicator, as defined in the JabbrLabs/indicators library.
+6.  **Update Configuration:** Ensure that the strategy framework (Task 17) is updated to correctly utilize the unified indicator sources.
+7.  **Refactor Custom Plugins:** Provide guidance and support for users to refactor their custom strategy plugins to use the unified indicator library.
+<info added on 2025-07-03T00:23:19.302Z>
+The Strategy Framework (Task 17) has been successfully completed, including a plugin architecture and backtesting capabilities. Unifying indicator sources is now even more critical to maintain consistency across all strategies built using the completed framework.
+</info added on 2025-07-03T00:23:19.302Z>
+<info added on 2025-07-04T21:17:16.562Z>
+ANALYSIS COMPLETED - Task 35 Comprehensive Assessment:
+
+Current Unified Indicators Library Status:
+✅ Well-established central hub at packages/backend/src/JabbrLabs/indicators/index.ts
+- Complete IndicatorFactory, IndicatorUtils, IndicatorSets
+- Class-based: SMAIndicator, EMAIndicator, MACDIndicator, RSIIndicator, BollingerBandsIndicator, ATRIndicator
+- Function-based: calculateSMA, calculateEMA, calculateMACD, calculateRSI, getMASignals
+- Registry system with aliases and metadata
+
+Import Pattern Analysis:
+✅ PROPERLY USING UNIFIED SOURCE:
+- Aether Signal Core: imports from ../../indicators (unified)
+- Signal Processing Validation: imports from ../JabbrLabs/indicators (unified)
+
+⚠️ NEEDS UNIFICATION (direct imports):
+- SMA Signal Processor: imports from ../../indicators/moving-averages
+- Improved SMA Signal Processor: imports from ../../indicators/moving-averages
+
+Required Updates:
+1. Update 2 SMA signal processor files to use unified indicators import
+2. Verify internal indicator dependencies remain intact
+3. No duplicate implementations found - all use proper abstractions
+
+Risk Assessment: LOW - Only import statement changes needed
+Build Status: ✅ Project builds successfully
+</info added on 2025-07-04T21:17:16.562Z>
+
+# Test Strategy:
+1.  **Unit Tests:** Write unit tests to verify that the Aether Signal Generator, Target Reacher strategy, and custom strategy plugins are correctly importing indicators from the JabbrLabs/indicators library.
+2.  **Integration Tests:** Run integration tests to verify that the strategies generate the same signals when using indicators from the JabbrLabs/indicators library as they did with their original implementations.
+3.  **Regression Tests:** Run regression tests to ensure that the changes do not introduce any new bugs or performance issues.
+4.  **Manual Verification:** Manually verify that the strategies are generating the correct signals by comparing their output to known good values.
+5.  **Code Review:** Conduct a code review to ensure that all duplicate indicator implementations have been removed and that the strategies are using the JabbrLabs/indicators library correctly.

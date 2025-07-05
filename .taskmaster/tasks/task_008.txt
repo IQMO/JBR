@@ -1,0 +1,11 @@
+# Task ID: 8
+# Title: PostgreSQL Setup
+# Status: done
+# Dependencies: 3
+# Priority: medium
+# Description: Set up PostgreSQL database for persistent data storage.
+# Details:
+Install PostgreSQL and create a database for the application. Use a Node.js PostgreSQL client library (e.g., 'pg') to connect to the database. Define database schemas for User, Bot, Trade, Signal, and Position. Use `pnpm add pg`. Ensure the database schemas are compatible with the trading engine's data structures.
+
+# Test Strategy:
+Test database connection and schema creation. Ensure data can be read and written to the database. Verify that the database schemas can store the trading engine's data, including order execution details, position information, and risk management parameters.

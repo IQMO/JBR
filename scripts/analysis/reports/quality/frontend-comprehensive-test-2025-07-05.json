@@ -1,0 +1,325 @@
+{
+  "timestamp": "2025-07-05T17:55:27.900Z",
+  "duration": 51473,
+  "summary": {
+    "totalComponents": 12,
+    "successful": 3,
+    "errors": 9,
+    "warnings": 0,
+    "readinessScore": 0
+  },
+  "testResults": [
+    {
+      "component": "src/components/LogViewer.tsx",
+      "status": "error",
+      "errors": [],
+      "warnings": [],
+      "duration": 4526
+    },
+    {
+      "component": "src/components/AlertSystem.tsx",
+      "status": "error",
+      "errors": [],
+      "warnings": [],
+      "duration": 5153
+    },
+    {
+      "component": "src/components/LogAndAlertDashboard.tsx",
+      "status": "error",
+      "errors": [],
+      "warnings": [],
+      "duration": 4668
+    },
+    {
+      "component": "src/components/PositionPnLVisualization.tsx",
+      "status": "error",
+      "errors": [
+        "src/components/PositionPnLVisualization.tsx(44,37): error TS2307: Cannot find module '@/contexts/WebSocketContext' or its corresponding type declarations.\r",
+        "src/components/PositionPnLVisualization.tsx(811,15): error TS2607: JSX element class does not support attributes because it does not have a 'props' property.\r",
+        "src/components/PositionPnLVisualization.tsx(811,16): error TS2786: 'ReferenceLine' cannot be used as a JSX component.\r"
+      ],
+      "warnings": [],
+      "duration": 4198
+    },
+    {
+      "component": "src/components/TradingActivityMonitor.tsx",
+      "status": "error",
+      "errors": [],
+      "warnings": [],
+      "duration": 3311
+    },
+    {
+      "component": "src/components/StrategyMonitor.tsx",
+      "status": "error",
+      "errors": [],
+      "warnings": [],
+      "duration": 2935
+    },
+    {
+      "component": "src/components/ConnectionStatus.tsx",
+      "status": "success",
+      "errors": [],
+      "warnings": [],
+      "duration": 3037
+    },
+    {
+      "component": "src/components/ErrorBoundary.tsx",
+      "status": "error",
+      "errors": [],
+      "warnings": [],
+      "duration": 2318
+    },
+    {
+      "component": "src/components/Loading.tsx",
+      "status": "error",
+      "errors": [],
+      "warnings": [],
+      "duration": 2445
+    },
+    {
+      "component": "src/hooks/useWebSocket.ts",
+      "status": "success",
+      "errors": [],
+      "warnings": [],
+      "duration": 2744
+    },
+    {
+      "component": "src/contexts/WebSocketContext.tsx",
+      "status": "error",
+      "errors": [],
+      "warnings": [],
+      "duration": 2649
+    },
+    {
+      "component": "src/services/api.ts",
+      "status": "success",
+      "errors": [],
+      "warnings": [],
+      "duration": 2101
+    }
+  ],
+  "dependencies": [
+    {
+      "name": "@mui/material",
+      "declared": "^5.17.1",
+      "installed": true,
+      "security": "safe",
+      "actualVersion": "5.17.1"
+    },
+    {
+      "name": "@mui/icons-material",
+      "declared": "^5.17.1",
+      "installed": true,
+      "security": "safe",
+      "actualVersion": "5.17.1"
+    },
+    {
+      "name": "@emotion/react",
+      "declared": "^11.14.0",
+      "installed": false,
+      "security": "warning"
+    },
+    {
+      "name": "@emotion/styled",
+      "declared": "^11.14.1",
+      "installed": false,
+      "security": "warning"
+    },
+    {
+      "name": "next",
+      "declared": "^14.0.4",
+      "installed": false,
+      "security": "warning"
+    },
+    {
+      "name": "react",
+      "declared": "^18.2.0",
+      "installed": false,
+      "security": "warning"
+    },
+    {
+      "name": "react-dom",
+      "declared": "^18.2.0",
+      "installed": false,
+      "security": "warning"
+    },
+    {
+      "name": "typescript",
+      "declared": null,
+      "installed": false,
+      "security": "safe"
+    }
+  ],
+  "componentMetrics": [
+    {
+      "name": "src/components/LogViewer.tsx",
+      "lines": 576,
+      "complexity": 53,
+      "dependencies": [
+        "react",
+        "../hooks/useWebSocket",
+        "@jabbr/shared/src",
+        "@jabbr/shared/src"
+      ],
+      "issues": [
+        "Large file - consider splitting",
+        "High complexity - refactor recommended"
+      ]
+    },
+    {
+      "name": "src/components/AlertSystem.tsx",
+      "lines": 591,
+      "complexity": 57,
+      "dependencies": [
+        "react",
+        "../hooks/useWebSocket",
+        "@jabbr/shared/src",
+        "@jabbr/shared/src"
+      ],
+      "issues": [
+        "Large file - consider splitting",
+        "High complexity - refactor recommended"
+      ]
+    },
+    {
+      "name": "src/components/LogAndAlertDashboard.tsx",
+      "lines": 106,
+      "complexity": 3,
+      "dependencies": [
+        "react",
+        "./LogViewer",
+        "./AlertSystem"
+      ],
+      "issues": []
+    },
+    {
+      "name": "src/components/PositionPnLVisualization.tsx",
+      "lines": 1288,
+      "complexity": 90,
+      "dependencies": [
+        "react",
+        "@jabbr/shared/src",
+        "@/contexts/WebSocketContext",
+        "../services/api",
+        "../utils/theme",
+        "./ErrorBoundary",
+        "./Loading"
+      ],
+      "issues": [
+        "Large file - consider splitting",
+        "High complexity - refactor recommended"
+      ]
+    },
+    {
+      "name": "src/components/TradingActivityMonitor.tsx",
+      "lines": 902,
+      "complexity": 117,
+      "dependencies": [
+        "react",
+        "../services/api",
+        "../contexts/WebSocketContext",
+        "../services/api",
+        "../utils/theme",
+        "../utils/errorHandler",
+        "./ErrorBoundary",
+        "./Loading"
+      ],
+      "issues": [
+        "Large file - consider splitting",
+        "High complexity - refactor recommended"
+      ]
+    },
+    {
+      "name": "src/components/StrategyMonitor.tsx",
+      "lines": 484,
+      "complexity": 58,
+      "dependencies": [
+        "@jabbr/shared/src",
+        "@jabbr/shared/src",
+        "react",
+        "../hooks/useWebSocket"
+      ],
+      "issues": [
+        "High complexity - refactor recommended"
+      ]
+    },
+    {
+      "name": "src/components/ConnectionStatus.tsx",
+      "lines": 123,
+      "complexity": 6,
+      "dependencies": [
+        "@jabbr/shared/src",
+        "react",
+        "../hooks/useWebSocket",
+        "../utils/connectionStatus"
+      ],
+      "issues": []
+    },
+    {
+      "name": "src/components/ErrorBoundary.tsx",
+      "lines": 165,
+      "complexity": 12,
+      "dependencies": [
+        "react",
+        "react",
+        "../utils/theme"
+      ],
+      "issues": []
+    },
+    {
+      "name": "src/components/Loading.tsx",
+      "lines": 200,
+      "complexity": 25,
+      "dependencies": [
+        "react",
+        "../utils/theme"
+      ],
+      "issues": [
+        "High complexity - refactor recommended"
+      ]
+    },
+    {
+      "name": "src/hooks/useWebSocket.ts",
+      "lines": 246,
+      "complexity": 44,
+      "dependencies": [
+        "@jabbr/shared/src",
+        "@jabbr/shared/src",
+        "react"
+      ],
+      "issues": [
+        "High complexity - refactor recommended"
+      ]
+    },
+    {
+      "name": "src/contexts/WebSocketContext.tsx",
+      "lines": 241,
+      "complexity": 24,
+      "dependencies": [
+        "@jabbr/shared/src",
+        "@jabbr/shared/src",
+        "react",
+        "../hooks/useWebSocket"
+      ],
+      "issues": [
+        "High complexity - refactor recommended"
+      ]
+    },
+    {
+      "name": "src/services/api.ts",
+      "lines": 300,
+      "complexity": 37,
+      "dependencies": [
+        "../config/app"
+      ],
+      "issues": [
+        "High complexity - refactor recommended"
+      ]
+    }
+  ],
+  "environment": {
+    "nodeVersion": "v22.14.0",
+    "platform": "win32",
+    "frontendDir": "E:\\M.U. Kamal\\Programing\\0TS\\JBR\\packages\\frontend"
+  }
+}

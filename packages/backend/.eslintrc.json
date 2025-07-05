@@ -1,18 +1,30 @@
 {
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint"],
-  "extends": ["eslint:recommended"],
+  "extends": [
+    "eslint:recommended",
+    "@typescript-eslint/recommended"
+  ],
   "parserOptions": {
     "ecmaVersion": 2020,
-    "sourceType": "module"
+    "sourceType": "module",
+    "project": "./tsconfig.json"
   },
   "rules": {
     "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+    "@typescript-eslint/no-explicit-any": "warn",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-floating-promises": "error",
     "no-console": "off",
     "prefer-const": "error",
     "no-var": "error",
     "no-useless-escape": "off",
-    "no-undef": "off"
+    "no-undef": "off",
+    "no-magic-numbers": "off",
+    "max-lines-per-function": "off",
+    "max-lines": "off",
+    "curly": ["error", "all"],
+    "import/order": "off"
   },
   "env": {
     "node": true,

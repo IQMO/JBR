@@ -9,12 +9,13 @@ import { EventEmitter } from 'events';
 
 import logger from '../../services/logging.service';
 import type { SignalOutput as AetherSignalOutput } from '../signals/aether/models';
-import { SMASignalOutput } from '../signals/sma/models';
+// import { SMASignalOutput } from '../signals/sma/models'; // Unused import
 import type { SMASignalProcessor } from '../signals/sma/sma-signal-processor';
 import type { StrategyResult } from '../target-reacher/interfaces';
 
 import type { StandardSignal} from './signal-translator';
-import { SignalTranslator, SignalSource, SignalTranslationResult } from './signal-translator';
+import { SignalTranslator, SignalSource } from './signal-translator';
+// import { SignalTranslationResult } from './signal-translator'; // Unused import
 
 
 /**
@@ -22,6 +23,7 @@ import { SignalTranslator, SignalSource, SignalTranslationResult } from './signa
  */
 interface SignalEmitter extends EventEmitter {
   // Common interface for signal sources
+  emit(event: string, ...args: any[]): boolean;
 }
 
 /**
@@ -433,7 +435,9 @@ export class SignalProcessingManager extends EventEmitter {
 
     // Process signals every second
     this.processingInterval = setInterval(() => {
-      this.processSignalQueue();
+      this.processSignalQueue().catch(error => {
+        logger.error('Error in signal processing queue:', error);
+      });
     }, 1000);
 
     logger.info('🔄 Signal processing started');

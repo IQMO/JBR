@@ -1,6 +1,6 @@
 'use client';
 
-import { CONSTANTS } from '@jabbr/shared';
+import { CONSTANTS } from '@jabbr/shared/src';
 import { useState, useEffect } from 'react';
 
 import useWebSocket from '../hooks/useWebSocket';

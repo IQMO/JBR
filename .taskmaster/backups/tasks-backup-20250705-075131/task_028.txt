@@ -1,0 +1,25 @@
+# Task ID: 28
+# Title: Create Bot Management Dashboard UI
+# Status: done
+# Dependencies: 3, 5, 15, 16, 20, 21
+# Priority: high
+# Description: Implement the main bot management interface including bot list view, lifecycle controls (start/stop/pause/resume), performance metrics display, and bot configuration editing. Integrate with the backend API (Task 15 & 16 - COMPLETE) to fetch and update bot data.
+# Details:
+1.  Create the main Bot Management Dashboard UI using React/Next.js and TypeScript.
+2.  Implement a bot list view to display all available bots with relevant information (status, strategy, P&L, etc.).
+3.  Integrate with the backend API (Task 15 & 16 - COMPLETE) to fetch bot data and display it in the list view.
+4.  Implement lifecycle controls (start, stop, pause, resume) for each bot, connecting these controls to the appropriate backend API endpoints.
+5.  Display performance metrics for each bot, fetching data from the backend API and presenting it in a clear and concise manner (e.g., charts, tables).
+6.  Implement bot configuration editing, allowing users to modify bot parameters and save changes to the backend.
+7.  Use a component library (e.g., Material UI or Ant Design) to ensure a consistent and user-friendly interface.
+8.  Implement real-time updates using WebSockets (Task 5 & 20 - COMPLETE) to reflect changes in bot status and performance metrics.
+9.  Ensure proper error handling and user feedback for all operations.
+
+# Test Strategy:
+1.  Verify that the bot list view displays all available bots with accurate information.
+2.  Test the lifecycle controls (start, stop, pause, resume) for each bot, ensuring that they function correctly and update the bot status in real-time.
+3.  Verify that performance metrics are displayed accurately and updated in real-time.
+4.  Test bot configuration editing, ensuring that changes are saved to the backend and reflected in the bot's behavior.
+5.  Test error handling and user feedback for all operations, ensuring that users are informed of any issues.
+6.  Verify that the UI is responsive and user-friendly on different devices and screen sizes.
+7.  Test WebSocket integration (Task 5 & 20 - COMPLETE) to ensure real-time updates are received and displayed correctly.

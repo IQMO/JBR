@@ -10,7 +10,7 @@ import { EventEmitter } from 'events';
 import type { StrategyExecutionConfig } from '../bots/strategy-execution-integration';
 import { StrategyExecutionIntegration } from '../bots/strategy-execution-integration';
 import logger from '../services/logging.service';
-import { StrategyType } from '../strategies/strategy-factory';
+// import { StrategyType } from '../strategies/strategy-factory'; // Unused import
 
 import { SignalProcessingManager } from './signal-processing/signal-processing-manager';
 import type { StandardSignal} from './signal-processing/signal-translator';
@@ -432,7 +432,7 @@ export class BotTradingCycleIntegration extends EventEmitter {
   /**
    * Execute strategy manually
    */
-  async executeStrategy(botId: string, strategyId: string, context: any): Promise<any> {
+  async executeStrategy(botId: string, strategyId: string, _context: any): Promise<any> {
     try {
       if (!this.isRunning) {
         throw new Error('Bot Trading Cycle not running');

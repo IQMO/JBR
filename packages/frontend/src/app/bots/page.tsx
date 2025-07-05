@@ -1,6 +1,6 @@
 "use client";
 
-import { CONSTANTS } from '@jabbr/shared';
+import { CONSTANTS } from '@jabbr/shared/src';
 import type { Bot, BotStatus } from '@jabbr/shared/src/types';
 import Link from 'next/link';
 import React, { useState, useEffect } from 'react';

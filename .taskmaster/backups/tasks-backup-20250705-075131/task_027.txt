@@ -1,0 +1,19 @@
+# Task ID: 27
+# Title: Validate Production Environment Configuration
+# Status: done
+# Dependencies: 5
+# Priority: high
+# Description: Validate the production environment configuration by ensuring the backend starts correctly with the new settings and that both the frontend and backend recognize the production mode.
+# Details:
+1.  Ensure all necessary environment variables are set correctly on the production server, specifically focusing on those required for backend startup.
+2.  Update the backend configuration to use the production Bybit API keys (BYBIT_TESTNET=false). Ensure the keys are securely stored and accessed via environment variables.
+3.  Modify the backend code to correctly identify and operate in production mode by checking environment variables.
+4.  Verify that the trading engine is using the correct exchange adapters and authentication credentials for production by inspecting the loaded environment variables.
+5.  Implement logging to confirm the system's environment mode upon startup.
+
+
+# Test Strategy:
+1.  Start the backend with the production configuration and verify that it starts without errors.
+2.  Check the backend logs to confirm that it is running in production mode and using the correct API keys (verify keys are not testnet).
+3.  Simulate a connection from the frontend to the backend and verify that the environment status is correctly identified.
+4.  Check the logs for any errors or warnings during startup and address them accordingly.

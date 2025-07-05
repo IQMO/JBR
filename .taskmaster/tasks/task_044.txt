@@ -1,0 +1,51 @@
+# Task ID: 44
+# Title: Clean Up Legacy Files and Update Documentation
+# Status: done
+# Dependencies: 43, 42, 41
+# Priority: medium
+# Description: Clean up legacy files and update documentation references after successful environment unification. This includes removing redundant files and updating documentation to reflect the new unified environment configuration.
+# Details:
+1. **Identify and Remove Redundant Files:**
+   - Locate and delete all `env.example` files that are no longer needed due to the unified `.env` at the project root. Pay special attention to package-specific directories (e.g., `packages/backend`, `packages/frontend`, `packages/shared`).
+   - Remove any outdated debug scripts or configuration files that are no longer relevant after the environment unification.
+2. **Update Documentation:**
+   - Review all project documentation (e.g., README files, setup guides, internal documentation) and update references to the new unified environment configuration structure.
+   - Ensure that the documentation clearly explains how to set up and use the `.env` file at the project root.
+   - Update any examples or tutorials that demonstrate environment variable usage to reflect the new configuration.
+3. **Verify Changes:**
+   - After removing files and updating documentation, thoroughly test the application to ensure that it still functions correctly.
+   - Check that all environment variables are being loaded correctly from the unified `.env` file.
+   - Ensure that the updated documentation accurately reflects the current state of the project.
+<info added on 2025-07-03T17:16:23.344Z>
+LEGACY FILE CLEANUP COMPLETED
+
+ACTIONS TAKEN:
+1. Removed `packages/backend/env.example` - redundant with root `.env.example`
+2. Cleaned up Next.js webpack cache `.old` files - automatically regenerated
+3. Updated `PRODUCTION_GUIDE.md` to reference root `.env.example` instead of backend package
+4. Updated `CONFIGURATION_GUIDE.md` to reflect unified environment configuration
+
+DOCUMENTATION UPDATES:
+- All references now point to root-level `.env` and `.env.example`
+- Removed outdated package-specific environment file references
+- Updated environment loading instructions to reflect unified approach
+
+REMAINING DEBUG SCRIPTS:
+The debug scripts in `packages/backend/scripts/debug/` are being kept for now as they may still be useful for development and troubleshooting SMA strategy issues. They can be removed later if truly no longer needed.
+
+The project now has a clean, unified environment configuration structure with proper documentation.
+</info added on 2025-07-03T17:16:23.344Z>
+
+# Test Strategy:
+1. **File Removal Verification:**
+   - Manually verify that all identified redundant files (e.g., `env.example` in package directories, outdated debug scripts) have been successfully removed.
+   - Use file system commands (e.g., `ls`, `find`) to confirm the absence of these files.
+2. **Documentation Accuracy:**
+   - Review all updated documentation to ensure that it accurately describes the new unified environment configuration.
+   - Follow the documentation to set up the project and verify that all steps are clear and correct.
+3. **Application Functionality:**
+   - Run all existing tests (unit, integration, e2e) to ensure that the application functions correctly after the file removal and documentation updates.
+   - Manually test key features of the application to verify that environment variables are being loaded correctly and that the application behaves as expected in different environments (e.g., development, testing, production).
+4. **Environment Variable Loading:**
+   - Create a test script that specifically checks if all required environment variables are loaded correctly from the root `.env` file.
+   - Verify that the application can access these variables and use them to configure its behavior.

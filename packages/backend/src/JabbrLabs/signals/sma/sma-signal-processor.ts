@@ -100,10 +100,10 @@ export class SMASignalProcessor {
       return null;
     }
     
-    // Get latest values
-    const lastPrice = prices[prices.length - 1];
-    const lastFastMA = fastMA[fastMA.length - 1];
-    const lastSlowMA = slowMA[slowMA.length - 1];
+    // Get latest values (commented out temporarily for development)
+    // const _lastPrice = prices[prices.length - 1]; // Reserved for future use
+    // const _lastFastMA = fastMA[fastMA.length - 1]; // Reserved for future use
+    // const _lastSlowMA = slowMA[slowMA.length - 1]; // Reserved for future use
     
     // Generate signal based on configuration
     const lastCandle = candles[candles.length - 1];

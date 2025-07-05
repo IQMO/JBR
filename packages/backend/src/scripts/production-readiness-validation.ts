@@ -308,7 +308,9 @@ class ProductionReadinessValidator {
   private getFilesRecursively(dir: string, extension: string): string[] {
     const files: string[] = [];
     
-    if (!fs.existsSync(dir)) return files;
+    if (!fs.existsSync(dir)) {
+      return files;
+    }
     
     const items = fs.readdirSync(dir);
     
@@ -329,7 +331,9 @@ class ProductionReadinessValidator {
   private checkPackageJsonSecurity(): boolean {
     try {
       const packageJsonPath = path.join(this.projectRoot, 'package.json');
-      if (!fs.existsSync(packageJsonPath)) return false;
+      if (!fs.existsSync(packageJsonPath)) {
+        return false;
+      }
       
       const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
       
@@ -346,7 +350,9 @@ class ProductionReadinessValidator {
   private checkEnvInGitignore(): boolean {
     try {
       const gitignorePath = path.join(this.projectRoot, '.gitignore');
-      if (!fs.existsSync(gitignorePath)) return false;
+      if (!fs.existsSync(gitignorePath)) {
+        return false;
+      }
       
       const gitignoreContent = fs.readFileSync(gitignorePath, 'utf8');
       return gitignoreContent.includes('.env') || gitignoreContent.includes('*.env');
@@ -369,7 +375,9 @@ class ProductionReadinessValidator {
           const hasServerConfig = files.some(file => 
             file.includes('server') || file.includes('express') || file.includes('app')
           );
-          if (hasServerConfig) return true;
+          if (hasServerConfig) {
+            return true;
+          }
         }
       }
       

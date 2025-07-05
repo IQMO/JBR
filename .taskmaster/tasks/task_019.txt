@@ -1,0 +1,11 @@
+# Task ID: 19
+# Title: Per-Bot Risk Management - UI Configuration
+# Status: pending
+# Dependencies: 13, 15
+# Priority: medium
+# Description: Implement per-bot risk management configuration in the UI.
+# Details:
+Create a UI to allow users to configure per-bot risk management parameters. Ensure that each bot has its own risk management parameters and isolated positions. The underlying risk management logic exists in the trading engine, but needs a UI for configuration. Ensure that each bot has its own risk management parameters and isolated positions to prevent bots from interfering with each other.
+
+# Test Strategy:
+Test per-bot risk management by running multiple bots with different risk parameters configured via the UI and verifying that their positions are isolated. Verify that each bot has its own risk management parameters and isolated positions.

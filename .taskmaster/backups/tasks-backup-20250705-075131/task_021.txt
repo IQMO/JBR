@@ -1,0 +1,11 @@
+# Task ID: 21
+# Title: Real-time Dashboard
+# Status: done
+# Dependencies: 5
+# Priority: high
+# Description: Implement a real-time dashboard with WebSocket integration.
+# Details:
+Display real-time data such as market data, bot status, and P&L on the dashboard. Use WebSocket to receive updates from the backend. Ensure the real-time dashboard provides a comprehensive overview of market data, bot status, and P&L.
+
+# Test Strategy:
+Test the real-time dashboard by simulating trades and verifying that the data is updated correctly. Verify that the dashboard provides a comprehensive overview of market data, bot status, and P&L.

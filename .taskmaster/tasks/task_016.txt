@@ -1,0 +1,14 @@
+# Task ID: 16
+# Title: Bot Lifecycle Management
+# Status: done
+# Dependencies: 15
+# Priority: medium
+# Description: Implement bot lifecycle management (start, stop, pause).
+# Details:
+Allow users to start, stop, and pause trading bots. Implement a state machine to manage bot lifecycle. Update bot status in real-time via WebSocket. Ensure the bot lifecycle management system is reliable and can handle the trading engine's bot management requirements.
+<info added on 2025-07-02T17:34:48.044Z>
+CODEBASE ANALYSIS UPDATE: Bot lifecycle management not actually implemented. Basic files exist but are mostly stubs. Status corrected to "pending".
+</info added on 2025-07-02T17:34:48.044Z>
+
+# Test Strategy:
+Test bot lifecycle management by starting, stopping, and pausing bots and verifying that their status is updated correctly. Verify that the trading engine can use the bot lifecycle management system to manage the lifecycle of trading bots.

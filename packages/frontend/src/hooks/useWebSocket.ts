@@ -1,5 +1,5 @@
-import type { WebSocketMessage, WebSocketResponse} from '@jabbr/shared';
-import { CONSTANTS } from '@jabbr/shared';
+import type { WebSocketMessage, WebSocketResponse} from '@jabbr/shared/src';
+import { CONSTANTS } from '@jabbr/shared/src';
 import { useState, useEffect, useRef, useCallback } from 'react';
 
 interface WebSocketOptions {

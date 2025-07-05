@@ -378,8 +378,8 @@ export class ConfigManager {
       console.log(`✅ Loaded environment configuration: ${envFile}`);
     } else {
       console.warn(`⚠️  Environment file not found: ${envFile}`);
-      // Fallback to default .env
-      dotenv.config();
+      // Fallback to root .env file
+      dotenv.config({ path: path.join(process.cwd(), '../../.env') });
     }
   }
 

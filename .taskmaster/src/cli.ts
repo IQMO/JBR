@@ -13,6 +13,7 @@ import { StatusValidator } from './status-validator';
 import { DependencyVisualizer } from './dependency-visualizer';
 import { MilestoneTracker } from './milestone-tracker';
 import { CICDIntegration } from './cicd-integration';
+import { ProjectUnderstandingService } from './project-understanding';
 import { writeFileSync, existsSync } from 'fs';
 import { join, dirname } from 'path';
 import * as path from 'path';
@@ -725,6 +726,91 @@ program
       
     } catch (error) {
       console.error('❌ CI/CD command failed:', error);
+      process.exit(1);
+    }
+  });
+
+// Understand project command
+program
+  .command('understand-project')
+  .description('Generate comprehensive project understanding for AI agents')
+  .option('-o, --output <path>', 'Output file path for understanding document')
+  .option('-f, --format <type>', 'Output format: json, markdown, text', 'markdown')
+  .option('--ai', 'Enable AI-powered analysis with insights and recommendations')
+  .action(async (options) => {
+    const currentDir = process.cwd();
+    const projectRoot = currentDir.endsWith('.taskmaster') ? path.dirname(currentDir) : currentDir;
+    
+    if (options.ai) {
+      console.log('🧠 Generating AI-powered project analysis...');
+    } else {
+      console.log('🔍 Analyzing project for AI understanding...');
+    }
+    
+    try {
+      const understandingService = new ProjectUnderstandingService(projectRoot);
+      
+      let content: string;
+      let defaultFileName: string;
+      
+      if (options.ai) {
+        // AI-powered analysis
+        content = await understandingService.generateAIAnalysis();
+        defaultFileName = 'ai-project-analysis.md';
+        
+        // AI analysis is always markdown format
+        if (options.format !== 'markdown') {
+          console.log('ℹ️ AI analysis is only available in markdown format.');
+        }
+      } else {
+        // Standard analysis
+        const understanding = await understandingService.generateUnderstanding();
+        
+        // Determine output format and content
+        switch (options.format.toLowerCase()) {
+          case 'json':
+            content = JSON.stringify(understanding, null, 2);
+            defaultFileName = 'project-understanding.json';
+            break;
+          case 'text':
+            content = understandingService.formatAsText(understanding);
+            defaultFileName = 'project-understanding.txt';
+            break;
+          case 'markdown':
+          default:
+            content = understandingService.formatAsMarkdown(understanding);
+            defaultFileName = 'project-understanding.md';
+            break;
+        }
+      }
+      
+      // Save to file if output path specified
+      if (options.output) {
+        writeFileSync(options.output, content, 'utf8');
+        console.log(`✅ Project ${options.ai ? 'AI analysis' : 'understanding'} saved to: ${options.output}`);
+      } else {
+        // Save to default location in .taskmaster/docs/
+        const docsDir = path.join(projectRoot, '.taskmaster', 'docs');
+        const outputPath = path.join(docsDir, defaultFileName);
+        writeFileSync(outputPath, content, 'utf8');
+        console.log(`✅ Project ${options.ai ? 'AI analysis' : 'understanding'} saved to: ${outputPath}`);
+      }
+      
+      if (!options.ai) {
+        // Show summary for standard analysis
+        const understanding = JSON.parse(content.startsWith('{') ? content : '{}');
+        if (understanding.projectName) {
+          console.log('\n📋 Project Understanding Summary:');
+          console.log(`Project: ${understanding.projectName}`);
+          console.log(`Purpose: ${understanding.context?.mainPurpose || 'Unknown'}`);
+          console.log(`Files: ${understanding.codebase?.totalFiles || 0} files, ${understanding.codebase?.totalLines || 0} lines`);
+          console.log(`Languages: ${Object.keys(understanding.codebase?.languages || {}).join(', ')}`);
+          console.log(`Key Components: ${(understanding.context?.keyComponents || []).slice(0, 3).join(', ')}${(understanding.context?.keyComponents || []).length > 3 ? '...' : ''}`);
+        }
+      }
+      
+    } catch (error) {
+      console.error(`❌ Failed to generate project ${options.ai ? 'AI analysis' : 'understanding'}:`, error);
       process.exit(1);
     }
   });

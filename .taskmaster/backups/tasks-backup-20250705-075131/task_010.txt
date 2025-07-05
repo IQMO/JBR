@@ -1,0 +1,11 @@
+# Task ID: 10
+# Title: Exchange Abstraction
+# Status: done
+# Dependencies: None
+# Priority: medium
+# Description: Create an abstraction layer for interacting with different exchanges.
+# Details:
+Define a common interface for exchange APIs. Implement adapters for Bybit and other exchanges. Handle authentication, order placement, and data retrieval. Use ccxt library to simplify exchange integration. Use `pnpm add ccxt`. Ensure the exchange abstraction layer is robust and can handle the trading engine's order execution and data retrieval requirements.
+
+# Test Strategy:
+Test exchange integration by connecting to the exchange API and retrieving market data. Ensure the abstraction layer correctly handles different exchange formats. Verify that the trading engine can use the abstraction layer to place orders and retrieve market data from different exchanges.

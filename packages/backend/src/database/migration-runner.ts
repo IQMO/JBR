@@ -1,5 +1,6 @@
 import fs from 'fs/promises';
 import path from 'path';
+import crypto from 'crypto';
 
 import { database } from './database.config';
 
@@ -48,6 +49,47 @@ export class MigrationRunner {
     } catch (error) {
       console.error('❌ Failed to initialize migration table:', error);
       throw error;
+    }
+  }
+
+  /**
+   * Handle pre-existing database with tables but no migration tracking
+   */
+  async handlePreExistingDatabase(): Promise<void> {
+    try {
+      // Check if key tables exist (indicating this is a pre-existing database)
+      const tableExistsResult = await database.query(`
+        SELECT table_name 
+        FROM information_schema.tables 
+        WHERE table_schema = 'public' 
+        AND table_name IN ('users', 'bots', 'trades', 'positions')
+      `);
+
+      // If tables exist but no migrations are recorded, mark initial migrations as complete
+      if (tableExistsResult.length > 0) {
+        const executedMigrations = await this.getExecutedMigrations();
+        
+        if (executedMigrations.length === 0) {
+          console.log('🔍 Detected pre-existing database with tables but no migration tracking');
+          
+          // Mark initial schema as already applied
+          const initialMigrationFiles = await this.getMigrationFiles();
+          const initialSchema = initialMigrationFiles.find(m => m.name.includes('initial_schema'));
+          
+          if (initialSchema) {
+            await database.query(`
+              INSERT INTO migrations (name, filename, checksum)
+              VALUES ($1, $2, $3)
+              ON CONFLICT (name) DO NOTHING
+            `, [initialSchema.name, initialSchema.filename, initialSchema.checksum]);
+            
+            console.log(`✅ Marked initial schema migration as complete: ${initialSchema.name}`);
+          }
+        }
+      }
+    } catch (error) {
+      console.warn('⚠️ Warning: Could not check for pre-existing database:', error);
+      // Continue with normal migration process
     }
   }
 
@@ -115,6 +157,9 @@ export class MigrationRunner {
 
     // Initialize migration table
     await this.initializeMigrationTable();
+
+    // Check if this is a pre-existing database with tables
+    await this.handlePreExistingDatabase();
 
     // Get executed migrations and available migration files
     const [executedMigrations, migrationFiles] = await Promise.all([
@@ -265,7 +310,6 @@ export class MigrationRunner {
    * Calculate checksum for migration content
    */
   private calculateChecksum(content: string): string {
-    const crypto = require('crypto');
     return crypto.createHash('sha256').update(content).digest('hex');
   }
 

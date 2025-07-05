@@ -1,0 +1,11 @@
+# Task ID: 12
+# Title: Position Tracking
+# Status: done
+# Dependencies: 11
+# Priority: high
+# Description: Implement position tracking and P&L calculation.
+# Details:
+Track open positions and calculate P&L in real-time. Use exchange data and order execution details to update positions. Implement different P&L calculation methods. Store positions in Redis for fast access. Ensure the position tracking system is accurate and can handle the trading engine's position management requirements.
+
+# Test Strategy:
+Test position tracking and P&L calculation by simulating trades and verifying the accuracy of the calculated values. Verify that the trading engine can use the position tracking system to track open positions and calculate P&L in real-time.

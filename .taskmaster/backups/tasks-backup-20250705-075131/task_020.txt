@@ -1,0 +1,11 @@
+# Task ID: 20
+# Title: Frontend Setup
+# Status: done
+# Dependencies: 5, 18
+# Priority: high
+# Description: Create a modern React/Next.js frontend with TypeScript.
+# Details:
+Set up a React/Next.js project with TypeScript. Use a component library (e.g., Material UI or Ant Design). Implement routing and state management. Ensure the frontend is well-structured and provides a user-friendly interface for managing trading bots and monitoring their performance.
+
+# Test Strategy:
+Test the frontend by navigating through different pages and verifying that all components are rendered correctly. Verify that the frontend provides a user-friendly interface for managing trading bots and monitoring their performance.

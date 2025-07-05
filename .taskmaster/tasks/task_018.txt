@@ -1,0 +1,11 @@
+# Task ID: 18
+# Title: Bot Status Monitoring - Frontend Integration
+# Status: done
+# Dependencies: 16, 17, 40, 41
+# Priority: medium
+# Description: Integrate the Strategy Framework with the frontend via WebSocket for real-time monitoring of strategy performance, signals, and execution. The Strategy Framework (Task 17) and Backtesting system have been successfully completed.
+# Details:
+Connect the Strategy Framework to the frontend via WebSocket. Display strategy performance, signals, and execution data in real-time. Ensure the frontend displays real-time updates on strategy status, P&L, open positions, and signals using the WebSocket feed. The backend WebSocket functionality is already implemented.
+
+# Test Strategy:
+Test strategy status monitoring by running strategies and verifying that their status, P&L, open positions, and signals are updated correctly on the frontend via the WebSocket connection. Verify that the frontend displays real-time updates.

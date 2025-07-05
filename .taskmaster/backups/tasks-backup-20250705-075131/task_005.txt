@@ -1,0 +1,24 @@
+# Task ID: 5
+# Title: WebSocket Client Setup
+# Status: done
+# Dependencies: 4, 2
+# Priority: high
+# Description: Implement a WebSocket client in the frontend with TypeScript integration.
+# Details:
+Create a WebSocket client using the browser's WebSocket API or a library like 'socket.io-client'. Implement functions for connecting to the server, sending messages, and handling incoming data. Use TypeScript to ensure type safety. Use `pnpm add socket.io-client` if using socket.io. Ensure the client can handle the data streams from the trading engine and display them in real-time.
+<info added on 2025-07-02T17:34:25.341Z>
+CODEBASE ANALYSIS UPDATE: This task was incorrectly marked as "done". The frontend currently only has basic placeholder pages with no WebSocket client implementation. The WebSocket server exists and is fully functional, but the frontend WebSocket client integration is missing. Status corrected to "pending".
+</info added on 2025-07-02T17:34:25.341Z>
+<info added on 2025-07-02T17:41:20.050Z>
+## Research Findings: WebSocket Client Implementation in React with TypeScript
+
+Based on research, the following best practices should be considered when implementing the WebSocket client:
+
+*   **Connection Management:** Use a dedicated React hook (`useWebSocket`) for connection logic, implement automatic reconnection with exponential backoff, and utilize heartbeats (ping/pong) for detecting dropped connections. Leverage token-based authentication using the existing JWT.
+*   **Error Handling:** Implement centralized error handling within the `useWebSocket` hook, provide informative user feedback, and handle specific WebSocket error codes. Ensure backend logging of WebSocket events.
+*   **Data Serialization/Deserialization:** Use JSON for data transfer, validate incoming data using Zod schemas, and consider binary data formats for extremely high-frequency data.
+*   **State Management:** Employ React Context or Redux for managing WebSocket connection status, received data, and error states. Use immutable data structures and optimize component re-renders.
+*   **Security Considerations:** Use WSS for secure communication, sanitize ...
+
+# Test Strategy:
+Test WebSocket connection establishment, message sending, and data handling. Ensure the client can receive and process data from the server. Verify that the client can display market data, trading updates, and bot status information accurately.

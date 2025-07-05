@@ -1,0 +1,11 @@
+# Task ID: 3
+# Title: Authentication System
+# Status: done
+# Dependencies: 1
+# Priority: high
+# Description: Implement a basic authentication system using JWT.
+# Details:
+Create authentication endpoints (/auth/login, /auth/register) in the backend. Use bcrypt for password hashing and jsonwebtoken for token generation. Store user credentials in PostgreSQL. Implement middleware to protect routes that require authentication. Use `pnpm add bcrypt jsonwebtoken @types/jsonwebtoken`. Ensure the authentication system integrates seamlessly with the trading engine and bot management components.
+
+# Test Strategy:
+Test user registration, login, and authentication middleware. Ensure tokens are correctly generated and validated. Verify that authenticated users can access trading engine functionalities and manage their bots.

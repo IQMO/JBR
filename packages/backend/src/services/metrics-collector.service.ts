@@ -154,7 +154,7 @@ export class MetricsCollectorService extends EventEmitter {
     // Start persistence interval if enabled
     if (this.config.enablePersistence) {
       this.persistenceInterval = setInterval(() => {
-        this.persistMetrics();
+        void this.persistMetrics();
       }, this.config.persistenceInterval);
     }
 

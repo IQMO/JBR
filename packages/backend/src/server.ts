@@ -11,25 +11,29 @@ import dotenv from 'dotenv';
 import express from 'express';
 import helmet from 'helmet';
 import morgan from 'morgan';
+import path from 'path';
+
+// Load environment variables from root .env file
+dotenv.config({ path: path.join(__dirname, '../../../.env') });
 
 import authRoutes from './auth/auth.routes';
 import botRoutes from './bots/bots.routes';
 import { initializeDatabase, shutdownDatabase } from './database/database.config';
 import { runMigrations } from './database/migration-runner';
 import { appMonitoringMiddleware } from './middleware/app-monitoring.middleware';
+import alertsRoutes, { initializeAlertsRoutes } from './routes/alerts.routes';
 import healthRoutes from './routes/health.routes';
+import logsRoutes from './routes/logs.routes';
 import performanceRoutes from './routes/performance.routes';
 import type BotStatusService from './services/bot-status.service';
 import DatabaseMonitorService from './services/database-monitor.service';
 import ExchangeMonitorService from './services/exchange-monitor.service';
 import MetricsCollectorService from './services/metrics-collector.service';
+import MonitoringService from './services/monitoring.service';
 import RiskManagementService from './services/risk-management.service';
 import StrategyMonitorService from './services/strategy-monitor.service';
 import WebSocketBridge from './websocket/websocket-bridge';
 import JabbrWebSocketServer from './websocket/websocket-server';
-
-// Load environment variables
-dotenv.config();
 
 /**
  * Main Jabbr Trading Bot Server
@@ -46,6 +50,7 @@ class JabbrServer {
   private riskManagementService: RiskManagementService | null = null;
   private databaseMonitorService: DatabaseMonitorService | null = null;
   private exchangeMonitorService: ExchangeMonitorService | null = null;
+  private monitoringService: MonitoringService | null = null;
   private isShuttingDown = false;
 
   // Configuration
@@ -103,6 +108,12 @@ class JabbrServer {
 
     // Performance monitoring routes
     this.app.use('/performance', performanceRoutes);
+
+    // Logs API routes
+    this.app.use('/api/logs', logsRoutes);
+
+    // Alerts API routes
+    this.app.use('/api/alerts', alertsRoutes);
 
     // Time synchronization endpoints
     this.app.get('/time/stats', (req, res) => {
@@ -215,13 +226,13 @@ class JabbrServer {
     // Handle uncaught exceptions
     process.on('uncaughtException', (error) => {
       console.error('❌ Uncaught exception:', error);
-      this.gracefulShutdown('uncaughtException');
+      void this.gracefulShutdown('uncaughtException');
     });
 
     // Handle unhandled promise rejections
     process.on('unhandledRejection', (reason, promise) => {
       console.error('❌ Unhandled rejection at:', promise, 'reason:', reason);
-      this.gracefulShutdown('unhandledRejection');
+      void this.gracefulShutdown('unhandledRejection');
     });
 
     console.log('✅ Graceful shutdown handlers configured');
@@ -308,6 +319,31 @@ class JabbrServer {
 
       // Start the metrics collector
       this.metricsCollectorService.start();
+
+      // 15. Initialize centralized monitoring service with alert manager
+      console.log('🔔 Initializing monitoring service with alert manager...');
+      this.monitoringService = new MonitoringService({
+        enableSystemMonitoring: true,
+        enableApplicationMonitoring: true,
+        enableDatabaseMonitoring: true,
+        enableExchangeMonitoring: true,
+        enableHealthChecks: true,
+        enableMetricsCollection: true,
+        enableAlerting: true,
+        metricsRetentionHours: 24,
+        alertingEnabled: true,
+        broadcastMetrics: true
+      });
+
+      // Start monitoring service
+      this.monitoringService.start();
+
+      // Initialize alerts routes with the alert manager
+      const services = this.monitoringService.getServices();
+      if (services.alerts) {
+        initializeAlertsRoutes(services.alerts);
+        console.log('✅ Alerts API routes initialized');
+      }
 
       console.log('✅ All services initialized successfully');
 
@@ -455,7 +491,13 @@ class JabbrServer {
         this.metricsCollectorService.stop();
       }
 
-      // 10. Close database connections
+      // 10. Shutdown monitoring service
+      if (this.monitoringService) {
+        console.log('🔔 Shutting down monitoring service...');
+        await this.monitoringService.shutdown();
+      }
+
+      // 11. Close database connections
       console.log('📊 Closing database connections...');
       await shutdownDatabase();
 
